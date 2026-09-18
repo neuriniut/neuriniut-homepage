@@ -53,10 +53,6 @@
   .nav-drop { opacity: 0; visibility: hidden; transform: translateY(4px); transition: all .15s ease; }
   .nav-item:hover .nav-drop, .nav-item:focus-within .nav-drop { opacity: 1; visibility: visible; transform: translateY(0); }
 
-  /* 아코디언 메뉴 (모바일) */
-  .acc-icon { transition: transform .18s ease; }
-  .acc-header[aria-expanded="true"] .acc-icon { transform: rotate(180deg); }
-  .acc-panel[hidden] { display: none; }
 </style>
 </head>
 <body class="bg-white text-meok antialiased">
@@ -137,97 +133,79 @@
         나란히 동참하기
         <span aria-hidden="true">→</span>
       </a>
-      <button id="menuBtn" class="lg:hidden p-2 -mr-2" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobileMenu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#12456B" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <button id="menuBtn" class="lg:hidden p-2 -mr-2" aria-label="전체메뉴 열기" aria-expanded="false" aria-controls="mobileMenu">
+        <svg id="iconMenu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#12456B" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="iconClose" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#12456B" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </div>
   </div>
 
-  <!-- 모바일 메뉴 (아코디언: 한 번에 하나의 대분류만 펼쳐져서 가독성 확보) -->
-  <nav id="mobileMenu" class="lg:hidden hidden border-t border-black/5 bg-white max-h-[75vh] overflow-y-auto">
-    <div class="max-w-7xl mx-auto px-5 py-2 text-sm">
+  <!-- 모바일 전체메뉴 (전체화면 오버레이, 사이트맵형 — 굵은 대분류 + 흐르는 소분류 태그) -->
+  <div id="mobileMenu" class="lg:hidden hidden fixed inset-0 z-[60] bg-white overflow-y-auto" aria-hidden="true">
+    <div class="sticky top-0 z-10 bg-white/95 backdrop-blur border-b border-black/5 h-16 flex items-center justify-between px-5">
+      <a href="#top" class="flex items-center shrink-0" data-close-menu>
+        <svg class="h-6 w-auto" viewBox="0 -6.3645 476.2029 102.2278" role="img" aria-label="느린이웃">
+          <path d="M0 33.3907L0 83.8736C0 90.4953 5.368 95.8633 11.9897 95.8633L52.376 95.8633C58.9977 95.8633 64.3657 90.4953 64.3657 83.8736C64.3657 77.2519 58.9977 71.8839 52.376 71.8839L23.9794 71.8839L23.9794 33.3907C23.9794 26.769 18.6114 21.401 11.9897 21.401C5.368 21.401 0 26.769 0 33.3907Z" fill="#2E7D52" fill-rule="nonzero"/>
+          <path d="M75.7243 5.6252L75.7243 83.8736C75.7243 90.4953 81.0923 95.8633 87.714 95.8633L130.6244 95.8633C137.2461 95.8633 142.6141 90.4953 142.6141 83.8736C142.6141 77.2519 137.2461 71.8839 130.6244 71.8839L99.7037 71.8839L99.7037 5.6252C99.7037 -0.9966 94.3357 -6.3645 87.714 -6.3645C81.0923 -6.3645 75.7243 -0.9966 75.7243 5.6252Z" fill="#12456B" fill-rule="nonzero"/>
+          <path d="M252.5282 34.6328L208.2704 34.6328L208.2704 6.875L195.8954 6.875L195.8954 44.6875L252.5282 44.6875ZM260.1766 59.7266L188.075 59.7266L188.075 70.0391L260.1766 70.0391ZM326.3416 0.0859L314.0525 0.0859L314.0525 58.1797L326.3416 58.1797ZM328.3182 67.7188L285.2635 67.7188L285.2635 53.1953L272.8885 53.1953L272.8885 77.6016L328.3182 77.6016ZM300.9041 5.1562L264.2947 5.1562L264.2947 14.8672L288.701 14.8672L288.701 21.9141L264.3807 21.9141L264.3807 48.4688L271.4275 48.4688C288.615 48.4688 298.7557 48.125 309.6697 45.9766L308.3807 36.0938C298.8416 38.0273 290.3338 38.4141 276.4979 38.5L276.4979 30.9375L300.9041 30.9375ZM398.5222 0L386.0613 0L386.0613 79.0625L398.5222 79.0625ZM355.4675 5.4141C343.2644 5.4141 334.3269 16.3281 334.3269 33.6016C334.3269 51.1328 343.2644 62.0469 355.4675 62.0469C367.4129 62.0469 376.3504 51.1328 376.4363 33.6016C376.3504 16.3281 367.4129 5.4141 355.4675 5.4141ZM355.4675 16.5859C360.8816 16.5859 364.491 22.3438 364.491 33.6016C364.491 45.0312 360.8816 50.7891 355.4675 50.7891C349.8816 50.7891 346.2722 45.0312 346.3582 33.6016C346.2722 22.3438 349.8816 16.5859 355.4675 16.5859ZM476.2029 34.1172L404.3591 34.1172L404.3591 44.1719L433.9216 44.1719L433.9216 51.3047L446.2966 51.3047L446.2966 44.1719L476.2029 44.1719ZM446.3825 55.3438L446.3825 54.1406L433.6638 54.1406L433.6638 55.3438C433.6638 60.8438 426.8747 67.8047 408.8279 69.2656L412.8669 78.4609C426.3161 77.3867 435.2536 72.9609 440.0232 67.0312C444.7927 73.0898 453.8591 77.3438 467.5232 78.4609L471.3044 69.2656C452.9138 67.8047 446.3825 61.1875 446.3825 55.3438ZM440.281 0.8594C422.6638 0.8594 411.32 6.2734 411.32 15.8984C411.32 25.3516 422.6638 30.9375 440.281 30.9375C458.07 30.9375 469.156 25.3516 469.2419 15.8984C469.156 6.2734 458.07 0.8594 440.281 0.8594ZM440.281 9.9688C450.6794 9.9688 456.4372 11.9453 456.4372 15.8984C456.4372 19.5938 450.6794 21.5703 440.281 21.5703C429.7107 21.5703 424.1247 19.5938 424.2107 15.8984C424.1247 11.9453 429.7107 9.9688 440.281 9.9688Z" fill="#12456B" fill-rule="nonzero"/>
+        </svg>
+      </a>
+      <button type="button" class="p-2 -mr-2" data-close-menu aria-label="메뉴 닫기">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#12456B" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
 
-      <div class="border-b border-black/5">
-        <button type="button" class="acc-header w-full flex items-center justify-between py-3.5 text-left" aria-expanded="false" aria-controls="acc-intro">
-          <span class="font-bold text-meok">소개</span>
-          <svg class="acc-icon w-4 h-4 text-dolhoe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div id="acc-intro" class="acc-panel" hidden>
-          <div class="flex flex-col gap-1.5 pb-4 pl-1 font-semibold">
-            <a href="#intro" class="py-1">인사말</a>
-            <a href="#intro" class="py-1">설립목적 · 비전</a>
-            <a href="#intro" class="py-1">연혁</a>
-            <a href="#intro" class="py-1">정관 및 규약</a>
-            <a href="#philosophy" class="py-1">브랜드 스토리</a>
-            <a href="#intro" class="py-1">오시는 길</a>
-          </div>
+    <div class="px-5 pt-2 pb-10">
+      <div class="py-6 border-b border-black/10">
+        <p class="text-xl font-extrabold text-meok mb-3">소개</p>
+        <div class="flex flex-wrap gap-x-6 gap-y-2.5">
+          <a href="#intro" class="text-base text-dolhoe" data-close-menu>인사말</a>
+          <a href="#intro" class="text-base text-dolhoe" data-close-menu>설립목적 · 비전</a>
+          <a href="#intro" class="text-base text-dolhoe" data-close-menu>연혁</a>
+          <a href="#intro" class="text-base text-dolhoe" data-close-menu>정관 및 규약</a>
+          <a href="#philosophy" class="text-base text-dolhoe" data-close-menu>브랜드 스토리</a>
+          <a href="#intro" class="text-base text-dolhoe" data-close-menu>오시는 길</a>
         </div>
       </div>
 
-      <div class="border-b border-black/5">
-        <button type="button" class="acc-header w-full flex items-center justify-between py-3.5 text-left" aria-expanded="false" aria-controls="acc-programs">
-          <span class="font-bold text-meok">사업안내</span>
-          <svg class="acc-icon w-4 h-4 text-dolhoe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div id="acc-programs" class="acc-panel" hidden>
-          <div class="flex flex-col gap-1.5 pb-4 pl-1 font-semibold">
-            <a href="#programs" class="py-1">가족 상담 및 자조모임</a>
-            <a href="#programs" class="py-1">지역조직 지원</a>
-            <a href="#programs" class="py-1">교육 · 문화 · 체육</a>
-            <a href="#programs" class="py-1">발달지원</a>
-          </div>
+      <div class="py-6 border-b border-black/10">
+        <p class="text-xl font-extrabold text-meok mb-3">사업안내</p>
+        <div class="flex flex-wrap gap-x-6 gap-y-2.5">
+          <a href="#programs" class="text-base text-dolhoe" data-close-menu>가족 상담 및 자조모임</a>
+          <a href="#programs" class="text-base text-dolhoe" data-close-menu>지역조직 지원</a>
+          <a href="#programs" class="text-base text-dolhoe" data-close-menu>교육 · 문화 · 체육</a>
+          <a href="#programs" class="text-base text-dolhoe" data-close-menu>발달지원</a>
         </div>
       </div>
 
-      <div class="border-b border-black/5">
-        <button type="button" class="acc-header w-full flex items-center justify-between py-3.5 text-left" aria-expanded="false" aria-controls="acc-notices">
-          <span class="font-bold text-meok">알림마당</span>
-          <svg class="acc-icon w-4 h-4 text-dolhoe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div id="acc-notices" class="acc-panel" hidden>
-          <div class="flex flex-col gap-1.5 pb-4 pl-1 font-semibold">
-            <a href="#notices" class="py-1">공지사항</a>
-            <a href="#notices" class="py-1">예산 및 결산 공고</a>
-            <a href="#notices" class="py-1">느린이웃 소식</a>
-          </div>
+      <div class="py-6 border-b border-black/10">
+        <p class="text-xl font-extrabold text-meok mb-3">알림마당</p>
+        <div class="flex flex-wrap gap-x-6 gap-y-2.5">
+          <a href="#notices" class="text-base text-dolhoe" data-close-menu>공지사항</a>
+          <a href="#notices" class="text-base text-dolhoe" data-close-menu>예산 및 결산 공고</a>
+          <a href="#notices" class="text-base text-dolhoe" data-close-menu>느린이웃 소식</a>
         </div>
       </div>
 
-      <div class="border-b border-black/5">
-        <button type="button" class="acc-header w-full flex items-center justify-between py-3.5 text-left" aria-expanded="false" aria-controls="acc-info">
-          <span class="font-bold text-meok">정보나눔</span>
-          <svg class="acc-icon w-4 h-4 text-dolhoe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div id="acc-info" class="acc-panel" hidden>
-          <div class="flex flex-col gap-1.5 pb-4 pl-1 font-semibold">
-            <a href="#info" class="py-1">생애주기별 주요 제도</a>
-            <a href="#info" class="py-1">유관기관 현황</a>
-            <a href="#info" class="py-1">자료실</a>
-          </div>
+      <div class="py-6 border-b border-black/10">
+        <p class="text-xl font-extrabold text-meok mb-3">정보나눔</p>
+        <div class="flex flex-wrap gap-x-6 gap-y-2.5">
+          <a href="#info" class="text-base text-dolhoe" data-close-menu>생애주기별 주요 제도</a>
+          <a href="#info" class="text-base text-dolhoe" data-close-menu>유관기관 현황</a>
+          <a href="#info" class="text-base text-dolhoe" data-close-menu>자료실</a>
         </div>
       </div>
 
-      <div class="border-b border-black/5">
-        <button type="button" class="acc-header w-full flex items-center justify-between py-3.5 text-left" aria-expanded="false" aria-controls="acc-join">
-          <span class="font-bold text-meok">참여공간</span>
-          <svg class="acc-icon w-4 h-4 text-dolhoe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div id="acc-join" class="acc-panel" hidden>
-          <div class="flex flex-col gap-1.5 pb-4 pl-1 font-semibold">
-            <a href="#join" class="py-1">조합원 가입 안내</a>
-            <a href="#join" class="py-1">문의 및 건의사항</a>
-            <a href="#join" class="py-1 text-ongi">자원봉사 및 후원 →</a>
-          </div>
+      <div class="py-6">
+        <p class="text-xl font-extrabold text-meok mb-3">참여공간</p>
+        <div class="flex flex-wrap gap-x-6 gap-y-2.5">
+          <a href="#join" class="text-base text-dolhoe" data-close-menu>조합원 가입 안내</a>
+          <a href="#join" class="text-base text-dolhoe" data-close-menu>문의 및 건의사항</a>
+          <a href="#join" class="text-base font-bold text-ongi" data-close-menu>자원봉사 및 후원 →</a>
         </div>
-      </div>
-
-      <div class="py-4">
-        <a href="#join" class="flex items-center justify-center gap-1.5 bg-ongi hover:bg-ongi/90 text-white text-sm font-bold px-4 py-3 rounded-full transition-colors">
-          나란히 동참하기 <span aria-hidden="true">→</span>
-        </a>
       </div>
     </div>
-  </nav>
+  </div>
 </header>
 
 <main id="top">
@@ -695,30 +673,34 @@
 <script>
   const menuBtn = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
-  menuBtn.addEventListener('click', () => {
-    const isHidden = mobileMenu.classList.toggle('hidden');
-    menuBtn.setAttribute('aria-expanded', String(!isHidden));
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden');
-    menuBtn.setAttribute('aria-expanded', 'false');
-  }));
+  const iconMenu = document.getElementById('iconMenu');
+  const iconClose = document.getElementById('iconClose');
 
-  // 아코디언: 한 번에 하나의 대분류만 펼쳐지도록 (가독성 확보)
-  const accHeaders = mobileMenu.querySelectorAll('.acc-header');
-  accHeaders.forEach(header => {
-    header.addEventListener('click', () => {
-      const panel = document.getElementById(header.getAttribute('aria-controls'));
-      const isOpen = header.getAttribute('aria-expanded') === 'true';
-      accHeaders.forEach(h => {
-        h.setAttribute('aria-expanded', 'false');
-        document.getElementById(h.getAttribute('aria-controls')).hidden = true;
-      });
-      if (!isOpen) {
-        header.setAttribute('aria-expanded', 'true');
-        panel.hidden = false;
-      }
-    });
+  function openMobileMenu() {
+    mobileMenu.classList.remove('hidden');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    iconMenu.classList.add('hidden');
+    iconClose.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileMenu() {
+    mobileMenu.classList.add('hidden');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    iconMenu.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  menuBtn.addEventListener('click', () => {
+    const isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
+    isOpen ? closeMobileMenu() : openMobileMenu();
+  });
+
+  mobileMenu.querySelectorAll('[data-close-menu]').forEach(el => {
+    el.addEventListener('click', closeMobileMenu);
   });
 </script>
 </body>
