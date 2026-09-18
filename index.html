@@ -49,9 +49,14 @@
   }
   .photo-guide .tag { background: #1F2124; color: #fff; }
 
-  /* 드롭다운 메뉴 */
+  /* 드롭다운 메뉴 (데스크톱) */
   .nav-drop { opacity: 0; visibility: hidden; transform: translateY(4px); transition: all .15s ease; }
   .nav-item:hover .nav-drop, .nav-item:focus-within .nav-drop { opacity: 1; visibility: visible; transform: translateY(0); }
+
+  /* 아코디언 메뉴 (모바일) */
+  .acc-icon { transition: transform .18s ease; }
+  .acc-header[aria-expanded="true"] .acc-icon { transform: rotate(180deg); }
+  .acc-panel[hidden] { display: none; }
 </style>
 </head>
 <body class="bg-white text-meok antialiased">
@@ -138,52 +143,88 @@
     </div>
   </div>
 
-  <!-- 모바일 메뉴 -->
+  <!-- 모바일 메뉴 (아코디언: 한 번에 하나의 대분류만 펼쳐져서 가독성 확보) -->
   <nav id="mobileMenu" class="lg:hidden hidden border-t border-black/5 bg-white max-h-[75vh] overflow-y-auto">
-    <div class="max-w-7xl mx-auto px-5 py-4 text-sm">
-      <div class="mb-4">
-        <p class="text-dolhoe text-xs font-bold tracking-wider mb-2">소개</p>
-        <div class="flex flex-col gap-1.5 pl-1 font-semibold">
-          <a href="#intro" class="py-1">인사말</a>
-          <a href="#intro" class="py-1">설립목적 · 비전</a>
-          <a href="#intro" class="py-1">연혁</a>
-          <a href="#intro" class="py-1">정관 및 규약</a>
-          <a href="#philosophy" class="py-1">브랜드 스토리</a>
-          <a href="#intro" class="py-1">오시는 길</a>
+    <div class="max-w-7xl mx-auto px-5 py-2 text-sm">
+
+      <div class="border-b border-black/5">
+        <button type="button" class="acc-header w-full flex items-center justify-between py-3.5 text-left" aria-expanded="false" aria-controls="acc-intro">
+          <span class="font-bold text-meok">소개</span>
+          <svg class="acc-icon w-4 h-4 text-dolhoe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div id="acc-intro" class="acc-panel" hidden>
+          <div class="flex flex-col gap-1.5 pb-4 pl-1 font-semibold">
+            <a href="#intro" class="py-1">인사말</a>
+            <a href="#intro" class="py-1">설립목적 · 비전</a>
+            <a href="#intro" class="py-1">연혁</a>
+            <a href="#intro" class="py-1">정관 및 규약</a>
+            <a href="#philosophy" class="py-1">브랜드 스토리</a>
+            <a href="#intro" class="py-1">오시는 길</a>
+          </div>
         </div>
       </div>
-      <div class="mb-4">
-        <p class="text-dolhoe text-xs font-bold tracking-wider mb-2">사업안내</p>
-        <div class="flex flex-col gap-1.5 pl-1 font-semibold">
-          <a href="#programs" class="py-1">가족 상담 및 자조모임</a>
-          <a href="#programs" class="py-1">지역조직 지원</a>
-          <a href="#programs" class="py-1">교육 · 문화 · 체육</a>
-          <a href="#programs" class="py-1">발달지원</a>
+
+      <div class="border-b border-black/5">
+        <button type="button" class="acc-header w-full flex items-center justify-between py-3.5 text-left" aria-expanded="false" aria-controls="acc-programs">
+          <span class="font-bold text-meok">사업안내</span>
+          <svg class="acc-icon w-4 h-4 text-dolhoe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div id="acc-programs" class="acc-panel" hidden>
+          <div class="flex flex-col gap-1.5 pb-4 pl-1 font-semibold">
+            <a href="#programs" class="py-1">가족 상담 및 자조모임</a>
+            <a href="#programs" class="py-1">지역조직 지원</a>
+            <a href="#programs" class="py-1">교육 · 문화 · 체육</a>
+            <a href="#programs" class="py-1">발달지원</a>
+          </div>
         </div>
       </div>
-      <div class="mb-4">
-        <p class="text-dolhoe text-xs font-bold tracking-wider mb-2">알림마당</p>
-        <div class="flex flex-col gap-1.5 pl-1 font-semibold">
-          <a href="#notices" class="py-1">공지사항</a>
-          <a href="#notices" class="py-1">예산 및 결산 공고</a>
-          <a href="#notices" class="py-1">느린이웃 소식</a>
+
+      <div class="border-b border-black/5">
+        <button type="button" class="acc-header w-full flex items-center justify-between py-3.5 text-left" aria-expanded="false" aria-controls="acc-notices">
+          <span class="font-bold text-meok">알림마당</span>
+          <svg class="acc-icon w-4 h-4 text-dolhoe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div id="acc-notices" class="acc-panel" hidden>
+          <div class="flex flex-col gap-1.5 pb-4 pl-1 font-semibold">
+            <a href="#notices" class="py-1">공지사항</a>
+            <a href="#notices" class="py-1">예산 및 결산 공고</a>
+            <a href="#notices" class="py-1">느린이웃 소식</a>
+          </div>
         </div>
       </div>
-      <div class="mb-4">
-        <p class="text-dolhoe text-xs font-bold tracking-wider mb-2">정보나눔</p>
-        <div class="flex flex-col gap-1.5 pl-1 font-semibold">
-          <a href="#info" class="py-1">생애주기별 주요 제도</a>
-          <a href="#info" class="py-1">유관기관 현황</a>
-          <a href="#info" class="py-1">자료실</a>
+
+      <div class="border-b border-black/5">
+        <button type="button" class="acc-header w-full flex items-center justify-between py-3.5 text-left" aria-expanded="false" aria-controls="acc-info">
+          <span class="font-bold text-meok">정보나눔</span>
+          <svg class="acc-icon w-4 h-4 text-dolhoe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div id="acc-info" class="acc-panel" hidden>
+          <div class="flex flex-col gap-1.5 pb-4 pl-1 font-semibold">
+            <a href="#info" class="py-1">생애주기별 주요 제도</a>
+            <a href="#info" class="py-1">유관기관 현황</a>
+            <a href="#info" class="py-1">자료실</a>
+          </div>
         </div>
       </div>
-      <div class="mb-2">
-        <p class="text-dolhoe text-xs font-bold tracking-wider mb-2">참여공간</p>
-        <div class="flex flex-col gap-1.5 pl-1 font-semibold">
-          <a href="#join" class="py-1">조합원 가입 안내</a>
-          <a href="#join" class="py-1">문의 및 건의사항</a>
-          <a href="#join" class="py-1 text-ongi">자원봉사 및 후원 →</a>
+
+      <div class="border-b border-black/5">
+        <button type="button" class="acc-header w-full flex items-center justify-between py-3.5 text-left" aria-expanded="false" aria-controls="acc-join">
+          <span class="font-bold text-meok">참여공간</span>
+          <svg class="acc-icon w-4 h-4 text-dolhoe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div id="acc-join" class="acc-panel" hidden>
+          <div class="flex flex-col gap-1.5 pb-4 pl-1 font-semibold">
+            <a href="#join" class="py-1">조합원 가입 안내</a>
+            <a href="#join" class="py-1">문의 및 건의사항</a>
+            <a href="#join" class="py-1 text-ongi">자원봉사 및 후원 →</a>
+          </div>
         </div>
+      </div>
+
+      <div class="py-4">
+        <a href="#join" class="flex items-center justify-center gap-1.5 bg-ongi hover:bg-ongi/90 text-white text-sm font-bold px-4 py-3 rounded-full transition-colors">
+          나란히 동참하기 <span aria-hidden="true">→</span>
+        </a>
       </div>
     </div>
   </nav>
@@ -658,7 +699,27 @@
     const isHidden = mobileMenu.classList.toggle('hidden');
     menuBtn.setAttribute('aria-expanded', String(!isHidden));
   });
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }));
+
+  // 아코디언: 한 번에 하나의 대분류만 펼쳐지도록 (가독성 확보)
+  const accHeaders = mobileMenu.querySelectorAll('.acc-header');
+  accHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+      const panel = document.getElementById(header.getAttribute('aria-controls'));
+      const isOpen = header.getAttribute('aria-expanded') === 'true';
+      accHeaders.forEach(h => {
+        h.setAttribute('aria-expanded', 'false');
+        document.getElementById(h.getAttribute('aria-controls')).hidden = true;
+      });
+      if (!isOpen) {
+        header.setAttribute('aria-expanded', 'true');
+        panel.hidden = false;
+      }
+    });
+  });
 </script>
 </body>
 </html>
