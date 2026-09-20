@@ -756,25 +756,25 @@
       </div>
 
       <!-- 문의 폼 -->
-      <form class="bg-white rounded-2xl border border-black/10 p-6 md:p-8 space-y-4 max-w-2xl" onsubmit="event.preventDefault(); alert('문의 폼 UI 시안입니다. 실제 전송 기능은 연동이 필요합니다.');">
+      <form id="contact-form" class="bg-white rounded-2xl border border-black/10 p-6 md:p-8 space-y-4 max-w-2xl">
         <p class="font-bold text-sm mb-1">문의 및 건의사항</p>
         <div class="grid grid-cols-2 gap-4">
           <label class="block text-sm">
             <span class="text-meok/70 font-medium">이름</span>
-            <input type="text" required class="mt-1 w-full border border-black/15 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-naran/40" />
+            <input id="contact-name" type="text" required class="mt-1 w-full border border-black/15 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-naran/40" />
           </label>
           <label class="block text-sm">
             <span class="text-meok/70 font-medium">연락처</span>
-            <input type="tel" class="mt-1 w-full border border-black/15 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-naran/40" />
+            <input id="contact-phone" type="tel" class="mt-1 w-full border border-black/15 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-naran/40" />
           </label>
         </div>
         <label class="block text-sm">
           <span class="text-meok/70 font-medium">이메일</span>
-          <input type="email" required class="mt-1 w-full border border-black/15 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-naran/40" />
+          <input id="contact-email" type="email" required class="mt-1 w-full border border-black/15 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-naran/40" />
         </label>
         <label class="block text-sm">
           <span class="text-meok/70 font-medium">문의 유형</span>
-          <select class="mt-1 w-full border border-black/15 rounded-lg px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-naran/40">
+          <select id="contact-type" class="mt-1 w-full border border-black/15 rounded-lg px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-naran/40">
             <option>가입 문의</option>
             <option>후원 문의</option>
             <option>자원봉사 문의</option>
@@ -785,9 +785,10 @@
         </label>
         <label class="block text-sm">
           <span class="text-meok/70 font-medium">문의 내용</span>
-          <textarea rows="4" required class="mt-1 w-full border border-black/15 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-naran/40"></textarea>
+          <textarea id="contact-message" rows="4" required class="mt-1 w-full border border-black/15 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-naran/40"></textarea>
         </label>
-        <button type="submit" class="w-full sm:w-auto bg-ongi hover:bg-ongi/90 text-white font-bold py-3.5 px-8 rounded-full text-sm transition-colors">
+        <p id="contact-status" class="text-sm hidden"></p>
+        <button id="contact-submit" type="submit" class="w-full sm:w-auto bg-ongi hover:bg-ongi/90 text-white font-bold py-3.5 px-8 rounded-full text-sm transition-colors disabled:opacity-60">
           문의 보내기
         </button>
       </form>
@@ -1213,6 +1214,53 @@
         }).join('');
       }
     }
+  })();
+
+  // ---------- 참여공간 문의 폼 ----------
+  (function setupContactForm() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+    const statusEl = document.getElementById('contact-status');
+    const submitBtn = document.getElementById('contact-submit');
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const payload = {
+        name: document.getElementById('contact-name').value.trim(),
+        phone: document.getElementById('contact-phone').value.trim(),
+        email: document.getElementById('contact-email').value.trim(),
+        type: document.getElementById('contact-type').value,
+        message: document.getElementById('contact-message').value.trim(),
+      };
+      statusEl.classList.remove('hidden', 'text-red-600', 'text-green-600');
+      statusEl.classList.add('text-meok/70');
+      statusEl.textContent = '보내는 중입니다...';
+      submitBtn.disabled = true;
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        let result = {};
+        try { result = await res.json(); } catch (e2) {}
+        if (res.ok) {
+          statusEl.classList.remove('text-meok/70', 'text-red-600');
+          statusEl.classList.add('text-green-600', 'font-medium');
+          statusEl.textContent = '문의가 접수되었습니다. 빠르게 답변드릴게요!';
+          form.reset();
+        } else {
+          statusEl.classList.remove('text-meok/70', 'text-green-600');
+          statusEl.classList.add('text-red-600', 'font-medium');
+          statusEl.textContent = result.error || '전송에 실패했습니다. 잠시 후 다시 시도해 주세요.';
+        }
+      } catch (err) {
+        statusEl.classList.remove('text-meok/70', 'text-green-600');
+        statusEl.classList.add('text-red-600', 'font-medium');
+        statusEl.textContent = '전송에 실패했습니다. 인터넷 연결을 확인해 주세요.';
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
   })();
 </script>
 </body>
