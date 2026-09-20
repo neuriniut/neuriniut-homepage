@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>느린이웃 | 발달장애인 가족 자조모임</title>
+<title>참여공간 | 느린이웃</title>
 <meta name="description" content="느린이웃 — 발달장애인 가족의 자조모임이자 예비 사회적협동조합. 우리는 나란히 걷습니다." />
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -204,48 +204,83 @@
 
 <main id="top">
 
-<!-- ========== 히어로 ========== -->
-  <section class="bg-byeot">
-    <div class="max-w-7xl mx-auto px-5 md:px-8 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
-      <div>
-        <div class="nara-lines mb-6" aria-hidden="true">
-          <span class="l1"></span><span class="l2" style="background:#12456B;opacity:.15"></span><span class="l3"></span>
-        </div>
-        <p class="text-ongi font-bold tracking-wide text-sm md:text-base mb-3" id="hero-tag">발달장애인 가족 자조모임 · 예비 사회적협동조합</p>
-        <h1 class="text-naran font-extrabold leading-[1.15] text-4xl md:text-5xl lg:text-[3.3rem] mb-5" id="hero-title">
-          우리는<br class="md:hidden"> 나란히 걷습니다
-        </h1>
-        <p class="text-dolhoe font-medium tracking-wide text-sm md:text-base mb-8">WE WALK SIDE BY SIDE</p>
-        <p class="text-meok/80 text-base md:text-lg leading-relaxed max-w-md mb-9 whitespace-pre-line" id="hero-body">앞에서 끌지 않고, 뒤에서 밀지 않고, 나란히.
-발달장애인과 가족들이 서로의 이웃이 되어 함께 걷는 공동체, 느린이웃입니다.</p>
-        <div class="flex flex-wrap gap-3">
-          <a href="join.html" class="inline-flex items-center gap-1.5 bg-ongi hover:bg-ongi/90 text-white font-bold px-6 py-3.5 rounded-full text-sm md:text-base transition-colors">
-            나란히 동참하기 <span aria-hidden="true">→</span>
-          </a>
-          <a href="about.html#philosophy" class="inline-flex items-center gap-1.5 border-2 border-naran text-naran font-bold px-6 py-3.5 rounded-full text-sm md:text-base hover:bg-naran hover:text-white transition-colors">
-            우리 이야기 보기
-          </a>
-        </div>
-      </div>
-
-      <div class="relative rounded-2xl overflow-hidden aspect-[4/3] md:aspect-[5/4]">
-        <img id="hero-photo" src="https://mpgmvwivzedqxugfllxc.supabase.co/storage/v1/object/public/photos/Hero/main.jpg"
-             alt="느린이웃 단체 사진"
-             class="absolute inset-0 w-full h-full object-cover"
-             onerror="this.style.display='none'; document.getElementById('hero-photo-fallback').style.display='flex';">
-        <div id="hero-photo-fallback" class="photo-guide absolute inset-0 flex items-end p-5" style="display:none;">
-          <div class="w-full">
-            <span class="tag inline-block text-[11px] font-bold px-2.5 py-1 rounded mb-2">사진 가이드</span>
-            <p class="text-meok text-sm leading-relaxed bg-white/90 rounded-lg p-3">
-              월간 정기산행 숲속 단체 컷 — 촬영자가 앉아서 눈높이를 맞춘 구도, 10m 밖에서도 알아볼 수 있는 '느린이웃' 현수막 포함. 인물이 카메라를 의식하지 않는 자연스러운 순간 권장.
-            </p>
+<!-- ========== 참여공간 ========== -->
+  <section id="join" class="bg-byeot">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-16 md:py-24">
+      <div class="grid md:grid-cols-2 gap-10 items-start mb-14">
+        <div>
+          <div class="nara-lines mb-6" aria-hidden="true">
+            <span class="l1"></span><span class="l3" style="width:70px"></span><span class="l1" style="background:#12456B"></span>
+          </div>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-naran mb-4">나란히 동참하기</h2>
+          <p class="text-dolhoe leading-relaxed mb-8 max-w-md">
+            발달장애인 가족의 가입 문의부터 후원, 지역 기관과의 협력 제안까지 — 앞에서 끌지도, 뒤에서 밀지도 않고 나란히 걷고 싶은 분들을 기다립니다.
+          </p>
+          <div class="space-y-3 mb-8">
+            <p class="flex items-center gap-2 text-sm text-meok/80"><span class="w-1.5 h-1.5 rounded-full bg-ongi"></span> 이메일 : slowfamily@naver.com</p>
+            <p class="flex items-center gap-2 text-sm text-meok/80"><span class="w-1.5 h-1.5 rounded-full bg-ongi"></span> 네이버 카페 : 느린이웃 (가입 문의 상시 접수)</p>
+            <p class="flex items-center gap-2 text-sm text-meok/80"><span class="w-1.5 h-1.5 rounded-full bg-ongi"></span> 활동 지역 : 경기 고양 · 파주 · 김포</p>
           </div>
         </div>
+
+        <div class="bg-white rounded-2xl border border-black/10 p-6">
+          <p class="font-bold text-sm mb-4">조합원 가입 절차</p>
+          <ol class="space-y-4">
+            <li class="flex gap-3">
+              <span class="shrink-0 w-6 h-6 rounded-full bg-naran text-white text-xs font-bold flex items-center justify-center">1</span>
+              <p class="text-sm text-meok/80 pt-0.5">이메일 또는 네이버 카페로 가입 문의</p>
+            </li>
+            <li class="flex gap-3">
+              <span class="shrink-0 w-6 h-6 rounded-full bg-naran text-white text-xs font-bold flex items-center justify-center">2</span>
+              <p class="text-sm text-meok/80 pt-0.5">가입 신청서 및 필요 서류 제출</p>
+            </li>
+            <li class="flex gap-3">
+              <span class="shrink-0 w-6 h-6 rounded-full bg-naran text-white text-xs font-bold flex items-center justify-center">3</span>
+              <p class="text-sm text-meok/80 pt-0.5">운영진 확인 후 조합원 등록 완료</p>
+            </li>
+          </ol>
+        </div>
       </div>
+
+      <!-- 문의 폼 -->
+      <form id="contact-form" class="bg-white rounded-2xl border border-black/10 p-6 md:p-8 space-y-4 max-w-2xl scroll-mt-24">
+        <p class="font-bold text-sm mb-1">문의 및 건의사항</p>
+        <div class="grid grid-cols-2 gap-4">
+          <label class="block text-sm">
+            <span class="text-meok/70 font-medium">이름</span>
+            <input id="contact-name" type="text" required class="mt-1 w-full border border-black/15 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-naran/40" />
+          </label>
+          <label class="block text-sm">
+            <span class="text-meok/70 font-medium">연락처</span>
+            <input id="contact-phone" type="tel" class="mt-1 w-full border border-black/15 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-naran/40" />
+          </label>
+        </div>
+        <label class="block text-sm">
+          <span class="text-meok/70 font-medium">이메일</span>
+          <input id="contact-email" type="email" required class="mt-1 w-full border border-black/15 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-naran/40" />
+        </label>
+        <label class="block text-sm">
+          <span class="text-meok/70 font-medium">문의 유형</span>
+          <select id="contact-type" class="mt-1 w-full border border-black/15 rounded-lg px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-naran/40">
+            <option>가입 문의</option>
+            <option>후원 문의</option>
+            <option>자원봉사 문의</option>
+            <option>사업 협력 제안</option>
+            <option>건의사항</option>
+            <option>기타</option>
+          </select>
+        </label>
+        <label class="block text-sm">
+          <span class="text-meok/70 font-medium">문의 내용</span>
+          <textarea id="contact-message" rows="4" required class="mt-1 w-full border border-black/15 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-naran/40"></textarea>
+        </label>
+        <p id="contact-status" class="text-sm hidden"></p>
+        <button id="contact-submit" type="submit" class="w-full sm:w-auto bg-ongi hover:bg-ongi/90 text-white font-bold py-3.5 px-8 rounded-full text-sm transition-colors disabled:opacity-60">
+          문의 보내기
+        </button>
+      </form>
     </div>
   </section>
-
-  <div class="max-w-7xl mx-auto px-5 md:px-8"><div class="nara-divider py-8" aria-hidden="true"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div></div>
 
 </main>
 <!-- ========== 푸터 ========== -->
@@ -321,43 +356,51 @@ const menuBtn = document.getElementById('menuBtn');
     el.addEventListener('click', closeMobileMenu);
   });
 
-// 공통 유틸
-  function ny_esc(str) {
-    const div = document.createElement('div');
-    div.textContent = str == null ? '' : str;
-    return div.innerHTML;
-  }
-  // 여러 줄 소개글(빈 줄로 문단 구분, "* "로 시작하는 줄은 목록으로) 보기 좋게 표시
-  function ny_formatDescription(str) {
-    if (!str) return '';
-    return ny_esc(str).replace(/^\* (.+)$/gm, '• $1');
-  }
-
-  // 소개: 히어로 문구·사진을 Supabase에서 실시간으로 불러오기
-  // (관리자 페이지에서 아무것도 입력하지 않았으면 위 고정 내용이 그대로 보여요.)
-  (async function loadHeroContent() {
-    if (typeof supabase === 'undefined') return;
-    const { createClient } = supabase;
-    const db = createClient(
-      'https://mpgmvwivzedqxugfllxc.supabase.co',
-      'sb_publishable_B-pdQJ6sbCDrdi37JU6www_71TE8J5f'
-    );
-
-    try {
-      const { data: rows } = await db.from('site_settings').select('*');
-      const s = {};
-      (rows || []).forEach(r => { s[r.key] = r.value; });
-
-      if (s.hero_tag) document.getElementById('hero-tag').textContent = s.hero_tag;
-      if (s.hero_title) document.getElementById('hero-title').textContent = s.hero_title;
-      if (s.hero_body) document.getElementById('hero-body').textContent = s.hero_body;
-      if (s.hero_photo_url) {
-        const heroImg = document.getElementById('hero-photo');
-        heroImg.src = s.hero_photo_url;
-        heroImg.style.display = '';
-        document.getElementById('hero-photo-fallback').style.display = 'none';
+// ---------- 참여공간 문의 폼 ----------
+  (function setupContactForm() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+    const statusEl = document.getElementById('contact-status');
+    const submitBtn = document.getElementById('contact-submit');
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const payload = {
+        name: document.getElementById('contact-name').value.trim(),
+        phone: document.getElementById('contact-phone').value.trim(),
+        email: document.getElementById('contact-email').value.trim(),
+        type: document.getElementById('contact-type').value,
+        message: document.getElementById('contact-message').value.trim(),
+      };
+      statusEl.classList.remove('hidden', 'text-red-600', 'text-green-600');
+      statusEl.classList.add('text-meok/70');
+      statusEl.textContent = '보내는 중입니다...';
+      submitBtn.disabled = true;
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        let result = {};
+        try { result = await res.json(); } catch (e2) {}
+        if (res.ok) {
+          statusEl.classList.remove('text-meok/70', 'text-red-600');
+          statusEl.classList.add('text-green-600', 'font-medium');
+          statusEl.textContent = '문의가 접수되었습니다. 빠르게 답변드릴게요!';
+          form.reset();
+        } else {
+          statusEl.classList.remove('text-meok/70', 'text-green-600');
+          statusEl.classList.add('text-red-600', 'font-medium');
+          statusEl.textContent = result.error || '전송에 실패했습니다. 잠시 후 다시 시도해 주세요.';
+        }
+      } catch (err) {
+        statusEl.classList.remove('text-meok/70', 'text-green-600');
+        statusEl.classList.add('text-red-600', 'font-medium');
+        statusEl.textContent = '전송에 실패했습니다. 인터넷 연결을 확인해 주세요.';
+      } finally {
+        submitBtn.disabled = false;
       }
-    } catch (e) { /* site_settings 테이블이 아직 없어도 나머지는 정상 표시 */ }
+    });
   })();
 
 </script>

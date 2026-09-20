@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>느린이웃 | 발달장애인 가족 자조모임</title>
+<title>사업안내 | 느린이웃</title>
 <meta name="description" content="느린이웃 — 발달장애인 가족의 자조모임이자 예비 사회적협동조합. 우리는 나란히 걷습니다." />
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -204,48 +204,214 @@
 
 <main id="top">
 
-<!-- ========== 히어로 ========== -->
-  <section class="bg-byeot">
-    <div class="max-w-7xl mx-auto px-5 md:px-8 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
-      <div>
-        <div class="nara-lines mb-6" aria-hidden="true">
-          <span class="l1"></span><span class="l2" style="background:#12456B;opacity:.15"></span><span class="l3"></span>
-        </div>
-        <p class="text-ongi font-bold tracking-wide text-sm md:text-base mb-3" id="hero-tag">발달장애인 가족 자조모임 · 예비 사회적협동조합</p>
-        <h1 class="text-naran font-extrabold leading-[1.15] text-4xl md:text-5xl lg:text-[3.3rem] mb-5" id="hero-title">
-          우리는<br class="md:hidden"> 나란히 걷습니다
-        </h1>
-        <p class="text-dolhoe font-medium tracking-wide text-sm md:text-base mb-8">WE WALK SIDE BY SIDE</p>
-        <p class="text-meok/80 text-base md:text-lg leading-relaxed max-w-md mb-9 whitespace-pre-line" id="hero-body">앞에서 끌지 않고, 뒤에서 밀지 않고, 나란히.
-발달장애인과 가족들이 서로의 이웃이 되어 함께 걷는 공동체, 느린이웃입니다.</p>
-        <div class="flex flex-wrap gap-3">
-          <a href="join.html" class="inline-flex items-center gap-1.5 bg-ongi hover:bg-ongi/90 text-white font-bold px-6 py-3.5 rounded-full text-sm md:text-base transition-colors">
-            나란히 동참하기 <span aria-hidden="true">→</span>
-          </a>
-          <a href="about.html#philosophy" class="inline-flex items-center gap-1.5 border-2 border-naran text-naran font-bold px-6 py-3.5 rounded-full text-sm md:text-base hover:bg-naran hover:text-white transition-colors">
-            우리 이야기 보기
-          </a>
-        </div>
-      </div>
+<!-- ========== 사업안내 ========== -->
+  <section id="programs" class="max-w-7xl mx-auto px-5 md:px-8 py-4 md:py-10">
 
-      <div class="relative rounded-2xl overflow-hidden aspect-[4/3] md:aspect-[5/4]">
-        <img id="hero-photo" src="https://mpgmvwivzedqxugfllxc.supabase.co/storage/v1/object/public/photos/Hero/main.jpg"
-             alt="느린이웃 단체 사진"
-             class="absolute inset-0 w-full h-full object-cover"
-             onerror="this.style.display='none'; document.getElementById('hero-photo-fallback').style.display='flex';">
-        <div id="hero-photo-fallback" class="photo-guide absolute inset-0 flex items-end p-5" style="display:none;">
-          <div class="w-full">
-            <span class="tag inline-block text-[11px] font-bold px-2.5 py-1 rounded mb-2">사진 가이드</span>
-            <p class="text-meok text-sm leading-relaxed bg-white/90 rounded-lg p-3">
-              월간 정기산행 숲속 단체 컷 — 촬영자가 앉아서 눈높이를 맞춘 구도, 10m 밖에서도 알아볼 수 있는 '느린이웃' 현수막 포함. 인물이 카메라를 의식하지 않는 자연스러운 순간 권장.
-            </p>
+    <!-- 목록 화면 -->
+    <div id="programs-list">
+      <header class="max-w-2xl mb-10">
+        <p class="text-iwoot font-bold text-sm mb-2">사업안내</p>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">느린이웃이 하는 일</h2>
+        <p class="text-dolhoe leading-relaxed">정관에 명시된 4대 사업을 기준으로 운영합니다. 각 사업을 누르면 세부 프로그램을 자세히 볼 수 있어요.</p>
+      </header>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <article class="border border-black/10 rounded-2xl overflow-hidden">
+          <div class="photo-guide aspect-[16/10] flex items-end p-4">
+            <div class="w-full">
+              <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded mb-2">사진 가이드</span>
+              <p class="text-meok text-xs leading-relaxed bg-white/90 rounded p-2.5">
+                스포츠단 연습 또는 발달장애인합창단 무대 컷 — 당사자가 활동에 몰입한 자연스러운 순간, 전신이 보이는 구도.
+              </p>
+            </div>
+          </div>
+          <div class="p-5">
+            <p class="text-iwoot text-xs font-bold mb-1">사업 01</p>
+            <h3 class="font-bold text-lg mb-2">발달장애인의 사회참여 및<br class="hidden sm:block">자립 준비 지원 사업</h3>
+            <p class="text-dolhoe text-sm leading-relaxed mb-4">동아리 활동과 전문 교육을 통해 당사자가 지역사회 안에서 스스로 할 수 있는 것을 넓혀갑니다.</p>
+            <a href="#biz-independence" class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="border border-black/10 rounded-2xl overflow-hidden">
+          <div class="photo-guide aspect-[16/10] flex items-end p-4">
+            <div class="w-full">
+              <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded mb-2">사진 가이드</span>
+              <p class="text-meok text-xs leading-relaxed bg-white/90 rounded p-2.5">
+                월간 정기 산행 또는 텃밭활동 가족 단위 컷 — 부모와 당사자가 함께 있는 자연스러운 장면.
+              </p>
+            </div>
+          </div>
+          <div class="p-5">
+            <p class="text-iwoot text-xs font-bold mb-1">사업 02</p>
+            <h3 class="font-bold text-lg mb-2">발달장애인 가족통합<br class="hidden sm:block">지원 사업</h3>
+            <p class="text-dolhoe text-sm leading-relaxed mb-4">가족이 함께 참여하는 활동을 통해 서로 기대고 정서적으로 연결되는 시간을 마련합니다.</p>
+            <a href="#biz-family" class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="border border-black/10 rounded-2xl overflow-hidden">
+          <div class="photo-guide aspect-[16/10] flex items-end p-4">
+            <div class="w-full">
+              <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded mb-2">사진 가이드</span>
+              <p class="text-meok text-xs leading-relaxed bg-white/90 rounded p-2.5">
+                부모 동료상담 또는 소모임 장면 — 원형으로 둘러앉은 대화 구도, 얼굴이 특정되지 않는 각도도 가능.
+              </p>
+            </div>
+          </div>
+          <div class="p-5">
+            <p class="text-iwoot text-xs font-bold mb-1">사업 03</p>
+            <h3 class="font-bold text-lg mb-2">발달장애인의 부모역량<br class="hidden sm:block">강화 사업</h3>
+            <p class="text-dolhoe text-sm leading-relaxed mb-4">부모 동료상담과 소모임을 통해 같은 경험을 가진 부모들이 공감과 정보를 나눕니다.</p>
+            <a href="#biz-parent" class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="border border-black/10 rounded-2xl overflow-hidden">
+          <div class="photo-guide aspect-[16/10] flex items-end p-4">
+            <div class="w-full">
+              <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded mb-2">사진 가이드</span>
+              <p class="text-meok text-xs leading-relaxed bg-white/90 rounded p-2.5">
+                지역 기관 견학 또는 협력 협약식 컷 — 단체 간 협력을 보여주는 구도, 현수막·명패 등 기관명이 자연스럽게 드러나는 장면.
+              </p>
+            </div>
+          </div>
+          <div class="p-5">
+            <p class="text-iwoot text-xs font-bold mb-1">사업 04</p>
+            <h3 class="font-bold text-lg mb-2">지역사회 연대사업</h3>
+            <p class="text-dolhoe text-sm leading-relaxed mb-4">마을공동체 활동과 지역 기관과의 협력을 통해, 지역 안에서 함께 살아가는 관계를 넓혀갑니다.</p>
+            <a href="#biz-community" class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- 상세 화면 01: 사회참여 및 자립 준비 지원 -->
+    <div id="biz-independence" class="programs-detail hidden">
+      <a href="#programs" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-6"><span aria-hidden="true">←</span> 사업안내 목록으로</a>
+      <header class="max-w-2xl mb-10">
+        <p class="text-iwoot font-bold text-sm mb-2">사업안내 · 정관상 사업</p>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">발달장애인의 사회참여 및 자립 준비 지원 사업</h2>
+        <p class="text-dolhoe leading-relaxed">당사자가 자신의 방식대로 지역사회에 참여하고, 스스로 할 수 있는 것을 하나씩 넓혀가도록 돕습니다.</p>
+      </header>
+      <div id="independence-programs" class="grid sm:grid-cols-2 gap-5">
+        <div class="border border-black/10 rounded-xl overflow-hidden sm:col-span-2">
+          <div class="grid sm:grid-cols-2">
+            <div class="photo-guide aspect-[16/10] sm:aspect-auto flex items-end p-3">
+              <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 슐런스포츠단 단체 사진</span>
+            </div>
+            <div class="p-5">
+              <p class="font-bold text-lg mb-2">슐런스포츠단</p>
+              <p class="text-dolhoe text-xs font-bold mb-1">슐런이란?</p>
+              <p class="text-dolhoe text-sm leading-relaxed mb-3 italic">[슐런이 무엇인지 설명하는 문구를 채워주세요]</p>
+              <p class="text-dolhoe text-sm leading-relaxed">향후 장애인 일자리와 연계할 계획입니다.</p>
+            </div>
+          </div>
+          <div class="border-t border-black/10 p-5">
+            <p class="text-dolhoe text-xs font-bold mb-3">연혁 · 성과</p>
+            <ul class="space-y-2 text-sm">
+              <li class="flex gap-3"><span class="text-naran font-bold shrink-0 w-20">2025.08</span><span>슐런스포츠단 결성</span></li>
+              <li class="flex gap-3"><span class="text-naran font-bold shrink-0 w-20">2025.09</span><span>ROTC 어울림슐런대회 — 개인전·단체전 수상</span></li>
+              <li class="flex gap-3"><span class="text-naran font-bold shrink-0 w-20">2026.05</span><span>전국장애인학생체전 — 개인전 은메달</span></li>
+              <li class="flex gap-3"><span class="text-naran font-bold shrink-0 w-20">2026.09</span><span>화성어울림 슐런대회 — 개인전 금메달 · 단체전 금메달</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border border-black/10 rounded-xl overflow-hidden">
+          <div class="photo-guide aspect-[16/10] flex items-end p-3">
+            <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 발달장애인합창단</span>
+          </div>
+          <div class="p-4">
+            <p class="font-bold mb-1.5">발달장애인합창단</p>
+            <p class="text-dolhoe text-sm leading-relaxed">함께 노래하며 무대에 서는 경험을 쌓는 문화예술 활동입니다.</p>
+          </div>
+        </div>
+        <div class="border border-black/10 rounded-xl overflow-hidden">
+          <div class="photo-guide aspect-[16/10] flex items-end p-3">
+            <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 당사자 자조모임</span>
+          </div>
+          <div class="p-4">
+            <p class="font-bold mb-1.5">당사자 자조모임</p>
+            <p class="text-dolhoe text-sm leading-relaxed">당사자들이 함께 모여 서로의 경험과 생각을 나누는 자조모임입니다.</p>
+          </div>
+        </div>
+        <div class="border border-black/10 rounded-xl overflow-hidden">
+          <div class="photo-guide aspect-[16/10] flex items-end p-3">
+            <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 문화여가활동</span>
+          </div>
+          <div class="p-4">
+            <p class="font-bold mb-1.5">문화여가활동</p>
+            <p class="text-dolhoe text-sm leading-relaxed">계절과 시기에 맞춰 운영하는 다양한 문화·여가 프로그램입니다.</p>
           </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <div class="max-w-7xl mx-auto px-5 md:px-8"><div class="nara-divider py-8" aria-hidden="true"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div></div>
+    <!-- 상세 화면 02: 가족통합 지원 -->
+    <div id="biz-family" class="programs-detail hidden">
+      <a href="#programs" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-6"><span aria-hidden="true">←</span> 사업안내 목록으로</a>
+      <header class="max-w-2xl mb-10">
+        <p class="text-iwoot font-bold text-sm mb-2">사업안내 · 정관상 사업</p>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">발달장애인 가족통합 지원 사업</h2>
+        <p class="text-dolhoe leading-relaxed">당사자와 가족이 함께 어울리며, 일상 속에서 서로 정서적으로 연결되는 시간을 마련합니다.</p>
+      </header>
+      <div id="family-programs" class="grid sm:grid-cols-2 gap-5">
+        <div class="border border-black/10 rounded-xl p-5">
+          <p class="font-bold mb-1.5">월간 정기 산행</p>
+          <p class="text-dolhoe text-sm leading-relaxed">매달 가족 단위로 함께 걷는 정기 산행입니다.</p>
+        </div>
+        <div class="border border-black/10 rounded-xl p-5">
+          <p class="font-bold mb-1.5">텃밭활동</p>
+          <p class="text-dolhoe text-sm leading-relaxed">가족이 함께 씨앗을 심고 가꾸는 감각·작업 중심 활동입니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 상세 화면 03: 부모역량 강화 -->
+    <div id="biz-parent" class="programs-detail hidden">
+      <a href="#programs" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-6"><span aria-hidden="true">←</span> 사업안내 목록으로</a>
+      <header class="max-w-2xl mb-10">
+        <p class="text-iwoot font-bold text-sm mb-2">사업안내 · 정관상 사업</p>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">발달장애인의 부모역량 강화 사업</h2>
+        <p class="text-dolhoe leading-relaxed">발달장애 자녀를 키우는 부모가 서로 기대어 정보와 마음을 나누고, 양육자로서의 힘을 키웁니다.</p>
+      </header>
+      <div id="parent-programs" class="grid sm:grid-cols-2 gap-5">
+        <div class="border border-black/10 rounded-xl p-5">
+          <p class="font-bold mb-1.5">부모 동료상담</p>
+          <p class="text-dolhoe text-sm leading-relaxed">같은 경험을 가진 부모가 부모를 상담하는 동료상담입니다.</p>
+        </div>
+        <div class="border border-black/10 rounded-xl p-5">
+          <p class="font-bold mb-1.5">아빠강의</p>
+          <p class="text-dolhoe text-sm leading-relaxed">아빠들을 위한 양육 정보와 소통의 자리입니다.</p>
+        </div>
+        <div class="border border-black/10 rounded-xl p-5">
+          <p class="font-bold mb-1.5">초 · 중 · 고 학부모 소모임</p>
+          <p class="text-dolhoe text-sm leading-relaxed">자녀의 학교급에 맞춘 학부모 소모임입니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 상세 화면 04: 지역사회 연대 -->
+    <div id="biz-community" class="programs-detail hidden">
+      <a href="#programs" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-6"><span aria-hidden="true">←</span> 사업안내 목록으로</a>
+      <header class="max-w-2xl mb-10">
+        <p class="text-iwoot font-bold text-sm mb-2">사업안내 · 정관상 사업</p>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">지역사회 연대사업</h2>
+        <p class="text-dolhoe leading-relaxed">느린이웃이 속한 지역사회와 손잡고, 발달장애에 대한 이해와 협력의 폭을 넓혀갑니다.</p>
+      </header>
+      <div id="community-programs" class="grid sm:grid-cols-2 gap-5">
+        <div class="border border-black/10 rounded-xl p-5">
+          <p class="font-bold mb-1.5">마을공동체슐런</p>
+          <p class="text-dolhoe text-sm leading-relaxed">지역 주민과 함께하는 마을공동체 체육·교류 활동입니다.</p>
+        </div>
+        <div class="border border-black/10 rounded-xl p-5">
+          <p class="font-bold mb-1.5">지역 기관 협력 · 연계</p>
+          <p class="text-dolhoe text-sm leading-relaxed">고양 · 파주 · 김포 지역 기관과의 협력 네트워크입니다.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
 
 </main>
 <!-- ========== 푸터 ========== -->
@@ -321,6 +487,22 @@ const menuBtn = document.getElementById('menuBtn');
     el.addEventListener('click', closeMobileMenu);
   });
 
+// 사업안내: 목록 ↔ 사업별 상세 화면 전환 (해시 기반)
+  const bizIds = ['biz-independence', 'biz-family', 'biz-parent', 'biz-community'];
+  const programsList = document.getElementById('programs-list');
+
+  function showProgramsView() {
+    const hash = location.hash.replace('#', '');
+    const isBizDetail = bizIds.includes(hash);
+    programsList.classList.toggle('hidden', isBizDetail);
+    bizIds.forEach(id => {
+      document.getElementById(id).classList.toggle('hidden', id !== hash);
+    });
+  }
+
+  window.addEventListener('hashchange', showProgramsView);
+  showProgramsView();
+
 // 공통 유틸
   function ny_esc(str) {
     const div = document.createElement('div');
@@ -333,9 +515,9 @@ const menuBtn = document.getElementById('menuBtn');
     return ny_esc(str).replace(/^\* (.+)$/gm, '• $1');
   }
 
-  // 소개: 히어로 문구·사진을 Supabase에서 실시간으로 불러오기
-  // (관리자 페이지에서 아무것도 입력하지 않았으면 위 고정 내용이 그대로 보여요.)
-  (async function loadHeroContent() {
+// 사업안내 4개 사업 전체: 각 사업별 세부 프로그램을 Supabase에서 실시간으로 불러오기
+  // (표에 있는 사진/글이 바로 반영됩니다. 표를 못 불러오면 위 고정 내용이 그대로 보여요.)
+  async function loadBizPrograms(businessId, containerId) {
     if (typeof supabase === 'undefined') return;
     const { createClient } = supabase;
     const db = createClient(
@@ -343,22 +525,88 @@ const menuBtn = document.getElementById('menuBtn');
       'sb_publishable_B-pdQJ6sbCDrdi37JU6www_71TE8J5f'
     );
 
-    try {
-      const { data: rows } = await db.from('site_settings').select('*');
-      const s = {};
-      (rows || []).forEach(r => { s[r.key] = r.value; });
+    const container = document.getElementById(containerId);
+    if (!container) return;
 
-      if (s.hero_tag) document.getElementById('hero-tag').textContent = s.hero_tag;
-      if (s.hero_title) document.getElementById('hero-title').textContent = s.hero_title;
-      if (s.hero_body) document.getElementById('hero-body').textContent = s.hero_body;
-      if (s.hero_photo_url) {
-        const heroImg = document.getElementById('hero-photo');
-        heroImg.src = s.hero_photo_url;
-        heroImg.style.display = '';
-        document.getElementById('hero-photo-fallback').style.display = 'none';
+    const { data: programs, error } = await db
+      .from('programs')
+      .select('*')
+      .eq('business_id', businessId)
+      .order('sort_order', { ascending: true });
+
+    if (error || !programs || programs.length === 0) return;
+
+    const ids = programs.map(p => p.id);
+    const { data: timelineRows } = await db
+      .from('program_timeline')
+      .select('*')
+      .in('program_id', ids)
+      .order('sort_order', { ascending: true });
+
+    const timelineByProgram = {};
+    (timelineRows || []).forEach(row => {
+      (timelineByProgram[row.program_id] = timelineByProgram[row.program_id] || []).push(row);
+    });
+
+    // 프로그램별 여러 장 사진(갤러리) — program_photos 테이블이 없거나 비어 있으면 조용히 건너뜀
+    let photosByProgram = {};
+    try {
+      const { data: photoRows } = await db
+        .from('program_photos')
+        .select('*')
+        .in('program_id', ids)
+        .order('sort_order', { ascending: true });
+      (photoRows || []).forEach(row => {
+        (photosByProgram[row.program_id] = photosByProgram[row.program_id] || []).push(row);
+      });
+    } catch (e) { /* program_photos 테이블이 아직 없어도 나머지는 정상 표시 */ }
+
+    container.innerHTML = programs.map(p => {
+      const timeline = timelineByProgram[p.id];
+      const hasTimeline = timeline && timeline.length > 0;
+
+      const photos = photosByProgram[p.id];
+      const hasGallery = photos && photos.length > 0;
+
+      let photoBlock;
+      if (hasGallery) {
+        photoBlock = `<div class="relative aspect-[16/10] sm:aspect-auto sm:h-full">
+          <div class="flex gap-0 overflow-x-auto snap-x snap-mandatory h-full w-full">
+            ${photos.map(ph => `<img src="${ny_esc(ph.photo_url)}" alt="${ny_esc(p.name)}" class="snap-center shrink-0 w-full h-full object-cover">`).join('')}
+          </div>
+          ${photos.length > 1 ? `<span class="absolute bottom-2 right-2 text-[11px] font-bold px-2 py-1 rounded bg-black/50 text-white">1/${photos.length} · 넘겨보기</span>` : ''}
+        </div>`;
+      } else if (p.photo_url) {
+        photoBlock = `<img src="${ny_esc(p.photo_url)}" alt="${ny_esc(p.name)}" class="aspect-[16/10] sm:aspect-auto w-full h-full object-cover">`;
+      } else {
+        photoBlock = `<div class="photo-guide aspect-[16/10] sm:aspect-auto flex items-end p-3"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — ${ny_esc(p.name)}</span></div>`;
       }
-    } catch (e) { /* site_settings 테이블이 아직 없어도 나머지는 정상 표시 */ }
-  })();
+
+      const timelineBlock = hasTimeline
+        ? `<div class="border-t border-black/10 p-5">
+             <p class="text-dolhoe text-xs font-bold mb-3">연혁 · 성과</p>
+             <ul class="space-y-2 text-sm">
+               ${timeline.map(t => `<li class="flex gap-3"><span class="text-naran font-bold shrink-0 w-20">${ny_esc(t.date_label)}</span><span>${ny_esc(t.event)}</span></li>`).join('')}
+             </ul>
+           </div>`
+        : '';
+
+      return `<div class="border border-black/10 rounded-xl overflow-hidden ${hasTimeline ? 'sm:col-span-2' : ''}">
+        <div class="${hasTimeline ? 'grid sm:grid-cols-2' : ''}">
+          ${photoBlock}
+          <div class="p-5">
+            <p class="font-bold text-lg mb-2">${ny_esc(p.name)}</p>
+            <p class="text-dolhoe text-sm leading-relaxed whitespace-pre-line">${ny_formatDescription(p.description)}</p>
+          </div>
+        </div>
+        ${timelineBlock}
+      </div>`;
+    }).join('');
+  }
+  loadBizPrograms('independence', 'independence-programs');
+  loadBizPrograms('family', 'family-programs');
+  loadBizPrograms('parent', 'parent-programs');
+  loadBizPrograms('community', 'community-programs');
 
 </script>
 </body>

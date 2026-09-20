@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>느린이웃 | 발달장애인 가족 자조모임</title>
+<title>알림마당 | 느린이웃</title>
 <meta name="description" content="느린이웃 — 발달장애인 가족의 자조모임이자 예비 사회적협동조합. 우리는 나란히 걷습니다." />
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -204,48 +204,104 @@
 
 <main id="top">
 
-<!-- ========== 히어로 ========== -->
-  <section class="bg-byeot">
-    <div class="max-w-7xl mx-auto px-5 md:px-8 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
-      <div>
-        <div class="nara-lines mb-6" aria-hidden="true">
-          <span class="l1"></span><span class="l2" style="background:#12456B;opacity:.15"></span><span class="l3"></span>
+<!-- ========== 알림마당 ========== -->
+  <section id="notices" class="max-w-7xl mx-auto px-5 md:px-8 py-4 md:py-10 scroll-mt-24">
+    <header class="max-w-2xl mb-10">
+      <p class="text-iwoot font-bold text-sm mb-2">알림마당</p>
+      <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">공지와 소식</h2>
+      <p class="text-dolhoe leading-relaxed">아래 항목은 예시이며, 실제 공지·공고 내용으로 교체될 예정입니다.</p>
+    </header>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- 공지사항 -->
+      <div class="md:col-span-2 border border-black/10 rounded-2xl p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-bold text-lg">공지사항</h3>
+          <a href="#notices" class="text-xs font-bold text-naran hover:underline">전체보기 →</a>
         </div>
-        <p class="text-ongi font-bold tracking-wide text-sm md:text-base mb-3" id="hero-tag">발달장애인 가족 자조모임 · 예비 사회적협동조합</p>
-        <h1 class="text-naran font-extrabold leading-[1.15] text-4xl md:text-5xl lg:text-[3.3rem] mb-5" id="hero-title">
-          우리는<br class="md:hidden"> 나란히 걷습니다
-        </h1>
-        <p class="text-dolhoe font-medium tracking-wide text-sm md:text-base mb-8">WE WALK SIDE BY SIDE</p>
-        <p class="text-meok/80 text-base md:text-lg leading-relaxed max-w-md mb-9 whitespace-pre-line" id="hero-body">앞에서 끌지 않고, 뒤에서 밀지 않고, 나란히.
-발달장애인과 가족들이 서로의 이웃이 되어 함께 걷는 공동체, 느린이웃입니다.</p>
-        <div class="flex flex-wrap gap-3">
-          <a href="join.html" class="inline-flex items-center gap-1.5 bg-ongi hover:bg-ongi/90 text-white font-bold px-6 py-3.5 rounded-full text-sm md:text-base transition-colors">
-            나란히 동참하기 <span aria-hidden="true">→</span>
-          </a>
-          <a href="about.html#philosophy" class="inline-flex items-center gap-1.5 border-2 border-naran text-naran font-bold px-6 py-3.5 rounded-full text-sm md:text-base hover:bg-naran hover:text-white transition-colors">
-            우리 이야기 보기
-          </a>
-        </div>
+        <ul class="divide-y divide-black/5" id="notice-list">
+          <li class="py-3 flex items-center justify-between gap-4">
+            <p class="text-sm text-meok truncate">[예시] 9월 운영진 회의 결과 안내</p>
+            <p class="text-xs text-dolhoe shrink-0">2026.09.10</p>
+          </li>
+          <li class="py-3 flex items-center justify-between gap-4">
+            <p class="text-sm text-meok truncate">[예시] 10월 정기 산행 일정 안내</p>
+            <p class="text-xs text-dolhoe shrink-0">2026.09.05</p>
+          </li>
+          <li class="py-3 flex items-center justify-between gap-4">
+            <p class="text-sm text-meok truncate">[예시] 슐런픽 동아리 대회 참가 신청 안내</p>
+            <p class="text-xs text-dolhoe shrink-0">2026.08.28</p>
+          </li>
+          <li class="py-3 flex items-center justify-between gap-4">
+            <p class="text-sm text-meok truncate">[예시] 사회적협동조합 전환 설명회 개최</p>
+            <p class="text-xs text-dolhoe shrink-0">2026.08.14</p>
+          </li>
+        </ul>
       </div>
 
-      <div class="relative rounded-2xl overflow-hidden aspect-[4/3] md:aspect-[5/4]">
-        <img id="hero-photo" src="https://mpgmvwivzedqxugfllxc.supabase.co/storage/v1/object/public/photos/Hero/main.jpg"
-             alt="느린이웃 단체 사진"
-             class="absolute inset-0 w-full h-full object-cover"
-             onerror="this.style.display='none'; document.getElementById('hero-photo-fallback').style.display='flex';">
-        <div id="hero-photo-fallback" class="photo-guide absolute inset-0 flex items-end p-5" style="display:none;">
-          <div class="w-full">
-            <span class="tag inline-block text-[11px] font-bold px-2.5 py-1 rounded mb-2">사진 가이드</span>
-            <p class="text-meok text-sm leading-relaxed bg-white/90 rounded-lg p-3">
-              월간 정기산행 숲속 단체 컷 — 촬영자가 앉아서 눈높이를 맞춘 구도, 10m 밖에서도 알아볼 수 있는 '느린이웃' 현수막 포함. 인물이 카메라를 의식하지 않는 자연스러운 순간 권장.
-            </p>
+      <!-- 예산 및 결산 공고 -->
+      <div id="budget" class="border-2 border-naran rounded-2xl p-6 bg-byeot/40 scroll-mt-24">
+        <p class="text-[11px] font-bold text-naran tracking-wider mb-2">협동조합 필수 공시</p>
+        <h3 class="font-bold text-lg mb-3">예산 및 결산 공고</h3>
+        <p class="text-dolhoe text-sm leading-relaxed mb-4">
+          사회적협동조합 운영의 투명성을 위해 연간 예산과 결산 내역을 정기적으로 공고합니다.
+        </p>
+        <a href="#budget" class="inline-flex items-center gap-1.5 text-sm font-bold text-naran hover:underline">
+          공고 목록 보기 →
+        </a>
+      </div>
+    </div>
+
+    <!-- 느린이웃 소식 -->
+    <div id="news" class="mt-8 scroll-mt-24">
+      <h3 class="font-bold text-lg mb-4">느린이웃 소식</h3>
+      <div class="grid sm:grid-cols-3 gap-5" id="news-list">
+        <article class="border border-black/10 rounded-xl overflow-hidden">
+          <div class="photo-guide aspect-[4/3] flex items-end p-3">
+            <span class="tag inline-block text-[10px] font-bold px-2 py-1 rounded">사진 가이드</span>
           </div>
-        </div>
+          <div class="p-4">
+            <p class="text-xs text-dolhoe mb-1">2026.09.10</p>
+            <p class="text-sm font-semibold leading-snug">[예시] 소리마을 합창단, 지역 힐링콘서트 무대에 서다</p>
+          </div>
+        </article>
+        <article class="border border-black/10 rounded-xl overflow-hidden">
+          <div class="photo-guide aspect-[4/3] flex items-end p-3">
+            <span class="tag inline-block text-[10px] font-bold px-2 py-1 rounded">사진 가이드</span>
+          </div>
+          <div class="p-4">
+            <p class="text-xs text-dolhoe mb-1">2026.08.21</p>
+            <p class="text-sm font-semibold leading-snug">[예시] 코리아오픈 슐런대회, 느린이웃 동아리 참가기</p>
+          </div>
+        </article>
+        <article class="border border-black/10 rounded-xl overflow-hidden">
+          <div class="photo-guide aspect-[4/3] flex items-end p-3">
+            <span class="tag inline-block text-[10px] font-bold px-2 py-1 rounded">사진 가이드</span>
+          </div>
+          <div class="p-4">
+            <p class="text-xs text-dolhoe mb-1">2026.08.06</p>
+            <p class="text-sm font-semibold leading-snug">[예시] 여름 방학 프로그램, 미술·점핑으로 가득 채우다</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
   <div class="max-w-7xl mx-auto px-5 md:px-8"><div class="nara-divider py-8" aria-hidden="true"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div></div>
+
+  <!-- ========== 자료실 ========== -->
+  <section id="archive" class="max-w-7xl mx-auto px-5 md:px-8 py-4 md:py-10 scroll-mt-24">
+    <header class="max-w-2xl mb-8">
+      <p class="text-iwoot font-bold text-sm mb-2">자료실</p>
+      <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">서식과 안내 자료</h2>
+      <p class="text-dolhoe leading-relaxed">가입 신청서, 각종 서식, 안내 자료를 내려받을 수 있습니다.</p>
+    </header>
+<div id="archive-items" class="mt-10 pt-10 border-t border-black/10">
+      <div id="archive-list" class="space-y-3">
+        <p class="text-dolhoe text-sm">준비 중입니다. 곧 서식과 안내 자료를 올릴게요.</p>
+      </div>
+    </div>
+  </section>
 
 </main>
 <!-- ========== 푸터 ========== -->
@@ -287,6 +343,84 @@
     </div>
   </div>
 </footer>
+
+<!-- 공지사항/느린이웃 소식 상세 페이지 -->
+<div id="post-page" class="hidden max-w-3xl mx-auto px-5 md:px-8 py-12 min-h-[60vh]">
+  <a href="#top" class="inline-flex items-center gap-1.5 text-sm font-bold text-naran hover:underline mb-6">← 목록으로</a>
+  <p class="text-xs text-dolhoe mb-2" id="post-page-date"></p>
+  <h1 class="text-2xl md:text-3xl font-extrabold text-meok mb-6" id="post-page-title"></h1>
+  <div id="post-page-photo" class="mb-6"></div>
+  <div class="text-dolhoe text-base leading-relaxed rich-content" id="post-page-content"></div>
+</div>
+
+<script>
+  function ny_postEsc(str) {
+    const div = document.createElement('div');
+    div.textContent = str == null ? '' : str;
+    return div.innerHTML;
+  }
+  function ny_looksLikeHtml(str) { return /<[a-z][\s\S]*>/i.test(str || ''); }
+  function ny_plainToRichHtml(str) {
+    if (!str) return '';
+    return str.split(/\n{2,}/).map(block => '<p>' + ny_postEsc(block).replace(/\n/g, '<br>') + '</p>').join('');
+  }
+  function ny_renderPostContent(str) {
+    const html = ny_looksLikeHtml(str) ? str : ny_plainToRichHtml(str);
+    return (typeof DOMPurify !== 'undefined') ? DOMPurify.sanitize(html) : html;
+  }
+
+  async function showPostPage(id) {
+    if (typeof supabase === 'undefined') return;
+    const { createClient } = supabase;
+    const db = createClient(
+      'https://mpgmvwivzedqxugfllxc.supabase.co',
+      'sb_publishable_B-pdQJ6sbCDrdi37JU6www_71TE8J5f'
+    );
+    const { data: post, error } = await db.from('posts').select('*').eq('id', id).single();
+    if (error || !post) return;
+
+    document.getElementById('post-page-date').textContent = post.published_at ? String(post.published_at).replace(/-/g, '.') : '';
+    document.getElementById('post-page-title').textContent = post.title || '';
+    document.getElementById('post-page-content').innerHTML = ny_renderPostContent(post.content);
+
+    const photoEl = document.getElementById('post-page-photo');
+    photoEl.innerHTML = '';
+    let galleryPhotos = [];
+    try {
+      const { data: photoRows } = await db.from('post_photos').select('*').eq('post_id', id).order('sort_order', { ascending: true });
+      galleryPhotos = photoRows || [];
+    } catch (e) { /* post_photos 테이블이 아직 없어도 나머지는 정상 표시 */ }
+
+    if (galleryPhotos.length > 1) {
+      photoEl.innerHTML = `<div class="relative aspect-[16/9] rounded-xl overflow-hidden">
+        <div class="flex gap-0 overflow-x-auto snap-x snap-mandatory h-full w-full">
+          ${galleryPhotos.map(ph => `<img src="${ph.photo_url}" class="snap-center shrink-0 w-full h-full object-cover">`).join('')}
+        </div>
+        <span class="absolute bottom-2 right-2 text-[11px] font-bold px-2 py-1 rounded bg-black/50 text-white">1/${galleryPhotos.length} · 넘겨보기</span>
+      </div>`;
+    } else if (galleryPhotos.length === 1) {
+      photoEl.innerHTML = `<img src="${galleryPhotos[0].photo_url}" class="w-full rounded-xl aspect-[16/9] object-cover">`;
+    } else if (post.photo_url) {
+      photoEl.innerHTML = `<img src="${post.photo_url}" class="w-full rounded-xl aspect-[16/9] object-cover">`;
+    }
+
+    document.getElementById('top').classList.add('hidden');
+    document.getElementById('post-page').classList.remove('hidden');
+    window.scrollTo(0, 0);
+  }
+
+  function checkPostHash() {
+    const m = location.hash.match(/^#post-(.+)$/);
+    if (m) {
+      showPostPage(m[1]);
+    } else {
+      document.getElementById('post-page').classList.add('hidden');
+      document.getElementById('top').classList.remove('hidden');
+    }
+  }
+  window.addEventListener('hashchange', checkPostHash);
+  window.addEventListener('DOMContentLoaded', checkPostHash);
+</script>
 
 <script>
 const menuBtn = document.getElementById('menuBtn');
@@ -333,9 +467,72 @@ const menuBtn = document.getElementById('menuBtn');
     return ny_esc(str).replace(/^\* (.+)$/gm, '• $1');
   }
 
-  // 소개: 히어로 문구·사진을 Supabase에서 실시간으로 불러오기
-  // (관리자 페이지에서 아무것도 입력하지 않았으면 위 고정 내용이 그대로 보여요.)
-  (async function loadHeroContent() {
+// 알림마당 > 공지사항 / 느린이웃 소식: Supabase에서 실시간으로 불러오기
+  // (표를 못 불러오면 위 예시 내용이 그대로 보여요.)
+  (async function loadNotices() {
+    if (typeof supabase === 'undefined') return;
+    const { createClient } = supabase;
+    const db = createClient(
+      'https://mpgmvwivzedqxugfllxc.supabase.co',
+      'sb_publishable_B-pdQJ6sbCDrdi37JU6www_71TE8J5f'
+    );
+
+    function esc(str) {
+      const div = document.createElement('div');
+      div.textContent = str == null ? '' : str;
+      return div.innerHTML;
+    }
+    function formatDate(d) {
+      return d ? esc(d).replace(/-/g, '.') : '';
+    }
+
+    const noticeList = document.getElementById('notice-list');
+    if (noticeList) {
+      const { data: notices, error } = await db
+        .from('posts')
+        .select('*')
+        .eq('category', 'notice')
+        .order('published_at', { ascending: false })
+        .limit(6);
+      if (!error && notices && notices.length > 0) {
+        noticeList.innerHTML = notices.map(n => `
+          <li class="py-1">
+            <a href="#post-${esc(n.id)}" class="w-full py-2 flex items-center justify-between gap-4 text-left hover:text-naran transition-colors">
+              <p class="text-sm text-meok truncate">${esc(n.title)}</p>
+              <p class="text-xs text-dolhoe shrink-0">${formatDate(n.published_at)}</p>
+            </a>
+          </li>`).join('');
+      }
+    }
+
+    const newsList = document.getElementById('news-list');
+    if (newsList) {
+      const { data: news, error: newsError } = await db
+        .from('posts')
+        .select('*')
+        .eq('category', 'news')
+        .order('published_at', { ascending: false })
+        .limit(3);
+      if (!newsError && news && news.length > 0) {
+        newsList.innerHTML = news.map(n => {
+          const photoBlock = n.photo_url
+            ? `<img src="${esc(n.photo_url)}" alt="${esc(n.title)}" class="aspect-[4/3] w-full object-cover">`
+            : `<div class="photo-guide aspect-[4/3] flex items-end p-3"><span class="tag inline-block text-[10px] font-bold px-2 py-1 rounded">사진 가이드</span></div>`;
+          return `<a href="#post-${esc(n.id)}" class="block border border-black/10 rounded-xl overflow-hidden hover:shadow-md transition-shadow">
+            ${photoBlock}
+            <div class="p-4">
+              <p class="text-xs text-dolhoe mb-1">${formatDate(n.published_at)}</p>
+              <p class="text-sm font-semibold leading-snug">${esc(n.title)}</p>
+            </div>
+          </a>`;
+        }).join('');
+      }
+    }
+  })();
+
+  // 자료실: Supabase에서 실시간으로 불러오기
+  // (표를 못 불러오면 위 안내 문구가 그대로 보여요.)
+  (async function loadArchiveItems() {
     if (typeof supabase === 'undefined') return;
     const { createClient } = supabase;
     const db = createClient(
@@ -344,20 +541,22 @@ const menuBtn = document.getElementById('menuBtn');
     );
 
     try {
-      const { data: rows } = await db.from('site_settings').select('*');
-      const s = {};
-      (rows || []).forEach(r => { s[r.key] = r.value; });
-
-      if (s.hero_tag) document.getElementById('hero-tag').textContent = s.hero_tag;
-      if (s.hero_title) document.getElementById('hero-title').textContent = s.hero_title;
-      if (s.hero_body) document.getElementById('hero-body').textContent = s.hero_body;
-      if (s.hero_photo_url) {
-        const heroImg = document.getElementById('hero-photo');
-        heroImg.src = s.hero_photo_url;
-        heroImg.style.display = '';
-        document.getElementById('hero-photo-fallback').style.display = 'none';
+      const { data: items, error } = await db
+        .from('info_items')
+        .select('*')
+        .eq('category', 'archive')
+        .order('sort_order', { ascending: true });
+      if (!error && items && items.length > 0) {
+        document.getElementById('archive-list').innerHTML = items.map(it => `
+          <div class="border border-black/10 rounded-xl p-4 flex items-center justify-between gap-4">
+            <div class="min-w-0">
+              <p class="font-bold text-sm truncate">${ny_esc(it.title)}</p>
+              ${it.content ? `<p class="text-dolhoe text-xs mt-0.5">${ny_esc(it.content)}</p>` : ''}
+            </div>
+            ${it.file_url ? `<a href="${ny_esc(it.file_url)}" target="_blank" rel="noopener" class="shrink-0 text-sm font-bold text-naran hover:underline">다운로드 →</a>` : ''}
+          </div>`).join('');
       }
-    } catch (e) { /* site_settings 테이블이 아직 없어도 나머지는 정상 표시 */ }
+    } catch (e) { /* info_items 테이블이 아직 없어도 나머지는 정상 표시 */ }
   })();
 
 </script>
