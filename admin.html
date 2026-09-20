@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>느린이웃 | 운영진 관리자</title>
+<meta name="robots" content="noindex, nofollow" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          naran: { DEFAULT: '#12456B', light: '#1E5C8A' },
+          iwoot: '#2E7D52',
+          ongi: '#E1682C',
+          byeot: '#FAF4E6',
+          meok: '#1F2124',
+          dolhoe: '#6E6A63',
+        },
+        fontFamily: {
+          sans: ['"Pretendard"', '"Noto Sans KR"', 'system-ui', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  body { font-family: 'Pretendard','Noto Sans KR',system-ui,sans-serif; background: #F7F5F1; }
+  .field { border: 1px solid rgba(0,0,0,.15); border-radius: 10px; padding: 10px 12px; width: 100%; font-size: 14px; }
+  .field:focus { outline: 2px solid #12456B; outline-offset: 1px; }
+  .btn-main { background: #12456B; color: #fff; font-weight: 700; border-radius: 10px; padding: 10px 18px; font-size: 14px; }
+  .btn-main:hover { background: #1E5C8A; }
+  .btn-main:disabled { opacity: .5; }
+  .btn-ghost { background: #fff; border: 1px solid rgba(0,0,0,.15); color: #1F2124; font-weight: 600; border-radius: 10px; padding: 10px 16px; font-size: 14px; }
+  .btn-ghost:hover { background: #F0EEE9; }
+</style>
+</head>
+<body class="text-meok">
+
+  <!-- ========== 로그인 화면 ========== -->
+  <div id="login-view" class="min-h-screen flex items-center justify-center px-5">
+    <div class="w-full max-w-sm bg-white rounded-2xl border border-black/10 p-8">
+      <p class="text-xs font-bold text-naran mb-1">느린이웃</p>
+      <h1 class="text-xl font-extrabold mb-6">운영진 로그인</h1>
+      <form id="login-form" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-dolhoe mb-1.5">이메일</label>
+          <input type="email" id="login-email" class="field" required autocomplete="username">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-dolhoe mb-1.5">비밀번호</label>
+          <input type="password" id="login-password" class="field" required autocomplete="current-password">
+        </div>
+        <p id="login-error" class="text-sm text-ongi hidden"></p>
+        <button type="submit" id="login-submit" class="btn-main w-full">로그인</button>
+      </form>
+      <p class="text-xs text-dolhoe mt-5 leading-relaxed">
+        계정이 없으신가요? 대표 운영진에게 계정 생성을 요청해주세요.
+      </p>
+    </div>
+  </div>
+
+  <!-- ========== 관리자 화면 ========== -->
+  <div id="admin-view" class="hidden min-h-screen">
+    <header class="bg-white border-b border-black/10">
+      <div class="max-w-4xl mx-auto px-5 py-4 flex items-center justify-between">
+        <div>
+          <p class="text-xs font-bold text-naran">느린이웃</p>
+          <h1 class="text-lg font-extrabold">알림마당 관리자</h1>
+        </div>
+        <div class="flex items-center gap-3">
+          <p class="text-xs text-dolhoe" id="whoami"></p>
+          <button id="logout-btn" class="btn-ghost">로그아웃</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-5 py-8 space-y-8">
+
+      <!-- 글쓰기 / 수정 폼 -->
+      <section class="bg-white rounded-2xl border border-black/10 p-6">
+        <h2 class="font-bold text-lg mb-5" id="form-title">새 글쓰기</h2>
+        <form id="post-form" class="space-y-4">
+          <input type="hidden" id="post-id">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-dolhoe mb-1.5">분류</label>
+              <select id="post-category" class="field">
+                <option value="notice">공지사항</option>
+                <option value="news">느린이웃 소식</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-dolhoe mb-1.5">날짜</label>
+              <input type="date" id="post-date" class="field">
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-dolhoe mb-1.5">제목</label>
+            <input type="text" id="post-title" class="field" required>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-dolhoe mb-1.5">본문</label>
+            <textarea id="post-content" class="field" rows="8"></textarea>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-dolhoe mb-1.5">사진 (선택)</label>
+            <input type="file" id="post-photo" accept="image/*" class="field">
+            <div id="post-photo-preview" class="mt-2"></div>
+          </div>
+          <p id="form-error" class="text-sm text-ongi hidden"></p>
+          <div class="flex items-center gap-3 pt-2">
+            <button type="submit" id="form-submit" class="btn-main">저장</button>
+            <button type="button" id="form-cancel" class="btn-ghost hidden">수정 취소</button>
+            <span id="form-status" class="text-xs text-dolhoe"></span>
+          </div>
+        </form>
+      </section>
+
+      <!-- 글 목록 -->
+      <section class="bg-white rounded-2xl border border-black/10 p-6">
+        <h2 class="font-bold text-lg mb-5">등록된 글</h2>
+        <div id="post-list" class="divide-y divide-black/5">
+          <p class="text-sm text-dolhoe py-4">불러오는 중...</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+<script>
+  const SUPABASE_URL = 'https://mpgmvwivzedqxugfllxc.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_B-pdQJ6sbCDrdi37JU6www_71TE8J5f';
+  const { createClient } = supabase;
+  const db = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  const loginView = document.getElementById('login-view');
+  const adminView = document.getElementById('admin-view');
+  const loginForm = document.getElementById('login-form');
+  const loginError = document.getElementById('login-error');
+  const loginSubmit = document.getElementById('login-submit');
+  const whoami = document.getElementById('whoami');
+  const logoutBtn = document.getElementById('logout-btn');
+
+  const postForm = document.getElementById('post-form');
+  const postIdField = document.getElementById('post-id');
+  const categoryField = document.getElementById('post-category');
+  const dateField = document.getElementById('post-date');
+  const titleField = document.getElementById('post-title');
+  const contentField = document.getElementById('post-content');
+  const photoField = document.getElementById('post-photo');
+  const photoPreview = document.getElementById('post-photo-preview');
+  const formTitle = document.getElementById('form-title');
+  const formError = document.getElementById('form-error');
+  const formSubmit = document.getElementById('form-submit');
+  const formCancel = document.getElementById('form-cancel');
+  const formStatus = document.getElementById('form-status');
+  const postList = document.getElementById('post-list');
+
+  function esc(str) {
+    const div = document.createElement('div');
+    div.textContent = str == null ? '' : str;
+    return div.innerHTML;
+  }
+  function todayStr() {
+    const d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+  function showError(el, msg) {
+    el.textContent = msg;
+    el.classList.remove('hidden');
+  }
+  function hideError(el) {
+    el.classList.add('hidden');
+  }
+
+  // ---------- 로그인 상태 ----------
+  async function refreshView() {
+    const { data: { session } } = await db.auth.getSession();
+    if (session) {
+      loginView.classList.add('hidden');
+      adminView.classList.remove('hidden');
+      whoami.textContent = session.user.email;
+      loadPosts();
+    } else {
+      adminView.classList.add('hidden');
+      loginView.classList.remove('hidden');
+    }
+  }
+
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideError(loginError);
+    loginSubmit.disabled = true;
+    loginSubmit.textContent = '로그인 중...';
+    const email = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('login-password').value;
+    const { error } = await db.auth.signInWithPassword({ email, password });
+    loginSubmit.disabled = false;
+    loginSubmit.textContent = '로그인';
+    if (error) {
+      showError(loginError, '이메일 또는 비밀번호가 올바르지 않습니다.');
+      return;
+    }
+    refreshView();
+  });
+
+  logoutBtn.addEventListener('click', async () => {
+    await db.auth.signOut();
+    refreshView();
+  });
+
+  // ---------- 글 목록 ----------
+  async function loadPosts() {
+    const { data: posts, error } = await db
+      .from('posts')
+      .select('*')
+      .order('published_at', { ascending: false })
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      postList.innerHTML = `<p class="text-sm text-ongi py-4">목록을 불러오지 못했습니다: ${esc(error.message)}</p>`;
+      return;
+    }
+    if (!posts || posts.length === 0) {
+      postList.innerHTML = `<p class="text-sm text-dolhoe py-4">아직 등록된 글이 없습니다.</p>`;
+      return;
+    }
+
+    postList.innerHTML = posts.map(p => `
+      <div class="py-3 flex items-center justify-between gap-4">
+        <div class="min-w-0">
+          <div class="flex items-center gap-2 mb-0.5">
+            <span class="text-[11px] font-bold px-1.5 py-0.5 rounded ${p.category === 'notice' ? 'bg-naran/10 text-naran' : 'bg-iwoot/10 text-iwoot'}">${p.category === 'notice' ? '공지사항' : '느린이웃 소식'}</span>
+            <span class="text-xs text-dolhoe">${esc(p.published_at || '')}</span>
+          </div>
+          <p class="text-sm font-semibold truncate">${esc(p.title)}</p>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <button type="button" class="btn-ghost text-xs px-3 py-1.5" onclick="editPost('${p.id}')">수정</button>
+          <button type="button" class="btn-ghost text-xs px-3 py-1.5" onclick="deletePost('${p.id}')">삭제</button>
+        </div>
+      </div>
+    `).join('');
+
+    window.__adminPosts = {};
+    posts.forEach(p => window.__adminPosts[p.id] = p);
+  }
+
+  // ---------- 글쓰기 / 수정 ----------
+  function resetForm() {
+    postIdField.value = '';
+    categoryField.value = 'notice';
+    dateField.value = todayStr();
+    titleField.value = '';
+    contentField.value = '';
+    photoField.value = '';
+    photoPreview.innerHTML = '';
+    formTitle.textContent = '새 글쓰기';
+    formCancel.classList.add('hidden');
+    hideError(formError);
+  }
+  resetForm();
+
+  window.editPost = function(id) {
+    const p = window.__adminPosts[id];
+    if (!p) return;
+    postIdField.value = p.id;
+    categoryField.value = p.category;
+    dateField.value = p.published_at || todayStr();
+    titleField.value = p.title || '';
+    contentField.value = p.content || '';
+    photoField.value = '';
+    photoPreview.innerHTML = p.photo_url
+      ? `<img src="${esc(p.photo_url)}" class="mt-1 h-24 rounded-lg object-cover">`
+      : '';
+    formTitle.textContent = '글 수정';
+    formCancel.classList.remove('hidden');
+    hideError(formError);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  formCancel.addEventListener('click', resetForm);
+
+  window.deletePost = async function(id) {
+    const p = window.__adminPosts[id];
+    if (!p) return;
+    if (!window.confirm(`"${p.title}" 글을 삭제할까요? 되돌릴 수 없습니다.`)) return;
+    const { error } = await db.from('posts').delete().eq('id', id);
+    if (error) {
+      alert('삭제하지 못했습니다: ' + error.message);
+      return;
+    }
+    if (postIdField.value === id) resetForm();
+    loadPosts();
+  };
+
+  postForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideError(formError);
+
+    const title = titleField.value.trim();
+    if (!title) {
+      showError(formError, '제목을 입력해주세요.');
+      return;
+    }
+
+    formSubmit.disabled = true;
+    formSubmit.textContent = '저장 중...';
+    formStatus.textContent = '';
+
+    try {
+      let photoUrl = null;
+      const existingId = postIdField.value;
+      if (existingId && window.__adminPosts[existingId]) {
+        photoUrl = window.__adminPosts[existingId].photo_url || null;
+      }
+
+      const file = photoField.files[0];
+      if (file) {
+        formStatus.textContent = '사진 업로드 중...';
+        const ext = file.name.split('.').pop();
+        const path = `Posts/${Date.now()}.${ext}`;
+        const { error: uploadError } = await db.storage.from('photos').upload(path, file);
+        if (uploadError) throw uploadError;
+        const { data: pub } = db.storage.from('photos').getPublicUrl(path);
+        photoUrl = pub.publicUrl;
+      }
+
+      const row = {
+        category: categoryField.value,
+        title: title,
+        content: contentField.value,
+        photo_url: photoUrl,
+        published_at: dateField.value || todayStr(),
+      };
+
+      formStatus.textContent = '글 저장 중...';
+      let saveError;
+      if (existingId) {
+        const { error } = await db.from('posts').update(row).eq('id', existingId);
+        saveError = error;
+      } else {
+        const { error } = await db.from('posts').insert(row);
+        saveError = error;
+      }
+      if (saveError) throw saveError;
+
+      formStatus.textContent = '저장되었습니다.';
+      resetForm();
+      loadPosts();
+    } catch (err) {
+      showError(formError, '저장하지 못했습니다: ' + (err.message || err));
+      formStatus.textContent = '';
+    } finally {
+      formSubmit.disabled = false;
+      formSubmit.textContent = '저장';
+    }
+  });
+
+  photoField.addEventListener('change', () => {
+    const file = photoField.files[0];
+    if (!file) { photoPreview.innerHTML = ''; return; }
+    const url = URL.createObjectURL(file);
+    photoPreview.innerHTML = `<img src="${url}" class="mt-1 h-24 rounded-lg object-cover">`;
+  });
+
+  refreshView();
+  db.auth.onAuthStateChange(() => refreshView());
+</script>
+</body>
+</html>
