@@ -7,6 +7,9 @@
 <meta name="robots" content="noindex, nofollow" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link href="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
 <script>
   tailwind.config = {
     theme: {
@@ -38,6 +41,12 @@
   .btn-sm { font-size: 12px; padding: 6px 12px; border-radius: 8px; }
   .tab-btn { font-size: 14px; font-weight: 700; padding: 10px 4px; border-bottom: 2px solid transparent; color: #6E6A63; white-space: nowrap; }
   .tab-btn.active { color: #12456B; border-bottom-color: #12456B; }
+  #quill-toolbar { border: 1px solid rgba(0,0,0,.15); border-bottom: none; border-radius: 10px 10px 0 0; background: #fafafa; }
+  #quill-editor { border: 1px solid rgba(0,0,0,.15); border-radius: 0 0 10px 10px; background: #fff; }
+  #quill-editor .ql-editor { min-height: 200px; font-size: 14px; }
+  #ql-table-btn { width: auto !important; padding: 0 6px !important; font-size: 13px; font-weight: 700; color: #444; }
+  .gallery-thumb { position: relative; }
+  .gallery-thumb button { position: absolute; top: 4px; right: 4px; background: rgba(0,0,0,.6); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 6px; }
 </style>
 </head>
 <body class="text-meok">
@@ -115,12 +124,42 @@
             </div>
             <div>
               <label class="block text-xs font-bold text-dolhoe mb-1.5">본문</label>
-              <textarea id="post-content" class="field" rows="8"></textarea>
+              <div id="quill-toolbar">
+                <span class="ql-formats">
+                  <select class="ql-size">
+                    <option value="small"></option>
+                    <option selected></option>
+                    <option value="large"></option>
+                    <option value="huge"></option>
+                  </select>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-bold"></button>
+                  <button class="ql-italic"></button>
+                  <button class="ql-underline"></button>
+                </span>
+                <span class="ql-formats">
+                  <select class="ql-color"></select>
+                  <select class="ql-background"></select>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-list" value="ordered"></button>
+                  <button class="ql-list" value="bullet"></button>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-image"></button>
+                  <button id="ql-table-btn" type="button">표</button>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-clean"></button>
+                </span>
+              </div>
+              <div id="quill-editor"></div>
             </div>
             <div>
-              <label class="block text-xs font-bold text-dolhoe mb-1.5">사진 (선택)</label>
-              <input type="file" id="post-photo" accept="image/*" class="field">
-              <div id="post-photo-preview" class="mt-2"></div>
+              <label class="block text-xs font-bold text-dolhoe mb-1.5">사진 (여러 장 선택 가능)</label>
+              <input type="file" id="post-photo" accept="image/*" class="field" multiple>
+              <div id="post-photo-gallery" class="mt-3 grid grid-cols-4 sm:grid-cols-6 gap-2"></div>
             </div>
             <p id="post-form-error" class="text-sm text-ongi hidden"></p>
             <div class="flex items-center gap-3 pt-2">
@@ -426,15 +465,94 @@
   const categoryField = document.getElementById('post-category');
   const dateField = document.getElementById('post-date');
   const titleField = document.getElementById('post-title');
-  const contentField = document.getElementById('post-content');
   const photoField = document.getElementById('post-photo');
-  const photoPreview = document.getElementById('post-photo-preview');
+  const postPhotoGallery = document.getElementById('post-photo-gallery');
   const postFormTitle = document.getElementById('post-form-title');
   const postFormError = document.getElementById('post-form-error');
   const postFormSubmit = document.getElementById('post-form-submit');
   const postFormCancel = document.getElementById('post-form-cancel');
   const postFormStatus = document.getElementById('post-form-status');
   const postList = document.getElementById('post-list');
+
+  // ---- 본문 서식 에디터 (Quill) ----
+  const QuillSize = Quill.import('attributors/style/size');
+  QuillSize.whitelist = ['small', false, 'large', 'huge'];
+  Quill.register(QuillSize, true);
+  const quill = new Quill('#quill-editor', {
+    theme: 'snow',
+    modules: { toolbar: { container: '#quill-toolbar', handlers: { image: quillImageHandler } } },
+  });
+  document.getElementById('ql-table-btn').addEventListener('click', insertQuillTable);
+
+  function looksLikeHtml(str) { return /<[a-z][\s\S]*>/i.test(str || ''); }
+  function plainToRichHtml(str) {
+    if (!str) return '';
+    return str.split(/\n{2,}/).map(block => '<p>' + esc(block).replace(/\n/g, '<br>') + '</p>').join('');
+  }
+  function setQuillContent(content) {
+    const html = looksLikeHtml(content) ? content : plainToRichHtml(content);
+    quill.root.innerHTML = DOMPurify.sanitize(html);
+  }
+  function getQuillContent() {
+    const html = DOMPurify.sanitize(quill.root.innerHTML);
+    return html === '<p><br></p>' ? '' : html;
+  }
+  function insertQuillTable() {
+    const range = quill.getSelection(true) || { index: quill.getLength() };
+    const rows = Array.from({ length: 3 }).map(() =>
+      '<tr>' + Array.from({ length: 3 }).map(() => '<td style="border:1px solid #ccc;padding:6px;min-width:60px;">&nbsp;</td>').join('') + '</tr>'
+    ).join('');
+    const tableHtml = `<table style="border-collapse:collapse;width:100%;margin:8px 0;"><tbody>${rows}</tbody></table><p><br></p>`;
+    quill.clipboard.dangerouslyPasteHTML(range.index, tableHtml, 'user');
+  }
+  async function quillImageHandler() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = async () => {
+      const file = input.files[0];
+      if (!file) return;
+      try {
+        const url = await uploadPhoto(file, 'PostsContent');
+        const range = quill.getSelection(true) || { index: quill.getLength() };
+        quill.insertEmbed(range.index, 'image', url, 'user');
+        quill.setSelection(range.index + 1);
+      } catch (err) {
+        alert('이미지를 넣지 못했습니다: ' + (err.message || err));
+      }
+    };
+    input.click();
+  }
+
+  // ---- 사진 여러 장(갤러리) ----
+  let __postGalleryPhotos = [];
+  async function loadPostGallery(postId) {
+    const { data, error } = await db.from('post_photos').select('*').eq('post_id', postId).order('sort_order', { ascending: true });
+    __postGalleryPhotos = (!error && data) ? data : [];
+    renderPostGallery();
+  }
+  function renderPostGallery() {
+    postPhotoGallery.innerHTML = __postGalleryPhotos.map(ph => `
+      <div class="gallery-thumb">
+        <img src="${esc(ph.photo_url)}" class="w-full aspect-square object-cover rounded-lg border border-black/10">
+        <button type="button" onclick="deletePostGalleryPhoto('${ph.id}')">삭제</button>
+      </div>
+    `).join('');
+  }
+  window.deletePostGalleryPhoto = async function(id) {
+    const { error } = await db.from('post_photos').delete().eq('id', id);
+    if (error) { alert('삭제하지 못했습니다: ' + error.message); return; }
+    const postId = postIdField.value;
+    await loadPostGallery(postId);
+    await syncPostThumbnail(postId);
+  };
+  async function syncPostThumbnail(postId) {
+    // posts.photo_url을 갤러리 첫 사진으로 맞춰서 목록 카드 썸네일에 쓰이게 함
+    const first = __postGalleryPhotos[0];
+    const url = first ? first.photo_url : null;
+    await db.from('posts').update({ photo_url: url }).eq('id', postId);
+    if (window.__adminPosts && window.__adminPosts[postId]) window.__adminPosts[postId].photo_url = url;
+  }
 
   async function loadPosts() {
     const { data: posts, error } = await db
@@ -475,9 +593,10 @@
     categoryField.value = 'notice';
     dateField.value = todayStr();
     titleField.value = '';
-    contentField.value = '';
+    setQuillContent('');
     photoField.value = '';
-    photoPreview.innerHTML = '';
+    __postGalleryPhotos = [];
+    renderPostGallery();
     postFormTitle.textContent = '새 글쓰기';
     postFormCancel.classList.add('hidden');
     hideError(postFormError);
@@ -491,12 +610,12 @@
     categoryField.value = p.category;
     dateField.value = p.published_at || todayStr();
     titleField.value = p.title || '';
-    contentField.value = p.content || '';
+    setQuillContent(p.content || '');
     photoField.value = '';
-    photoPreview.innerHTML = p.photo_url ? `<img src="${esc(p.photo_url)}" class="mt-1 h-24 rounded-lg object-cover">` : '';
     postFormTitle.textContent = '글 수정';
     postFormCancel.classList.remove('hidden');
     hideError(postFormError);
+    loadPostGallery(p.id);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -522,31 +641,43 @@
     postFormSubmit.textContent = '저장 중...';
     postFormStatus.textContent = '';
     try {
-      let photoUrl = null;
-      const existingId = postIdField.value;
-      if (existingId && window.__adminPosts[existingId]) {
-        photoUrl = window.__adminPosts[existingId].photo_url || null;
-      }
-      const file = photoField.files[0];
-      if (file) {
-        postFormStatus.textContent = '사진 업로드 중...';
-        photoUrl = await uploadPhoto(file, 'Posts');
-      }
       const row = {
         category: categoryField.value,
         title: title,
-        content: contentField.value,
-        photo_url: photoUrl,
+        content: getQuillContent(),
         published_at: dateField.value || todayStr(),
       };
+      const existingId = postIdField.value;
+      let postId = existingId;
       postFormStatus.textContent = '글 저장 중...';
-      const saveError = existingId
-        ? (await db.from('posts').update(row).eq('id', existingId)).error
-        : (await db.from('posts').insert(row)).error;
-      if (saveError) throw saveError;
+      if (existingId) {
+        const { error } = await db.from('posts').update(row).eq('id', existingId);
+        if (error) throw error;
+      } else {
+        const { data, error } = await db.from('posts').insert(row).select().single();
+        if (error) throw error;
+        postId = data.id;
+      }
+
+      const files = Array.from(photoField.files || []);
+      if (files.length > 0) {
+        let nextSort = __postGalleryPhotos.length > 0
+          ? Math.max(...__postGalleryPhotos.map(g => g.sort_order || 0)) + 1
+          : 0;
+        for (let i = 0; i < files.length; i++) {
+          postFormStatus.textContent = `사진 업로드 중... (${i + 1}/${files.length})`;
+          const url = await uploadPhoto(files[i], 'Posts');
+          const { error: insErr } = await db.from('post_photos').insert({ post_id: postId, photo_url: url, sort_order: nextSort++ });
+          if (insErr) throw insErr;
+        }
+      }
+
+      await loadPostGallery(postId);
+      await syncPostThumbnail(postId);
+
       postFormStatus.textContent = '저장되었습니다.';
-      resetPostForm();
-      loadPosts();
+      await loadPosts();
+      window.editPost(postId);
     } catch (err) {
       showError(postFormError, '저장하지 못했습니다: ' + (err.message || err));
       postFormStatus.textContent = '';
@@ -554,12 +685,6 @@
       postFormSubmit.disabled = false;
       postFormSubmit.textContent = '저장';
     }
-  });
-
-  photoField.addEventListener('change', () => {
-    const file = photoField.files[0];
-    if (!file) { photoPreview.innerHTML = ''; return; }
-    photoPreview.innerHTML = `<img src="${URL.createObjectURL(file)}" class="mt-1 h-24 rounded-lg object-cover">`;
   });
 
   /* ================================================================ */

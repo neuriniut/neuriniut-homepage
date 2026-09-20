@@ -7,6 +7,7 @@
 <meta name="description" content="느린이웃 — 발달장애인 가족의 자조모임이자 예비 사회적협동조합. 우리는 나란히 걷습니다." />
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
 <script>
   tailwind.config = {
     theme: {
@@ -53,6 +54,15 @@
   /* 드롭다운 메뉴 (데스크톱) */
   .nav-drop { opacity: 0; visibility: hidden; transform: translateY(4px); transition: all .15s ease; }
   .nav-item:hover .nav-drop, .nav-item:focus-within .nav-drop { opacity: 1; visibility: visible; transform: translateY(0); }
+
+  /* 알림마당 본문 서식(굵기/색/표/이미지) */
+  .rich-content p { margin-bottom: 0.85em; }
+  .rich-content img { max-width: 100%; height: auto; border-radius: 10px; margin: 0.75em 0; }
+  .rich-content table { border-collapse: collapse; width: 100%; margin: 0.85em 0; font-size: 0.9em; }
+  .rich-content table td, .rich-content table th { border: 1px solid rgba(0,0,0,.15); padding: 8px; }
+  .rich-content ul, .rich-content ol { margin: 0.5em 0 0.85em 1.4em; }
+  .rich-content ul { list-style: disc; }
+  .rich-content ol { list-style: decimal; }
 
 </style>
 </head>
@@ -832,10 +842,25 @@
   <p class="text-xs text-dolhoe mb-2" id="post-page-date"></p>
   <h1 class="text-2xl md:text-3xl font-extrabold text-meok mb-6" id="post-page-title"></h1>
   <div id="post-page-photo" class="mb-6"></div>
-  <p class="text-dolhoe text-base leading-relaxed whitespace-pre-line" id="post-page-content"></p>
+  <div class="text-dolhoe text-base leading-relaxed rich-content" id="post-page-content"></div>
 </div>
 
 <script>
+  function ny_postEsc(str) {
+    const div = document.createElement('div');
+    div.textContent = str == null ? '' : str;
+    return div.innerHTML;
+  }
+  function ny_looksLikeHtml(str) { return /<[a-z][\s\S]*>/i.test(str || ''); }
+  function ny_plainToRichHtml(str) {
+    if (!str) return '';
+    return str.split(/\n{2,}/).map(block => '<p>' + ny_postEsc(block).replace(/\n/g, '<br>') + '</p>').join('');
+  }
+  function ny_renderPostContent(str) {
+    const html = ny_looksLikeHtml(str) ? str : ny_plainToRichHtml(str);
+    return (typeof DOMPurify !== 'undefined') ? DOMPurify.sanitize(html) : html;
+  }
+
   async function showPostPage(id) {
     if (typeof supabase === 'undefined') return;
     const { createClient } = supabase;
@@ -848,11 +873,28 @@
 
     document.getElementById('post-page-date').textContent = post.published_at ? String(post.published_at).replace(/-/g, '.') : '';
     document.getElementById('post-page-title').textContent = post.title || '';
-    document.getElementById('post-page-content').textContent = post.content || '';
+    document.getElementById('post-page-content').innerHTML = ny_renderPostContent(post.content);
+
     const photoEl = document.getElementById('post-page-photo');
-    photoEl.innerHTML = post.photo_url
-      ? `<img src="${post.photo_url}" class="w-full rounded-xl aspect-[16/9] object-cover">`
-      : '';
+    photoEl.innerHTML = '';
+    let galleryPhotos = [];
+    try {
+      const { data: photoRows } = await db.from('post_photos').select('*').eq('post_id', id).order('sort_order', { ascending: true });
+      galleryPhotos = photoRows || [];
+    } catch (e) { /* post_photos 테이블이 아직 없어도 나머지는 정상 표시 */ }
+
+    if (galleryPhotos.length > 1) {
+      photoEl.innerHTML = `<div class="relative aspect-[16/9] rounded-xl overflow-hidden">
+        <div class="flex gap-0 overflow-x-auto snap-x snap-mandatory h-full w-full">
+          ${galleryPhotos.map(ph => `<img src="${ph.photo_url}" class="snap-center shrink-0 w-full h-full object-cover">`).join('')}
+        </div>
+        <span class="absolute bottom-2 right-2 text-[11px] font-bold px-2 py-1 rounded bg-black/50 text-white">1/${galleryPhotos.length} · 넘겨보기</span>
+      </div>`;
+    } else if (galleryPhotos.length === 1) {
+      photoEl.innerHTML = `<img src="${galleryPhotos[0].photo_url}" class="w-full rounded-xl aspect-[16/9] object-cover">`;
+    } else if (post.photo_url) {
+      photoEl.innerHTML = `<img src="${post.photo_url}" class="w-full rounded-xl aspect-[16/9] object-cover">`;
+    }
 
     document.getElementById('top').classList.add('hidden');
     document.getElementById('post-page').classList.remove('hidden');
