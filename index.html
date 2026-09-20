@@ -812,6 +812,46 @@
   </div>
 </footer>
 
+<!-- 공지사항/느린이웃 소식 상세보기 팝업 -->
+<div id="notice-modal" class="fixed inset-0 z-50 hidden">
+  <div class="absolute inset-0 bg-black/50" onclick="closeNoticeModal()"></div>
+  <div class="absolute inset-x-4 top-8 bottom-8 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 md:w-[640px] md:top-12 md:bottom-12 bg-white rounded-2xl overflow-y-auto">
+    <div class="sticky top-0 bg-white border-b border-black/10 p-4 flex items-center justify-between z-10">
+      <p class="text-xs text-dolhoe" id="notice-modal-date"></p>
+      <button type="button" onclick="closeNoticeModal()" class="text-2xl leading-none px-2 text-dolhoe hover:text-meok" aria-label="닫기">×</button>
+    </div>
+    <div id="notice-modal-photo"></div>
+    <div class="p-5">
+      <h3 class="text-lg font-bold text-meok mb-3" id="notice-modal-title"></h3>
+      <p class="text-dolhoe text-sm leading-relaxed whitespace-pre-line" id="notice-modal-content"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.__posts = { notice: [], news: [] };
+  window.openPostModal = function(type, idx) {
+    const n = (window.__posts[type] || [])[idx];
+    if (!n) return;
+    document.getElementById('notice-modal-date').textContent = n.published_at ? String(n.published_at).replace(/-/g, '.') : '';
+    document.getElementById('notice-modal-title').textContent = n.title || '';
+    document.getElementById('notice-modal-content').textContent = n.content || '';
+    const photoEl = document.getElementById('notice-modal-photo');
+    photoEl.innerHTML = n.photo_url
+      ? `<img src="${n.photo_url}" class="w-full aspect-[16/9] object-cover">`
+      : '';
+    document.getElementById('notice-modal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  };
+  window.closeNoticeModal = function() {
+    document.getElementById('notice-modal').classList.add('hidden');
+    document.body.style.overflow = '';
+  };
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeNoticeModal();
+  });
+</script>
+
 <script>
   const menuBtn = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -990,10 +1030,13 @@
         .order('published_at', { ascending: false })
         .limit(6);
       if (!error && notices && notices.length > 0) {
-        noticeList.innerHTML = notices.map(n => `
-          <li class="py-3 flex items-center justify-between gap-4">
-            <p class="text-sm text-meok truncate">${esc(n.title)}</p>
-            <p class="text-xs text-dolhoe shrink-0">${formatDate(n.published_at)}</p>
+        window.__posts.notice = notices;
+        noticeList.innerHTML = notices.map((n, i) => `
+          <li class="py-1">
+            <button type="button" onclick="openPostModal('notice', ${i})" class="w-full py-2 flex items-center justify-between gap-4 text-left hover:text-naran transition-colors">
+              <p class="text-sm text-meok truncate">${esc(n.title)}</p>
+              <p class="text-xs text-dolhoe shrink-0">${formatDate(n.published_at)}</p>
+            </button>
           </li>`).join('');
       }
     }
@@ -1007,11 +1050,12 @@
         .order('published_at', { ascending: false })
         .limit(3);
       if (!newsError && news && news.length > 0) {
-        newsList.innerHTML = news.map(n => {
+        window.__posts.news = news;
+        newsList.innerHTML = news.map((n, i) => {
           const photoBlock = n.photo_url
             ? `<img src="${esc(n.photo_url)}" alt="${esc(n.title)}" class="aspect-[4/3] w-full object-cover">`
             : `<div class="photo-guide aspect-[4/3] flex items-end p-3"><span class="tag inline-block text-[10px] font-bold px-2 py-1 rounded">사진 가이드</span></div>`;
-          return `<article class="border border-black/10 rounded-xl overflow-hidden">
+          return `<article class="border border-black/10 rounded-xl overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onclick="openPostModal('news', ${i})">
             ${photoBlock}
             <div class="p-4">
               <p class="text-xs text-dolhoe mb-1">${formatDate(n.published_at)}</p>
