@@ -591,7 +591,7 @@
           <h3 class="font-bold text-lg">공지사항</h3>
           <a href="#notices" class="text-xs font-bold text-naran hover:underline">전체보기 →</a>
         </div>
-        <ul class="divide-y divide-black/5">
+        <ul class="divide-y divide-black/5" id="notice-list">
           <li class="py-3 flex items-center justify-between gap-4">
             <p class="text-sm text-meok truncate">[예시] 9월 운영진 회의 결과 안내</p>
             <p class="text-xs text-dolhoe shrink-0">2026.09.10</p>
@@ -627,7 +627,7 @@
     <!-- 느린이웃 소식 -->
     <div class="mt-8">
       <h3 class="font-bold text-lg mb-4">느린이웃 소식</h3>
-      <div class="grid sm:grid-cols-3 gap-5">
+      <div class="grid sm:grid-cols-3 gap-5" id="news-list">
         <article class="border border-black/10 rounded-xl overflow-hidden">
           <div class="photo-guide aspect-[4/3] flex items-end p-3">
             <span class="tag inline-block text-[10px] font-bold px-2 py-1 rounded">사진 가이드</span>
@@ -960,6 +960,67 @@
         ${timelineBlock}
       </div>`;
     }).join('');
+  })();
+
+  // 알림마당 > 공지사항 / 느린이웃 소식: Supabase에서 실시간으로 불러오기
+  // (표를 못 불러오면 위 예시 내용이 그대로 보여요.)
+  (async function loadNotices() {
+    if (typeof supabase === 'undefined') return;
+    const { createClient } = supabase;
+    const db = createClient(
+      'https://mpgmvwivzedqxugfllxc.supabase.co',
+      'sb_publishable_B-pdQJ6sbCDrdi37JU6www_71TE8J5f'
+    );
+
+    function esc(str) {
+      const div = document.createElement('div');
+      div.textContent = str == null ? '' : str;
+      return div.innerHTML;
+    }
+    function formatDate(d) {
+      return d ? esc(d).replace(/-/g, '.') : '';
+    }
+
+    const noticeList = document.getElementById('notice-list');
+    if (noticeList) {
+      const { data: notices, error } = await db
+        .from('posts')
+        .select('*')
+        .eq('category', 'notice')
+        .order('published_at', { ascending: false })
+        .limit(6);
+      if (!error && notices && notices.length > 0) {
+        noticeList.innerHTML = notices.map(n => `
+          <li class="py-3 flex items-center justify-between gap-4">
+            <p class="text-sm text-meok truncate">${esc(n.title)}</p>
+            <p class="text-xs text-dolhoe shrink-0">${formatDate(n.published_at)}</p>
+          </li>`).join('');
+      }
+    }
+
+    const newsList = document.getElementById('news-list');
+    if (newsList) {
+      const { data: news, error: newsError } = await db
+        .from('posts')
+        .select('*')
+        .eq('category', 'news')
+        .order('published_at', { ascending: false })
+        .limit(3);
+      if (!newsError && news && news.length > 0) {
+        newsList.innerHTML = news.map(n => {
+          const photoBlock = n.photo_url
+            ? `<img src="${esc(n.photo_url)}" alt="${esc(n.title)}" class="aspect-[4/3] w-full object-cover">`
+            : `<div class="photo-guide aspect-[4/3] flex items-end p-3"><span class="tag inline-block text-[10px] font-bold px-2 py-1 rounded">사진 가이드</span></div>`;
+          return `<article class="border border-black/10 rounded-xl overflow-hidden">
+            ${photoBlock}
+            <div class="p-4">
+              <p class="text-xs text-dolhoe mb-1">${formatDate(n.published_at)}</p>
+              <p class="text-sm font-semibold leading-snug">${esc(n.title)}</p>
+            </div>
+          </article>`;
+        }).join('');
+      }
+    }
   })();
 </script>
 </body>
