@@ -6,6 +6,7 @@
 <title>느린이웃 | 발달장애인 가족 자조모임</title>
 <meta name="description" content="느린이웃 — 발달장애인 가족의 자조모임이자 예비 사회적협동조합. 우리는 나란히 걷습니다." />
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   tailwind.config = {
     theme: {
@@ -321,7 +322,7 @@
             <div class="w-full">
               <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded mb-2">사진 가이드</span>
               <p class="text-meok text-xs leading-relaxed bg-white/90 rounded p-2.5">
-                스포츠단 연습 또는 합창단 무대 컷 — 당사자가 활동에 몰입한 자연스러운 순간, 전신이 보이는 구도.
+                스포츠단 연습 또는 발달장애인합창단 무대 컷 — 당사자가 활동에 몰입한 자연스러운 순간, 전신이 보이는 구도.
               </p>
             </div>
           </div>
@@ -394,7 +395,7 @@
         <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">발달장애인의 사회참여 및 자립 준비 지원 사업</h2>
         <p class="text-dolhoe leading-relaxed">당사자가 자신의 방식대로 지역사회에 참여하고, 스스로 할 수 있는 것을 하나씩 넓혀가도록 돕습니다.</p>
       </header>
-      <div class="grid sm:grid-cols-2 gap-5">
+      <div id="independence-programs" class="grid sm:grid-cols-2 gap-5">
         <div class="border border-black/10 rounded-xl overflow-hidden sm:col-span-2">
           <div class="grid sm:grid-cols-2">
             <div class="photo-guide aspect-[16/10] sm:aspect-auto flex items-end p-3">
@@ -419,10 +420,10 @@
         </div>
         <div class="border border-black/10 rounded-xl overflow-hidden">
           <div class="photo-guide aspect-[16/10] flex items-end p-3">
-            <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 합창단</span>
+            <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 발달장애인합창단</span>
           </div>
           <div class="p-4">
-            <p class="font-bold mb-1.5">합창단</p>
+            <p class="font-bold mb-1.5">발달장애인합창단</p>
             <p class="text-dolhoe text-sm leading-relaxed">함께 노래하며 무대에 서는 경험을 쌓는 문화예술 활동입니다.</p>
           </div>
         </div>
@@ -853,6 +854,81 @@
 
   window.addEventListener('hashchange', showProgramsView);
   showProgramsView();
+
+  // 사업안내 > 사회참여·자립지원 세부 프로그램: Supabase에서 실시간으로 불러오기
+  // (표에 있는 사진/글이 바로 반영됩니다. 표를 못 불러오면 위 고정 내용이 그대로 보여요.)
+  (async function loadIndependencePrograms() {
+    if (typeof supabase === 'undefined') return;
+    const { createClient } = supabase;
+    const db = createClient(
+      'https://mpgmvwivzedqxugfllxc.supabase.co',
+      'sb_publishable_B-pdQJ6sbCDrdi37JU6www_71TE8J5f'
+    );
+
+    const container = document.getElementById('independence-programs');
+    if (!container) return;
+
+    const { data: programs, error } = await db
+      .from('programs')
+      .select('*')
+      .eq('business_id', 'independence')
+      .order('sort_order', { ascending: true });
+
+    if (error || !programs || programs.length === 0) return;
+
+    const ids = programs.map(p => p.id);
+    const { data: timelineRows } = await db
+      .from('program_timeline')
+      .select('*')
+      .in('program_id', ids)
+      .order('sort_order', { ascending: true });
+
+    const timelineByProgram = {};
+    (timelineRows || []).forEach(row => {
+      (timelineByProgram[row.program_id] = timelineByProgram[row.program_id] || []).push(row);
+    });
+
+    function esc(str) {
+      const div = document.createElement('div');
+      div.textContent = str == null ? '' : str;
+      return div.innerHTML;
+    }
+
+    // 여러 줄 소개글(빈 줄로 문단 구분, "* "로 시작하는 줄은 목록으로) 보기 좋게 표시
+    function formatDescription(str) {
+      if (!str) return '';
+      return esc(str).replace(/^\* (.+)$/gm, '• $1');
+    }
+
+    container.innerHTML = programs.map(p => {
+      const timeline = timelineByProgram[p.id];
+      const hasTimeline = timeline && timeline.length > 0;
+
+      const photoBlock = p.photo_url
+        ? `<img src="${esc(p.photo_url)}" alt="${esc(p.name)}" class="aspect-[16/10] sm:aspect-auto w-full h-full object-cover">`
+        : `<div class="photo-guide aspect-[16/10] sm:aspect-auto flex items-end p-3"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — ${esc(p.name)}</span></div>`;
+
+      const timelineBlock = hasTimeline
+        ? `<div class="border-t border-black/10 p-5">
+             <p class="text-dolhoe text-xs font-bold mb-3">연혁 · 성과</p>
+             <ul class="space-y-2 text-sm">
+               ${timeline.map(t => `<li class="flex gap-3"><span class="text-naran font-bold shrink-0 w-20">${esc(t.date_label)}</span><span>${esc(t.event)}</span></li>`).join('')}
+             </ul>
+           </div>`
+        : '';
+
+      return `<div class="border border-black/10 rounded-xl overflow-hidden ${hasTimeline ? 'sm:col-span-2' : ''}">
+        <div class="${hasTimeline ? 'grid sm:grid-cols-2' : ''}">
+          ${photoBlock}
+          <div class="p-5">
+            <p class="font-bold text-lg mb-2">${esc(p.name)}</p>
+            <p class="text-dolhoe text-sm leading-relaxed whitespace-pre-line">${formatDescription(p.description)}</p>
+          </div>
+        </div>
+        ${timelineBlock}
+      </div>`;
+    }).join('');
+  })();
 </script>
 </body>
 </html>
