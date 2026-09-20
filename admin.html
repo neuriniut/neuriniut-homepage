@@ -35,6 +35,9 @@
   .btn-main:disabled { opacity: .5; }
   .btn-ghost { background: #fff; border: 1px solid rgba(0,0,0,.15); color: #1F2124; font-weight: 600; border-radius: 10px; padding: 10px 16px; font-size: 14px; }
   .btn-ghost:hover { background: #F0EEE9; }
+  .btn-sm { font-size: 12px; padding: 6px 12px; border-radius: 8px; }
+  .tab-btn { font-size: 14px; font-weight: 700; padding: 10px 4px; border-bottom: 2px solid transparent; color: #6E6A63; white-space: nowrap; }
+  .tab-btn.active { color: #12456B; border-bottom-color: #12456B; }
 </style>
 </head>
 <body class="text-meok">
@@ -64,68 +67,268 @@
 
   <!-- ========== 관리자 화면 ========== -->
   <div id="admin-view" class="hidden min-h-screen">
-    <header class="bg-white border-b border-black/10">
-      <div class="max-w-4xl mx-auto px-5 py-4 flex items-center justify-between">
+    <header class="bg-white border-b border-black/10 sticky top-0 z-10">
+      <div class="max-w-5xl mx-auto px-5 py-4 flex items-center justify-between">
         <div>
           <p class="text-xs font-bold text-naran">느린이웃</p>
-          <h1 class="text-lg font-extrabold">알림마당 관리자</h1>
+          <h1 class="text-lg font-extrabold">홈페이지 관리자</h1>
         </div>
         <div class="flex items-center gap-3">
-          <p class="text-xs text-dolhoe" id="whoami"></p>
+          <p class="text-xs text-dolhoe hidden sm:block" id="whoami"></p>
           <button id="logout-btn" class="btn-ghost">로그아웃</button>
         </div>
       </div>
+      <div class="max-w-5xl mx-auto px-5 flex items-center gap-5 overflow-x-auto">
+        <button type="button" class="tab-btn active" data-tab="notices">알림마당</button>
+        <button type="button" class="tab-btn" data-tab="programs">사업안내</button>
+        <button type="button" class="tab-btn" data-tab="about">소개</button>
+        <button type="button" class="tab-btn" data-tab="info">정보나눔</button>
+      </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-5 py-8 space-y-8">
+    <main class="max-w-5xl mx-auto px-5 py-8">
 
-      <!-- 글쓰기 / 수정 폼 -->
-      <section class="bg-white rounded-2xl border border-black/10 p-6">
-        <h2 class="font-bold text-lg mb-5" id="form-title">새 글쓰기</h2>
-        <form id="post-form" class="space-y-4">
-          <input type="hidden" id="post-id">
-          <div class="grid sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-xs font-bold text-dolhoe mb-1.5">분류</label>
-              <select id="post-category" class="field">
-                <option value="notice">공지사항</option>
-                <option value="news">느린이웃 소식</option>
-              </select>
+      <!-- ============================================================ -->
+      <!-- 탭 1. 알림마당 -->
+      <!-- ============================================================ -->
+      <div id="tab-notices" class="tab-panel space-y-8">
+        <section class="bg-white rounded-2xl border border-black/10 p-6">
+          <h2 class="font-bold text-lg mb-5" id="post-form-title">새 글쓰기</h2>
+          <form id="post-form" class="space-y-4">
+            <input type="hidden" id="post-id">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-dolhoe mb-1.5">분류</label>
+                <select id="post-category" class="field">
+                  <option value="notice">공지사항</option>
+                  <option value="news">느린이웃 소식</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-dolhoe mb-1.5">날짜</label>
+                <input type="date" id="post-date" class="field">
+              </div>
             </div>
             <div>
-              <label class="block text-xs font-bold text-dolhoe mb-1.5">날짜</label>
-              <input type="date" id="post-date" class="field">
+              <label class="block text-xs font-bold text-dolhoe mb-1.5">제목</label>
+              <input type="text" id="post-title" class="field" required>
             </div>
-          </div>
-          <div>
-            <label class="block text-xs font-bold text-dolhoe mb-1.5">제목</label>
-            <input type="text" id="post-title" class="field" required>
-          </div>
-          <div>
-            <label class="block text-xs font-bold text-dolhoe mb-1.5">본문</label>
-            <textarea id="post-content" class="field" rows="8"></textarea>
-          </div>
-          <div>
-            <label class="block text-xs font-bold text-dolhoe mb-1.5">사진 (선택)</label>
-            <input type="file" id="post-photo" accept="image/*" class="field">
-            <div id="post-photo-preview" class="mt-2"></div>
-          </div>
-          <p id="form-error" class="text-sm text-ongi hidden"></p>
-          <div class="flex items-center gap-3 pt-2">
-            <button type="submit" id="form-submit" class="btn-main">저장</button>
-            <button type="button" id="form-cancel" class="btn-ghost hidden">수정 취소</button>
-            <span id="form-status" class="text-xs text-dolhoe"></span>
-          </div>
-        </form>
-      </section>
+            <div>
+              <label class="block text-xs font-bold text-dolhoe mb-1.5">본문</label>
+              <textarea id="post-content" class="field" rows="8"></textarea>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-dolhoe mb-1.5">사진 (선택)</label>
+              <input type="file" id="post-photo" accept="image/*" class="field">
+              <div id="post-photo-preview" class="mt-2"></div>
+            </div>
+            <p id="post-form-error" class="text-sm text-ongi hidden"></p>
+            <div class="flex items-center gap-3 pt-2">
+              <button type="submit" id="post-form-submit" class="btn-main">저장</button>
+              <button type="button" id="post-form-cancel" class="btn-ghost hidden">수정 취소</button>
+              <span id="post-form-status" class="text-xs text-dolhoe"></span>
+            </div>
+          </form>
+        </section>
 
-      <!-- 글 목록 -->
-      <section class="bg-white rounded-2xl border border-black/10 p-6">
-        <h2 class="font-bold text-lg mb-5">등록된 글</h2>
-        <div id="post-list" class="divide-y divide-black/5">
-          <p class="text-sm text-dolhoe py-4">불러오는 중...</p>
-        </div>
-      </section>
+        <section class="bg-white rounded-2xl border border-black/10 p-6">
+          <h2 class="font-bold text-lg mb-5">등록된 글</h2>
+          <div id="post-list" class="divide-y divide-black/5">
+            <p class="text-sm text-dolhoe py-4">불러오는 중...</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- 탭 2. 사업안내 -->
+      <!-- ============================================================ -->
+      <div id="tab-programs" class="tab-panel hidden space-y-8">
+        <section class="bg-white rounded-2xl border border-black/10 p-6">
+          <label class="block text-xs font-bold text-dolhoe mb-1.5">사업 선택</label>
+          <select id="biz-select" class="field max-w-md">
+            <option value="independence">사업 01 · 사회참여 및 자립 준비 지원</option>
+            <option value="family">사업 02 · 가족통합 지원</option>
+            <option value="parent">사업 03 · 부모역량 강화</option>
+            <option value="community">사업 04 · 지역사회 연대</option>
+          </select>
+          <p class="text-xs text-dolhoe mt-2">선택한 사업의 세부 프로그램(카드)을 관리합니다. 홈페이지 사업안내에서 해당 사업을 눌렀을 때 보이는 내용이에요.</p>
+        </section>
+
+        <section class="bg-white rounded-2xl border border-black/10 p-6">
+          <h2 class="font-bold text-lg mb-5" id="program-form-title">새 프로그램 추가</h2>
+          <form id="program-form" class="space-y-4">
+            <input type="hidden" id="program-id">
+            <div>
+              <label class="block text-xs font-bold text-dolhoe mb-1.5">프로그램 이름</label>
+              <input type="text" id="program-name" class="field" required placeholder="예: 슐런스포츠단">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-dolhoe mb-1.5">소개 글</label>
+              <textarea id="program-description" class="field" rows="5" placeholder="줄바꿈은 그대로 표시돼요. '* '로 시작하면 목록(•)으로 보여요."></textarea>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-dolhoe mb-1.5">대표 사진 (선택)</label>
+                <input type="file" id="program-photo" accept="image/*" class="field">
+                <div id="program-photo-preview" class="mt-2"></div>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-dolhoe mb-1.5">표시 순서</label>
+                <input type="number" id="program-sort" class="field" value="0">
+              </div>
+            </div>
+            <p id="program-form-error" class="text-sm text-ongi hidden"></p>
+            <div class="flex items-center gap-3 pt-2">
+              <button type="submit" id="program-form-submit" class="btn-main">저장</button>
+              <button type="button" id="program-form-cancel" class="btn-ghost hidden">수정 취소</button>
+              <span id="program-form-status" class="text-xs text-dolhoe"></span>
+            </div>
+          </form>
+        </section>
+
+        <!-- 선택한 프로그램의 연혁·사진갤러리 세부 관리 (수정 모드일 때만) -->
+        <section id="program-detail-panel" class="hidden bg-white rounded-2xl border border-naran/30 p-6 space-y-8">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-bold text-sm">연혁 · 성과 (선택)</h3>
+            </div>
+            <div id="timeline-list" class="space-y-2 mb-4"></div>
+            <form id="timeline-form" class="flex flex-wrap items-end gap-2">
+              <div>
+                <label class="block text-[11px] font-bold text-dolhoe mb-1">날짜(라벨)</label>
+                <input type="text" id="timeline-date" class="field" style="width:120px" placeholder="2026.09">
+              </div>
+              <div class="flex-1 min-w-[160px]">
+                <label class="block text-[11px] font-bold text-dolhoe mb-1">내용</label>
+                <input type="text" id="timeline-event" class="field" placeholder="예: 어울림대회 금메달">
+              </div>
+              <button type="submit" class="btn-ghost btn-sm">추가</button>
+            </form>
+          </div>
+
+          <div class="border-t border-black/10 pt-6">
+            <h3 class="font-bold text-sm mb-4">사진 갤러리 (여러 장 가능, 선택)</h3>
+            <div id="gallery-list" class="grid grid-cols-3 sm:grid-cols-4 gap-3 mb-4"></div>
+            <label class="block text-[11px] font-bold text-dolhoe mb-1">사진 추가</label>
+            <input type="file" id="gallery-photo" accept="image/*" class="field max-w-xs">
+            <p class="text-xs text-dolhoe mt-1.5">사진을 올리면 자동으로 갤러리 맨 뒤에 추가돼요.</p>
+          </div>
+        </section>
+
+        <section class="bg-white rounded-2xl border border-black/10 p-6">
+          <h2 class="font-bold text-lg mb-5">등록된 프로그램</h2>
+          <div id="program-list" class="divide-y divide-black/5">
+            <p class="text-sm text-dolhoe py-4">불러오는 중...</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- 탭 3. 소개 -->
+      <!-- ============================================================ -->
+      <div id="tab-about" class="tab-panel hidden space-y-8">
+        <section class="bg-white rounded-2xl border border-black/10 p-6">
+          <h2 class="font-bold text-lg mb-1">첫 화면(히어로) 문구·사진</h2>
+          <p class="text-xs text-dolhoe mb-5">홈페이지에 맨 처음 접속했을 때 보이는 큰 문구와 사진이에요. 비워두면 기존 기본 문구가 그대로 보여요.</p>
+          <form id="hero-form" class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-dolhoe mb-1.5">작은 태그 문구</label>
+              <input type="text" id="hero-tag-input" class="field" placeholder="발달장애인 가족 자조모임 · 예비 사회적협동조합">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-dolhoe mb-1.5">큰 제목</label>
+              <input type="text" id="hero-title-input" class="field" placeholder="우리는 나란히 걷습니다">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-dolhoe mb-1.5">본문 (줄바꿈은 그대로 표시돼요)</label>
+              <textarea id="hero-body-input" class="field" rows="3" placeholder="앞에서 끌지 않고, 뒤에서 밀지 않고, 나란히."></textarea>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-dolhoe mb-1.5">대표 사진</label>
+              <input type="file" id="hero-photo-input" accept="image/*" class="field max-w-sm">
+              <div id="hero-photo-preview" class="mt-2"></div>
+            </div>
+            <p id="hero-form-error" class="text-sm text-ongi hidden"></p>
+            <div class="flex items-center gap-3 pt-2">
+              <button type="submit" id="hero-form-submit" class="btn-main">저장</button>
+              <span id="hero-form-status" class="text-xs text-dolhoe"></span>
+            </div>
+          </form>
+        </section>
+
+        <section class="bg-white rounded-2xl border border-black/10 p-6">
+          <h2 class="font-bold text-lg mb-1">소개 통계 카드 (4개)</h2>
+          <p class="text-xs text-dolhoe mb-5">"46가구" 처럼 큰 숫자 + 단위, 그 아래 짧은 설명으로 이루어진 카드예요.</p>
+          <form id="stat-form" class="grid sm:grid-cols-2 gap-4 mb-5">
+            <input type="hidden" id="stat-id">
+            <div>
+              <label class="block text-[11px] font-bold text-dolhoe mb-1">큰 숫자/글자</label>
+              <input type="text" id="stat-value" class="field" placeholder="예: 46">
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-dolhoe mb-1">단위/작은 글자</label>
+              <input type="text" id="stat-unit" class="field" placeholder="예: 가구">
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-[11px] font-bold text-dolhoe mb-1">아래 설명</label>
+              <input type="text" id="stat-caption" class="field" placeholder="예: 함께하는 발달장애인 가족">
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-dolhoe mb-1">표시 순서</label>
+              <input type="number" id="stat-sort" class="field" value="0">
+            </div>
+            <div class="flex items-end gap-2">
+              <button type="submit" id="stat-form-submit" class="btn-ghost">저장</button>
+              <button type="button" id="stat-form-cancel" class="btn-ghost hidden">취소</button>
+            </div>
+          </form>
+          <p id="stat-form-error" class="text-sm text-ongi hidden mb-3"></p>
+          <div id="stat-list" class="divide-y divide-black/5"></div>
+        </section>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- 탭 4. 정보나눔 -->
+      <!-- ============================================================ -->
+      <div id="tab-info" class="tab-panel hidden space-y-8">
+        <section class="bg-white rounded-2xl border border-black/10 p-6">
+          <h2 class="font-bold text-lg mb-1">복지제도</h2>
+          <p class="text-xs text-dolhoe mb-5">생애주기별 신청 가능한 복지·교육 제도를 하나씩 등록해요.</p>
+          <form id="welfare-form" class="space-y-3 mb-5">
+            <input type="hidden" id="welfare-id">
+            <input type="text" id="welfare-title" class="field" placeholder="제목 (예: 장애인연금)" required>
+            <textarea id="welfare-content" class="field" rows="3" placeholder="설명"></textarea>
+            <div class="flex items-center gap-2">
+              <input type="number" id="welfare-sort" class="field" style="width:100px" value="0" placeholder="순서">
+              <button type="submit" id="welfare-form-submit" class="btn-ghost">저장</button>
+              <button type="button" id="welfare-form-cancel" class="btn-ghost hidden">취소</button>
+            </div>
+          </form>
+          <p id="welfare-form-error" class="text-sm text-ongi hidden mb-3"></p>
+          <div id="welfare-item-list" class="divide-y divide-black/5"></div>
+        </section>
+
+        <section class="bg-white rounded-2xl border border-black/10 p-6">
+          <h2 class="font-bold text-lg mb-1">자료실</h2>
+          <p class="text-xs text-dolhoe mb-5">가입 신청서, 서식, 안내 자료 파일을 올려두면 홈페이지에서 내려받을 수 있어요.</p>
+          <form id="archive-form" class="space-y-3 mb-5">
+            <input type="hidden" id="archive-id">
+            <input type="text" id="archive-title" class="field" placeholder="제목 (예: 가입 신청서)" required>
+            <input type="text" id="archive-content" class="field" placeholder="짧은 설명 (선택)">
+            <div>
+              <label class="block text-[11px] font-bold text-dolhoe mb-1">파일 (선택 — 올리지 않으면 다운로드 버튼 없이 목록에만 표시돼요)</label>
+              <input type="file" id="archive-file" class="field">
+            </div>
+            <div class="flex items-center gap-2">
+              <input type="number" id="archive-sort" class="field" style="width:100px" value="0" placeholder="순서">
+              <button type="submit" id="archive-form-submit" class="btn-ghost">저장</button>
+              <button type="button" id="archive-form-cancel" class="btn-ghost hidden">취소</button>
+            </div>
+          </form>
+          <p id="archive-form-error" class="text-sm text-ongi hidden mb-3"></p>
+          <div id="archive-item-list" class="divide-y divide-black/5"></div>
+        </section>
+      </div>
 
     </main>
   </div>
@@ -136,29 +339,6 @@
   const { createClient } = supabase;
   const db = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  const loginView = document.getElementById('login-view');
-  const adminView = document.getElementById('admin-view');
-  const loginForm = document.getElementById('login-form');
-  const loginError = document.getElementById('login-error');
-  const loginSubmit = document.getElementById('login-submit');
-  const whoami = document.getElementById('whoami');
-  const logoutBtn = document.getElementById('logout-btn');
-
-  const postForm = document.getElementById('post-form');
-  const postIdField = document.getElementById('post-id');
-  const categoryField = document.getElementById('post-category');
-  const dateField = document.getElementById('post-date');
-  const titleField = document.getElementById('post-title');
-  const contentField = document.getElementById('post-content');
-  const photoField = document.getElementById('post-photo');
-  const photoPreview = document.getElementById('post-photo-preview');
-  const formTitle = document.getElementById('form-title');
-  const formError = document.getElementById('form-error');
-  const formSubmit = document.getElementById('form-submit');
-  const formCancel = document.getElementById('form-cancel');
-  const formStatus = document.getElementById('form-status');
-  const postList = document.getElementById('post-list');
-
   function esc(str) {
     const div = document.createElement('div');
     div.textContent = str == null ? '' : str;
@@ -168,15 +348,26 @@
     const d = new Date();
     return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
   }
-  function showError(el, msg) {
-    el.textContent = msg;
-    el.classList.remove('hidden');
-  }
-  function hideError(el) {
-    el.classList.add('hidden');
+  function showError(el, msg) { el.textContent = msg; el.classList.remove('hidden'); }
+  function hideError(el) { el.classList.add('hidden'); }
+  async function uploadPhoto(file, folder) {
+    const ext = file.name.split('.').pop();
+    const path = `${folder}/${Date.now()}_${Math.random().toString(36).slice(2, 7)}.${ext}`;
+    const { error } = await db.storage.from('photos').upload(path, file);
+    if (error) throw error;
+    const { data: pub } = db.storage.from('photos').getPublicUrl(path);
+    return pub.publicUrl;
   }
 
-  // ---------- 로그인 상태 ----------
+  // ---------- 로그인 / 로그아웃 ----------
+  const loginView = document.getElementById('login-view');
+  const adminView = document.getElementById('admin-view');
+  const loginForm = document.getElementById('login-form');
+  const loginError = document.getElementById('login-error');
+  const loginSubmit = document.getElementById('login-submit');
+  const whoami = document.getElementById('whoami');
+  const logoutBtn = document.getElementById('logout-btn');
+
   async function refreshView() {
     const { data: { session } } = await db.auth.getSession();
     if (session) {
@@ -184,6 +375,11 @@
       adminView.classList.remove('hidden');
       whoami.textContent = session.user.email;
       loadPosts();
+      loadPrograms();
+      loadAboutSettings();
+      loadStats();
+      loadInfoItems('welfare');
+      loadInfoItems('archive');
     } else {
       adminView.classList.add('hidden');
       loginView.classList.remove('hidden');
@@ -212,7 +408,34 @@
     refreshView();
   });
 
-  // ---------- 글 목록 ----------
+  // ---------- 탭 전환 ----------
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+      document.getElementById('tab-' + btn.dataset.tab).classList.remove('hidden');
+    });
+  });
+
+  /* ================================================================ */
+  /* 탭 1. 알림마당                                                     */
+  /* ================================================================ */
+  const postForm = document.getElementById('post-form');
+  const postIdField = document.getElementById('post-id');
+  const categoryField = document.getElementById('post-category');
+  const dateField = document.getElementById('post-date');
+  const titleField = document.getElementById('post-title');
+  const contentField = document.getElementById('post-content');
+  const photoField = document.getElementById('post-photo');
+  const photoPreview = document.getElementById('post-photo-preview');
+  const postFormTitle = document.getElementById('post-form-title');
+  const postFormError = document.getElementById('post-form-error');
+  const postFormSubmit = document.getElementById('post-form-submit');
+  const postFormCancel = document.getElementById('post-form-cancel');
+  const postFormStatus = document.getElementById('post-form-status');
+  const postList = document.getElementById('post-list');
+
   async function loadPosts() {
     const { data: posts, error } = await db
       .from('posts')
@@ -228,7 +451,6 @@
       postList.innerHTML = `<p class="text-sm text-dolhoe py-4">아직 등록된 글이 없습니다.</p>`;
       return;
     }
-
     postList.innerHTML = posts.map(p => `
       <div class="py-3 flex items-center justify-between gap-4">
         <div class="min-w-0">
@@ -239,18 +461,16 @@
           <p class="text-sm font-semibold truncate">${esc(p.title)}</p>
         </div>
         <div class="flex items-center gap-2 shrink-0">
-          <button type="button" class="btn-ghost text-xs px-3 py-1.5" onclick="editPost('${p.id}')">수정</button>
-          <button type="button" class="btn-ghost text-xs px-3 py-1.5" onclick="deletePost('${p.id}')">삭제</button>
+          <button type="button" class="btn-ghost btn-sm" onclick="editPost('${p.id}')">수정</button>
+          <button type="button" class="btn-ghost btn-sm" onclick="deletePost('${p.id}')">삭제</button>
         </div>
       </div>
     `).join('');
-
     window.__adminPosts = {};
     posts.forEach(p => window.__adminPosts[p.id] = p);
   }
 
-  // ---------- 글쓰기 / 수정 ----------
-  function resetForm() {
+  function resetPostForm() {
     postIdField.value = '';
     categoryField.value = 'notice';
     dateField.value = todayStr();
@@ -258,11 +478,11 @@
     contentField.value = '';
     photoField.value = '';
     photoPreview.innerHTML = '';
-    formTitle.textContent = '새 글쓰기';
-    formCancel.classList.add('hidden');
-    hideError(formError);
+    postFormTitle.textContent = '새 글쓰기';
+    postFormCancel.classList.add('hidden');
+    hideError(postFormError);
   }
-  resetForm();
+  resetPostForm();
 
   window.editPost = function(id) {
     const p = window.__adminPosts[id];
@@ -273,62 +493,45 @@
     titleField.value = p.title || '';
     contentField.value = p.content || '';
     photoField.value = '';
-    photoPreview.innerHTML = p.photo_url
-      ? `<img src="${esc(p.photo_url)}" class="mt-1 h-24 rounded-lg object-cover">`
-      : '';
-    formTitle.textContent = '글 수정';
-    formCancel.classList.remove('hidden');
-    hideError(formError);
+    photoPreview.innerHTML = p.photo_url ? `<img src="${esc(p.photo_url)}" class="mt-1 h-24 rounded-lg object-cover">` : '';
+    postFormTitle.textContent = '글 수정';
+    postFormCancel.classList.remove('hidden');
+    hideError(postFormError);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  formCancel.addEventListener('click', resetForm);
+  postFormCancel.addEventListener('click', resetPostForm);
 
   window.deletePost = async function(id) {
     const p = window.__adminPosts[id];
     if (!p) return;
     if (!window.confirm(`"${p.title}" 글을 삭제할까요? 되돌릴 수 없습니다.`)) return;
     const { error } = await db.from('posts').delete().eq('id', id);
-    if (error) {
-      alert('삭제하지 못했습니다: ' + error.message);
-      return;
-    }
-    if (postIdField.value === id) resetForm();
+    if (error) { alert('삭제하지 못했습니다: ' + error.message); return; }
+    if (postIdField.value === id) resetPostForm();
     loadPosts();
   };
 
   postForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    hideError(formError);
-
+    hideError(postFormError);
     const title = titleField.value.trim();
-    if (!title) {
-      showError(formError, '제목을 입력해주세요.');
-      return;
-    }
+    if (!title) { showError(postFormError, '제목을 입력해주세요.'); return; }
 
-    formSubmit.disabled = true;
-    formSubmit.textContent = '저장 중...';
-    formStatus.textContent = '';
-
+    postFormSubmit.disabled = true;
+    postFormSubmit.textContent = '저장 중...';
+    postFormStatus.textContent = '';
     try {
       let photoUrl = null;
       const existingId = postIdField.value;
       if (existingId && window.__adminPosts[existingId]) {
         photoUrl = window.__adminPosts[existingId].photo_url || null;
       }
-
       const file = photoField.files[0];
       if (file) {
-        formStatus.textContent = '사진 업로드 중...';
-        const ext = file.name.split('.').pop();
-        const path = `Posts/${Date.now()}.${ext}`;
-        const { error: uploadError } = await db.storage.from('photos').upload(path, file);
-        if (uploadError) throw uploadError;
-        const { data: pub } = db.storage.from('photos').getPublicUrl(path);
-        photoUrl = pub.publicUrl;
+        postFormStatus.textContent = '사진 업로드 중...';
+        photoUrl = await uploadPhoto(file, 'Posts');
       }
-
       const row = {
         category: categoryField.value,
         title: title,
@@ -336,36 +539,554 @@
         photo_url: photoUrl,
         published_at: dateField.value || todayStr(),
       };
-
-      formStatus.textContent = '글 저장 중...';
-      let saveError;
-      if (existingId) {
-        const { error } = await db.from('posts').update(row).eq('id', existingId);
-        saveError = error;
-      } else {
-        const { error } = await db.from('posts').insert(row);
-        saveError = error;
-      }
+      postFormStatus.textContent = '글 저장 중...';
+      const saveError = existingId
+        ? (await db.from('posts').update(row).eq('id', existingId)).error
+        : (await db.from('posts').insert(row)).error;
       if (saveError) throw saveError;
-
-      formStatus.textContent = '저장되었습니다.';
-      resetForm();
+      postFormStatus.textContent = '저장되었습니다.';
+      resetPostForm();
       loadPosts();
     } catch (err) {
-      showError(formError, '저장하지 못했습니다: ' + (err.message || err));
-      formStatus.textContent = '';
+      showError(postFormError, '저장하지 못했습니다: ' + (err.message || err));
+      postFormStatus.textContent = '';
     } finally {
-      formSubmit.disabled = false;
-      formSubmit.textContent = '저장';
+      postFormSubmit.disabled = false;
+      postFormSubmit.textContent = '저장';
     }
   });
 
   photoField.addEventListener('change', () => {
     const file = photoField.files[0];
     if (!file) { photoPreview.innerHTML = ''; return; }
-    const url = URL.createObjectURL(file);
-    photoPreview.innerHTML = `<img src="${url}" class="mt-1 h-24 rounded-lg object-cover">`;
+    photoPreview.innerHTML = `<img src="${URL.createObjectURL(file)}" class="mt-1 h-24 rounded-lg object-cover">`;
   });
+
+  /* ================================================================ */
+  /* 탭 2. 사업안내                                                     */
+  /* ================================================================ */
+  const bizSelect = document.getElementById('biz-select');
+  const programForm = document.getElementById('program-form');
+  const programIdField = document.getElementById('program-id');
+  const programNameField = document.getElementById('program-name');
+  const programDescField = document.getElementById('program-description');
+  const programPhotoField = document.getElementById('program-photo');
+  const programPhotoPreview = document.getElementById('program-photo-preview');
+  const programSortField = document.getElementById('program-sort');
+  const programFormTitle = document.getElementById('program-form-title');
+  const programFormError = document.getElementById('program-form-error');
+  const programFormSubmit = document.getElementById('program-form-submit');
+  const programFormCancel = document.getElementById('program-form-cancel');
+  const programFormStatus = document.getElementById('program-form-status');
+  const programList = document.getElementById('program-list');
+  const programDetailPanel = document.getElementById('program-detail-panel');
+
+  window.__programs = {};
+
+  bizSelect.addEventListener('change', () => { resetProgramForm(); loadPrograms(); });
+
+  async function loadPrograms() {
+    const bizId = bizSelect.value;
+    const { data: programs, error } = await db
+      .from('programs')
+      .select('*')
+      .eq('business_id', bizId)
+      .order('sort_order', { ascending: true });
+
+    if (error) {
+      programList.innerHTML = `<p class="text-sm text-ongi py-4">목록을 불러오지 못했습니다: ${esc(error.message)}</p>`;
+      return;
+    }
+    if (!programs || programs.length === 0) {
+      programList.innerHTML = `<p class="text-sm text-dolhoe py-4">아직 등록된 프로그램이 없습니다. 위에서 새로 추가해보세요.</p>`;
+      return;
+    }
+    programList.innerHTML = programs.map(p => `
+      <div class="py-3 flex items-center justify-between gap-4">
+        <div class="min-w-0 flex items-center gap-3">
+          ${p.photo_url ? `<img src="${esc(p.photo_url)}" class="w-12 h-12 rounded-lg object-cover shrink-0">` : ''}
+          <div class="min-w-0">
+            <p class="text-sm font-semibold truncate">${esc(p.name)}</p>
+            <p class="text-xs text-dolhoe truncate">${esc((p.description || '').slice(0, 40))}</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <button type="button" class="btn-ghost btn-sm" onclick="editProgram('${p.id}')">수정</button>
+          <button type="button" class="btn-ghost btn-sm" onclick="deleteProgram('${p.id}')">삭제</button>
+        </div>
+      </div>
+    `).join('');
+    window.__programs = {};
+    programs.forEach(p => window.__programs[p.id] = p);
+  }
+
+  function resetProgramForm() {
+    programIdField.value = '';
+    programNameField.value = '';
+    programDescField.value = '';
+    programPhotoField.value = '';
+    programPhotoPreview.innerHTML = '';
+    programSortField.value = '0';
+    programFormTitle.textContent = '새 프로그램 추가';
+    programFormCancel.classList.add('hidden');
+    hideError(programFormError);
+    programDetailPanel.classList.add('hidden');
+  }
+  resetProgramForm();
+
+  window.editProgram = function(id) {
+    const p = window.__programs[id];
+    if (!p) return;
+    programIdField.value = p.id;
+    programNameField.value = p.name || '';
+    programDescField.value = p.description || '';
+    programPhotoField.value = '';
+    programPhotoPreview.innerHTML = p.photo_url ? `<img src="${esc(p.photo_url)}" class="mt-1 h-20 rounded-lg object-cover">` : '';
+    programSortField.value = p.sort_order || 0;
+    programFormTitle.textContent = '프로그램 수정';
+    programFormCancel.classList.remove('hidden');
+    hideError(programFormError);
+    programDetailPanel.classList.remove('hidden');
+    loadTimeline(id);
+    loadGallery(id);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  programFormCancel.addEventListener('click', resetProgramForm);
+
+  window.deleteProgram = async function(id) {
+    const p = window.__programs[id];
+    if (!p) return;
+    if (!window.confirm(`"${p.name}" 프로그램을 삭제할까요? 연혁·갤러리 사진도 함께 삭제되며 되돌릴 수 없습니다.`)) return;
+    const { error } = await db.from('programs').delete().eq('id', id);
+    if (error) { alert('삭제하지 못했습니다: ' + error.message); return; }
+    if (programIdField.value === id) resetProgramForm();
+    loadPrograms();
+  };
+
+  programForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideError(programFormError);
+    const name = programNameField.value.trim();
+    if (!name) { showError(programFormError, '프로그램 이름을 입력해주세요.'); return; }
+
+    programFormSubmit.disabled = true;
+    programFormSubmit.textContent = '저장 중...';
+    programFormStatus.textContent = '';
+    try {
+      let photoUrl = null;
+      const existingId = programIdField.value;
+      if (existingId && window.__programs[existingId]) {
+        photoUrl = window.__programs[existingId].photo_url || null;
+      }
+      const file = programPhotoField.files[0];
+      if (file) {
+        programFormStatus.textContent = '사진 업로드 중...';
+        photoUrl = await uploadPhoto(file, 'Programs');
+      }
+      const row = {
+        business_id: bizSelect.value,
+        name: name,
+        description: programDescField.value,
+        photo_url: photoUrl,
+        sort_order: parseInt(programSortField.value, 10) || 0,
+      };
+      programFormStatus.textContent = '저장 중...';
+      let savedId = existingId;
+      if (existingId) {
+        const { error } = await db.from('programs').update(row).eq('id', existingId);
+        if (error) throw error;
+      } else {
+        const { data, error } = await db.from('programs').insert(row).select().single();
+        if (error) throw error;
+        savedId = data.id;
+      }
+      programFormStatus.textContent = '저장되었습니다.';
+      await loadPrograms();
+      // 저장 직후에도 연혁/갤러리를 이어서 등록할 수 있도록 수정 모드로 전환
+      if (savedId) window.editProgram(savedId);
+    } catch (err) {
+      showError(programFormError, '저장하지 못했습니다: ' + (err.message || err));
+      programFormStatus.textContent = '';
+    } finally {
+      programFormSubmit.disabled = false;
+      programFormSubmit.textContent = '저장';
+    }
+  });
+
+  programPhotoField.addEventListener('change', () => {
+    const file = programPhotoField.files[0];
+    if (!file) { programPhotoPreview.innerHTML = ''; return; }
+    programPhotoPreview.innerHTML = `<img src="${URL.createObjectURL(file)}" class="mt-1 h-20 rounded-lg object-cover">`;
+  });
+
+  // ---- 연혁 · 성과 ----
+  const timelineList = document.getElementById('timeline-list');
+  const timelineForm = document.getElementById('timeline-form');
+  const timelineDate = document.getElementById('timeline-date');
+  const timelineEvent = document.getElementById('timeline-event');
+
+  async function loadTimeline(programId) {
+    const { data, error } = await db
+      .from('program_timeline')
+      .select('*')
+      .eq('program_id', programId)
+      .order('sort_order', { ascending: true });
+    if (error) { timelineList.innerHTML = `<p class="text-xs text-ongi">${esc(error.message)}</p>`; return; }
+    if (!data || data.length === 0) { timelineList.innerHTML = `<p class="text-xs text-dolhoe">등록된 연혁이 없습니다.</p>`; return; }
+    timelineList.innerHTML = data.map(t => `
+      <div class="flex items-center justify-between gap-3 text-sm border border-black/10 rounded-lg px-3 py-2">
+        <div class="flex gap-3 min-w-0">
+          <span class="text-naran font-bold shrink-0">${esc(t.date_label)}</span>
+          <span class="truncate">${esc(t.event)}</span>
+        </div>
+        <button type="button" class="text-xs text-dolhoe hover:text-ongi shrink-0" onclick="deleteTimeline('${t.id}','${programId}')">삭제</button>
+      </div>
+    `).join('');
+  }
+
+  timelineForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const programId = programIdField.value;
+    if (!programId) return;
+    const date_label = timelineDate.value.trim();
+    const event = timelineEvent.value.trim();
+    if (!date_label || !event) return;
+    const { data: existing } = await db.from('program_timeline').select('sort_order').eq('program_id', programId).order('sort_order', { ascending: false }).limit(1);
+    const nextSort = existing && existing.length > 0 ? (existing[0].sort_order || 0) + 1 : 0;
+    const { error } = await db.from('program_timeline').insert({ program_id: programId, date_label, event, sort_order: nextSort });
+    if (error) { alert('추가하지 못했습니다: ' + error.message); return; }
+    timelineDate.value = '';
+    timelineEvent.value = '';
+    loadTimeline(programId);
+  });
+
+  window.deleteTimeline = async function(id, programId) {
+    const { error } = await db.from('program_timeline').delete().eq('id', id);
+    if (error) { alert('삭제하지 못했습니다: ' + error.message); return; }
+    loadTimeline(programId);
+  };
+
+  // ---- 사진 갤러리 ----
+  const galleryList = document.getElementById('gallery-list');
+  const galleryPhotoField = document.getElementById('gallery-photo');
+
+  async function loadGallery(programId) {
+    const { data, error } = await db
+      .from('program_photos')
+      .select('*')
+      .eq('program_id', programId)
+      .order('sort_order', { ascending: true });
+    if (error) { galleryList.innerHTML = `<p class="text-xs text-ongi col-span-full">${esc(error.message)}</p>`; return; }
+    if (!data || data.length === 0) { galleryList.innerHTML = `<p class="text-xs text-dolhoe col-span-full">등록된 사진이 없습니다.</p>`; return; }
+    galleryList.innerHTML = data.map(ph => `
+      <div class="relative group">
+        <img src="${esc(ph.photo_url)}" class="w-full aspect-square object-cover rounded-lg border border-black/10">
+        <button type="button" class="absolute top-1 right-1 bg-black/60 text-white text-[10px] font-bold px-1.5 py-0.5 rounded" onclick="deleteGalleryPhoto('${ph.id}','${programId}')">삭제</button>
+      </div>
+    `).join('');
+  }
+
+  galleryPhotoField.addEventListener('change', async () => {
+    const file = galleryPhotoField.files[0];
+    const programId = programIdField.value;
+    if (!file || !programId) return;
+    try {
+      const url = await uploadPhoto(file, 'Programs');
+      const { data: existing } = await db.from('program_photos').select('sort_order').eq('program_id', programId).order('sort_order', { ascending: false }).limit(1);
+      const nextSort = existing && existing.length > 0 ? (existing[0].sort_order || 0) + 1 : 0;
+      const { error } = await db.from('program_photos').insert({ program_id: programId, photo_url: url, sort_order: nextSort });
+      if (error) throw error;
+      galleryPhotoField.value = '';
+      loadGallery(programId);
+    } catch (err) {
+      alert('사진을 추가하지 못했습니다: ' + (err.message || err));
+    }
+  });
+
+  window.deleteGalleryPhoto = async function(id, programId) {
+    const { error } = await db.from('program_photos').delete().eq('id', id);
+    if (error) { alert('삭제하지 못했습니다: ' + error.message); return; }
+    loadGallery(programId);
+  };
+
+  /* ================================================================ */
+  /* 탭 3. 소개                                                        */
+  /* ================================================================ */
+  const heroForm = document.getElementById('hero-form');
+  const heroTagInput = document.getElementById('hero-tag-input');
+  const heroTitleInput = document.getElementById('hero-title-input');
+  const heroBodyInput = document.getElementById('hero-body-input');
+  const heroPhotoInput = document.getElementById('hero-photo-input');
+  const heroPhotoPreview = document.getElementById('hero-photo-preview');
+  const heroFormError = document.getElementById('hero-form-error');
+  const heroFormSubmit = document.getElementById('hero-form-submit');
+  const heroFormStatus = document.getElementById('hero-form-status');
+
+  window.__siteSettings = {};
+
+  async function loadAboutSettings() {
+    const { data, error } = await db.from('site_settings').select('*');
+    if (error) return;
+    window.__siteSettings = {};
+    (data || []).forEach(r => { window.__siteSettings[r.key] = r.value; });
+    heroTagInput.value = window.__siteSettings.hero_tag || '';
+    heroTitleInput.value = window.__siteSettings.hero_title || '';
+    heroBodyInput.value = window.__siteSettings.hero_body || '';
+    heroPhotoPreview.innerHTML = window.__siteSettings.hero_photo_url
+      ? `<img src="${esc(window.__siteSettings.hero_photo_url)}" class="mt-1 h-24 rounded-lg object-cover">`
+      : '';
+  }
+
+  heroPhotoInput.addEventListener('change', () => {
+    const file = heroPhotoInput.files[0];
+    if (!file) return;
+    heroPhotoPreview.innerHTML = `<img src="${URL.createObjectURL(file)}" class="mt-1 h-24 rounded-lg object-cover">`;
+  });
+
+  heroForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideError(heroFormError);
+    heroFormSubmit.disabled = true;
+    heroFormSubmit.textContent = '저장 중...';
+    heroFormStatus.textContent = '';
+    try {
+      let photoUrl = window.__siteSettings.hero_photo_url || null;
+      const file = heroPhotoInput.files[0];
+      if (file) {
+        heroFormStatus.textContent = '사진 업로드 중...';
+        photoUrl = await uploadPhoto(file, 'Hero');
+      }
+      const rows = [
+        { key: 'hero_tag', value: heroTagInput.value },
+        { key: 'hero_title', value: heroTitleInput.value },
+        { key: 'hero_body', value: heroBodyInput.value },
+        { key: 'hero_photo_url', value: photoUrl || '' },
+      ];
+      heroFormStatus.textContent = '저장 중...';
+      const { error } = await db.from('site_settings').upsert(rows, { onConflict: 'key' });
+      if (error) throw error;
+      heroFormStatus.textContent = '저장되었습니다.';
+      heroPhotoInput.value = '';
+      loadAboutSettings();
+    } catch (err) {
+      showError(heroFormError, '저장하지 못했습니다: ' + (err.message || err));
+      heroFormStatus.textContent = '';
+    } finally {
+      heroFormSubmit.disabled = false;
+      heroFormSubmit.textContent = '저장';
+    }
+  });
+
+  // ---- 소개 통계 4개 ----
+  const statForm = document.getElementById('stat-form');
+  const statIdField = document.getElementById('stat-id');
+  const statValueField = document.getElementById('stat-value');
+  const statUnitField = document.getElementById('stat-unit');
+  const statCaptionField = document.getElementById('stat-caption');
+  const statSortField = document.getElementById('stat-sort');
+  const statFormError = document.getElementById('stat-form-error');
+  const statFormSubmit = document.getElementById('stat-form-submit');
+  const statFormCancel = document.getElementById('stat-form-cancel');
+  const statList = document.getElementById('stat-list');
+
+  window.__stats = {};
+
+  async function loadStats() {
+    const { data, error } = await db.from('about_stats').select('*').order('sort_order', { ascending: true });
+    if (error) { statList.innerHTML = `<p class="text-sm text-ongi py-3">${esc(error.message)}</p>`; return; }
+    if (!data || data.length === 0) { statList.innerHTML = `<p class="text-sm text-dolhoe py-3">아직 등록된 통계 카드가 없습니다.</p>`; return; }
+    statList.innerHTML = data.map(s => `
+      <div class="py-3 flex items-center justify-between gap-4">
+        <div class="min-w-0">
+          <p class="text-sm font-semibold">${esc(s.main_value)}${esc(s.main_unit)}</p>
+          <p class="text-xs text-dolhoe truncate">${esc(s.caption)}</p>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <button type="button" class="btn-ghost btn-sm" onclick="editStat('${s.id}')">수정</button>
+          <button type="button" class="btn-ghost btn-sm" onclick="deleteStat('${s.id}')">삭제</button>
+        </div>
+      </div>
+    `).join('');
+    window.__stats = {};
+    data.forEach(s => window.__stats[s.id] = s);
+  }
+
+  function resetStatForm() {
+    statIdField.value = '';
+    statValueField.value = '';
+    statUnitField.value = '';
+    statCaptionField.value = '';
+    statSortField.value = '0';
+    statFormCancel.classList.add('hidden');
+    hideError(statFormError);
+  }
+
+  window.editStat = function(id) {
+    const s = window.__stats[id];
+    if (!s) return;
+    statIdField.value = s.id;
+    statValueField.value = s.main_value || '';
+    statUnitField.value = s.main_unit || '';
+    statCaptionField.value = s.caption || '';
+    statSortField.value = s.sort_order || 0;
+    statFormCancel.classList.remove('hidden');
+    hideError(statFormError);
+  };
+  statFormCancel.addEventListener('click', resetStatForm);
+
+  window.deleteStat = async function(id) {
+    if (!window.confirm('이 통계 카드를 삭제할까요?')) return;
+    const { error } = await db.from('about_stats').delete().eq('id', id);
+    if (error) { alert('삭제하지 못했습니다: ' + error.message); return; }
+    if (statIdField.value === id) resetStatForm();
+    loadStats();
+  };
+
+  statForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideError(statFormError);
+    const row = {
+      main_value: statValueField.value.trim(),
+      main_unit: statUnitField.value.trim(),
+      caption: statCaptionField.value.trim(),
+      sort_order: parseInt(statSortField.value, 10) || 0,
+    };
+    if (!row.main_value || !row.caption) { showError(statFormError, '숫자와 설명을 입력해주세요.'); return; }
+    const existingId = statIdField.value;
+    const { error } = existingId
+      ? await db.from('about_stats').update(row).eq('id', existingId)
+      : await db.from('about_stats').insert(row);
+    if (error) { showError(statFormError, '저장하지 못했습니다: ' + error.message); return; }
+    resetStatForm();
+    loadStats();
+  });
+
+  /* ================================================================ */
+  /* 탭 4. 정보나눔 (복지제도 / 자료실)                                  */
+  /* ================================================================ */
+  function setupInfoSection(category, ids) {
+    const form = document.getElementById(ids.form);
+    const idField = document.getElementById(ids.id);
+    const titleField = document.getElementById(ids.title);
+    const contentField = document.getElementById(ids.content);
+    const sortField = document.getElementById(ids.sort);
+    const fileField = ids.file ? document.getElementById(ids.file) : null;
+    const errorEl = document.getElementById(ids.error);
+    const submitBtn = document.getElementById(ids.submit);
+    const cancelBtn = document.getElementById(ids.cancel);
+    const listEl = document.getElementById(ids.list);
+    const store = {};
+
+    async function load() {
+      const { data, error } = await db.from('info_items').select('*').eq('category', category).order('sort_order', { ascending: true });
+      if (error) { listEl.innerHTML = `<p class="text-sm text-ongi py-3">${esc(error.message)}</p>`; return; }
+      Object.keys(store).forEach(k => delete store[k]);
+      if (!data || data.length === 0) { listEl.innerHTML = `<p class="text-sm text-dolhoe py-3">아직 등록된 항목이 없습니다.</p>`; return; }
+      data.forEach(it => store[it.id] = it);
+      listEl.innerHTML = data.map(it => `
+        <div class="py-3 flex items-center justify-between gap-4">
+          <div class="min-w-0">
+            <p class="text-sm font-semibold truncate">${esc(it.title)}</p>
+            ${it.file_url ? `<a href="${esc(it.file_url)}" target="_blank" rel="noopener" class="text-xs text-naran hover:underline">첨부파일 보기</a>` : `<p class="text-xs text-dolhoe truncate">${esc((it.content || '').slice(0, 40))}</p>`}
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <button type="button" class="btn-ghost btn-sm" data-edit="${it.id}">수정</button>
+            <button type="button" class="btn-ghost btn-sm" data-del="${it.id}">삭제</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function reset() {
+      idField.value = '';
+      titleField.value = '';
+      contentField.value = '';
+      sortField.value = '0';
+      if (fileField) fileField.value = '';
+      cancelBtn.classList.add('hidden');
+      hideError(errorEl);
+    }
+    reset();
+
+    listEl.addEventListener('click', async (e) => {
+      const editId = e.target.dataset && e.target.dataset.edit;
+      const delId = e.target.dataset && e.target.dataset.del;
+      if (editId) {
+        const it = store[editId];
+        if (!it) return;
+        idField.value = it.id;
+        titleField.value = it.title || '';
+        contentField.value = it.content || '';
+        sortField.value = it.sort_order || 0;
+        cancelBtn.classList.remove('hidden');
+        hideError(errorEl);
+        window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+      } else if (delId) {
+        const it = store[delId];
+        if (!it) return;
+        if (!window.confirm(`"${it.title}" 항목을 삭제할까요?`)) return;
+        const { error } = await db.from('info_items').delete().eq('id', delId);
+        if (error) { alert('삭제하지 못했습니다: ' + error.message); return; }
+        if (idField.value === delId) reset();
+        load();
+      }
+    });
+
+    cancelBtn.addEventListener('click', reset);
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      hideError(errorEl);
+      const title = titleField.value.trim();
+      if (!title) { showError(errorEl, '제목을 입력해주세요.'); return; }
+      submitBtn.disabled = true;
+      submitBtn.textContent = '저장 중...';
+      try {
+        let fileUrl = null;
+        const existingId = idField.value;
+        if (existingId && store[existingId]) fileUrl = store[existingId].file_url || null;
+        if (fileField && fileField.files[0]) {
+          fileUrl = await uploadPhoto(fileField.files[0], category === 'archive' ? 'Archive' : 'Info');
+        }
+        const row = {
+          category: category,
+          title: title,
+          content: contentField.value,
+          file_url: fileUrl,
+          sort_order: parseInt(sortField.value, 10) || 0,
+        };
+        const { error } = existingId
+          ? await db.from('info_items').update(row).eq('id', existingId)
+          : await db.from('info_items').insert(row);
+        if (error) throw error;
+        reset();
+        load();
+      } catch (err) {
+        showError(errorEl, '저장하지 못했습니다: ' + (err.message || err));
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = '저장';
+      }
+    });
+
+    return { load };
+  }
+
+  const welfareSection = setupInfoSection('welfare', {
+    form: 'welfare-form', id: 'welfare-id', title: 'welfare-title', content: 'welfare-content',
+    sort: 'welfare-sort', error: 'welfare-form-error', submit: 'welfare-form-submit',
+    cancel: 'welfare-form-cancel', list: 'welfare-item-list',
+  });
+  const archiveSection = setupInfoSection('archive', {
+    form: 'archive-form', id: 'archive-id', title: 'archive-title', content: 'archive-content',
+    sort: 'archive-sort', file: 'archive-file', error: 'archive-form-error', submit: 'archive-form-submit',
+    cancel: 'archive-form-cancel', list: 'archive-item-list',
+  });
+  function loadInfoItems(category) {
+    if (category === 'welfare') welfareSection.load();
+    else archiveSection.load();
+  }
 
   refreshView();
   db.auth.onAuthStateChange(() => refreshView());
