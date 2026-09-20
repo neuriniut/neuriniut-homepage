@@ -888,6 +888,19 @@
       (timelineByProgram[row.program_id] = timelineByProgram[row.program_id] || []).push(row);
     });
 
+    // 프로그램별 여러 장 사진(갤러리) — program_photos 테이블이 없거나 비어 있으면 조용히 건너뜀
+    let photosByProgram = {};
+    try {
+      const { data: photoRows } = await db
+        .from('program_photos')
+        .select('*')
+        .in('program_id', ids)
+        .order('sort_order', { ascending: true });
+      (photoRows || []).forEach(row => {
+        (photosByProgram[row.program_id] = photosByProgram[row.program_id] || []).push(row);
+      });
+    } catch (e) { /* program_photos 테이블이 아직 없어도 나머지는 정상 표시 */ }
+
     function esc(str) {
       const div = document.createElement('div');
       div.textContent = str == null ? '' : str;
@@ -904,9 +917,22 @@
       const timeline = timelineByProgram[p.id];
       const hasTimeline = timeline && timeline.length > 0;
 
-      const photoBlock = p.photo_url
-        ? `<img src="${esc(p.photo_url)}" alt="${esc(p.name)}" class="aspect-[16/10] sm:aspect-auto w-full h-full object-cover">`
-        : `<div class="photo-guide aspect-[16/10] sm:aspect-auto flex items-end p-3"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — ${esc(p.name)}</span></div>`;
+      const photos = photosByProgram[p.id];
+      const hasGallery = photos && photos.length > 0;
+
+      let photoBlock;
+      if (hasGallery) {
+        photoBlock = `<div class="relative aspect-[16/10] sm:aspect-auto sm:h-full">
+          <div class="flex gap-0 overflow-x-auto snap-x snap-mandatory h-full w-full">
+            ${photos.map(ph => `<img src="${esc(ph.photo_url)}" alt="${esc(p.name)}" class="snap-center shrink-0 w-full h-full object-cover">`).join('')}
+          </div>
+          ${photos.length > 1 ? `<span class="absolute bottom-2 right-2 text-[11px] font-bold px-2 py-1 rounded bg-black/50 text-white">1/${photos.length} · 넘겨보기</span>` : ''}
+        </div>`;
+      } else if (p.photo_url) {
+        photoBlock = `<img src="${esc(p.photo_url)}" alt="${esc(p.name)}" class="aspect-[16/10] sm:aspect-auto w-full h-full object-cover">`;
+      } else {
+        photoBlock = `<div class="photo-guide aspect-[16/10] sm:aspect-auto flex items-end p-3"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — ${esc(p.name)}</span></div>`;
+      }
 
       const timelineBlock = hasTimeline
         ? `<div class="border-t border-black/10 p-5">
