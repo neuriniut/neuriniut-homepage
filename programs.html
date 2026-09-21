@@ -100,7 +100,7 @@
         <a href="programs.html" class="flex items-center gap-1 px-3 py-2 rounded-lg hover:text-naran hover:bg-byeot/60 transition-colors">사업안내</a>
         <div class="nav-drop absolute left-0 top-full pt-2 w-64">
           <div class="bg-white rounded-xl border border-black/10 shadow-lg py-2">
-            <a href="programs.html#biz-independence" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran leading-snug">발달장애인의 사회참여 및<br>자립 준비 지원 사업</a>
+            <a href="programs.html#prog-sports" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran leading-snug">발달장애인의 사회참여 및<br>자립 준비 지원 사업</a>
             <a href="programs.html#biz-family" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran leading-snug">발달장애인 가족통합 지원 사업</a>
             <a href="programs.html#biz-parent" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran leading-snug">발달장애인의 부모역량 강화 사업</a>
             <a href="programs.html#biz-community" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran leading-snug">지역사회 연대사업</a>
@@ -174,7 +174,7 @@
       <div class="py-6 border-b border-black/10">
         <p class="text-xl font-extrabold text-meok mb-3">사업안내</p>
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
-          <a href="programs.html#biz-independence" class="text-base text-dolhoe" data-close-menu>발달장애인의 사회참여 및 자립 준비 지원 사업</a>
+          <a href="programs.html#prog-sports" class="text-base text-dolhoe" data-close-menu>발달장애인의 사회참여 및 자립 준비 지원 사업</a>
           <a href="programs.html#biz-family" class="text-base text-dolhoe" data-close-menu>발달장애인 가족통합 지원 사업</a>
           <a href="programs.html#biz-parent" class="text-base text-dolhoe" data-close-menu>발달장애인의 부모역량 강화 사업</a>
           <a href="programs.html#biz-community" class="text-base text-dolhoe" data-close-menu>지역사회 연대사업</a>
@@ -229,7 +229,7 @@
             <p class="text-iwoot text-xs font-bold mb-1">사업 01</p>
             <h3 class="font-bold text-lg mb-2">발달장애인의 사회참여 및<br class="hidden sm:block">자립 준비 지원 사업</h3>
             <p class="text-dolhoe text-sm leading-relaxed mb-4">동아리 활동과 전문 교육을 통해 당사자가 지역사회 안에서 스스로 할 수 있는 것을 넓혀갑니다.</p>
-            <a href="#biz-independence" class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
+            <a href="#prog-sports" class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
           </div>
         </article>
 
@@ -387,20 +387,57 @@
     <!-- 상세 화면 01-1: 슐런스포츠단 운영 -->
     <div id="prog-sports" class="programs-detail hidden">
       <a href="#biz-independence" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-4"><span aria-hidden="true">←</span> 발달장애인의 사회참여 및 자립 준비 지원 사업으로</a>
-      <nav class="text-xs text-dolhoe mb-6" aria-label="현재 위치">
+      <nav class="text-xs text-dolhoe mb-8" aria-label="현재 위치">
         <a href="#programs" class="hover:text-naran">사업안내</a>
         <span class="mx-1.5" aria-hidden="true">›</span>
         <a href="#biz-independence" class="hover:text-naran">발달장애인의 사회참여 및 자립 준비 지원 사업</a>
         <span class="mx-1.5" aria-hidden="true">›</span>
-        <span class="text-meok font-bold">슐런스포츠단 운영</span>
+        <span class="relative inline-block">
+          <button type="button" class="inline-flex items-center gap-1 text-meok font-bold hover:text-naran" aria-haspopup="true" aria-expanded="false" data-prog-switch-btn>
+            슐런스포츠단 운영
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="hidden absolute left-0 top-full mt-2 w-56 bg-white rounded-xl border border-black/10 shadow-lg py-2 z-20" data-prog-switch-menu>
+            <a href="#prog-sports" class="block px-4 py-2 text-sm font-bold text-naran">슐런스포츠단 운영</a>
+            <a href="#prog-choir" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">발달장애인합창단</a>
+            <a href="#prog-selfhelp" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">당사자 자조모임</a>
+            <a href="#prog-culture" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">문화여가활동</a>
+          </div>
+        </span>
       </nav>
+
+      <p class="text-iwoot font-bold text-sm mb-2">사업 01 · 발달장애인의 사회참여 및 자립 준비 지원 사업</p>
+      <p class="text-dolhoe leading-relaxed max-w-xl mb-8">당사자가 자신의 방식대로 지역사회에 참여하고, 스스로 할 수 있는 것을 하나씩 넓혀가도록 돕습니다.</p>
+
+      <div class="bg-byeot rounded-t-2xl px-6 sm:px-10 py-8 flex items-center">
+        <div class="flex-1 flex flex-col items-center gap-2.5 text-center">
+          <div class="w-11 h-11 rounded-full bg-white flex items-center justify-center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          </div>
+          <p class="text-lg sm:text-xl font-extrabold text-meok">2025년 8월</p>
+          <p class="text-xs text-dolhoe">슐런스포츠단 결성</p>
+        </div>
+        <div class="w-px h-16 bg-black/10 shrink-0"></div>
+        <div class="flex-1 flex flex-col items-center gap-2.5 text-center">
+          <div class="w-11 h-11 rounded-full bg-white flex items-center justify-center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="15" r="6"></circle><path d="M9 10 6 2M15 10l3-8"></path></svg>
+          </div>
+          <p class="text-lg sm:text-xl font-extrabold text-meok">대회 입상 3회</p>
+          <p class="text-xs text-dolhoe">2025~2026 누적</p>
+        </div>
+      </div>
+      <div class="bg-iwoot text-white text-center text-sm font-bold py-2.5 rounded-b-2xl mb-14">슐런스포츠단</div>
+
+      <h3 class="text-2xl md:text-3xl font-extrabold text-meok mb-8">느린이웃이 하고 있습니다</h3>
+
+      <div class="max-w-2xl mb-6">
+        <p class="text-lg font-extrabold text-naran mb-1.5">슐런스포츠단 운영</p>
+        <p class="text-sm text-dolhoe leading-relaxed">정기 훈련과 대회 출전으로 이어지는 슐런스포츠단의 활동을 소개합니다.</p>
+      </div>
+
       <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
         <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 슐런스포츠단 훈련 또는 대회 출전 장면</span>
       </div>
-      <header class="max-w-2xl mb-8">
-        <p class="text-iwoot font-bold text-sm mb-2">사업 01 · 세부 프로그램</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">슐런스포츠단 운영</h2>
-      </header>
       <table class="w-full text-sm border-t border-black/10 mb-10">
         <tbody>
           <tr class="border-b border-black/10">
@@ -440,7 +477,18 @@
         <span class="mx-1.5" aria-hidden="true">›</span>
         <a href="#biz-independence" class="hover:text-naran">발달장애인의 사회참여 및 자립 준비 지원 사업</a>
         <span class="mx-1.5" aria-hidden="true">›</span>
-        <span class="text-meok font-bold">발달장애인합창단</span>
+        <span class="relative inline-block">
+          <button type="button" class="inline-flex items-center gap-1 text-meok font-bold hover:text-naran" aria-haspopup="true" aria-expanded="false" data-prog-switch-btn>
+            발달장애인합창단
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="hidden absolute left-0 top-full mt-2 w-56 bg-white rounded-xl border border-black/10 shadow-lg py-2 z-20" data-prog-switch-menu>
+            <a href="#prog-sports" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">슐런스포츠단 운영</a>
+            <a href="#prog-choir" class="block px-4 py-2 text-sm font-bold text-naran">발달장애인합창단</a>
+            <a href="#prog-selfhelp" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">당사자 자조모임</a>
+            <a href="#prog-culture" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">문화여가활동</a>
+          </div>
+        </span>
       </nav>
       <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
         <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 발달장애인합창단 무대 또는 연습 장면</span>
@@ -475,7 +523,18 @@
         <span class="mx-1.5" aria-hidden="true">›</span>
         <a href="#biz-independence" class="hover:text-naran">발달장애인의 사회참여 및 자립 준비 지원 사업</a>
         <span class="mx-1.5" aria-hidden="true">›</span>
-        <span class="text-meok font-bold">당사자 자조모임</span>
+        <span class="relative inline-block">
+          <button type="button" class="inline-flex items-center gap-1 text-meok font-bold hover:text-naran" aria-haspopup="true" aria-expanded="false" data-prog-switch-btn>
+            당사자 자조모임
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="hidden absolute left-0 top-full mt-2 w-56 bg-white rounded-xl border border-black/10 shadow-lg py-2 z-20" data-prog-switch-menu>
+            <a href="#prog-sports" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">슐런스포츠단 운영</a>
+            <a href="#prog-choir" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">발달장애인합창단</a>
+            <a href="#prog-selfhelp" class="block px-4 py-2 text-sm font-bold text-naran">당사자 자조모임</a>
+            <a href="#prog-culture" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">문화여가활동</a>
+          </div>
+        </span>
       </nav>
       <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
         <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 당사자 자조모임 장면</span>
@@ -510,7 +569,18 @@
         <span class="mx-1.5" aria-hidden="true">›</span>
         <a href="#biz-independence" class="hover:text-naran">발달장애인의 사회참여 및 자립 준비 지원 사업</a>
         <span class="mx-1.5" aria-hidden="true">›</span>
-        <span class="text-meok font-bold">문화여가활동</span>
+        <span class="relative inline-block">
+          <button type="button" class="inline-flex items-center gap-1 text-meok font-bold hover:text-naran" aria-haspopup="true" aria-expanded="false" data-prog-switch-btn>
+            문화여가활동
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="hidden absolute left-0 top-full mt-2 w-56 bg-white rounded-xl border border-black/10 shadow-lg py-2 z-20" data-prog-switch-menu>
+            <a href="#prog-sports" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">슐런스포츠단 운영</a>
+            <a href="#prog-choir" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">발달장애인합창단</a>
+            <a href="#prog-selfhelp" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">당사자 자조모임</a>
+            <a href="#prog-culture" class="block px-4 py-2 text-sm font-bold text-naran">문화여가활동</a>
+          </div>
+        </span>
       </nav>
       <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
         <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 문화여가활동 장면</span>
@@ -1375,6 +1445,29 @@ const menuBtn = document.getElementById('menuBtn');
 
   mobileMenu.querySelectorAll('[data-close-menu]').forEach(el => {
     el.addEventListener('click', closeMobileMenu);
+  });
+
+// 프로그램 전환 드롭다운 (브레드크럼의 현재 프로그램명을 눌러 같은 사업의 다른 프로그램으로 이동)
+  document.querySelectorAll('[data-prog-switch-btn]').forEach(btn => {
+    const menu = btn.nextElementSibling;
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('[data-prog-switch-btn]').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        b.nextElementSibling.classList.add('hidden');
+      });
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true');
+        menu.classList.remove('hidden');
+      }
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('[data-prog-switch-btn]').forEach(b => {
+      b.setAttribute('aria-expanded', 'false');
+      b.nextElementSibling.classList.add('hidden');
+    });
   });
 
 // 사업안내: 목록 ↔ 사업별 상세 ↔ 프로그램별 상세 화면 전환 (해시 기반)
