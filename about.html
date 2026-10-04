@@ -606,10 +606,13 @@ const menuBtn = document.getElementById('menuBtn');
     document.querySelectorAll('[data-lnb-link]').forEach(link => {
       link.classList.toggle('is-current', link.dataset.lnbLink === current);
     });
-    window.scrollTo({ top: 0 });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }
   window.addEventListener('hashchange', showAboutView);
   showAboutView();
+
+  // 주소에 #이 붙은 채로 열 때 브라우저가 중간으로 스크롤하는 것을 막고 항상 맨 위에서 시작
+  window.addEventListener('load', () => { if (location.hash) setTimeout(() => window.scrollTo({ top: 0, behavior: 'instant' }), 0); });
 
 // 공통 유틸
   function ny_esc(str) {
