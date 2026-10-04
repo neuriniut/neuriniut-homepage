@@ -173,9 +173,10 @@
               <div id="quill-editor"></div>
             </div>
             <div>
-              <label class="block text-xs font-bold text-dolhoe mb-1.5">사진 (여러 장 선택 가능)</label>
+              <label class="block text-xs font-bold text-dolhoe mb-1.5">사진 (여러 장 한 번에 고를 수 있어요 · 첫 번째 사진이 대표 사진)</label>
               <input type="file" id="post-photo" accept="image/*" class="field" multiple>
-              <div id="post-photo-gallery" class="mt-3 grid grid-cols-4 sm:grid-cols-6 gap-2"></div>
+              <p class="text-[11px] text-dolhoe mt-1">사진을 고르면 얼굴 흐림 미리보기가 열려요. ◀ ▶로 순서를 바꾸고, 마지막에 [저장]을 눌러야 반영돼요.</p>
+              <div id="post-photo-gallery" class="mt-3 flex flex-wrap gap-3"></div>
             </div>
             <p id="post-form-error" class="text-sm text-ongi hidden"></p>
             <div class="flex items-center gap-3 pt-2">
@@ -310,7 +311,7 @@
             <option value="parent">사업 03 · 부모역량 강화</option>
             <option value="community">사업 04 · 지역사회 연대</option>
           </select>
-          <p class="text-xs text-dolhoe mt-2">선택한 사업의 세부 프로그램을 추가·수정·숨기기·삭제합니다. 홈페이지 사업안내의 해당 사업 화면과 왼쪽 메뉴에 바로 반영돼요.</p>
+          <p class="text-xs text-dolhoe mt-2">선택한 사업의 세부 프로그램을 추가·수정·숨기기·삭제합니다. 내용·연혁·사진을 고친 뒤 [저장]을 누르면 홈페이지에 반영돼요.</p>
         </section>
 
         <section class="bg-white rounded-2xl border border-black/10 p-6">
@@ -360,6 +361,30 @@
                 <input type="checkbox" id="program-hidden" class="accent-naran w-4 h-4"> 홈페이지에서 숨기기
               </label>
             </div>
+            <div id="program-detail-panel" class="border-t border-black/10 pt-5 space-y-6">
+              <div>
+                <h3 class="font-bold text-sm mb-1">연혁 · 성과 (선택)</h3>
+                <p class="text-[11px] text-dolhoe mb-3">칸을 눌러 바로 고칠 수 있어요. ▲▼로 순서를 바꿔요.</p>
+                <div id="timeline-list" class="space-y-2 mb-3"></div>
+                <div class="flex flex-wrap items-end gap-2">
+                  <div>
+                    <label class="block text-[11px] font-bold text-dolhoe mb-1">날짜(라벨)</label>
+                    <input type="text" id="timeline-date" class="field" style="width:120px" placeholder="2026.09">
+                  </div>
+                  <div class="flex-1 min-w-[160px]">
+                    <label class="block text-[11px] font-bold text-dolhoe mb-1">내용</label>
+                    <input type="text" id="timeline-event" class="field" placeholder="예: 어울림대회 금메달">
+                  </div>
+                  <button type="button" id="timeline-add" class="btn-ghost btn-sm">추가</button>
+                </div>
+              </div>
+              <div>
+                <h3 class="font-bold text-sm mb-1">사진 (프로그램 화면 슬라이드 · 첫 번째가 대표)</h3>
+                <p class="text-[11px] text-dolhoe mb-3">여러 장을 한 번에 고를 수 있어요. 고르면 얼굴 흐림 미리보기가 열려요.</p>
+                <div id="gallery-list" class="flex flex-wrap gap-3 mb-3"></div>
+                <input type="file" id="gallery-photo" accept="image/*" class="field max-w-xs" multiple>
+              </div>
+            </div>
             <p id="program-form-error" class="text-sm text-ongi hidden"></p>
             <div class="flex items-center gap-3 pt-2">
               <button type="submit" id="program-form-submit" class="btn-main">저장</button>
@@ -367,35 +392,6 @@
               <span id="program-form-status" class="text-xs text-dolhoe"></span>
             </div>
           </form>
-        </section>
-
-        <!-- 선택한 프로그램의 연혁·사진갤러리 세부 관리 (수정 모드일 때만) -->
-        <section id="program-detail-panel" class="hidden bg-white rounded-2xl border border-naran/30 p-6 space-y-8">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <h3 class="font-bold text-sm">연혁 · 성과 (선택)</h3>
-            </div>
-            <div id="timeline-list" class="space-y-2 mb-4"></div>
-            <form id="timeline-form" class="flex flex-wrap items-end gap-2">
-              <div>
-                <label class="block text-[11px] font-bold text-dolhoe mb-1">날짜(라벨)</label>
-                <input type="text" id="timeline-date" class="field" style="width:120px" placeholder="2026.09">
-              </div>
-              <div class="flex-1 min-w-[160px]">
-                <label class="block text-[11px] font-bold text-dolhoe mb-1">내용</label>
-                <input type="text" id="timeline-event" class="field" placeholder="예: 어울림대회 금메달">
-              </div>
-              <button type="submit" class="btn-ghost btn-sm">추가</button>
-            </form>
-          </div>
-
-          <div class="border-t border-black/10 pt-6">
-            <h3 class="font-bold text-sm mb-4">사진 (프로그램 페이지 슬라이드에 나와요, 여러 장 가능)</h3>
-            <div id="gallery-list" class="grid grid-cols-3 sm:grid-cols-4 gap-3 mb-4"></div>
-            <label class="block text-[11px] font-bold text-dolhoe mb-1">사진 추가</label>
-            <input type="file" id="gallery-photo" accept="image/*" class="field max-w-xs">
-            <p class="text-xs text-dolhoe mt-1.5">사진을 올리면 자동으로 갤러리 맨 뒤에 추가돼요.</p>
-          </div>
         </section>
 
         <section class="bg-white rounded-2xl border border-black/10 p-6">
@@ -489,8 +485,10 @@
     const d = new Date();
     return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
   }
-  function showError(el, msg) { el.textContent = msg; el.classList.remove('hidden'); }
+  function showError(el, msg) { el.textContent = msg; el.classList.remove('hidden', 'text-iwoot', 'font-bold'); el.classList.add('text-ongi'); }
   function hideError(el) { el.classList.add('hidden'); }
+  // 저장 완료를 초록 글씨로 잠깐 보여주기 (에러 표시 칸 재사용)
+  function nyFlash(el, msg) { el.textContent = msg || '✓ 저장 완료 · 홈페이지에 바로 반영되었어요.'; el.classList.remove('hidden', 'text-ongi'); el.classList.add('text-iwoot', 'font-bold'); clearTimeout(el.__t); el.__t = setTimeout(() => el.classList.add('hidden'), 5000); }
   async function uploadPhoto(file, folder) {
     const ext = file.name.split('.').pop();
     const path = `${folder}/${Date.now()}_${Math.random().toString(36).slice(2, 7)}.${ext}`;
@@ -498,6 +496,215 @@
     if (error) throw error;
     const { data: pub } = db.storage.from('photos').getPublicUrl(path);
     return pub.publicUrl;
+  }
+
+  /* ================================================================ */
+  /* 사진 도구: 얼굴 흐림 미리보기 · 여러 장 올리기 · 순서 바꾸기       */
+  /* ================================================================ */
+  const NY_MAX_PX = 1800;          // 올리는 사진 최대 크기 (휴대폰에서 빨리 뜨도록)
+  let __nyFaceDetector = null, __nyFaceLoading = null;
+  async function nyLoadFaceDetector() {
+    if (__nyFaceDetector) return __nyFaceDetector;
+    if (!__nyFaceLoading) {
+      __nyFaceLoading = (async () => {
+        const V = '0.10.14';
+        const v = await import(`https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@${V}/vision_bundle.mjs`);
+        const fs = await v.FilesetResolver.forVisionTasks(`https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@${V}/wasm`);
+        __nyFaceDetector = await v.FaceDetector.createFromOptions(fs, {
+          baseOptions: { modelAssetPath: 'https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite' },
+          runningMode: 'IMAGE', minDetectionConfidence: 0.45,
+        });
+        return __nyFaceDetector;
+      })().catch(err => { __nyFaceLoading = null; throw err; });
+    }
+    return __nyFaceLoading;
+  }
+  // 사진을 여러 조각으로 나눠 살펴서 단체사진의 작은 얼굴도 최대한 찾기
+  function nyDetectFaces(fd, cv) {
+    const W = cv.width, H = cv.height, found = [];
+    const run = (x, y, w, h) => {
+      const t = document.createElement('canvas'); t.width = w; t.height = h;
+      t.getContext('2d').drawImage(cv, x, y, w, h, 0, 0, w, h);
+      for (const d of fd.detect(t).detections) {
+        const b = d.boundingBox;
+        found.push({ x: b.originX + x, y: b.originY + y, w: b.width, h: b.height, s: d.categories[0].score });
+      }
+    };
+    run(0, 0, W, H);
+    for (const T of [900, 600, 400, 280]) {
+      const st = Math.floor(T * 0.6);
+      for (let y = 0; y < H; y += st) {
+        for (let x = 0; x < W; x += st) { run(x, y, Math.min(T, W - x), Math.min(T, H - y)); if (x + T >= W) break; }
+        if (y + T >= H) break;
+      }
+    }
+    found.sort((a, b) => b.s - a.s);
+    const keep = [];
+    const ov = (a, b) => {
+      const x1 = Math.max(a.x, b.x), y1 = Math.max(a.y, b.y), x2 = Math.min(a.x + a.w, b.x + b.w), y2 = Math.min(a.y + a.h, b.y + b.h);
+      return Math.max(0, x2 - x1) * Math.max(0, y2 - y1) / Math.min(a.w * a.h, b.w * b.h);
+    };
+    for (const b of found) { if (b.w < 8) continue; if (!keep.some(k => ov(k, b) > 0.4)) keep.push(b); }
+    // 몸통·신발처럼 너무 큰 오검출은 빼기
+    if (keep.length >= 3) {
+      const ws = keep.map(b => b.w).sort((a, b) => a - b), med = ws[Math.floor(ws.length / 2)];
+      return keep.filter(b => b.w < med * 2.2);
+    }
+    return keep;
+  }
+  function nyDrawBlur(ctx, src, faces) {
+    ctx.drawImage(src, 0, 0);
+    for (const f of faces) {
+      if (!f.on) continue;
+      const cx = f.x + f.w / 2, cy = f.y + f.h / 2;
+      ctx.save(); ctx.beginPath(); ctx.ellipse(cx, cy, f.w * 0.75, f.h * 0.9, 0, 0, Math.PI * 2); ctx.clip();
+      ctx.filter = `blur(${Math.max(6, f.w * 0.2)}px)`; ctx.drawImage(src, 0, 0); ctx.restore();
+    }
+  }
+  // 사진 한 장을 열어 얼굴 흐림을 확인·수정하는 창. 결과: { blob } 또는 null(취소)
+  function nyBlurEditor(file, label) {
+    return new Promise(async (resolve) => {
+      let bmp;
+      try { bmp = await createImageBitmap(file, { imageOrientation: 'from-image' }); }
+      catch (e) { alert('사진을 열 수 없어요: ' + file.name); resolve(null); return; }
+      const s = Math.min(1, NY_MAX_PX / Math.max(bmp.width, bmp.height));
+      const src = document.createElement('canvas'); src.width = Math.round(bmp.width * s); src.height = Math.round(bmp.height * s);
+      src.getContext('2d').drawImage(bmp, 0, 0, src.width, src.height);
+      const ov = document.createElement('div');
+      ov.className = 'fixed inset-0 z-[100] bg-black/80 flex flex-col items-center justify-center p-3 sm:p-6';
+      ov.innerHTML = `
+        <div class="bg-white rounded-2xl w-full max-w-4xl max-h-full flex flex-col overflow-hidden">
+          <div class="px-5 py-3 border-b border-black/10">
+            <p class="font-bold">얼굴 흐리게 하기 <span class="text-xs text-dolhoe font-normal">${esc(label || '')}</span></p>
+            <p class="text-xs text-dolhoe mt-0.5" data-msg>얼굴을 찾는 중이에요…</p>
+          </div>
+          <div class="flex-1 min-h-0 overflow-auto bg-black/5 flex items-center justify-center p-2">
+            <canvas data-view class="max-w-full max-h-[62vh] cursor-crosshair rounded"></canvas>
+          </div>
+          <div class="px-5 py-3 border-t border-black/10 flex flex-wrap items-center gap-3">
+            <label class="text-xs text-dolhoe flex items-center gap-2">새로 추가할 원 크기 <input data-size type="range" min="20" max="240" value="70"></label>
+            <button type="button" data-all class="btn-ghost btn-sm">전부 끄기</button>
+            <div class="flex-1"></div>
+            <button type="button" data-cancel class="btn-ghost btn-sm">이 사진 빼기</button>
+            <button type="button" data-plain class="btn-ghost btn-sm">흐림 없이 사용</button>
+            <button type="button" data-ok class="btn-main btn-sm">흐림 적용해서 사용</button>
+          </div>
+        </div>`;
+      document.body.appendChild(ov);
+      const view = ov.querySelector('[data-view]'), msg = ov.querySelector('[data-msg]');
+      view.width = src.width; view.height = src.height;
+      const vctx = view.getContext('2d');
+      let faces = [];
+      const tip = '얼굴 위를 누르면 흐림을 켜고 끌 수 있어요. 놓친 얼굴은 그 자리를 누르면 추가돼요.';
+      function draw() {
+        nyDrawBlur(vctx, src, faces);
+        const lw = Math.max(2, src.width / 500);
+        for (const f of faces) {
+          vctx.save(); vctx.lineWidth = lw; vctx.setLineDash(f.on ? [] : [lw * 3, lw * 3]);
+          vctx.strokeStyle = f.on ? '#22c55e' : 'rgba(255,255,255,.9)';
+          vctx.beginPath(); vctx.ellipse(f.x + f.w / 2, f.y + f.h / 2, f.w * 0.75, f.h * 0.9, 0, 0, Math.PI * 2); vctx.stroke(); vctx.restore();
+        }
+      }
+      draw();
+      view.addEventListener('click', (e) => {
+        const r = view.getBoundingClientRect();
+        const x = (e.clientX - r.left) * view.width / r.width, y = (e.clientY - r.top) * view.height / r.height;
+        const hit = faces.find(f => Math.hypot((x - (f.x + f.w / 2)) / (f.w * 0.75), (y - (f.y + f.h / 2)) / (f.h * 0.9)) <= 1);
+        if (hit) hit.on = !hit.on;
+        else { const d = +ov.querySelector('[data-size]').value * (src.width / 1000); faces.push({ x: x - d / 2, y: y - d * 0.6, w: d, h: d * 1.2, on: true, manual: true }); }
+        msg.textContent = `흐리게 할 얼굴 ${faces.filter(f => f.on).length}개 · ${tip}`;
+        draw();
+      });
+      ov.querySelector('[data-all]').onclick = () => { const anyOn = faces.some(f => f.on); faces.forEach(f => f.on = !anyOn); ov.querySelector('[data-all]').textContent = anyOn ? '전부 켜기' : '전부 끄기'; draw(); };
+      const finish = (mode) => {
+        if (mode === 'cancel') { ov.remove(); resolve(null); return; }
+        const out = document.createElement('canvas'); out.width = src.width; out.height = src.height;
+        nyDrawBlur(out.getContext('2d'), src, mode === 'blur' ? faces : []);
+        out.toBlob(b => { ov.remove(); resolve(b ? { blob: b } : null); }, 'image/jpeg', 0.86);
+      };
+      ov.querySelector('[data-cancel]').onclick = () => finish('cancel');
+      ov.querySelector('[data-plain]').onclick = () => finish('plain');
+      ov.querySelector('[data-ok]').onclick = () => finish('blur');
+      try {
+        const fd = await nyLoadFaceDetector();
+        faces = nyDetectFaces(fd, src).map(f => ({ ...f, on: true }));
+        msg.textContent = `얼굴 ${faces.length}개를 찾았어요. ${tip}`;
+      } catch (err) {
+        msg.textContent = `자동으로 얼굴을 찾지 못했어요. ${tip}`;
+      }
+      draw();
+    });
+  }
+  // 고른 여러 사진을 차례로 흐림 확인 → [{ file, url(미리보기) }]
+  async function nyPrepareFiles(fileList) {
+    const files = Array.from(fileList || []), out = [];
+    for (let i = 0; i < files.length; i++) {
+      const r = await nyBlurEditor(files[i], `(${i + 1}/${files.length}) ${files[i].name}`);
+      if (!r) continue;
+      const f = new File([r.blob], (files[i].name.replace(/\.[^.]+$/, '') || 'photo') + '.jpg', { type: 'image/jpeg' });
+      out.push({ file: f, url: URL.createObjectURL(f) });
+    }
+    return out;
+  }
+  // 사진 목록(순서 바꾸기·빼기). 저장 버튼을 누를 때 반영
+  function nyPhotoList(container, onChange) {
+    let items = [];
+    function render() {
+      container.innerHTML = items.length ? items.map((h, i) => `
+        <div class="w-28">
+          <div class="relative">
+            <img src="${esc(h.url)}" class="w-28 h-24 rounded-lg object-cover border ${h.file ? 'border-ongi' : 'border-black/10'}">
+            <span class="absolute top-1 left-1 text-[10px] font-bold bg-white/90 rounded px-1.5">${i === 0 ? '대표' : i + 1}${h.file ? ' · 새 사진' : ''}</span>
+          </div>
+          <div class="flex gap-1 mt-1">
+            <button type="button" class="btn-ghost btn-sm !px-2" data-mv="${i},-1" ${i === 0 ? 'disabled' : ''} aria-label="앞으로">◀</button>
+            <button type="button" class="btn-ghost btn-sm !px-2" data-mv="${i},1" ${i === items.length - 1 ? 'disabled' : ''} aria-label="뒤로">▶</button>
+            <button type="button" class="btn-ghost btn-sm !px-2" data-rm="${i}">빼기</button>
+          </div>
+        </div>`).join('') : '<p class="text-xs text-dolhoe">아직 사진이 없어요.</p>';
+    }
+    container.addEventListener('click', (e) => {
+      const mv = e.target.closest('[data-mv]'), rm = e.target.closest('[data-rm]');
+      if (mv) { const [i, d] = mv.dataset.mv.split(',').map(Number), j = i + d; if (j < 0 || j >= items.length) return; [items[i], items[j]] = [items[j], items[i]]; render(); onChange && onChange(); }
+      if (rm) { items.splice(+rm.dataset.rm, 1); render(); onChange && onChange(); }
+    });
+    render();
+    return {
+      set(list) { items = list.slice(); render(); },
+      add(list) { items = items.concat(list); render(); onChange && onChange(); },
+      get() { return items; },
+    };
+  }
+  // 저장 상태 안내: 바꾼 뒤 저장 전이면 주황 안내, 저장하면 초록 완료 표시
+  const __nyDirty = new Set();
+  function nyDirty(key, el, on) {
+    if (on) { __nyDirty.add(key); if (el) { el.className = 'text-xs font-bold text-ongi'; el.textContent = '● 저장하지 않은 변경이 있어요. [저장]을 눌러야 홈페이지에 반영돼요.'; } }
+    else __nyDirty.delete(key);
+  }
+  function nySaved(key, el) {
+    __nyDirty.delete(key);
+    if (el) { const t = new Date(); el.className = 'text-xs font-bold text-iwoot'; el.textContent = `✓ 저장 완료 (${String(t.getHours()).padStart(2, '0')}:${String(t.getMinutes()).padStart(2, '0')}) · 홈페이지에 바로 반영되었어요.`; }
+  }
+  window.addEventListener('beforeunload', (e) => { if (__nyDirty.size) { e.preventDefault(); e.returnValue = ''; } });
+  // 새 사진 업로드 + 빠진 사진 삭제 + 순서 저장 (post_photos / program_photos 공용)
+  async function nySyncPhotos(table, fkey, ownerId, items, folder, statusEl) {
+    const { data: existing } = await db.from(table).select('id').eq(fkey, ownerId);
+    const keepIds = new Set(items.filter(h => h.id).map(h => h.id));
+    for (const row of existing || []) if (!keepIds.has(row.id)) { const { error } = await db.from(table).delete().eq('id', row.id); if (error) throw error; }
+    for (let i = 0; i < items.length; i++) {
+      const h = items[i];
+      if (h.file) {
+        if (statusEl) statusEl.textContent = `사진 올리는 중... (${i + 1}/${items.length})`;
+        const url = await uploadPhoto(h.file, folder);
+        const { data, error } = await db.from(table).insert({ [fkey]: ownerId, photo_url: url, sort_order: i }).select().single();
+        if (error) throw error;
+        Object.assign(h, { id: data.id, url, file: null });
+      } else {
+        const { error } = await db.from(table).update({ sort_order: i }).eq('id', h.id);
+        if (error) throw error;
+      }
+    }
+    return items[0] ? items[0].url : null;
   }
 
   // ---------- 로그인 / 로그아웃 ----------
@@ -648,35 +855,21 @@
     input.click();
   }
 
-  // ---- 사진 여러 장(갤러리) ----
-  let __postGalleryPhotos = [];
+  // ---- 사진 여러 장(갤러리) : 저장을 누를 때 한꺼번에 반영 ----
+  const postPhotos = nyPhotoList(postPhotoGallery, () => nyDirty('post', postFormStatus, true));
   async function loadPostGallery(postId) {
     const { data, error } = await db.from('post_photos').select('*').eq('post_id', postId).order('sort_order', { ascending: true });
-    __postGalleryPhotos = (!error && data) ? data : [];
-    renderPostGallery();
+    postPhotos.set((!error && data ? data : []).map(d => ({ id: d.id, url: d.photo_url })));
   }
-  function renderPostGallery() {
-    postPhotoGallery.innerHTML = __postGalleryPhotos.map(ph => `
-      <div class="gallery-thumb">
-        <img src="${esc(ph.photo_url)}" class="w-full aspect-square object-cover rounded-lg border border-black/10">
-        <button type="button" onclick="deletePostGalleryPhoto('${ph.id}')">삭제</button>
-      </div>
-    `).join('');
-  }
-  window.deletePostGalleryPhoto = async function(id) {
-    const { error } = await db.from('post_photos').delete().eq('id', id);
-    if (error) { alert('삭제하지 못했습니다: ' + error.message); return; }
-    const postId = postIdField.value;
-    await loadPostGallery(postId);
-    await syncPostThumbnail(postId);
-  };
-  async function syncPostThumbnail(postId) {
-    // posts.photo_url을 갤러리 첫 사진으로 맞춰서 목록 카드 썸네일에 쓰이게 함
-    const first = __postGalleryPhotos[0];
-    const url = first ? first.photo_url : null;
-    await db.from('posts').update({ photo_url: url }).eq('id', postId);
-    if (window.__adminPosts && window.__adminPosts[postId]) window.__adminPosts[postId].photo_url = url;
-  }
+  photoField.addEventListener('change', async () => {
+    const added = await nyPrepareFiles(photoField.files);
+    photoField.value = '';
+    if (added.length) postPhotos.add(added);
+  });
+  titleField.addEventListener('input', () => nyDirty('post', postFormStatus, true));
+  dateField.addEventListener('change', () => nyDirty('post', postFormStatus, true));
+  categoryField.addEventListener('change', () => nyDirty('post', postFormStatus, true));
+  quill.on('text-change', (d, o, source) => { if (source === 'user') nyDirty('post', postFormStatus, true); });
 
   async function loadPosts() {
     const { data: posts, error } = await db
@@ -719,8 +912,9 @@
     titleField.value = '';
     setQuillContent('');
     photoField.value = '';
-    __postGalleryPhotos = [];
-    renderPostGallery();
+    postPhotos.set([]);
+    nyDirty('post', null, false);
+    postFormStatus.textContent = '';
     postFormTitle.textContent = '새 글쓰기';
     postFormCancel.classList.add('hidden');
     hideError(postFormError);
@@ -736,6 +930,7 @@
     titleField.value = p.title || '';
     setQuillContent(p.content || '');
     photoField.value = '';
+    nyDirty('post', null, false);
     postFormTitle.textContent = '글 수정';
     postFormCancel.classList.remove('hidden');
     hideError(postFormError);
@@ -783,25 +978,12 @@
         postId = data.id;
       }
 
-      const files = Array.from(photoField.files || []);
-      if (files.length > 0) {
-        let nextSort = __postGalleryPhotos.length > 0
-          ? Math.max(...__postGalleryPhotos.map(g => g.sort_order || 0)) + 1
-          : 0;
-        for (let i = 0; i < files.length; i++) {
-          postFormStatus.textContent = `사진 업로드 중... (${i + 1}/${files.length})`;
-          const url = await uploadPhoto(files[i], 'Posts');
-          const { error: insErr } = await db.from('post_photos').insert({ post_id: postId, photo_url: url, sort_order: nextSort++ });
-          if (insErr) throw insErr;
-        }
-      }
-
-      await loadPostGallery(postId);
-      await syncPostThumbnail(postId);
+      const cover = await nySyncPhotos('post_photos', 'post_id', postId, postPhotos.get(), 'Posts', postFormStatus);
+      { const { error: upErr } = await db.from('posts').update({ photo_url: cover }).eq('id', postId); if (upErr) throw upErr; }
 
       await loadPosts();
       window.editPost(postId);
-      postFormStatus.textContent = '저장되었습니다. 다른 글을 쓰려면 [새 글 쓰기]를 눌러주세요.';
+      nySaved('post', postFormStatus); postFormStatus.textContent += ' 다른 글을 쓰려면 [새 글 쓰기]를 눌러주세요.';
     } catch (err) {
       showError(postFormError, '저장하지 못했습니다: ' + (err.message || err));
       postFormStatus.textContent = '';
@@ -887,9 +1069,10 @@
     programFormTitle.textContent = '새 프로그램 추가';
     programFormCancel.classList.add('hidden');
     hideError(programFormError);
-    programDetailPanel.classList.add('hidden');
+    if (typeof timelineItems !== 'undefined') { timelineItems = []; renderTimeline(); galleryPhotos.set([]); }
+    nyDirty('program', null, false);
+    programFormStatus.textContent = '';
   }
-  resetProgramForm();
 
   window.editProgram = function(id) {
     const p = window.__programs[id];
@@ -903,7 +1086,8 @@
     programFormTitle.textContent = '프로그램 수정';
     programFormCancel.classList.remove('hidden');
     hideError(programFormError);
-    programDetailPanel.classList.remove('hidden');
+    nyDirty('program', null, false);
+    programFormStatus.textContent = '';
     loadTimeline(id);
     loadGallery(id);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -964,10 +1148,13 @@
         if (error) throw error;
         savedId = data.id;
       }
-      programFormStatus.textContent = '저장되었습니다.';
+      programFormStatus.textContent = '연혁 저장 중...';
+      await saveTimeline(savedId);
+      await nySyncPhotos('program_photos', 'program_id', savedId, galleryPhotos.get(), 'Programs', programFormStatus);
       await loadPrograms();
-      // 저장 직후에도 연혁/갤러리를 이어서 등록할 수 있도록 수정 모드로 전환
+      // 저장 직후에도 이어서 고칠 수 있도록 수정 모드로 전환
       if (savedId) window.editProgram(savedId);
+      nySaved('program', programFormStatus);
     } catch (err) {
       showError(programFormError, '저장하지 못했습니다: ' + (err.message || err));
       programFormStatus.textContent = '';
@@ -978,95 +1165,60 @@
   });
 
 
-  // ---- 연혁 · 성과 ----
+  // ---- 연혁 · 성과 (저장 버튼과 함께 반영) ----
   const timelineList = document.getElementById('timeline-list');
-  const timelineForm = document.getElementById('timeline-form');
   const timelineDate = document.getElementById('timeline-date');
   const timelineEvent = document.getElementById('timeline-event');
-
+  let timelineItems = [];
+  const markProgramDirty = () => nyDirty('program', programFormStatus, true);
+  function renderTimeline() {
+    timelineList.innerHTML = timelineItems.length ? timelineItems.map((t, i) => `
+      <div class="flex items-center gap-2 border border-black/10 rounded-lg px-2 py-1.5">
+        <input type="text" class="field !py-1.5 font-bold text-naran" style="width:110px" value="${esc(t.date_label)}" data-tl="${i}" data-k="date_label">
+        <input type="text" class="field !py-1.5 flex-1" value="${esc(t.event)}" data-tl="${i}" data-k="event">
+        <button type="button" class="btn-ghost btn-sm !px-2" data-tlmv="${i},-1" ${i === 0 ? 'disabled' : ''} aria-label="위로">▲</button>
+        <button type="button" class="btn-ghost btn-sm !px-2" data-tlmv="${i},1" ${i === timelineItems.length - 1 ? 'disabled' : ''} aria-label="아래로">▼</button>
+        <button type="button" class="btn-ghost btn-sm !px-2" data-tlrm="${i}">삭제</button>
+      </div>`).join('') : '<p class="text-xs text-dolhoe">등록된 연혁이 없습니다.</p>';
+  }
+  timelineList.addEventListener('input', (e) => { const el = e.target.closest('[data-tl]'); if (!el) return; timelineItems[+el.dataset.tl][el.dataset.k] = el.value; markProgramDirty(); });
+  timelineList.addEventListener('click', (e) => {
+    const mv = e.target.closest('[data-tlmv]'), rm = e.target.closest('[data-tlrm]');
+    if (mv) { const [i, d] = mv.dataset.tlmv.split(',').map(Number), j = i + d; [timelineItems[i], timelineItems[j]] = [timelineItems[j], timelineItems[i]]; renderTimeline(); markProgramDirty(); }
+    if (rm) { timelineItems.splice(+rm.dataset.tlrm, 1); renderTimeline(); markProgramDirty(); }
+  });
+  document.getElementById('timeline-add').addEventListener('click', () => {
+    const date_label = timelineDate.value.trim(), event = timelineEvent.value.trim();
+    if (!date_label || !event) { timelineEvent.focus(); return; }
+    timelineItems.push({ date_label, event }); timelineDate.value = ''; timelineEvent.value = '';
+    renderTimeline(); markProgramDirty();
+  });
   async function loadTimeline(programId) {
-    const { data, error } = await db
-      .from('program_timeline')
-      .select('*')
-      .eq('program_id', programId)
-      .order('sort_order', { ascending: true });
-    if (error) { timelineList.innerHTML = `<p class="text-xs text-ongi">${esc(error.message)}</p>`; return; }
-    if (!data || data.length === 0) { timelineList.innerHTML = `<p class="text-xs text-dolhoe">등록된 연혁이 없습니다.</p>`; return; }
-    timelineList.innerHTML = data.map(t => `
-      <div class="flex items-center justify-between gap-3 text-sm border border-black/10 rounded-lg px-3 py-2">
-        <div class="flex gap-3 min-w-0">
-          <span class="text-naran font-bold shrink-0">${esc(t.date_label)}</span>
-          <span class="truncate">${esc(t.event)}</span>
-        </div>
-        <button type="button" class="text-xs text-dolhoe hover:text-ongi shrink-0" onclick="deleteTimeline('${t.id}','${programId}')">삭제</button>
-      </div>
-    `).join('');
+    const { data } = await db.from('program_timeline').select('*').eq('program_id', programId).order('sort_order', { ascending: true });
+    timelineItems = (data || []).map(t => ({ date_label: t.date_label || '', event: t.event || '' }));
+    renderTimeline();
+  }
+  async function saveTimeline(programId) {
+    const { error: delErr } = await db.from('program_timeline').delete().eq('program_id', programId);
+    if (delErr) throw delErr;
+    const rows = timelineItems.filter(t => t.date_label.trim() || t.event.trim()).map((t, i) => ({ program_id: programId, date_label: t.date_label.trim(), event: t.event.trim(), sort_order: i }));
+    if (rows.length) { const { error } = await db.from('program_timeline').insert(rows); if (error) throw error; }
   }
 
-  timelineForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const programId = programIdField.value;
-    if (!programId) return;
-    const date_label = timelineDate.value.trim();
-    const event = timelineEvent.value.trim();
-    if (!date_label || !event) return;
-    const { data: existing } = await db.from('program_timeline').select('sort_order').eq('program_id', programId).order('sort_order', { ascending: false }).limit(1);
-    const nextSort = existing && existing.length > 0 ? (existing[0].sort_order || 0) + 1 : 0;
-    const { error } = await db.from('program_timeline').insert({ program_id: programId, date_label, event, sort_order: nextSort });
-    if (error) { alert('추가하지 못했습니다: ' + error.message); return; }
-    timelineDate.value = '';
-    timelineEvent.value = '';
-    loadTimeline(programId);
-  });
-
-  window.deleteTimeline = async function(id, programId) {
-    const { error } = await db.from('program_timeline').delete().eq('id', id);
-    if (error) { alert('삭제하지 못했습니다: ' + error.message); return; }
-    loadTimeline(programId);
-  };
-
-  // ---- 사진 갤러리 ----
-  const galleryList = document.getElementById('gallery-list');
+  // ---- 사진 갤러리 (저장 버튼과 함께 반영) ----
   const galleryPhotoField = document.getElementById('gallery-photo');
-
+  const galleryPhotos = nyPhotoList(document.getElementById('gallery-list'), markProgramDirty);
   async function loadGallery(programId) {
-    const { data, error } = await db
-      .from('program_photos')
-      .select('*')
-      .eq('program_id', programId)
-      .order('sort_order', { ascending: true });
-    if (error) { galleryList.innerHTML = `<p class="text-xs text-ongi col-span-full">${esc(error.message)}</p>`; return; }
-    if (!data || data.length === 0) { galleryList.innerHTML = `<p class="text-xs text-dolhoe col-span-full">등록된 사진이 없습니다.</p>`; return; }
-    galleryList.innerHTML = data.map(ph => `
-      <div class="relative group">
-        <img src="${esc(ph.photo_url)}" class="w-full aspect-square object-cover rounded-lg border border-black/10">
-        <button type="button" class="absolute top-1 right-1 bg-black/60 text-white text-[10px] font-bold px-1.5 py-0.5 rounded" onclick="deleteGalleryPhoto('${ph.id}','${programId}')">삭제</button>
-      </div>
-    `).join('');
+    const { data } = await db.from('program_photos').select('*').eq('program_id', programId).order('sort_order', { ascending: true });
+    galleryPhotos.set((data || []).map(d => ({ id: d.id, url: d.photo_url })));
   }
-
   galleryPhotoField.addEventListener('change', async () => {
-    const file = galleryPhotoField.files[0];
-    const programId = programIdField.value;
-    if (!file || !programId) return;
-    try {
-      const url = await uploadPhoto(file, 'Programs');
-      const { data: existing } = await db.from('program_photos').select('sort_order').eq('program_id', programId).order('sort_order', { ascending: false }).limit(1);
-      const nextSort = existing && existing.length > 0 ? (existing[0].sort_order || 0) + 1 : 0;
-      const { error } = await db.from('program_photos').insert({ program_id: programId, photo_url: url, sort_order: nextSort });
-      if (error) throw error;
-      galleryPhotoField.value = '';
-      loadGallery(programId);
-    } catch (err) {
-      alert('사진을 추가하지 못했습니다: ' + (err.message || err));
-    }
+    const added = await nyPrepareFiles(galleryPhotoField.files);
+    galleryPhotoField.value = '';
+    if (added.length) galleryPhotos.add(added);
   });
-
-  window.deleteGalleryPhoto = async function(id, programId) {
-    const { error } = await db.from('program_photos').delete().eq('id', id);
-    if (error) { alert('삭제하지 못했습니다: ' + error.message); return; }
-    loadGallery(programId);
-  };
+  programForm.addEventListener('input', (e) => { if (!e.target.closest('#program-detail-panel')) markProgramDirty(); });
+  resetProgramForm();
 
   /* ================================================================ */
   /* 탭 3. 소개                                                        */
@@ -1116,17 +1268,20 @@
   }
   window.moveHeroPhoto = function(i, d) {
     const j = i + d; if (j < 0 || j >= heroPhotos.length) return;
-    [heroPhotos[i], heroPhotos[j]] = [heroPhotos[j], heroPhotos[i]]; renderHeroPhotos();
+    [heroPhotos[i], heroPhotos[j]] = [heroPhotos[j], heroPhotos[i]]; renderHeroPhotos(); nyDirty('hero', heroFormStatus, true);
   };
-  window.removeHeroPhoto = function(i) { heroPhotos.splice(i, 1); renderHeroPhotos(); };
-  heroPhotoInput.addEventListener('change', () => {
+  window.removeHeroPhoto = function(i) { heroPhotos.splice(i, 1); renderHeroPhotos(); nyDirty('hero', heroFormStatus, true); };
+  [heroTagInput, heroTitleInput, heroBodyInput].forEach(el => el.addEventListener('input', () => nyDirty('hero', heroFormStatus, true)));
+  heroPhotoInput.addEventListener('change', async () => {
     hideError(heroFormError);
     const files = Array.from(heroPhotoInput.files || []);
-    const room = HERO_MAX - heroPhotos.length;
-    if (files.length > room) showError(heroFormError, `대표 사진은 ${HERO_MAX}장까지예요. 앞의 ${Math.max(room, 0)}장만 추가했어요.`);
-    files.slice(0, Math.max(room, 0)).forEach(f => heroPhotos.push({ file: f, url: URL.createObjectURL(f) }));
     heroPhotoInput.value = '';
+    const room = HERO_MAX - heroPhotos.length;
+    if (files.length > room) showError(heroFormError, `대표 사진은 ${HERO_MAX}장까지예요. 앞의 ${Math.max(room, 0)}장만 추가할게요.`);
+    const added = await nyPrepareFiles(files.slice(0, Math.max(room, 0)));
+    added.forEach(a => heroPhotos.push(a));
     renderHeroPhotos();
+    if (added.length) nyDirty('hero', heroFormStatus, true);
   });
 
   heroForm.addEventListener('submit', async (e) => {
@@ -1153,7 +1308,7 @@
       heroFormStatus.textContent = '저장 중...';
       const { error } = await db.from('site_settings').upsert(rows, { onConflict: 'key' });
       if (error) throw error;
-      heroFormStatus.textContent = '저장되었습니다.';
+      nySaved('hero', heroFormStatus);
       heroPhotoInput.value = '';
       loadAboutSettings();
     } catch (err) {
@@ -1247,6 +1402,7 @@
     if (error) { showError(statFormError, '저장하지 못했습니다: ' + error.message); return; }
     resetStatForm();
     loadStats();
+    nyFlash(statFormError);
   });
 
   /* ================================================================ */
@@ -1349,6 +1505,7 @@
         if (error) throw error;
         reset();
         load();
+        nyFlash(errorEl);
       } catch (err) {
         showError(errorEl, '저장하지 못했습니다: ' + (err.message || err));
       } finally {
@@ -1380,13 +1537,14 @@
     (data || []).forEach(r => map[r.key] = r.value);
     BIZ_IDS.forEach(id => document.getElementById('bizdesc-' + id).value = map['biz_desc_' + id] || '');
   }
+  document.getElementById('bizdesc-form').addEventListener('input', () => nyDirty('bizdesc', document.getElementById('bizdesc-status'), true));
   document.getElementById('bizdesc-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const st = document.getElementById('bizdesc-status');
     st.textContent = '저장 중...';
     const rows = BIZ_IDS.map(id => ({ key: 'biz_desc_' + id, value: document.getElementById('bizdesc-' + id).value.trim() }));
     const { error } = await db.from('site_settings').upsert(rows, { onConflict: 'key' });
-    st.textContent = error ? '저장하지 못했습니다: ' + error.message : '저장되었습니다.';
+    if (error) st.textContent = '저장하지 못했습니다: ' + error.message; else nySaved('bizdesc', st);
   });
 
   /* ================================================================ */
@@ -1457,7 +1615,7 @@
       const list = await fetchSchedule();
       const k = list.findIndex(x => x.d === e.d && x.t === e.t && x.c === e.c);
       if (k >= 0) list.splice(k, 1);
-      await saveSchedule(list); renderSchedule();
+      await saveSchedule(list); renderSchedule(); nyFlash(schedError, '✓ 삭제했어요 · 홈페이지에 바로 반영되었어요.');
     } catch (err) { alert('삭제하지 못했습니다: ' + (err.message || err)); }
   };
   schedForm.addEventListener('submit', async (e) => {
@@ -1477,6 +1635,7 @@
       schedMonth.value = item.d.slice(0, 7);
       resetSchedForm();
       renderSchedule();
+      nyFlash(schedError);
     } catch (err) { showError(schedError, '저장하지 못했습니다: ' + (err.message || err)); }
     finally { schedSubmit.disabled = false; }
   });
@@ -1545,7 +1704,7 @@
       const list = await fetchPress();
       const k = list.findIndex(x => samePress(x, n));
       if (k >= 0) list.splice(k, 1);
-      await savePress(list); renderPress();
+      await savePress(list); renderPress(); nyFlash(pressError, '✓ 삭제했어요 · 홈페이지에 바로 반영되었어요.');
     } catch (err) { alert('삭제하지 못했습니다: ' + (err.message || err)); }
   };
   pressForm.addEventListener('submit', async (e) => {
@@ -1565,6 +1724,7 @@
       await savePress(list);
       resetPressForm();
       renderPress();
+      nyFlash(pressError);
     } catch (err) { showError(pressError, '저장하지 못했습니다: ' + (err.message || err)); }
     finally { pressSubmit.disabled = false; }
   });
