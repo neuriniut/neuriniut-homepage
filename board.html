@@ -64,6 +64,14 @@
   .rich-content ul { list-style: disc; }
   .rich-content ol { list-style: decimal; }
 
+  /* 사이드메뉴(LNB) 현재 위치 */
+  .lnb-link.is-current { color: #12456B; background: rgba(250,244,230,.7); }
+  .lnb-link.is-current::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 9999px; background: #E1682C; margin-right: 8px; vertical-align: middle; }
+  /* 게시판 말머리 */
+  .board-badge { display: inline-flex; justify-content: center; align-items: center; min-width: 4.5rem; padding: 6px 12px; border-radius: 9999px; font-size: 12px; font-weight: 700; color: #fff; }
+  .board-pager button { min-width: 36px; height: 36px; border-radius: 8px; font-size: 14px; font-weight: 700; color: #6E6A63; }
+  .board-pager button.is-current { background: #12456B; color: #fff; }
+
 </style>
 </head>
 <body class="bg-white text-meok antialiased">
@@ -112,8 +120,8 @@
         <div class="nav-drop absolute left-0 top-full pt-2 w-56">
           <div class="bg-white rounded-xl border border-black/10 shadow-lg py-2">
             <a href="board.html#notices" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">공지사항</a>
-            <a href="board.html#budget" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">예산 및 결산 공고</a>
             <a href="board.html#news" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">느린이웃 소식</a>
+            <a href="board.html#budget" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">예산 및 결산</a>
             <a href="board.html#archive-items" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">자료실</a>
           </div>
         </div>
@@ -185,8 +193,8 @@
         <p class="text-xl font-extrabold text-meok mb-3">알림마당</p>
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
           <a href="board.html#notices" class="text-base text-dolhoe" data-close-menu>공지사항</a>
-          <a href="board.html#budget" class="text-base text-dolhoe" data-close-menu>예산 및 결산 공고</a>
           <a href="board.html#news" class="text-base text-dolhoe" data-close-menu>느린이웃 소식</a>
+          <a href="board.html#budget" class="text-base text-dolhoe" data-close-menu>예산 및 결산</a>
           <a href="board.html#archive-items" class="text-base text-dolhoe" data-close-menu>자료실</a>
         </div>
       </div>
@@ -204,101 +212,92 @@
 
 <main id="top">
 
-<!-- ========== 알림마당 ========== -->
-  <section id="notices" class="max-w-7xl mx-auto px-5 md:px-8 py-4 md:py-10 scroll-mt-24">
-    <header class="max-w-2xl mb-10">
-      <p class="text-iwoot font-bold text-sm mb-2">알림마당</p>
-      <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">공지와 소식</h2>
-      <p class="text-dolhoe leading-relaxed">아래 항목은 예시이며, 실제 공지·공고 내용으로 교체될 예정입니다.</p>
-    </header>
-
-    <div class="grid md:grid-cols-3 gap-6">
-      <!-- 공지사항 -->
-      <div class="md:col-span-2 border border-black/10 rounded-2xl p-6">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="font-bold text-lg">공지사항</h3>
-          <a href="#notices" class="text-xs font-bold text-naran hover:underline">전체보기 →</a>
-        </div>
-        <ul class="divide-y divide-black/5" id="notice-list">
-          <li class="py-3 flex items-center justify-between gap-4">
-            <p class="text-sm text-meok truncate">[예시] 9월 운영진 회의 결과 안내</p>
-            <p class="text-xs text-dolhoe shrink-0">2026.09.10</p>
-          </li>
-          <li class="py-3 flex items-center justify-between gap-4">
-            <p class="text-sm text-meok truncate">[예시] 10월 정기 산행 일정 안내</p>
-            <p class="text-xs text-dolhoe shrink-0">2026.09.05</p>
-          </li>
-          <li class="py-3 flex items-center justify-between gap-4">
-            <p class="text-sm text-meok truncate">[예시] 슐런픽 동아리 대회 참가 신청 안내</p>
-            <p class="text-xs text-dolhoe shrink-0">2026.08.28</p>
-          </li>
-          <li class="py-3 flex items-center justify-between gap-4">
-            <p class="text-sm text-meok truncate">[예시] 사회적협동조합 전환 설명회 개최</p>
-            <p class="text-xs text-dolhoe shrink-0">2026.08.14</p>
-          </li>
-        </ul>
-      </div>
-
-      <!-- 예산 및 결산 공고 -->
-      <div id="budget" class="border-2 border-naran rounded-2xl p-6 bg-byeot/40 scroll-mt-24">
-        <p class="text-[11px] font-bold text-naran tracking-wider mb-2">협동조합 필수 공시</p>
-        <h3 class="font-bold text-lg mb-3">예산 및 결산 공고</h3>
-        <p class="text-dolhoe text-sm leading-relaxed mb-4">
-          사회적협동조합 운영의 투명성을 위해 연간 예산과 결산 내역을 정기적으로 공고합니다.
-        </p>
-        <a href="#budget" class="inline-flex items-center gap-1.5 text-sm font-bold text-naran hover:underline">
-          공고 목록 보기 →
+<!-- ========== 알림마당 (왼쪽 사이드메뉴 + 목록형 게시판) ========== -->
+  <section id="board" class="max-w-7xl mx-auto px-5 md:px-8 py-4 md:py-10 lg:flex gap-12 items-start">
+    <aside class="hidden lg:block w-64 shrink-0" aria-label="알림마당 메뉴">
+      <div class="sticky top-28">
+        <a href="#notices" class="block bg-naran text-white rounded-t-2xl px-6 py-7">
+          <p class="text-[11px] font-bold tracking-widest text-white/60 mb-1">NOTICE</p>
+          <p class="text-xl font-extrabold">알림마당</p>
         </a>
+        <nav class="border border-t-0 border-black/10 rounded-b-2xl overflow-hidden">
+          <ul>
+              <li><a href="#notices" data-lnb-link="notices" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">공지사항</a></li>
+              <li><a href="#news" data-lnb-link="news" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">느린이웃 소식</a></li>
+              <li><a href="#budget" data-lnb-link="budget" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">예산 및 결산</a></li>
+              <li><a href="#archive-items" data-lnb-link="archive-items" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">자료실</a></li>
+          </ul>
+        </nav>
       </div>
-    </div>
+    </aside>
+    <div class="flex-1 min-w-0">
 
-    <!-- 느린이웃 소식 -->
-    <div id="news" class="mt-8 scroll-mt-24">
-      <h3 class="font-bold text-lg mb-4">느린이웃 소식</h3>
-      <div class="grid sm:grid-cols-3 gap-5" id="news-list">
-        <article class="border border-black/10 rounded-xl overflow-hidden">
-          <div class="photo-guide aspect-[4/3] flex items-end p-3">
-            <span class="tag inline-block text-[10px] font-bold px-2 py-1 rounded">사진 가이드</span>
-          </div>
-          <div class="p-4">
-            <p class="text-xs text-dolhoe mb-1">2026.09.10</p>
-            <p class="text-sm font-semibold leading-snug">[예시] 소리마을 합창단, 지역 힐링콘서트 무대에 서다</p>
-          </div>
-        </article>
-        <article class="border border-black/10 rounded-xl overflow-hidden">
-          <div class="photo-guide aspect-[4/3] flex items-end p-3">
-            <span class="tag inline-block text-[10px] font-bold px-2 py-1 rounded">사진 가이드</span>
-          </div>
-          <div class="p-4">
-            <p class="text-xs text-dolhoe mb-1">2026.08.21</p>
-            <p class="text-sm font-semibold leading-snug">[예시] 코리아오픈 슐런대회, 느린이웃 동아리 참가기</p>
-          </div>
-        </article>
-        <article class="border border-black/10 rounded-xl overflow-hidden">
-          <div class="photo-guide aspect-[4/3] flex items-end p-3">
-            <span class="tag inline-block text-[10px] font-bold px-2 py-1 rounded">사진 가이드</span>
-          </div>
-          <div class="p-4">
-            <p class="text-xs text-dolhoe mb-1">2026.08.06</p>
-            <p class="text-sm font-semibold leading-snug">[예시] 여름 방학 프로그램, 미술·점핑으로 가득 채우다</p>
-          </div>
-        </article>
+      <div id="notices" class="board-page">
+        <header class="mb-8">
+          <p class="text-iwoot font-bold text-sm mb-2">알림마당</p>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">공지사항</h2>
+          <p class="text-dolhoe leading-relaxed">느린이웃의 운영 소식과 일정, 모집 안내를 알려드립니다.</p>
+        </header>
+        <div class="flex justify-end mb-5">
+          <label class="relative w-full sm:w-80">
+            <span class="sr-only">공지사항 검색</span>
+            <input type="search" data-board-search="notices" placeholder="제목으로 검색" class="w-full border border-black/15 rounded-lg pl-4 pr-11 py-3 text-sm focus:outline-none focus:border-naran">
+            <svg class="absolute right-4 top-1/2 -translate-y-1/2 text-dolhoe" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+          </label>
+        </div>
+        <ul id="notices-list" class="border-t-2 border-meok"></ul>
+        <div data-board-pager="notices" class="flex justify-center gap-1.5 mt-8"></div>
       </div>
-    </div>
-  </section>
 
-  <div class="max-w-7xl mx-auto px-5 md:px-8"><div class="nara-divider py-8" aria-hidden="true"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div></div>
+      <div id="news" class="board-page">
+        <header class="mb-8">
+          <p class="text-iwoot font-bold text-sm mb-2">알림마당</p>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">느린이웃 소식</h2>
+          <p class="text-dolhoe leading-relaxed">느린이웃이 함께 걸어온 활동 이야기를 사진과 함께 전합니다.</p>
+        </header>
+        <div class="flex justify-end mb-5">
+          <label class="relative w-full sm:w-80">
+            <span class="sr-only">느린이웃 소식 검색</span>
+            <input type="search" data-board-search="news" placeholder="제목으로 검색" class="w-full border border-black/15 rounded-lg pl-4 pr-11 py-3 text-sm focus:outline-none focus:border-naran">
+            <svg class="absolute right-4 top-1/2 -translate-y-1/2 text-dolhoe" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+          </label>
+        </div>
+        <div id="news-list" class="grid sm:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+        <div data-board-pager="news" class="flex justify-center gap-1.5 mt-8"></div>
+      </div>
 
-  <!-- ========== 자료실 ========== -->
-  <section id="archive" class="max-w-7xl mx-auto px-5 md:px-8 py-4 md:py-10 scroll-mt-24">
-    <header class="max-w-2xl mb-8">
-      <p class="text-iwoot font-bold text-sm mb-2">자료실</p>
-      <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">서식과 안내 자료</h2>
-      <p class="text-dolhoe leading-relaxed">가입 신청서, 각종 서식, 안내 자료를 내려받을 수 있습니다.</p>
-    </header>
-<div id="archive-items" class="mt-10 pt-10 border-t border-black/10">
-      <div id="archive-list" class="space-y-3">
-        <p class="text-dolhoe text-sm">준비 중입니다. 곧 서식과 안내 자료를 올릴게요.</p>
+      <div id="budget" class="board-page">
+        <header class="mb-8">
+          <p class="text-iwoot font-bold text-sm mb-2">알림마당</p>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">예산 및 결산</h2>
+          <p class="text-dolhoe leading-relaxed">사회적협동조합 운영의 투명성을 위해 예산·결산 및 경영공시 자료를 공개합니다.</p>
+        </header>
+        <div class="flex justify-end mb-5">
+          <label class="relative w-full sm:w-80">
+            <span class="sr-only">예산 및 결산 검색</span>
+            <input type="search" data-board-search="budget" placeholder="제목으로 검색" class="w-full border border-black/15 rounded-lg pl-4 pr-11 py-3 text-sm focus:outline-none focus:border-naran">
+            <svg class="absolute right-4 top-1/2 -translate-y-1/2 text-dolhoe" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+          </label>
+        </div>
+        <ul id="budget-list" class="border-t-2 border-meok"></ul>
+        <div data-board-pager="budget" class="flex justify-center gap-1.5 mt-8"></div>
+      </div>
+
+      <div id="archive-items" class="board-page">
+        <header class="mb-8">
+          <p class="text-iwoot font-bold text-sm mb-2">알림마당</p>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">자료실</h2>
+          <p class="text-dolhoe leading-relaxed">느린이웃 가입·후원·참여에 필요한 공식 서식을 내려받을 수 있습니다.</p>
+        </header>
+        <div class="flex justify-end mb-5">
+          <label class="relative w-full sm:w-80">
+            <span class="sr-only">자료실 검색</span>
+            <input type="search" data-board-search="archive-items" placeholder="제목으로 검색" class="w-full border border-black/15 rounded-lg pl-4 pr-11 py-3 text-sm focus:outline-none focus:border-naran">
+            <svg class="absolute right-4 top-1/2 -translate-y-1/2 text-dolhoe" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+          </label>
+        </div>
+        <ul id="archive-items-list" class="border-t-2 border-meok"></ul>
+        <div data-board-pager="archive-items" class="flex justify-center gap-1.5 mt-8"></div>
       </div>
     </div>
   </section>
@@ -321,7 +320,7 @@
       </div>
       <div>
         <p class="text-white/50 font-bold text-xs mb-3">경영공시 안내</p>
-        <p class="leading-relaxed">사회적협동조합 결산서·총회 자료는<br>알림마당 &gt; 예산 및 결산 공고에서<br>확인하실 수 있습니다.</p>
+        <p class="leading-relaxed">사회적협동조합 결산서·총회 자료는<br>알림마당 &gt; 예산 및 결산에서<br>확인하실 수 있습니다.</p>
       </div>
       <div>
         <p class="text-white/50 font-bold text-xs mb-3">연락처</p>
@@ -346,7 +345,7 @@
 
 <!-- 공지사항/느린이웃 소식 상세 페이지 -->
 <div id="post-page" class="hidden max-w-3xl mx-auto px-5 md:px-8 py-12 min-h-[60vh]">
-  <a href="#top" class="inline-flex items-center gap-1.5 text-sm font-bold text-naran hover:underline mb-6">← 목록으로</a>
+  <a href="#notices" id="post-page-back" class="inline-flex items-center gap-1.5 text-sm font-bold text-naran hover:underline mb-6">← 목록으로</a>
   <p class="text-xs text-dolhoe mb-2" id="post-page-date"></p>
   <h1 class="text-2xl md:text-3xl font-extrabold text-meok mb-6" id="post-page-title"></h1>
   <div id="post-page-photo" class="mb-6"></div>
@@ -382,6 +381,7 @@
     document.getElementById('post-page-date').textContent = post.published_at ? String(post.published_at).replace(/-/g, '.') : '';
     document.getElementById('post-page-title').textContent = post.title || '';
     document.getElementById('post-page-content').innerHTML = ny_renderPostContent(post.content);
+    document.getElementById('post-page-back').setAttribute('href', post.category === 'news' ? '#news' : post.category === 'budget' ? '#budget' : '#notices');
 
     const photoEl = document.getElementById('post-page-photo');
     photoEl.innerHTML = '';
@@ -467,96 +467,131 @@ const menuBtn = document.getElementById('menuBtn');
     return ny_esc(str).replace(/^\* (.+)$/gm, '• $1');
   }
 
-// 알림마당 > 공지사항 / 느린이웃 소식: Supabase에서 실시간으로 불러오기
-  // (표를 못 불러오면 위 예시 내용이 그대로 보여요.)
-  (async function loadNotices() {
-    if (typeof supabase === 'undefined') return;
-    const { createClient } = supabase;
-    const db = createClient(
-      'https://mpgmvwivzedqxugfllxc.supabase.co',
-      'sb_publishable_B-pdQJ6sbCDrdi37JU6www_71TE8J5f'
-    );
+// 알림마당: 왼쪽 메뉴에서 고른 게시판만 보이기 (해시 기반)
+  const boardIds = ['notices', 'news', 'budget', 'archive-items'];
+  function showBoardView() {
+    const hash = location.hash.replace('#', '');
+    if (hash.startsWith('post-')) return;
+    const current = boardIds.includes(hash) ? hash : 'notices';
+    boardIds.forEach(id => document.getElementById(id).classList.toggle('hidden', id !== current));
+    document.querySelectorAll('[data-lnb-link]').forEach(link => link.classList.toggle('is-current', link.dataset.lnbLink === current));
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+  window.addEventListener('hashchange', showBoardView);
+  showBoardView();
+  window.addEventListener('load', () => { if (location.hash) setTimeout(() => window.scrollTo({ top: 0, behavior: 'instant' }), 0); });
 
-    function esc(str) {
-      const div = document.createElement('div');
-      div.textContent = str == null ? '' : str;
-      return div.innerHTML;
-    }
-    function formatDate(d) {
-      return d ? esc(d).replace(/-/g, '.') : '';
-    }
+// 알림마당 게시판: Supabase에서 불러와 검색 · 10개씩 페이지 나눔
+  const BOARD_PAGE_SIZE = { 'notices': 10, 'budget': 10, 'archive-items': 10, 'news': 9 };
+  const boardData = {};
+  const boardState = {};
+  const BADGE = {
+    'notices': ['공지', '#12456B'],
+    'budget': ['공시', '#2E7D52'],
+    'archive-items': ['서식', '#E1682C'],
+  };
+  function fmtDate(d) { return d ? ny_esc(String(d).slice(0, 10)).replace(/-/g, '.') : ''; }
+  function fileLabel(url) {
+    const ext = (String(url).split('?')[0].split('.').pop() || '').toLowerCase();
+    return ext === 'pdf' ? 'PDF' : (ext === 'doc' || ext === 'docx') ? '워드' : ext === 'hwp' || ext === 'hwpx' ? '한글' : '다운로드';
+  }
+  function emptyRow(msg) { return `<li class="py-14 text-center text-sm text-dolhoe border-b border-black/10">${msg}</li>`; }
 
-    const noticeList = document.getElementById('notice-list');
-    if (noticeList) {
-      const { data: notices, error } = await db
-        .from('posts')
-        .select('*')
-        .eq('category', 'notice')
-        .order('published_at', { ascending: false })
-        .limit(6);
-      if (!error && notices && notices.length > 0) {
-        noticeList.innerHTML = notices.map(n => `
-          <li class="py-1">
-            <a href="#post-${esc(n.id)}" class="w-full py-2 flex items-center justify-between gap-4 text-left hover:text-naran transition-colors">
-              <p class="text-sm text-meok truncate">${esc(n.title)}</p>
-              <p class="text-xs text-dolhoe shrink-0">${formatDate(n.published_at)}</p>
-            </a>
-          </li>`).join('');
-      }
-    }
+  function renderBoard(id) {
+    const all = boardData[id] || [];
+    const q = (boardState[id]?.q || '').trim().toLowerCase();
+    const rows = q ? all.filter(r => (r.title || '').toLowerCase().includes(q)) : all;
+    const size = BOARD_PAGE_SIZE[id];
+    const pages = Math.max(1, Math.ceil(rows.length / size));
+    const page = Math.min(boardState[id]?.page || 1, pages);
+    const slice = rows.slice((page - 1) * size, page * size);
+    const listEl = document.getElementById(id === 'news' ? 'news-list' : id + '-list');
 
-    const newsList = document.getElementById('news-list');
-    if (newsList) {
-      const { data: news, error: newsError } = await db
-        .from('posts')
-        .select('*')
-        .eq('category', 'news')
-        .order('published_at', { ascending: false })
-        .limit(3);
-      if (!newsError && news && news.length > 0) {
-        newsList.innerHTML = news.map(n => {
-          const photoBlock = n.photo_url
-            ? `<img src="${esc(n.photo_url)}" alt="${esc(n.title)}" class="aspect-[4/3] w-full object-cover">`
-            : `<div class="photo-guide aspect-[4/3] flex items-end p-3"><span class="tag inline-block text-[10px] font-bold px-2 py-1 rounded">사진 가이드</span></div>`;
-          return `<a href="#post-${esc(n.id)}" class="block border border-black/10 rounded-xl overflow-hidden hover:shadow-md transition-shadow">
-            ${photoBlock}
-            <div class="p-4">
-              <p class="text-xs text-dolhoe mb-1">${formatDate(n.published_at)}</p>
-              <p class="text-sm font-semibold leading-snug">${esc(n.title)}</p>
+    if (id === 'news') {
+      listEl.innerHTML = slice.length ? slice.map(n => {
+        const photo = n.photo_url
+          ? `<img src="${ny_esc(n.photo_url)}" alt="${ny_esc(n.title)}" class="aspect-[4/3] w-full object-cover" loading="lazy">`
+          : `<div class="photo-guide aspect-[4/3] flex items-end p-3"><span class="tag inline-block text-[10px] font-bold px-2 py-1 rounded">사진 준비 중</span></div>`;
+        return `<a href="#post-${ny_esc(n.id)}" class="block border border-black/10 rounded-xl overflow-hidden hover:shadow-md transition-shadow">
+          ${photo}
+          <div class="p-4">
+            <p class="text-xs text-dolhoe mb-1">${fmtDate(n.published_at)}</p>
+            <p class="text-sm font-semibold leading-snug">${ny_esc(n.title)}</p>
+          </div>
+        </a>`;
+      }).join('') : `<p class="sm:col-span-2 xl:col-span-3 py-14 text-center text-sm text-dolhoe">${q ? '검색 결과가 없습니다.' : '아직 등록된 소식이 없습니다.'}</p>`;
+    } else {
+      const [label, color] = BADGE[id];
+      listEl.innerHTML = slice.length ? slice.map(r => {
+        if (id === 'archive-items') {
+          const btns = r.files.map(u => `<a href="${ny_esc(u)}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 border border-naran text-naran hover:bg-naran hover:text-white text-xs font-bold px-3 py-1.5 rounded-full transition-colors">${fileLabel(u)} <span aria-hidden="true">↓</span></a>`).join('');
+          return `<li class="flex items-center gap-5 px-3 py-5 border-b border-black/10">
+            <span class="board-badge shrink-0" style="background:${color}">${label}</span>
+            <div class="flex-1 min-w-0">
+              <p class="text-base font-semibold text-meok truncate">${ny_esc(r.title)}</p>
+              ${r.content ? `<p class="text-xs text-dolhoe mt-1 truncate">${ny_esc(r.content)}</p>` : ''}
             </div>
-          </a>`;
-        }).join('');
-      }
+            <div class="flex gap-2 shrink-0">${btns}</div>
+          </li>`;
+        }
+        return `<li class="border-b border-black/10">
+          <a href="#post-${ny_esc(r.id)}" class="flex items-center gap-5 px-3 py-5 hover:bg-byeot/50 transition-colors">
+            <span class="board-badge shrink-0" style="background:${color}">${label}</span>
+            <span class="flex-1 min-w-0 text-base font-semibold text-meok truncate">${ny_esc(r.title)}</span>
+            <span class="shrink-0 text-sm text-dolhoe">${fmtDate(r.published_at)}</span>
+          </a>
+        </li>`;
+      }).join('') : emptyRow(q ? '검색 결과가 없습니다.' : '아직 등록된 글이 없습니다.');
     }
-  })();
 
-  // 자료실: Supabase에서 실시간으로 불러오기
-  // (표를 못 불러오면 위 안내 문구가 그대로 보여요.)
-  (async function loadArchiveItems() {
-    if (typeof supabase === 'undefined') return;
-    const { createClient } = supabase;
-    const db = createClient(
+    const pager = document.querySelector(`[data-board-pager="${id}"]`);
+    pager.classList.add('board-pager');
+    pager.innerHTML = pages > 1 ? Array.from({ length: pages }, (_, i) =>
+      `<button type="button" data-page="${i + 1}" class="${i + 1 === page ? 'is-current' : 'hover:bg-byeot'}">${i + 1}</button>`).join('') : '';
+    pager.querySelectorAll('button').forEach(b => b.onclick = () => {
+      boardState[id] = { ...(boardState[id] || {}), page: +b.dataset.page };
+      renderBoard(id);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    });
+  }
+
+  document.querySelectorAll('[data-board-search]').forEach(inp => {
+    inp.addEventListener('input', () => {
+      const id = inp.dataset.boardSearch;
+      boardState[id] = { q: inp.value, page: 1 };
+      renderBoard(id);
+    });
+  });
+
+  (async function loadBoards() {
+    boardIds.forEach(id => { boardData[id] = []; });
+    if (typeof supabase === 'undefined') { boardIds.forEach(renderBoard); return; }
+    const db = supabase.createClient(
       'https://mpgmvwivzedqxugfllxc.supabase.co',
       'sb_publishable_B-pdQJ6sbCDrdi37JU6www_71TE8J5f'
     );
-
     try {
-      const { data: items, error } = await db
-        .from('info_items')
-        .select('*')
-        .eq('category', 'archive')
-        .order('sort_order', { ascending: true });
-      if (!error && items && items.length > 0) {
-        document.getElementById('archive-list').innerHTML = items.map(it => `
-          <div class="border border-black/10 rounded-xl p-4 flex items-center justify-between gap-4">
-            <div class="min-w-0">
-              <p class="font-bold text-sm truncate">${ny_esc(it.title)}</p>
-              ${it.content ? `<p class="text-dolhoe text-xs mt-0.5">${ny_esc(it.content)}</p>` : ''}
-            </div>
-            ${it.file_url ? `<a href="${ny_esc(it.file_url)}" target="_blank" rel="noopener" class="shrink-0 text-sm font-bold text-naran hover:underline">다운로드 →</a>` : ''}
-          </div>`).join('');
-      }
-    } catch (e) { /* info_items 테이블이 아직 없어도 나머지는 정상 표시 */ }
+      const { data: posts } = await db.from('posts').select('id, title, category, published_at, photo_url')
+        .in('category', ['notice', 'news', 'budget']).order('published_at', { ascending: false }).limit(500);
+      (posts || []).forEach(p => {
+        const key = p.category === 'notice' ? 'notices' : p.category;
+        boardData[key].push(p);
+      });
+    } catch (e) { /* 표를 못 불러와도 빈 목록으로 표시 */ }
+    try {
+      const { data: items } = await db.from('info_items').select('*').eq('category', 'archive').order('sort_order', { ascending: true });
+      // 같은 제목의 항목(예: 워드·PDF)은 한 줄로 묶어서 버튼을 나란히 보여줌
+      const groups = [];
+      (items || []).forEach(it => {
+        let g = groups.find(x => x.title === it.title);
+        if (!g) { g = { title: it.title, content: it.content, files: [] }; groups.push(g); }
+        if (!g.content && it.content) g.content = it.content;
+        if (it.file_url) g.files.push(it.file_url);
+      });
+      groups.forEach(g => g.files.sort((x, y) => (fileLabel(x) === '워드' ? 0 : 1) - (fileLabel(y) === '워드' ? 0 : 1)));
+      boardData['archive-items'] = groups;
+    } catch (e) { /* info_items 표가 없어도 빈 목록으로 표시 */ }
+    boardIds.forEach(renderBoard);
   })();
 
 </script>
