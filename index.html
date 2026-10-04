@@ -247,6 +247,8 @@
              alt="느린이웃 단체 사진"
              class="absolute inset-0 w-full h-full object-cover"
              onerror="this.style.display='none'; document.getElementById('hero-photo-fallback').style.display='flex';">
+        <div id="hero-slides" class="absolute inset-0 hidden" aria-roledescription="carousel" aria-label="느린이웃 활동 사진"></div>
+        <div id="hero-dots" class="absolute bottom-3 left-0 right-0 flex justify-center gap-2 hidden"></div>
         <div id="hero-photo-fallback" class="photo-guide absolute inset-0 flex items-end p-5" style="display:none;">
           <div class="w-full">
             <span class="tag inline-block text-[11px] font-bold px-2.5 py-1 rounded mb-2">사진 가이드</span>
@@ -467,6 +469,39 @@ const menuBtn = document.getElementById('menuBtn');
 
   // 소개: 히어로 문구·사진을 Supabase에서 실시간으로 불러오기
   // (관리자 페이지에서 아무것도 입력하지 않았으면 위 고정 내용이 그대로 보여요.)
+// 첫 화면 사진: 관리자 페이지에서 여러 장 넣으면 5초마다 천천히 바뀌어요 (마우스를 올리면 잠시 멈춤)
+  function ny_heroSlides(photos) {
+    const box = document.getElementById('hero-slides');
+    const dots = document.getElementById('hero-dots');
+    document.getElementById('hero-photo').style.display = 'none';
+    document.getElementById('hero-photo-fallback').style.display = 'none';
+    box.innerHTML = photos.map((u, i) => {
+      const img = document.createElement('img');
+      img.src = u; img.alt = `느린이웃 활동 사진 ${i + 1}`;
+      img.className = 'absolute inset-0 w-full h-full object-cover transition-opacity duration-1000';
+      img.style.opacity = i === 0 ? '1' : '0';
+      if (i > 0) img.loading = 'lazy';
+      return img.outerHTML;
+    }).join('');
+    dots.innerHTML = photos.map((u, i) =>
+      `<button type="button" class="w-2.5 h-2.5 rounded-full border border-white/80 shadow" aria-label="${i + 1}번째 사진 보기"></button>`).join('');
+    box.classList.remove('hidden'); dots.classList.remove('hidden');
+    const imgs = [...box.children], btns = [...dots.children];
+    let cur = 0, timer = null;
+    function show(n) {
+      cur = (n + imgs.length) % imgs.length;
+      imgs.forEach((im, i) => { im.style.opacity = i === cur ? '1' : '0'; });
+      btns.forEach((b, i) => { b.style.background = i === cur ? '#fff' : 'rgba(255,255,255,.35)'; b.setAttribute('aria-current', i === cur ? 'true' : 'false'); });
+    }
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function start() { if (!reduce && !timer) timer = setInterval(() => show(cur + 1), 5000); }
+    function stop() { clearInterval(timer); timer = null; }
+    btns.forEach((b, i) => b.addEventListener('click', () => { stop(); show(i); start(); }));
+    const wrap = box.parentElement;
+    wrap.addEventListener('mouseenter', stop); wrap.addEventListener('mouseleave', start);
+    show(0); start();
+  }
+
   (async function loadHeroContent() {
     if (typeof supabase === 'undefined') return;
     const { createClient } = supabase;
@@ -483,11 +518,16 @@ const menuBtn = document.getElementById('menuBtn');
       if (s.hero_tag) document.getElementById('hero-tag').textContent = s.hero_tag;
       if (s.hero_title) document.getElementById('hero-title').textContent = s.hero_title;
       if (s.hero_body) document.getElementById('hero-body').textContent = s.hero_body;
-      if (s.hero_photo_url) {
+      let photos = [];
+      try { const v = JSON.parse(s.hero_photos || '[]'); if (Array.isArray(v)) photos = v.filter(Boolean); } catch (e) {}
+      if (!photos.length && s.hero_photo_url) photos = [s.hero_photo_url];
+      if (photos.length === 1) {
         const heroImg = document.getElementById('hero-photo');
-        heroImg.src = s.hero_photo_url;
+        heroImg.src = photos[0];
         heroImg.style.display = '';
         document.getElementById('hero-photo-fallback').style.display = 'none';
+      } else if (photos.length > 1) {
+        ny_heroSlides(photos);
       }
     } catch (e) { /* site_settings 테이블이 아직 없어도 나머지는 정상 표시 */ }
   })();

@@ -164,7 +164,7 @@
             <p id="post-form-error" class="text-sm text-ongi hidden"></p>
             <div class="flex items-center gap-3 pt-2">
               <button type="submit" id="post-form-submit" class="btn-main">저장</button>
-              <button type="button" id="post-form-cancel" class="btn-ghost hidden">수정 취소</button>
+              <button type="button" id="post-form-cancel" class="btn-ghost hidden">새 글 쓰기</button>
               <span id="post-form-status" class="text-xs text-dolhoe"></span>
             </div>
           </form>
@@ -411,9 +411,10 @@
               <textarea id="hero-body-input" class="field" rows="3" placeholder="앞에서 끌지 않고, 뒤에서 밀지 않고, 나란히."></textarea>
             </div>
             <div>
-              <label class="block text-xs font-bold text-dolhoe mb-1.5">대표 사진</label>
-              <input type="file" id="hero-photo-input" accept="image/*" class="field max-w-sm">
-              <div id="hero-photo-preview" class="mt-2"></div>
+              <label class="block text-xs font-bold text-dolhoe mb-1.5">대표 사진 (최대 5장 · 2장 이상이면 5초마다 순서대로 바뀌어요)</label>
+              <input type="file" id="hero-photo-input" accept="image/*" class="field max-w-sm" multiple>
+              <p class="text-[11px] text-dolhoe mt-1">가로 사진이 좋아요. 화살표로 순서를 바꾸고, 다 고친 뒤 [저장]을 눌러야 홈페이지에 반영돼요.</p>
+              <div id="hero-photo-preview" class="mt-3 flex flex-wrap gap-3"></div>
             </div>
             <p id="hero-form-error" class="text-sm text-ongi hidden"></p>
             <div class="flex items-center gap-3 pt-2">
@@ -762,9 +763,9 @@
       await loadPostGallery(postId);
       await syncPostThumbnail(postId);
 
-      postFormStatus.textContent = '저장되었습니다.';
       await loadPosts();
       window.editPost(postId);
+      postFormStatus.textContent = '저장되었습니다. 다른 글을 쓰려면 [새 글 쓰기]를 눌러주세요.';
     } catch (err) {
       showError(postFormError, '저장하지 못했습니다: ' + (err.message || err));
       postFormStatus.textContent = '';
@@ -1054,15 +1055,42 @@
     heroTagInput.value = window.__siteSettings.hero_tag || '';
     heroTitleInput.value = window.__siteSettings.hero_title || '';
     heroBodyInput.value = window.__siteSettings.hero_body || '';
-    heroPhotoPreview.innerHTML = window.__siteSettings.hero_photo_url
-      ? `<img src="${esc(window.__siteSettings.hero_photo_url)}" class="mt-1 h-24 rounded-lg object-cover">`
-      : '';
+    heroPhotos = [];
+    try { const v = JSON.parse(window.__siteSettings.hero_photos || '[]'); if (Array.isArray(v)) heroPhotos = v.filter(Boolean).map(u => ({ url: u })); } catch (e) {}
+    if (!heroPhotos.length && window.__siteSettings.hero_photo_url) heroPhotos = [{ url: window.__siteSettings.hero_photo_url }];
+    renderHeroPhotos();
   }
 
+  // 대표 사진 목록: { url } = 이미 올린 사진, { file, url(미리보기) } = 저장하면 올라갈 사진
+  const HERO_MAX = 5;
+  let heroPhotos = [];
+  function renderHeroPhotos() {
+    heroPhotoPreview.innerHTML = heroPhotos.length ? heroPhotos.map((h, i) => `
+      <div class="w-36">
+        <div class="relative">
+          <img src="${esc(h.url)}" class="w-36 h-28 rounded-lg object-cover border border-black/10">
+          <span class="absolute top-1 left-1 text-[11px] font-bold bg-white/90 rounded px-1.5">${i + 1}${h.file ? ' · 새 사진' : ''}</span>
+        </div>
+        <div class="flex gap-1 mt-1">
+          <button type="button" class="btn-ghost btn-sm" onclick="moveHeroPhoto(${i}, -1)" ${i === 0 ? 'disabled' : ''} aria-label="앞으로">◀</button>
+          <button type="button" class="btn-ghost btn-sm" onclick="moveHeroPhoto(${i}, 1)" ${i === heroPhotos.length - 1 ? 'disabled' : ''} aria-label="뒤로">▶</button>
+          <button type="button" class="btn-ghost btn-sm" onclick="removeHeroPhoto(${i})">빼기</button>
+        </div>
+      </div>`).join('') : '<p class="text-xs text-dolhoe">사진이 없으면 기본 안내 그림이 보여요.</p>';
+  }
+  window.moveHeroPhoto = function(i, d) {
+    const j = i + d; if (j < 0 || j >= heroPhotos.length) return;
+    [heroPhotos[i], heroPhotos[j]] = [heroPhotos[j], heroPhotos[i]]; renderHeroPhotos();
+  };
+  window.removeHeroPhoto = function(i) { heroPhotos.splice(i, 1); renderHeroPhotos(); };
   heroPhotoInput.addEventListener('change', () => {
-    const file = heroPhotoInput.files[0];
-    if (!file) return;
-    heroPhotoPreview.innerHTML = `<img src="${URL.createObjectURL(file)}" class="mt-1 h-24 rounded-lg object-cover">`;
+    hideError(heroFormError);
+    const files = Array.from(heroPhotoInput.files || []);
+    const room = HERO_MAX - heroPhotos.length;
+    if (files.length > room) showError(heroFormError, `대표 사진은 ${HERO_MAX}장까지예요. 앞의 ${Math.max(room, 0)}장만 추가했어요.`);
+    files.slice(0, Math.max(room, 0)).forEach(f => heroPhotos.push({ file: f, url: URL.createObjectURL(f) }));
+    heroPhotoInput.value = '';
+    renderHeroPhotos();
   });
 
   heroForm.addEventListener('submit', async (e) => {
@@ -1072,17 +1100,19 @@
     heroFormSubmit.textContent = '저장 중...';
     heroFormStatus.textContent = '';
     try {
-      let photoUrl = window.__siteSettings.hero_photo_url || null;
-      const file = heroPhotoInput.files[0];
-      if (file) {
-        heroFormStatus.textContent = '사진 업로드 중...';
-        photoUrl = await uploadPhoto(file, 'Hero');
+      const pending = heroPhotos.filter(h => h.file);
+      for (let i = 0; i < pending.length; i++) {
+        heroFormStatus.textContent = `사진 업로드 중... (${i + 1}/${pending.length})`;
+        pending[i].url = await uploadPhoto(pending[i].file, 'Hero');
+        delete pending[i].file;
       }
+      const urls = heroPhotos.map(h => h.url);
       const rows = [
         { key: 'hero_tag', value: heroTagInput.value },
         { key: 'hero_title', value: heroTitleInput.value },
         { key: 'hero_body', value: heroBodyInput.value },
-        { key: 'hero_photo_url', value: photoUrl || '' },
+        { key: 'hero_photos', value: JSON.stringify(urls) },
+        { key: 'hero_photo_url', value: urls[0] || '' },
       ];
       heroFormStatus.textContent = '저장 중...';
       const { error } = await db.from('site_settings').upsert(rows, { onConflict: 'key' });
