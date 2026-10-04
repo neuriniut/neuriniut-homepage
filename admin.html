@@ -84,9 +84,25 @@
         </div>
         <div class="flex items-center gap-3">
           <p class="text-xs text-dolhoe hidden sm:block" id="whoami"></p>
+          <button id="pw-btn" type="button" class="btn-ghost">비밀번호 변경</button>
           <button id="logout-btn" class="btn-ghost">로그아웃</button>
         </div>
       </div>
+      <form id="pw-form" class="hidden max-w-5xl mx-auto px-5 pb-4">
+        <div class="bg-byeot/60 rounded-xl p-4 grid sm:grid-cols-[1fr_1fr_auto_auto] gap-3 items-end">
+          <div>
+            <label class="block text-[11px] font-bold text-dolhoe mb-1">새 비밀번호 (8자 이상)</label>
+            <input type="password" id="pw-new" class="field" autocomplete="new-password" minlength="8" required>
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-dolhoe mb-1">새 비밀번호 확인</label>
+            <input type="password" id="pw-new2" class="field" autocomplete="new-password" minlength="8" required>
+          </div>
+          <button type="submit" id="pw-submit" class="btn-main">변경하기</button>
+          <button type="button" id="pw-cancel" class="btn-ghost">닫기</button>
+        </div>
+        <p id="pw-msg" class="text-sm mt-2"></p>
+      </form>
       <div class="max-w-5xl mx-auto px-5 flex items-center gap-5 overflow-x-auto">
         <button type="button" class="tab-btn active" data-tab="about">소개</button>
         <button type="button" class="tab-btn" data-tab="programs">사업안내</button>
@@ -528,6 +544,26 @@
       return;
     }
     refreshView();
+  });
+
+  // ---------- 비밀번호 변경 (로그인한 상태에서 새 비밀번호로 바꾸기) ----------
+  const pwForm = document.getElementById('pw-form');
+  const pwMsg = document.getElementById('pw-msg');
+  document.getElementById('pw-btn').addEventListener('click', () => { pwForm.classList.toggle('hidden'); pwMsg.textContent = ''; });
+  document.getElementById('pw-cancel').addEventListener('click', () => { pwForm.reset(); pwForm.classList.add('hidden'); });
+  pwForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const a = document.getElementById('pw-new').value, b = document.getElementById('pw-new2').value;
+    pwMsg.className = 'text-sm mt-2 text-ongi';
+    if (a.length < 8) { pwMsg.textContent = '비밀번호는 8자 이상으로 정해주세요.'; return; }
+    if (a !== b) { pwMsg.textContent = '두 칸의 비밀번호가 서로 달라요.'; return; }
+    const btn = document.getElementById('pw-submit'); btn.disabled = true;
+    const { error } = await db.auth.updateUser({ password: a });
+    btn.disabled = false;
+    if (error) { pwMsg.textContent = '바꾸지 못했습니다: ' + error.message; return; }
+    pwForm.reset();
+    pwMsg.className = 'text-sm mt-2 text-iwoot font-bold';
+    pwMsg.textContent = '비밀번호가 바뀌었어요. 다음 로그인부터 새 비밀번호를 쓰세요.';
   });
 
   logoutBtn.addEventListener('click', async () => {
