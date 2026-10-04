@@ -62,6 +62,17 @@
   /* 드롭다운 메뉴 (데스크톱) */
   .nav-drop { opacity: 0; visibility: hidden; transform: translateY(4px); transition: all .15s ease; }
   .nav-item:hover .nav-drop, .nav-item:focus-within .nav-drop { opacity: 1; visibility: visible; transform: translateY(0); }
+  /* 드롭다운에서 고른 뒤에는 마우스가 메뉴 위에 있어도 닫아두기 */
+  .nav-item.nav-closed .nav-drop { opacity: 0 !important; visibility: hidden !important; }
+  /* 모바일·태블릿: PC 왼쪽 메뉴를 본문 위에 2칸 버튼으로 보여주기 */
+  @media (max-width: 1023.98px) {
+    .lnb-aside > div > a:first-child { padding: 16px 20px; }
+    .lnb-aside > div > a:first-child p:last-child { font-size: 1.125rem; }
+    .lnb-aside nav > ul { display: grid; grid-template-columns: 1fr 1fr; }
+    .lnb-aside nav > ul > li > a { padding: 12px 16px; border-bottom: 1px solid rgba(0,0,0,.08); }
+    .lnb-aside nav > ul > li:nth-child(odd) > a { border-right: 1px solid rgba(0,0,0,.08); }
+    .lnb-aside .lnb-biz { padding: 12px 18px; }
+  }
 
   /* 알림마당 본문 서식(굵기/색/표/이미지) */
   .rich-content p { margin-bottom: 0.85em; }
@@ -171,7 +182,7 @@
 
     <div class="px-5 pt-2 pb-10">
       <div class="py-6 border-b border-black/10">
-        <p class="text-xl font-extrabold text-meok mb-3">소개</p>
+        <a href="about.html" class="flex items-center justify-between text-xl font-extrabold text-meok mb-3" data-close-menu>소개<span class="text-sm font-bold text-naran">바로가기 →</span></a>
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
           <a href="about.html#greeting" class="text-base text-dolhoe" data-close-menu>인사말</a>
           <a href="about.html#story" class="text-base text-dolhoe" data-close-menu>브랜드 스토리</a>
@@ -183,7 +194,7 @@
       </div>
 
       <div class="py-6 border-b border-black/10">
-        <p class="text-xl font-extrabold text-meok mb-3">사업안내</p>
+        <a href="programs.html" class="flex items-center justify-between text-xl font-extrabold text-meok mb-3" data-close-menu>사업안내<span class="text-sm font-bold text-naran">바로가기 →</span></a>
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
           <a href="programs.html#biz-independence" class="text-base text-dolhoe" data-close-menu>발달장애인의 사회참여 및 자립 준비 지원 사업</a>
           <a href="programs.html#biz-family" class="text-base text-dolhoe" data-close-menu>발달장애인 가족통합 지원 사업</a>
@@ -193,7 +204,7 @@
       </div>
 
       <div class="py-6 border-b border-black/10">
-        <p class="text-xl font-extrabold text-meok mb-3">알림마당</p>
+        <a href="board.html" class="flex items-center justify-between text-xl font-extrabold text-meok mb-3" data-close-menu>알림마당<span class="text-sm font-bold text-naran">바로가기 →</span></a>
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
           <a href="board.html#notices" class="text-base text-dolhoe" data-close-menu>공지사항</a>
           <a href="board.html#news" class="text-base text-dolhoe" data-close-menu>느린이웃 소식</a>
@@ -205,7 +216,7 @@
       </div>
 
       <div class="py-6">
-        <p class="text-xl font-extrabold text-meok mb-3">참여공간</p>
+        <a href="join.html" class="flex items-center justify-between text-xl font-extrabold text-meok mb-3" data-close-menu>참여공간<span class="text-sm font-bold text-naran">바로가기 →</span></a>
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
           <a href="join.html#membership" class="text-base text-dolhoe" data-close-menu>조합원 가입 안내</a>
           <a href="join.html#donate" class="text-base font-bold text-ongi" data-close-menu>후원하기</a>
@@ -469,7 +480,7 @@ const menuBtn = document.getElementById('menuBtn');
 
   // 소개: 히어로 문구·사진을 Supabase에서 실시간으로 불러오기
   // (관리자 페이지에서 아무것도 입력하지 않았으면 위 고정 내용이 그대로 보여요.)
-// 첫 화면 사진: 관리자 페이지에서 여러 장 넣으면 5초마다 천천히 바뀌어요 (마우스를 올리면 잠시 멈춤)
+// 첫 화면 사진: 관리자 페이지에서 여러 장 넣으면 3초마다 바뀌어요 (마우스를 올리면 잠시 멈춤)
   function ny_heroSlides(photos) {
     const box = document.getElementById('hero-slides');
     const dots = document.getElementById('hero-dots');
@@ -478,7 +489,7 @@ const menuBtn = document.getElementById('menuBtn');
     box.innerHTML = photos.map((u, i) => {
       const img = document.createElement('img');
       img.src = u; img.alt = `느린이웃 활동 사진 ${i + 1}`;
-      img.className = 'absolute inset-0 w-full h-full object-cover transition-opacity duration-1000';
+      img.className = 'absolute inset-0 w-full h-full object-cover transition-opacity duration-700';
       img.style.opacity = i === 0 ? '1' : '0';
       if (i > 0) img.loading = 'lazy';
       return img.outerHTML;
@@ -494,7 +505,7 @@ const menuBtn = document.getElementById('menuBtn');
       btns.forEach((b, i) => { b.style.background = i === cur ? '#fff' : 'rgba(255,255,255,.35)'; b.setAttribute('aria-current', i === cur ? 'true' : 'false'); });
     }
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    function start() { if (!reduce && !timer) timer = setInterval(() => show(cur + 1), 5000); }
+    function start() { if (!reduce && !timer) timer = setInterval(() => show(cur + 1), 3000); }
     function stop() { clearInterval(timer); timer = null; }
     btns.forEach((b, i) => b.addEventListener('click', () => { stop(); show(i); start(); }));
     const wrap = box.parentElement;
@@ -604,6 +615,15 @@ const menuBtn = document.getElementById('menuBtn');
         </a>
       </li>`).join('');
   })();
+
+// 위 드롭다운 메뉴: 고르면 바로 닫기 (마우스를 메뉴 밖으로 옮기면 다시 열 수 있어요)
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.querySelectorAll('.nav-drop a').forEach(a => a.addEventListener('click', () => {
+      item.classList.add('nav-closed');
+      if (document.activeElement) document.activeElement.blur();
+    }));
+    item.addEventListener('mouseleave', () => item.classList.remove('nav-closed'));
+  });
 </script>
 </body>
 </html>

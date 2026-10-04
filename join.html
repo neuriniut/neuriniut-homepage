@@ -62,6 +62,17 @@
   /* 드롭다운 메뉴 (데스크톱) */
   .nav-drop { opacity: 0; visibility: hidden; transform: translateY(4px); transition: all .15s ease; }
   .nav-item:hover .nav-drop, .nav-item:focus-within .nav-drop { opacity: 1; visibility: visible; transform: translateY(0); }
+  /* 드롭다운에서 고른 뒤에는 마우스가 메뉴 위에 있어도 닫아두기 */
+  .nav-item.nav-closed .nav-drop { opacity: 0 !important; visibility: hidden !important; }
+  /* 모바일·태블릿: PC 왼쪽 메뉴를 본문 위에 2칸 버튼으로 보여주기 */
+  @media (max-width: 1023.98px) {
+    .lnb-aside > div > a:first-child { padding: 16px 20px; }
+    .lnb-aside > div > a:first-child p:last-child { font-size: 1.125rem; }
+    .lnb-aside nav > ul { display: grid; grid-template-columns: 1fr 1fr; }
+    .lnb-aside nav > ul > li > a { padding: 12px 16px; border-bottom: 1px solid rgba(0,0,0,.08); }
+    .lnb-aside nav > ul > li:nth-child(odd) > a { border-right: 1px solid rgba(0,0,0,.08); }
+    .lnb-aside .lnb-biz { padding: 12px 18px; }
+  }
 
   /* 알림마당 본문 서식(굵기/색/표/이미지) */
   .rich-content p { margin-bottom: 0.85em; }
@@ -175,7 +186,7 @@
 
     <div class="px-5 pt-2 pb-10">
       <div class="py-6 border-b border-black/10">
-        <p class="text-xl font-extrabold text-meok mb-3">소개</p>
+        <a href="about.html" class="flex items-center justify-between text-xl font-extrabold text-meok mb-3" data-close-menu>소개<span class="text-sm font-bold text-naran">바로가기 →</span></a>
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
           <a href="about.html#greeting" class="text-base text-dolhoe" data-close-menu>인사말</a>
           <a href="about.html#story" class="text-base text-dolhoe" data-close-menu>브랜드 스토리</a>
@@ -187,7 +198,7 @@
       </div>
 
       <div class="py-6 border-b border-black/10">
-        <p class="text-xl font-extrabold text-meok mb-3">사업안내</p>
+        <a href="programs.html" class="flex items-center justify-between text-xl font-extrabold text-meok mb-3" data-close-menu>사업안내<span class="text-sm font-bold text-naran">바로가기 →</span></a>
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
           <a href="programs.html#biz-independence" class="text-base text-dolhoe" data-close-menu>발달장애인의 사회참여 및 자립 준비 지원 사업</a>
           <a href="programs.html#biz-family" class="text-base text-dolhoe" data-close-menu>발달장애인 가족통합 지원 사업</a>
@@ -197,7 +208,7 @@
       </div>
 
       <div class="py-6 border-b border-black/10">
-        <p class="text-xl font-extrabold text-meok mb-3">알림마당</p>
+        <a href="board.html" class="flex items-center justify-between text-xl font-extrabold text-meok mb-3" data-close-menu>알림마당<span class="text-sm font-bold text-naran">바로가기 →</span></a>
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
           <a href="board.html#notices" class="text-base text-dolhoe" data-close-menu>공지사항</a>
           <a href="board.html#news" class="text-base text-dolhoe" data-close-menu>느린이웃 소식</a>
@@ -209,7 +220,7 @@
       </div>
 
       <div class="py-6">
-        <p class="text-xl font-extrabold text-meok mb-3">참여공간</p>
+        <a href="join.html" class="flex items-center justify-between text-xl font-extrabold text-meok mb-3" data-close-menu>참여공간<span class="text-sm font-bold text-naran">바로가기 →</span></a>
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
           <a href="join.html#membership" class="text-base text-dolhoe" data-close-menu>조합원 가입 안내</a>
           <a href="join.html#donate" class="text-base font-bold text-ongi" data-close-menu>후원하기</a>
@@ -224,8 +235,8 @@
 
 <!-- ========== 참여공간 (왼쪽 사이드메뉴 + 서브페이지) ========== -->
   <section id="join" class="max-w-7xl mx-auto px-5 md:px-8 py-4 md:py-10 lg:flex gap-12 items-start">
-    <aside class="hidden lg:block w-64 shrink-0" aria-label="참여공간 메뉴">
-      <div class="sticky top-28">
+    <aside class="lnb-aside block mb-8 lg:mb-0 lg:w-64 shrink-0" aria-label="참여공간 메뉴">
+      <div class="lg:sticky lg:top-28">
         <a href="#membership" class="block bg-ongi text-white rounded-t-2xl px-6 py-7">
           <p class="text-[11px] font-bold tracking-widest text-white/70 mb-1">JOIN US</p>
           <p class="text-xl font-extrabold">참여공간</p>
@@ -548,13 +559,23 @@ const menuBtn = document.getElementById('menuBtn');
 // 왼쪽 사이드메뉴 · 페이지 안 이동: 브라우저 기본 점프 없이 내용만 바꾸고 맨 위에서 시작 (화면 튐 방지)
   function ny_subnav(render) {
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    // 같은 페이지 안 이동이면(#greeting, about.html#greeting 모두) 브라우저 점프 대신 내용만 바꾸고 맨 위에서 시작
+    const pageKey = (path) => path.replace(/\/index(\.html)?$/, '/').replace(/\.html$/, '').replace(/\/$/, '') || '/';
     document.addEventListener('click', (e) => {
-      const a = e.target.closest('a[href^="#"]');
-      if (!a || a.hasAttribute('data-native')) return;
-      const href = a.getAttribute('href');
-      if (href.length < 2) return;
+      const a = e.target.closest('a[href]');
+      if (!a || a.hasAttribute('data-native') || a.target === '_blank') return;
+      const raw = a.getAttribute('href');
+      if (!raw || raw === '#') return;
+      let url; try { url = new URL(a.href, location.href); } catch (err) { return; }
+      if (url.origin !== location.origin || pageKey(url.pathname) !== pageKey(location.pathname)) return;
+      const href = url.hash;
+      if (!href || href.length < 2) {
+        if (raw.startsWith('#')) return;
+      }
       e.preventDefault();
-      if (location.hash !== href) history.pushState(null, '', href);
+      const target = href && href.length > 1 ? href : location.pathname;
+      if (href && href.length > 1) { if (location.hash !== href) history.pushState(null, '', href); }
+      else if (location.hash) history.pushState(null, '', location.pathname);
       render();
       window.scrollTo({ top: 0, behavior: 'instant' });
     });
@@ -647,6 +668,15 @@ const menuBtn = document.getElementById('menuBtn');
     });
   })();
 
+
+// 위 드롭다운 메뉴: 고르면 바로 닫기 (마우스를 메뉴 밖으로 옮기면 다시 열 수 있어요)
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.querySelectorAll('.nav-drop a').forEach(a => a.addEventListener('click', () => {
+      item.classList.add('nav-closed');
+      if (document.activeElement) document.activeElement.blur();
+    }));
+    item.addEventListener('mouseleave', () => item.classList.remove('nav-closed'));
+  });
 </script>
 </body>
 </html>
