@@ -216,6 +216,36 @@
         </section>
 
         <section class="bg-white rounded-2xl border border-black/10 p-6">
+          <h2 class="font-bold text-lg mb-1">언론보도</h2>
+          <p class="text-xs text-dolhoe mb-5">느린이웃이 소개된 기사를 넣으면 메인 화면(최근 4개)과 알림마당 &gt; 언론보도에 날짜순으로 보여요.</p>
+          <form id="press-form" class="grid sm:grid-cols-[150px_150px_1fr] gap-3 items-end mb-5">
+            <input type="hidden" id="press-index">
+            <div>
+              <label class="block text-[11px] font-bold text-dolhoe mb-1">기사 날짜</label>
+              <input type="date" id="press-date" class="field" required>
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-dolhoe mb-1">언론사</label>
+              <input type="text" id="press-outlet" class="field" placeholder="예: 고양신문" required>
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-dolhoe mb-1">기사 제목</label>
+              <input type="text" id="press-title" class="field" required>
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-[11px] font-bold text-dolhoe mb-1">기사 주소 (https://로 시작)</label>
+              <input type="url" id="press-url" class="field" placeholder="https://" required>
+            </div>
+            <div class="flex gap-2">
+              <button type="submit" id="press-submit" class="btn-main">추가</button>
+              <button type="button" id="press-cancel" class="btn-ghost hidden">취소</button>
+            </div>
+          </form>
+          <p id="press-error" class="text-sm text-ongi hidden mb-3"></p>
+          <div id="press-list" class="divide-y divide-black/5"></div>
+        </section>
+
+        <section class="bg-white rounded-2xl border border-black/10 p-6">
           <h2 class="font-bold text-lg mb-1">자료실</h2>
           <p class="text-xs text-dolhoe mb-5">가입 신청서, 서식, 안내 자료 파일을 올려두면 홈페이지에서 내려받을 수 있어요.</p>
           <form id="archive-form" class="space-y-3 mb-5">
@@ -475,6 +505,7 @@
       loadInfoItems('archive');
       loadBizDesc();
       loadSchedule();
+      loadPress();
     } else {
       adminView.classList.add('hidden');
       loginView.classList.remove('hidden');
@@ -1382,6 +1413,94 @@
       renderSchedule();
     } catch (err) { showError(schedError, '저장하지 못했습니다: ' + (err.message || err)); }
     finally { schedSubmit.disabled = false; }
+  });
+
+  /* ================================================================ */
+  /* 알림마당: 언론보도 (site_settings: press_items, JSON 목록)              */
+  /* ================================================================ */
+  const PRESS_DEFAULT = [{"d": "2026-09-14", "o": "고양신문", "t": "일산병원 로비 울린 하모니… '소리마을'과 함께한 힐링콘서트", "u": "https://www.mygoyang.com/news/articleView.html?idxno=90340"}, {"d": "2026-09-10", "o": "중부시사신문", "t": "'고양고양이', 일산병원 힐링콘서트 깜짝 등장", "u": "https://www.gninews.co.kr/news/article.html?no=858266"}, {"d": "2026-04-23", "o": "뉴스경북", "t": "고양시장애인종합복지관, 제46회 장애인의 날 '나눔과 화합의 장'", "u": "https://www.newsgb.co.kr/news/article.html?no=50040"}, {"d": "2026-04-08", "o": "중부일보", "t": "\"따로 아닌 함께\"… 고양 마을공동체 대화모임", "u": "https://v.daum.net/v/20260408112041554"}, {"d": "2026-04-03", "o": "경인신문", "t": "고양시 마을공동체 '느린이웃', 발달장애인 부모 교육 진행", "u": "https://www.asn24.com/news/articleView.html?idxno=517623"}, {"d": "2025-11-12", "o": "고양신문", "t": "늘푸른주말농장 농사체험이 이어준 '느린이웃들'", "u": "https://www.mygoyang.com/news/articleView.html?idxno=86476"}, {"d": "2024-06-12", "o": "고양신문", "t": "발달장애 가족모임 '느린이웃' 함께 뛰고 웃고", "u": "https://www.mygoyang.com/news/articleView.html?idxno=79785"}];
+  let pressItems = [];
+  const pressForm = document.getElementById('press-form');
+  const pressIndex = document.getElementById('press-index');
+  const pressDate = document.getElementById('press-date');
+  const pressOutlet = document.getElementById('press-outlet');
+  const pressTitle = document.getElementById('press-title');
+  const pressUrl = document.getElementById('press-url');
+  const pressSubmit = document.getElementById('press-submit');
+  const pressCancel = document.getElementById('press-cancel');
+  const pressError = document.getElementById('press-error');
+  const pressList = document.getElementById('press-list');
+  const samePress = (a, b) => a.d === b.d && a.t === b.t && a.u === b.u;
+
+  async function fetchPress() {
+    const { data, error } = await db.from('site_settings').select('value').eq('key', 'press_items').maybeSingle();
+    if (error) throw error;
+    if (!data) return PRESS_DEFAULT.map(x => ({ ...x }));   // 아직 저장한 적이 없으면 홈페이지 기본 목록에서 시작
+    try { const list = JSON.parse(data.value || '[]'); return Array.isArray(list) ? list : []; } catch (e) { return []; }
+  }
+  async function savePress(list) {
+    list.sort((a, b) => b.d.localeCompare(a.d));
+    const { error } = await db.from('site_settings').upsert([{ key: 'press_items', value: JSON.stringify(list) }], { onConflict: 'key' });
+    if (error) throw error;
+    pressItems = list;
+  }
+  async function loadPress() {
+    try { pressItems = await fetchPress(); } catch (e) { pressList.innerHTML = `<p class="text-sm text-ongi py-3">${esc(e.message)}</p>`; return; }
+    renderPress();
+  }
+  function renderPress() {
+    pressList.innerHTML = pressItems.length ? pressItems.map((n, i) => `
+      <div class="py-2.5 flex items-center justify-between gap-3 text-sm">
+        <div class="flex items-center gap-3 min-w-0">
+          <span class="text-naran font-bold shrink-0 w-24">${esc(n.d.replace(/-/g, '.'))}</span>
+          <span class="text-[11px] font-bold text-dolhoe bg-black/5 rounded px-1.5 py-0.5 shrink-0">${esc(n.o)}</span>
+          <a href="${esc(n.u)}" target="_blank" rel="noopener" class="truncate hover:text-naran">${esc(n.t)}</a>
+        </div>
+        <div class="flex gap-2 shrink-0">
+          <button type="button" class="btn-ghost btn-sm" onclick="editPress(${i})">수정</button>
+          <button type="button" class="btn-ghost btn-sm" onclick="deletePress(${i})">삭제</button>
+        </div>
+      </div>`).join('') : '<p class="text-sm text-dolhoe py-3">등록된 기사가 없습니다.</p>';
+  }
+  function resetPressForm() {
+    pressForm.reset(); pressIndex.value = ''; pressSubmit.textContent = '추가'; pressCancel.classList.add('hidden'); hideError(pressError);
+  }
+  pressCancel.addEventListener('click', resetPressForm);
+  window.editPress = function(i) {
+    const n = pressItems[i]; if (!n) return;
+    pressIndex.value = i; pressDate.value = n.d; pressOutlet.value = n.o; pressTitle.value = n.t; pressUrl.value = n.u;
+    pressSubmit.textContent = '수정 저장'; pressCancel.classList.remove('hidden');
+    pressForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
+  window.deletePress = async function(i) {
+    const n = pressItems[i]; if (!n) return;
+    if (!window.confirm(`"${n.t}" 기사를 목록에서 삭제할까요?`)) return;
+    try {
+      const list = await fetchPress();
+      const k = list.findIndex(x => samePress(x, n));
+      if (k >= 0) list.splice(k, 1);
+      await savePress(list); renderPress();
+    } catch (err) { alert('삭제하지 못했습니다: ' + (err.message || err)); }
+  };
+  pressForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideError(pressError);
+    const item = { d: pressDate.value, o: pressOutlet.value.trim(), t: pressTitle.value.trim(), u: pressUrl.value.trim() };
+    if (!item.d || !item.o || !item.t) { showError(pressError, '날짜, 언론사, 제목을 모두 입력해주세요.'); return; }
+    if (!/^https?:\/\//.test(item.u)) { showError(pressError, '기사 주소는 https://로 시작해야 해요.'); return; }
+    pressSubmit.disabled = true;
+    try {
+      const list = await fetchPress();   // 다른 운영진이 그사이 넣은 기사도 지키기 위해 최신 목록을 다시 읽어요
+      if (pressIndex.value !== '') {
+        const old = pressItems[+pressIndex.value];
+        const k = old ? list.findIndex(x => samePress(x, old)) : -1;
+        if (k >= 0) list[k] = item; else list.push(item);
+      } else list.push(item);
+      await savePress(list);
+      resetPressForm();
+      renderPress();
+    } catch (err) { showError(pressError, '저장하지 못했습니다: ' + (err.message || err)); }
+    finally { pressSubmit.disabled = false; }
   });
 
   refreshView();

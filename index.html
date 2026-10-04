@@ -121,6 +121,7 @@
           <div class="bg-white rounded-xl border border-black/10 shadow-lg py-2">
             <a href="board.html#notices" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">공지사항</a>
             <a href="board.html#news" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">느린이웃 소식</a>
+            <a href="board.html#press" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">언론보도</a>
             <a href="board.html#calendar" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">느린이웃 일정</a>
             <a href="board.html#budget" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">예산 및 결산</a>
             <a href="board.html#archive-items" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">자료실</a>
@@ -196,6 +197,7 @@
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
           <a href="board.html#notices" class="text-base text-dolhoe" data-close-menu>공지사항</a>
           <a href="board.html#news" class="text-base text-dolhoe" data-close-menu>느린이웃 소식</a>
+          <a href="board.html#press" class="text-base text-dolhoe" data-close-menu>언론보도</a>
           <a href="board.html#calendar" class="text-base text-dolhoe" data-close-menu>느린이웃 일정</a>
           <a href="board.html#budget" class="text-base text-dolhoe" data-close-menu>예산 및 결산</a>
           <a href="board.html#archive-items" class="text-base text-dolhoe" data-close-menu>자료실</a>
@@ -308,6 +310,19 @@
         </ul>
       </div>
     </div>
+  </section>
+
+
+<!-- ========== 언론보도 (최근 4개) ========== -->
+  <section class="max-w-7xl mx-auto px-5 md:px-8 pt-14 md:pt-16">
+    <div class="flex items-end justify-between mb-5">
+      <div>
+        <p class="text-iwoot font-bold text-sm mb-1">PRESS</p>
+        <h2 class="text-2xl font-extrabold text-meok">언론에 소개된 느린이웃</h2>
+      </div>
+      <a href="board.html#press" class="text-sm font-bold text-naran hover:underline">더보기 +</a>
+    </div>
+    <ul id="home-press-list" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"></ul>
   </section>
 
   <div class="max-w-7xl mx-auto px-5 md:px-8"><div class="nara-divider py-8" aria-hidden="true"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div></div>
@@ -516,6 +531,38 @@ const menuBtn = document.getElementById('menuBtn');
           <span class="shrink-0 text-sm text-dolhoe">${dt(n.published_at)}</span>
         </a>
       </li>`).join('') : empty;
+  })();
+
+// 언론보도: 관리자 페이지(알림마당 탭 → 언론보도)에서 넣은 기사 목록. 불러오지 못하면 아래 기본 목록이 보여요.
+  const PRESS_DEFAULT = [{"d": "2026-09-14", "o": "고양신문", "t": "일산병원 로비 울린 하모니… '소리마을'과 함께한 힐링콘서트", "u": "https://www.mygoyang.com/news/articleView.html?idxno=90340"}, {"d": "2026-09-10", "o": "중부시사신문", "t": "'고양고양이', 일산병원 힐링콘서트 깜짝 등장", "u": "https://www.gninews.co.kr/news/article.html?no=858266"}, {"d": "2026-04-23", "o": "뉴스경북", "t": "고양시장애인종합복지관, 제46회 장애인의 날 '나눔과 화합의 장'", "u": "https://www.newsgb.co.kr/news/article.html?no=50040"}, {"d": "2026-04-08", "o": "중부일보", "t": "\"따로 아닌 함께\"… 고양 마을공동체 대화모임", "u": "https://v.daum.net/v/20260408112041554"}, {"d": "2026-04-03", "o": "경인신문", "t": "고양시 마을공동체 '느린이웃', 발달장애인 부모 교육 진행", "u": "https://www.asn24.com/news/articleView.html?idxno=517623"}, {"d": "2025-11-12", "o": "고양신문", "t": "늘푸른주말농장 농사체험이 이어준 '느린이웃들'", "u": "https://www.mygoyang.com/news/articleView.html?idxno=86476"}, {"d": "2024-06-12", "o": "고양신문", "t": "발달장애 가족모임 '느린이웃' 함께 뛰고 웃고", "u": "https://www.mygoyang.com/news/articleView.html?idxno=79785"}];
+  async function ny_loadPress() {
+    let list = PRESS_DEFAULT;
+    try {
+      if (typeof supabase !== 'undefined') {
+        const db = supabase.createClient('https://mpgmvwivzedqxugfllxc.supabase.co', 'sb_publishable_B-pdQJ6sbCDrdi37JU6www_71TE8J5f');
+        const { data } = await db.from('site_settings').select('value').eq('key', 'press_items').maybeSingle();
+        if (data && data.value) { const v = JSON.parse(data.value); if (Array.isArray(v)) list = v; }
+      }
+    } catch (e) { /* 기본 목록 사용 */ }
+    return list.filter(p => p && p.d && p.t && /^https?:\/\//.test(p.u || '')).sort((a, b) => b.d.localeCompare(a.d));
+  }
+  function ny_pressEsc(s) { const d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; }
+  (async function loadHomePress() {
+    const ul = document.getElementById('home-press-list');
+    const list = (await ny_loadPress()).slice(0, 4);
+    const sec = ul.closest('section');
+    if (!list.length) { sec.classList.add('hidden'); return; }
+    ul.innerHTML = list.map(n => `
+      <li>
+        <a href="${ny_pressEsc(n.u)}" target="_blank" rel="noopener" class="group h-full flex flex-col bg-white border border-black/10 rounded-2xl p-5 hover:border-naran hover:shadow-md transition">
+          <span class="flex items-center gap-2 text-xs font-bold mb-3">
+            <span class="text-white bg-iwoot rounded-full px-2.5 py-1">${ny_pressEsc(n.o)}</span>
+            <span class="text-dolhoe">${ny_pressEsc(n.d.replace(/-/g, '.'))}</span>
+          </span>
+          <span class="flex-1 font-bold text-meok leading-snug group-hover:text-naran">${ny_pressEsc(n.t)}</span>
+          <span class="mt-4 text-sm font-bold text-naran">기사 보기 ↗<span class="sr-only"> (새 창)</span></span>
+        </a>
+      </li>`).join('');
   })();
 </script>
 </body>
