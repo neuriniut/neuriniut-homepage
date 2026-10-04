@@ -64,6 +64,11 @@
   .rich-content ul { list-style: disc; }
   .rich-content ol { list-style: decimal; }
 
+  /* 사이드메뉴(LNB) 현재 위치 */
+  .lnb-link.is-current { color: #12456B; background: rgba(250,244,230,.7); }
+  .lnb-link.is-current::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 9999px; background: #E1682C; margin-right: 8px; vertical-align: middle; }
+  .about-page h2 { margin-top: 0; }
+
 </style>
 </head>
 <body class="bg-white text-meok antialiased">
@@ -88,10 +93,10 @@
         <div class="nav-drop absolute left-0 top-full pt-2 w-56">
           <div class="bg-white rounded-xl border border-black/10 shadow-lg py-2">
             <a href="about.html#greeting" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">인사말</a>
+            <a href="about.html#story" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">브랜드 스토리</a>
             <a href="about.html#vision" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">설립목적 · 비전</a>
             <a href="about.html#history" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">연혁</a>
             <a href="about.html#bylaws" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">정관 및 규약</a>
-            <a href="about.html#story" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">브랜드 스토리</a>
             <a href="about.html#directions" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">오시는 길</a>
           </div>
         </div>
@@ -163,10 +168,10 @@
         <p class="text-xl font-extrabold text-meok mb-3">소개</p>
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
           <a href="about.html#greeting" class="text-base text-dolhoe" data-close-menu>인사말</a>
+          <a href="about.html#story" class="text-base text-dolhoe" data-close-menu>브랜드 스토리</a>
           <a href="about.html#vision" class="text-base text-dolhoe" data-close-menu>설립목적 · 비전</a>
           <a href="about.html#history" class="text-base text-dolhoe" data-close-menu>연혁</a>
           <a href="about.html#bylaws" class="text-base text-dolhoe" data-close-menu>정관 및 규약</a>
-          <a href="about.html#story" class="text-base text-dolhoe" data-close-menu>브랜드 스토리</a>
           <a href="about.html#directions" class="text-base text-dolhoe" data-close-menu>오시는 길</a>
         </div>
       </div>
@@ -204,8 +209,29 @@
 
 <main id="top">
 
+  <div class="max-w-7xl mx-auto px-5 md:px-8 py-4 md:py-10 lg:flex gap-12 items-start">
+    <aside class="hidden lg:block w-64 shrink-0" aria-label="소개 메뉴">
+      <div class="sticky top-28">
+        <a href="#intro" class="block bg-naran text-white rounded-t-2xl px-6 py-7">
+          <p class="text-[11px] font-bold tracking-widest text-white/60 mb-1">ABOUT</p>
+          <p class="text-xl font-extrabold">소개</p>
+        </a>
+        <nav class="border border-t-0 border-black/10 rounded-b-2xl overflow-hidden">
+          <ul>
+              <li><a href="#greeting" data-lnb-link="greeting" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">인사말</a></li>
+              <li><a href="#story" data-lnb-link="story" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">브랜드 스토리</a></li>
+              <li><a href="#vision" data-lnb-link="vision" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">설립목적 · 비전</a></li>
+              <li><a href="#history" data-lnb-link="history" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">연혁</a></li>
+              <li><a href="#bylaws" data-lnb-link="bylaws" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">정관 및 규약</a></li>
+              <li><a href="#directions" data-lnb-link="directions" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">오시는 길</a></li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+    <div id="about-content" class="flex-1 min-w-0">
+
 <!-- ========== 소개 ========== -->
-  <section id="intro" class="max-w-7xl mx-auto px-5 md:px-8 py-4 md:py-10">
+  <section id="intro" class="about-page">
     <header class="max-w-2xl mb-10">
       <p class="text-iwoot font-bold text-sm mb-2">소개</p>
       <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">느린이웃은 이렇게 걸어왔습니다</h2>
@@ -224,10 +250,14 @@
     </div>
 
     <!-- 소개 서브 링크 카드 -->
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
       <a href="#greeting" class="border border-black/10 rounded-xl p-4 hover:border-naran hover:bg-byeot/50 transition-colors">
         <p class="font-bold text-sm mb-1">인사말</p>
         <p class="text-dolhoe text-xs leading-relaxed">대표의 인사</p>
+      </a>
+      <a href="#story" class="border border-black/10 rounded-xl p-4 hover:border-naran hover:bg-byeot/50 transition-colors">
+        <p class="font-bold text-sm mb-1">브랜드 스토리</p>
+        <p class="text-dolhoe text-xs leading-relaxed">우리 아이의 속도는 다릅니다</p>
       </a>
       <a href="#vision" class="border border-black/10 rounded-xl p-4 hover:border-naran hover:bg-byeot/50 transition-colors">
         <p class="font-bold text-sm mb-1">설립목적 · 비전</p>
@@ -241,10 +271,6 @@
         <p class="font-bold text-sm mb-1">정관 및 규약</p>
         <p class="text-dolhoe text-xs leading-relaxed">협동조합 운영 규정</p>
       </a>
-      <a href="#story" class="border border-black/10 rounded-xl p-4 hover:border-naran hover:bg-byeot/50 transition-colors">
-        <p class="font-bold text-sm mb-1">브랜드 스토리</p>
-        <p class="text-dolhoe text-xs leading-relaxed">우리 아이의 속도는 다릅니다</p>
-      </a>
       <a href="#directions" class="border border-black/10 rounded-xl p-4 hover:border-naran hover:bg-byeot/50 transition-colors">
         <p class="font-bold text-sm mb-1">오시는 길</p>
         <p class="text-dolhoe text-xs leading-relaxed">고양시 일산동구</p>
@@ -252,11 +278,10 @@
     </div>
   </section>
 
-  <div class="max-w-7xl mx-auto px-5 md:px-8"><div class="nara-divider py-8" aria-hidden="true"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div></div>
 
 <!-- ========== 인사말 ========== -->
-  <section id="greeting" class="py-14 md:py-20 scroll-mt-16">
-    <div class="max-w-7xl mx-auto px-5 md:px-8">
+  <section id="greeting" class="about-page">
+    <div>
       <div class="max-w-2xl">
         <p class="text-iwoot font-bold text-sm mb-2">인사말</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-6">대표의 인사</h2>
@@ -275,11 +300,10 @@
     </div>
   </section>
 
-  <div class="max-w-7xl mx-auto px-5 md:px-8"><div class="nara-divider py-8" aria-hidden="true"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div></div>
 
 <!-- ========== 브랜드 스토리 ========== -->
-  <section id="story" class="bg-byeot/50 py-14 md:py-20 scroll-mt-16">
-    <div class="max-w-7xl mx-auto px-5 md:px-8">
+  <section id="story" class="about-page">
+    <div>
       <p class="text-iwoot font-bold text-sm mb-2">브랜드 스토리</p>
       <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-10">우리 아이의 속도는 다릅니다</h2>
       <div class="grid md:grid-cols-2 gap-x-10 gap-y-6">
@@ -316,23 +340,23 @@
         <p class="text-iwoot font-bold text-sm mb-2">회원들의 이야기</p>
         <h3 class="text-xl md:text-2xl font-extrabold text-meok mb-8">나란히 걸으며 들은 말들</h3>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          <div class="bg-white rounded-2xl p-6 shadow-sm">
+          <div class="bg-byeot rounded-2xl p-6">
             <p class="text-dolhoe leading-relaxed">"장애를 좀처럼 받아들이지 못했던 남편도, 이제는 느린이웃 일이라면 먼저 나서서 함께해줘요."</p>
             <p class="text-iwoot text-sm font-bold mt-4">— 회원 어머니</p>
           </div>
-          <div class="bg-white rounded-2xl p-6 shadow-sm">
+          <div class="bg-byeot rounded-2xl p-6">
             <p class="text-dolhoe leading-relaxed">"오빠 언니들이 예뻐해 주니 아이도 금세 신이 나서, 정말 행복한 생일이었어요."</p>
             <p class="text-iwoot text-sm font-bold mt-4">— 회원 어머니</p>
           </div>
-          <div class="bg-white rounded-2xl p-6 shadow-sm">
+          <div class="bg-byeot rounded-2xl p-6">
             <p class="text-dolhoe leading-relaxed">"합창을 시작한 지 9개월 만에 큰 무대에 섰는데, 관객분들 박수 속에서 정말 멋지게 해냈어요."</p>
             <p class="text-iwoot text-sm font-bold mt-4">— 소리마을 합창단 학부모</p>
           </div>
-          <div class="bg-white rounded-2xl p-6 shadow-sm">
+          <div class="bg-byeot rounded-2xl p-6">
             <p class="text-dolhoe leading-relaxed">"발달장애인 인식개선 수기를 써서 냈는데 상을 받았어요. 이런 경험도 참 즐거운 추억이 되네요."</p>
             <p class="text-iwoot text-sm font-bold mt-4">— 회원 어머니</p>
           </div>
-          <div class="bg-white rounded-2xl p-6 shadow-sm">
+          <div class="bg-byeot rounded-2xl p-6">
             <p class="text-dolhoe leading-relaxed">"아이가 상을 받아 저도 기뻤습니다. '움직이면 행복합니다'라는 말을 실감한 하루였어요."</p>
             <p class="text-iwoot text-sm font-bold mt-4">— 회원 어머니</p>
           </div>
@@ -342,8 +366,8 @@
   </section>
 
 <!-- ========== 설립목적 · 비전 ========== -->
-  <section id="vision" class="py-14 md:py-20 scroll-mt-16">
-    <div class="max-w-7xl mx-auto px-5 md:px-8">
+  <section id="vision" class="about-page">
+    <div>
       <div class="max-w-3xl">
         <p class="text-iwoot font-bold text-sm mb-2">설립목적 · 비전</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-6">느린이웃이 걷는 방향</h2>
@@ -357,8 +381,8 @@
   </section>
 
 <!-- ========== 연혁 ========== -->
-  <section id="history" class="bg-byeot/50 py-14 md:py-20 scroll-mt-16">
-    <div class="max-w-7xl mx-auto px-5 md:px-8">
+  <section id="history" class="about-page">
+    <div>
       <p class="text-iwoot font-bold text-sm mb-2">연혁</p>
       <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-10">설립부터 지금까지</h2>
       <div class="grid md:grid-cols-3 gap-8">
@@ -435,8 +459,8 @@
   </section>
 
 <!-- ========== 정관 및 규약 ========== -->
-  <section id="bylaws" class="py-14 md:py-20 scroll-mt-16">
-    <div class="max-w-7xl mx-auto px-5 md:px-8">
+  <section id="bylaws" class="about-page">
+    <div>
       <p class="text-iwoot font-bold text-sm mb-2">정관 및 규약</p>
       <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">협동조합 운영 규정</h2>
       <p class="text-dolhoe leading-relaxed max-w-2xl mb-10">느린이웃 사회적협동조합 정관은 총 8장 71개 조문으로 구성되어 있으며, 조합의 목적과 운영 원칙을 명시하고 있습니다.</p>
@@ -476,8 +500,8 @@
   </section>
 
 <!-- ========== 오시는 길 ========== -->
-  <section id="directions" class="bg-byeot/50 py-14 md:py-20 scroll-mt-16">
-    <div class="max-w-7xl mx-auto px-5 md:px-8">
+  <section id="directions" class="about-page">
+    <div>
       <p class="text-iwoot font-bold text-sm mb-2">오시는 길</p>
       <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-6">고양시 일산동구</h2>
       <div class="grid md:grid-cols-2 gap-8 items-start">
@@ -495,61 +519,9 @@
     </div>
   </section>
 
-  <div class="max-w-7xl mx-auto px-5 md:px-8"><div class="nara-divider py-8" aria-hidden="true"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div></div>
 
-<!-- ========== 브랜드 철학 ========== -->
-  <section id="philosophy" class="bg-naran text-white mt-16 scroll-mt-16">
-    <div class="max-w-7xl mx-auto px-5 md:px-8 py-16 md:py-24">
-      <p class="text-white/60 font-bold text-sm mb-2">CORE IDEA</p>
-      <h2 class="text-3xl md:text-4xl font-extrabold mb-4 leading-tight">
-        느린이웃의 '느린'은<br class="hidden md:block">
-        결핍의 표시가 아니라,<br>
-        <span class="text-ongi">우리가 함께 걷기로 정한 속도</span>의 이름입니다.
-      </h2>
-      <p class="text-white/70 max-w-2xl leading-relaxed mb-14">
-        이름은 바꿀 수 없고, 바꿀 필요도 없습니다. 바뀌어야 하는 것은 '느린'이라는 단어가 놓이는 자리입니다.
-      </p>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-white/5 border border-white/15 rounded-2xl p-6 md:p-8">
-          <p class="text-white/50 font-bold text-xs tracking-wider mb-4">지연 프레임 (기존)</p>
-          <dl class="space-y-4 text-sm">
-            <div><dt class="text-white/50 mb-1">'느리다'의 뜻</dt><dd class="text-white/90">남들보다 뒤처져 있다</dd></div>
-            <div><dt class="text-white/50 mb-1">기준</dt><dd class="text-white/90">비장애인의 속도가 기준</dd></div>
-            <div><dt class="text-white/50 mb-1">단체의 역할</dt><dd class="text-white/90">따라잡도록 돕는다</dd></div>
-            <div><dt class="text-white/50 mb-1">관계</dt><dd class="text-white/90">돕는 자 ↔ 도움받는 자</dd></div>
-            <div><dt class="text-white/50 mb-1">귀결</dt><dd class="text-white/90">시혜 · 동정 · 극복 서사</dd></div>
-          </dl>
-        </div>
-
-        <div class="bg-ongi/95 rounded-2xl p-6 md:p-8">
-          <p class="text-white/80 font-bold text-xs tracking-wider mb-4">보폭 프레임 (느린이웃)</p>
-          <dl class="space-y-4 text-sm">
-            <div><dt class="text-white/70 mb-1">'느리다'의 뜻</dt><dd class="text-white font-semibold">함께 걸을 수 있는 속도다</dd></div>
-            <div><dt class="text-white/70 mb-1">기준</dt><dd class="text-white font-semibold">가장 느린 사람의 속도가 기준</dd></div>
-            <div><dt class="text-white/70 mb-1">단체의 역할</dt><dd class="text-white font-semibold">속도를 맞춰 함께 간다</dd></div>
-            <div><dt class="text-white/70 mb-1">관계</dt><dd class="text-white font-semibold">이웃 ↔ 이웃</dd></div>
-            <div><dt class="text-white/70 mb-1">귀결</dt><dd class="text-white font-semibold">연대 · 자조 · 동행 서사</dd></div>
-          </dl>
-        </div>
-      </div>
-
-      <div class="grid sm:grid-cols-3 gap-6 mt-14 pt-14 border-t border-white/15">
-        <div>
-          <p class="text-white/50 text-xs font-bold mb-2">TO 당사자</p>
-          <p class="font-bold text-lg">"네 속도가 기준이야"</p>
-        </div>
-        <div>
-          <p class="text-white/50 text-xs font-bold mb-2">TO 부모 · 가족</p>
-          <p class="font-bold text-lg">"혼자 견디지 않습니다"</p>
-        </div>
-        <div>
-          <p class="text-white/50 text-xs font-bold mb-2">TO 지역사회</p>
-          <p class="font-bold text-lg">"이웃은 돕는 사이가 아니라 나란한 사이입니다"</p>
-        </div>
-      </div>
     </div>
-  </section>
+  </div>
 
 </main>
 <!-- ========== 푸터 ========== -->
@@ -587,7 +559,7 @@
     </div>
     <div class="pt-6 border-t border-white/10 text-xs text-white/40 leading-relaxed">
       <p class="mb-1.5">본 사이트는 KWCAG 2.2 기준의 명도 대비(목표 7:1)를 준수하며, '장애우·정상인·극복·감동·희망을 주는' 등 시혜적 표현을 사용하지 않는 느린이웃 톤앤매너 규정을 따릅니다.</p>
-      <p>© 느린이웃. 이미지 및 공지·소식 항목은 준비 중이며, [사진 가이드]와 [예시] 표시된 영역은 추후 실제 콘텐츠로 교체됩니다.</p>
+      <p class="flex flex-wrap justify-between gap-2"><span>© 느린이웃. 이미지 및 공지·소식 항목은 준비 중이며, [사진 가이드]와 [예시] 표시된 영역은 추후 실제 콘텐츠로 교체됩니다.</span><a href="admin.html" class="text-white/50 hover:text-white font-bold">관리자</a></p>
     </div>
   </div>
 </footer>
@@ -624,6 +596,20 @@ const menuBtn = document.getElementById('menuBtn');
   mobileMenu.querySelectorAll('[data-close-menu]').forEach(el => {
     el.addEventListener('click', closeMobileMenu);
   });
+
+// 소개: 메뉴(드롭다운·사이드메뉴·카드)에서 고른 서브페이지만 보이기 (해시 기반)
+  const aboutIds = ['intro', 'greeting', 'story', 'vision', 'history', 'bylaws', 'directions'];
+  function showAboutView() {
+    const hash = location.hash.replace('#', '');
+    const current = aboutIds.includes(hash) ? hash : 'intro';
+    aboutIds.forEach(id => document.getElementById(id).classList.toggle('hidden', id !== current));
+    document.querySelectorAll('[data-lnb-link]').forEach(link => {
+      link.classList.toggle('is-current', link.dataset.lnbLink === current);
+    });
+    window.scrollTo({ top: 0 });
+  }
+  window.addEventListener('hashchange', showAboutView);
+  showAboutView();
 
 // 공통 유틸
   function ny_esc(str) {
