@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>사업안내 | 느린이웃</title>
 <meta name="description" content="느린이웃 — 발달장애인 가족의 자조모임이자 예비 사회적협동조합. 우리는 나란히 걷습니다." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="느린이웃" />
+<meta property="og:title" content="사업안내 | 느린이웃" />
+<meta property="og:description" content="앞에서 끌지 않고, 뒤에서 밀지 않고, 나란히. 발달장애인과 가족들이 서로의 이웃이 되어 함께 걷는 공동체, 느린이웃입니다." />
+<meta property="og:image" content="https://mpgmvwivzedqxugfllxc.supabase.co/storage/v1/object/public/photos/Hero/main.jpg" />
+<meta property="og:url" content="https://neuriniut-homepage.vercel.app/programs.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -7 143 104'%3E%3Cpath d='M0 33.4V83.9A12 12 0 0 0 12 95.9H52.4A12 12 0 0 0 52.4 71.9H24V33.4A12 12 0 0 0 0 33.4Z' fill='%232E7D52'/%3E%3Cpath d='M75.7 5.6V83.9A12 12 0 0 0 87.7 95.9H130.6A12 12 0 0 0 130.6 71.9H99.7V5.6A12 12 0 0 0 75.7 5.6Z' fill='%2312456B'/%3E%3C/svg%3E" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
@@ -28,7 +36,7 @@
   };
 </script>
 <style>
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scrollbar-gutter: stable; }
   body { font-family: 'Pretendard','Noto Sans KR',system-ui,sans-serif; }
 
   /* ===== 나란선 모티프 ===== */
@@ -113,7 +121,7 @@
         <a href="programs.html" class="flex items-center gap-1 px-3 py-2 rounded-lg hover:text-naran hover:bg-byeot/60 transition-colors">사업안내</a>
         <div class="nav-drop absolute left-0 top-full pt-2 w-64">
           <div class="bg-white rounded-xl border border-black/10 shadow-lg py-2">
-            <a href="programs.html#prog-sports" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran leading-snug">발달장애인의 사회참여 및<br>자립 준비 지원 사업</a>
+            <a href="programs.html#biz-independence" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran leading-snug">발달장애인의 사회참여 및<br>자립 준비 지원 사업</a>
             <a href="programs.html#biz-family" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran leading-snug">발달장애인 가족통합 지원 사업</a>
             <a href="programs.html#biz-parent" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran leading-snug">발달장애인의 부모역량 강화 사업</a>
             <a href="programs.html#biz-community" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran leading-snug">지역사회 연대사업</a>
@@ -126,6 +134,7 @@
           <div class="bg-white rounded-xl border border-black/10 shadow-lg py-2">
             <a href="board.html#notices" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">공지사항</a>
             <a href="board.html#news" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">느린이웃 소식</a>
+            <a href="board.html#calendar" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">연간 일정</a>
             <a href="board.html#budget" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">예산 및 결산</a>
             <a href="board.html#archive-items" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">자료실</a>
           </div>
@@ -135,9 +144,10 @@
         <a href="join.html" class="flex items-center gap-1 px-3 py-2 rounded-lg hover:text-naran hover:bg-byeot/60 transition-colors">참여공간</a>
         <div class="nav-drop absolute left-0 top-full pt-2 w-56">
           <div class="bg-white rounded-xl border border-black/10 shadow-lg py-2">
-            <a href="join.html" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">조합원 가입 안내</a>
-            <a href="join.html#contact-form" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">문의 및 건의사항</a>
-            <a href="join.html" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">자원봉사 및 후원</a>
+            <a href="join.html#membership" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">조합원 가입 안내</a>
+            <a href="join.html#donate" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">후원하기</a>
+            <a href="join.html#volunteer" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">자원봉사</a>
+            <a href="join.html#contact" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">문의하기</a>
           </div>
         </div>
       </div>
@@ -187,7 +197,7 @@
       <div class="py-6 border-b border-black/10">
         <p class="text-xl font-extrabold text-meok mb-3">사업안내</p>
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
-          <a href="programs.html#prog-sports" class="text-base text-dolhoe" data-close-menu>발달장애인의 사회참여 및 자립 준비 지원 사업</a>
+          <a href="programs.html#biz-independence" class="text-base text-dolhoe" data-close-menu>발달장애인의 사회참여 및 자립 준비 지원 사업</a>
           <a href="programs.html#biz-family" class="text-base text-dolhoe" data-close-menu>발달장애인 가족통합 지원 사업</a>
           <a href="programs.html#biz-parent" class="text-base text-dolhoe" data-close-menu>발달장애인의 부모역량 강화 사업</a>
           <a href="programs.html#biz-community" class="text-base text-dolhoe" data-close-menu>지역사회 연대사업</a>
@@ -199,6 +209,7 @@
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
           <a href="board.html#notices" class="text-base text-dolhoe" data-close-menu>공지사항</a>
           <a href="board.html#news" class="text-base text-dolhoe" data-close-menu>느린이웃 소식</a>
+          <a href="board.html#calendar" class="text-base text-dolhoe" data-close-menu>연간 일정</a>
           <a href="board.html#budget" class="text-base text-dolhoe" data-close-menu>예산 및 결산</a>
           <a href="board.html#archive-items" class="text-base text-dolhoe" data-close-menu>자료실</a>
         </div>
@@ -207,9 +218,10 @@
       <div class="py-6">
         <p class="text-xl font-extrabold text-meok mb-3">참여공간</p>
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
-          <a href="join.html" class="text-base text-dolhoe" data-close-menu>조합원 가입 안내</a>
-          <a href="join.html#contact-form" class="text-base text-dolhoe" data-close-menu>문의 및 건의사항</a>
-          <a href="join.html" class="text-base font-bold text-ongi" data-close-menu>자원봉사 및 후원 →</a>
+          <a href="join.html#membership" class="text-base text-dolhoe" data-close-menu>조합원 가입 안내</a>
+          <a href="join.html#donate" class="text-base font-bold text-ongi" data-close-menu>후원하기</a>
+          <a href="join.html#volunteer" class="text-base text-dolhoe" data-close-menu>자원봉사</a>
+          <a href="join.html#contact" class="text-base text-dolhoe" data-close-menu>문의하기</a>
         </div>
       </div>
     </div>
@@ -219,1166 +231,937 @@
 
 <!-- ========== 사업안내 ========== -->
   <section id="programs" class="max-w-7xl mx-auto px-5 md:px-8 py-4 md:py-10">
-
-
-    <!-- 상세 화면 공통 틀: 왼쪽 사이드메뉴(LNB) + 오른쪽 본문 -->
     <div id="programs-detail-wrap" class="lg:flex gap-12 items-start">
       <aside class="hidden lg:block w-64 shrink-0" aria-label="사업안내 메뉴">
         <div class="sticky top-28">
-          <a href="#programs" class="block bg-naran text-white rounded-t-2xl px-6 py-7">
+          <a href="#programs" data-subnav class="block bg-naran text-white rounded-t-2xl px-6 py-7">
             <p class="text-[11px] font-bold tracking-widest text-white/60 mb-1">BUSINESS</p>
             <p class="text-xl font-extrabold">사업안내</p>
           </a>
           <nav class="border border-t-0 border-black/10 rounded-b-2xl overflow-hidden">
-            <div class="border-b border-black/10 last:border-b-0" data-lnb-biz="independence" data-lnb-ids="prog-sports prog-choir prog-selfhelp prog-culture biz-independence">
-              <a href="#prog-sports" class="lnb-biz block px-6 py-4 hover:bg-byeot/60">
+            <div class="border-b border-black/10 last:border-b-0" data-lnb-biz="independence" data-lnb-ids="biz-independence prog-sports prog-choir prog-selfhelp prog-vacation">
+              <a href="#biz-independence" data-subnav data-lnb-link="biz-independence" class="lnb-biz block px-6 py-4 hover:bg-byeot/60">
                 <span class="block text-[11px] font-bold text-iwoot mb-0.5">사업 01</span>
                 <span class="lnb-biz-title block text-sm font-bold text-meok leading-snug">발달장애인의 사회참여 및 자립 준비 지원 사업</span>
               </a>
               <ul class="lnb-sub hidden bg-byeot/60 py-2 border-t border-black/5">
-                <li><a href="#prog-sports" data-lnb-link="prog-sports" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">슐런스포츠단 운영</a></li>
-                <li><a href="#prog-choir" data-lnb-link="prog-choir" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">발달장애인합창단</a></li>
-                <li><a href="#prog-selfhelp" data-lnb-link="prog-selfhelp" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">당사자 자조모임</a></li>
-                <li><a href="#prog-culture" data-lnb-link="prog-culture" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">문화여가활동</a></li>
+                <li><a href="#prog-sports" data-subnav data-lnb-link="prog-sports" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">슐런 스포츠단 &#x27;슐런픽&#x27;</a></li>
+                <li><a href="#prog-choir" data-subnav data-lnb-link="prog-choir" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">합창 예술단 &#x27;소리마을&#x27;</a></li>
+                <li><a href="#prog-selfhelp" data-subnav data-lnb-link="prog-selfhelp" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">당사자 자조모임</a></li>
+                <li><a href="#prog-vacation" data-subnav data-lnb-link="prog-vacation" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">방학 프로그램</a></li>
               </ul>
             </div>
-            <div class="border-b border-black/10 last:border-b-0" data-lnb-biz="family" data-lnb-ids="prog-hiking prog-garden prog-fieldday prog-water prog-kimjang prog-yearend prog-siblings biz-family">
-              <a href="#biz-family" class="lnb-biz block px-6 py-4 hover:bg-byeot/60">
+            <div class="border-b border-black/10 last:border-b-0" data-lnb-biz="family" data-lnb-ids="biz-family prog-hiking prog-garden prog-fieldday prog-water prog-kimjang prog-yearend prog-siblings">
+              <a href="#biz-family" data-subnav data-lnb-link="biz-family" class="lnb-biz block px-6 py-4 hover:bg-byeot/60">
                 <span class="block text-[11px] font-bold text-iwoot mb-0.5">사업 02</span>
                 <span class="lnb-biz-title block text-sm font-bold text-meok leading-snug">발달장애인 가족통합 지원 사업</span>
               </a>
               <ul class="lnb-sub hidden bg-byeot/60 py-2 border-t border-black/5">
-                <li><a href="#prog-hiking" data-lnb-link="prog-hiking" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">정기산행</a></li>
-                <li><a href="#prog-garden" data-lnb-link="prog-garden" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">텃밭활동</a></li>
-                <li><a href="#prog-fieldday" data-lnb-link="prog-fieldday" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">운동회</a></li>
-                <li><a href="#prog-water" data-lnb-link="prog-water" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">물놀이</a></li>
-                <li><a href="#prog-kimjang" data-lnb-link="prog-kimjang" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">김장</a></li>
-                <li><a href="#prog-yearend" data-lnb-link="prog-yearend" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">송년회</a></li>
-                <li><a href="#prog-siblings" data-lnb-link="prog-siblings" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">비장애형제자매모임</a></li>
+                <li><a href="#prog-hiking" data-subnav data-lnb-link="prog-hiking" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">정기산행</a></li>
+                <li><a href="#prog-garden" data-subnav data-lnb-link="prog-garden" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">텃밭활동</a></li>
+                <li><a href="#prog-fieldday" data-subnav data-lnb-link="prog-fieldday" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">가족운동회</a></li>
+                <li><a href="#prog-water" data-subnav data-lnb-link="prog-water" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">여름 물놀이 캠프</a></li>
+                <li><a href="#prog-kimjang" data-subnav data-lnb-link="prog-kimjang" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">김장 나눔</a></li>
+                <li><a href="#prog-yearend" data-subnav data-lnb-link="prog-yearend" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">송년회</a></li>
+                <li><a href="#prog-siblings" data-subnav data-lnb-link="prog-siblings" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">비장애 형제자매 모임</a></li>
               </ul>
             </div>
-            <div class="border-b border-black/10 last:border-b-0" data-lnb-biz="parent" data-lnb-ids="prog-peercounsel prog-groupcounsel prog-parented prog-dadgroup biz-parent">
-              <a href="#biz-parent" class="lnb-biz block px-6 py-4 hover:bg-byeot/60">
+            <div class="border-b border-black/10 last:border-b-0" data-lnb-biz="parent" data-lnb-ids="biz-parent prog-parented prog-peercounsel prog-groupcounsel prog-dadgroup">
+              <a href="#biz-parent" data-subnav data-lnb-link="biz-parent" class="lnb-biz block px-6 py-4 hover:bg-byeot/60">
                 <span class="block text-[11px] font-bold text-iwoot mb-0.5">사업 03</span>
                 <span class="lnb-biz-title block text-sm font-bold text-meok leading-snug">발달장애인의 부모역량 강화 사업</span>
               </a>
               <ul class="lnb-sub hidden bg-byeot/60 py-2 border-t border-black/5">
-                <li><a href="#prog-peercounsel" data-lnb-link="prog-peercounsel" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">동료상담</a></li>
-                <li><a href="#prog-groupcounsel" data-lnb-link="prog-groupcounsel" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">집단동료상담</a></li>
-                <li><a href="#prog-parented" data-lnb-link="prog-parented" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">부모교육</a></li>
-                <li><a href="#prog-dadgroup" data-lnb-link="prog-dadgroup" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">아빠소모임</a></li>
+                <li><a href="#prog-parented" data-subnav data-lnb-link="prog-parented" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">부모교육</a></li>
+                <li><a href="#prog-peercounsel" data-subnav data-lnb-link="prog-peercounsel" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">개별 동료상담</a></li>
+                <li><a href="#prog-groupcounsel" data-subnav data-lnb-link="prog-groupcounsel" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">집단 동료상담</a></li>
+                <li><a href="#prog-dadgroup" data-subnav data-lnb-link="prog-dadgroup" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">부모 소모임 (엄마 · 아빠)</a></li>
               </ul>
             </div>
-            <div class="border-b border-black/10 last:border-b-0" data-lnb-biz="community" data-lnb-ids="prog-festival prog-artfest biz-community">
-              <a href="#biz-community" class="lnb-biz block px-6 py-4 hover:bg-byeot/60">
+            <div class="border-b border-black/10 last:border-b-0" data-lnb-biz="community" data-lnb-ids="biz-community prog-awareness prog-festival prog-artfest">
+              <a href="#biz-community" data-subnav data-lnb-link="biz-community" class="lnb-biz block px-6 py-4 hover:bg-byeot/60">
                 <span class="block text-[11px] font-bold text-iwoot mb-0.5">사업 04</span>
                 <span class="lnb-biz-title block text-sm font-bold text-meok leading-snug">지역사회 연대사업</span>
               </a>
               <ul class="lnb-sub hidden bg-byeot/60 py-2 border-t border-black/5">
-                <li><a href="#prog-festival" data-lnb-link="prog-festival" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">마을축제참여</a></li>
-                <li><a href="#prog-artfest" data-lnb-link="prog-artfest" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">통합예술제</a></li>
+                <li><a href="#prog-awareness" data-subnav data-lnb-link="prog-awareness" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">장애인 인식개선</a></li>
+                <li><a href="#prog-festival" data-subnav data-lnb-link="prog-festival" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">마을축제 참여</a></li>
+                <li><a href="#prog-artfest" data-subnav data-lnb-link="prog-artfest" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">느린이웃 통합예술제</a></li>
               </ul>
             </div>
           </nav>
         </div>
       </aside>
       <div class="flex-1 min-w-0">
-    <!-- 목록 화면 -->
       <div id="programs-list">
         <header class="mb-10">
           <p class="text-iwoot font-bold text-sm mb-2">사업안내</p>
           <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">느린이웃이 하는 일</h2>
-          <p class="text-dolhoe leading-relaxed">정관에 명시된 4대 사업을 기준으로 운영합니다. 각 사업을 누르면 세부 프로그램을 자세히 볼 수 있어요.</p>
+          <p class="text-dolhoe leading-relaxed">발달장애인과 그 가족의 자립, 관계, 쉼, 성장을 지원합니다. 각 사업을 누르면 세부 프로그램을 자세히 볼 수 있어요.</p>
         </header>
-
-        <div class="space-y-6">
-          <article class="border border-black/10 rounded-2xl overflow-hidden md:flex">
-            <div class="photo-guide aspect-[16/10] md:aspect-auto md:w-[42%] md:shrink-0 md:min-h-[230px] flex items-end p-4">
-              <div class="w-full">
-                <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded mb-2">사진 가이드</span>
-                <p class="text-meok text-xs leading-relaxed bg-white/90 rounded p-2.5">
-                  스포츠단 연습 또는 발달장애인합창단 무대 컷 — 당사자가 활동에 몰입한 자연스러운 순간, 전신이 보이는 구도.
-                </p>
-              </div>
-            </div>
-            <div class="p-6 md:p-8 flex-1 flex flex-col justify-center">
-              <p class="text-iwoot text-xs font-bold mb-1">사업 01</p>
-              <h3 class="font-extrabold text-xl text-meok mb-3">발달장애인의 사회참여 및 자립 준비 지원 사업</h3>
-              <p class="text-dolhoe text-sm leading-relaxed mb-4">동아리 활동과 전문 교육을 통해 당사자가 지역사회 안에서 스스로 할 수 있는 것을 넓혀갑니다.</p>
-              <a href="#prog-sports" class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
-            </div>
+        <div class="space-y-5">
+          <article class="border border-black/10 rounded-2xl p-7 md:p-8 hover:border-naran/40 transition-colors">
+            <p class="text-iwoot text-xs font-bold mb-1.5">사업 01</p>
+            <h3 class="font-extrabold text-xl text-meok mb-3"><a href="#biz-independence" data-subnav class="hover:text-naran">발달장애인의 사회참여 및 자립 준비 지원 사업</a></h3>
+            <p class="text-dolhoe leading-relaxed mb-5">발달장애인 당사자가 자신의 흥미와 속도에 맞춰 지역사회에 참여하고, 스스로 할 수 있는 것을 하나씩 넓혀가도록 돕습니다. 문화·체육 동아리와 또래 자조모임, 방학 프로그램을 통해 당사자가 지역사회의 당당한 구성원으로 성장해 갑니다.</p>
+            <div class="flex flex-wrap gap-2 mb-5"><a href="#prog-sports" data-subnav class="inline-block text-xs font-semibold text-naran bg-naran/5 hover:bg-naran/10 rounded-full px-3 py-1.5">슐런 스포츠단 &#x27;슐런픽&#x27;</a><a href="#prog-choir" data-subnav class="inline-block text-xs font-semibold text-naran bg-naran/5 hover:bg-naran/10 rounded-full px-3 py-1.5">합창 예술단 &#x27;소리마을&#x27;</a><a href="#prog-selfhelp" data-subnav class="inline-block text-xs font-semibold text-naran bg-naran/5 hover:bg-naran/10 rounded-full px-3 py-1.5">당사자 자조모임</a><a href="#prog-vacation" data-subnav class="inline-block text-xs font-semibold text-naran bg-naran/5 hover:bg-naran/10 rounded-full px-3 py-1.5">방학 프로그램</a></div>
+            <a href="#biz-independence" data-subnav class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
           </article>
-
-          <article class="border border-black/10 rounded-2xl overflow-hidden md:flex">
-            <div class="photo-guide aspect-[16/10] md:aspect-auto md:w-[42%] md:shrink-0 md:min-h-[230px] flex items-end p-4">
-              <div class="w-full">
-                <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded mb-2">사진 가이드</span>
-                <p class="text-meok text-xs leading-relaxed bg-white/90 rounded p-2.5">
-                  월간 정기 산행 또는 텃밭활동 가족 단위 컷 — 부모와 당사자가 함께 있는 자연스러운 장면.
-                </p>
-              </div>
-            </div>
-            <div class="p-6 md:p-8 flex-1 flex flex-col justify-center">
-              <p class="text-iwoot text-xs font-bold mb-1">사업 02</p>
-              <h3 class="font-extrabold text-xl text-meok mb-3">발달장애인 가족통합 지원 사업</h3>
-              <p class="text-dolhoe text-sm leading-relaxed mb-4">가족이 함께 참여하는 활동을 통해 서로 기대고 정서적으로 연결되는 시간을 마련합니다.</p>
-              <a href="#biz-family" class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
-            </div>
+          <article class="border border-black/10 rounded-2xl p-7 md:p-8 hover:border-naran/40 transition-colors">
+            <p class="text-iwoot text-xs font-bold mb-1.5">사업 02</p>
+            <h3 class="font-extrabold text-xl text-meok mb-3"><a href="#biz-family" data-subnav class="hover:text-naran">발달장애인 가족통합 지원 사업</a></h3>
+            <p class="text-dolhoe leading-relaxed mb-5">당사자와 부모, 비장애 형제자매까지 가족 모두가 함께 어울리는 시간을 만듭니다. 계절마다 함께 걷고, 뛰고, 나누는 정기 행사를 통해 가족이 서로 기대고 지역사회 안에서 자연스럽게 연결됩니다.</p>
+            <div class="flex flex-wrap gap-2 mb-5"><a href="#prog-hiking" data-subnav class="inline-block text-xs font-semibold text-naran bg-naran/5 hover:bg-naran/10 rounded-full px-3 py-1.5">정기산행</a><a href="#prog-garden" data-subnav class="inline-block text-xs font-semibold text-naran bg-naran/5 hover:bg-naran/10 rounded-full px-3 py-1.5">텃밭활동</a><a href="#prog-fieldday" data-subnav class="inline-block text-xs font-semibold text-naran bg-naran/5 hover:bg-naran/10 rounded-full px-3 py-1.5">가족운동회</a><a href="#prog-water" data-subnav class="inline-block text-xs font-semibold text-naran bg-naran/5 hover:bg-naran/10 rounded-full px-3 py-1.5">여름 물놀이 캠프</a><a href="#prog-kimjang" data-subnav class="inline-block text-xs font-semibold text-naran bg-naran/5 hover:bg-naran/10 rounded-full px-3 py-1.5">김장 나눔</a><a href="#prog-yearend" data-subnav class="inline-block text-xs font-semibold text-naran bg-naran/5 hover:bg-naran/10 rounded-full px-3 py-1.5">송년회</a><a href="#prog-siblings" data-subnav class="inline-block text-xs font-semibold text-naran bg-naran/5 hover:bg-naran/10 rounded-full px-3 py-1.5">비장애 형제자매 모임</a></div>
+            <a href="#biz-family" data-subnav class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
           </article>
-
-          <article class="border border-black/10 rounded-2xl overflow-hidden md:flex">
-            <div class="photo-guide aspect-[16/10] md:aspect-auto md:w-[42%] md:shrink-0 md:min-h-[230px] flex items-end p-4">
-              <div class="w-full">
-                <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded mb-2">사진 가이드</span>
-                <p class="text-meok text-xs leading-relaxed bg-white/90 rounded p-2.5">
-                  부모 동료상담 또는 소모임 장면 — 원형으로 둘러앉은 대화 구도, 얼굴이 특정되지 않는 각도도 가능.
-                </p>
-              </div>
-            </div>
-            <div class="p-6 md:p-8 flex-1 flex flex-col justify-center">
-              <p class="text-iwoot text-xs font-bold mb-1">사업 03</p>
-              <h3 class="font-extrabold text-xl text-meok mb-3">발달장애인의 부모역량 강화 사업</h3>
-              <p class="text-dolhoe text-sm leading-relaxed mb-4">부모 동료상담과 소모임을 통해 같은 경험을 가진 부모들이 공감과 정보를 나눕니다.</p>
-              <a href="#biz-parent" class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
-            </div>
+          <article class="border border-black/10 rounded-2xl p-7 md:p-8 hover:border-naran/40 transition-colors">
+            <p class="text-iwoot text-xs font-bold mb-1.5">사업 03</p>
+            <h3 class="font-extrabold text-xl text-meok mb-3"><a href="#biz-parent" data-subnav class="hover:text-naran">발달장애인의 부모역량 강화 사업</a></h3>
+            <p class="text-dolhoe leading-relaxed mb-5">부모가 필요한 정보를 얻고, 같은 경험을 가진 부모끼리 서로 기대며 함께 성장합니다. 전문가 부모교육과 선배 부모의 동료상담, 부모 소모임을 통해 양육의 고립감을 덜고 양육 효능감을 높입니다.</p>
+            <div class="flex flex-wrap gap-2 mb-5"><a href="#prog-parented" data-subnav class="inline-block text-xs font-semibold text-naran bg-naran/5 hover:bg-naran/10 rounded-full px-3 py-1.5">부모교육</a><a href="#prog-peercounsel" data-subnav class="inline-block text-xs font-semibold text-naran bg-naran/5 hover:bg-naran/10 rounded-full px-3 py-1.5">개별 동료상담</a><a href="#prog-groupcounsel" data-subnav class="inline-block text-xs font-semibold text-naran bg-naran/5 hover:bg-naran/10 rounded-full px-3 py-1.5">집단 동료상담</a><a href="#prog-dadgroup" data-subnav class="inline-block text-xs font-semibold text-naran bg-naran/5 hover:bg-naran/10 rounded-full px-3 py-1.5">부모 소모임 (엄마 · 아빠)</a></div>
+            <a href="#biz-parent" data-subnav class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
           </article>
-
-          <article class="border border-black/10 rounded-2xl overflow-hidden md:flex">
-            <div class="photo-guide aspect-[16/10] md:aspect-auto md:w-[42%] md:shrink-0 md:min-h-[230px] flex items-end p-4">
-              <div class="w-full">
-                <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded mb-2">사진 가이드</span>
-                <p class="text-meok text-xs leading-relaxed bg-white/90 rounded p-2.5">
-                  지역 기관 견학 또는 협력 협약식 컷 — 단체 간 협력을 보여주는 구도, 현수막·명패 등 기관명이 자연스럽게 드러나는 장면.
-                </p>
-              </div>
-            </div>
-            <div class="p-6 md:p-8 flex-1 flex flex-col justify-center">
-              <p class="text-iwoot text-xs font-bold mb-1">사업 04</p>
-              <h3 class="font-extrabold text-xl text-meok mb-3">지역사회 연대사업</h3>
-              <p class="text-dolhoe text-sm leading-relaxed mb-4">마을공동체 활동과 지역 기관과의 협력을 통해, 지역 안에서 함께 살아가는 관계를 넓혀갑니다.</p>
-              <a href="#biz-community" class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
-            </div>
+          <article class="border border-black/10 rounded-2xl p-7 md:p-8 hover:border-naran/40 transition-colors">
+            <p class="text-iwoot text-xs font-bold mb-1.5">사업 04</p>
+            <h3 class="font-extrabold text-xl text-meok mb-3"><a href="#biz-community" data-subnav class="hover:text-naran">지역사회 연대사업</a></h3>
+            <p class="text-dolhoe leading-relaxed mb-5">마을 안에서 발달장애인과 이웃이 자연스럽게 만나고 함께 살아가는 관계를 넓혀갑니다. 당사자가 도움을 받는 사람이 아니라 마을에 재능을 나누는 이웃으로 활동합니다.</p>
+            <div class="flex flex-wrap gap-2 mb-5"><a href="#prog-awareness" data-subnav class="inline-block text-xs font-semibold text-naran bg-naran/5 hover:bg-naran/10 rounded-full px-3 py-1.5">장애인 인식개선</a><a href="#prog-festival" data-subnav class="inline-block text-xs font-semibold text-naran bg-naran/5 hover:bg-naran/10 rounded-full px-3 py-1.5">마을축제 참여</a><a href="#prog-artfest" data-subnav class="inline-block text-xs font-semibold text-naran bg-naran/5 hover:bg-naran/10 rounded-full px-3 py-1.5">느린이웃 통합예술제</a></div>
+            <a href="#biz-community" data-subnav class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
           </article>
         </div>
       </div>
 
-    <!-- 상세 화면 01: 사회참여 및 자립 준비 지원 -->
-    <div id="biz-independence" class="programs-detail hidden">
-      <a href="#programs" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-6"><span aria-hidden="true">←</span> 사업안내 목록으로</a>
-      <header class="mb-10">
-        <p class="text-iwoot font-bold text-sm mb-2">사업안내 · 정관상 사업</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">발달장애인의 사회참여 및 자립 준비 지원 사업</h2>
-        <p class="text-dolhoe leading-relaxed">당사자가 자신의 방식대로 지역사회에 참여하고, 스스로 할 수 있는 것을 하나씩 넓혀가도록 돕습니다.</p>
-      </header>
-      <div id="independence-programs" class="grid sm:grid-cols-2 gap-5">
-        <a href="#prog-sports" class="group block border border-black/10 rounded-xl overflow-hidden hover:border-naran transition-colors sm:col-span-2">
-          <div class="grid sm:grid-cols-2">
-            <div class="photo-guide aspect-[16/10] sm:aspect-auto flex items-end p-3">
-              <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 슐런스포츠단 단체 사진</span>
-            </div>
-            <div class="p-5 flex flex-col">
-              <p class="font-bold text-lg mb-3">슐런스포츠단</p>
-              <table class="w-full text-sm mb-4">
-                <tbody>
-                  <tr class="border-t border-black/10">
-                    <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">대상</th>
-                    <td class="py-2 text-dolhoe">발달장애인 당사자</td>
-                  </tr>
-                  <tr class="border-t border-black/10">
-                    <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">내용</th>
-                    <td class="py-2 text-dolhoe">정기 훈련 및 대회 출전. 향후 장애인 일자리와 연계할 계획입니다.</td>
-                  </tr>
-                </tbody>
-              </table>
-              <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
-            </div>
-          </div>
-        </a>
-        <a href="#prog-choir" class="group block border border-black/10 rounded-xl overflow-hidden hover:border-naran transition-colors">
-          <div class="photo-guide aspect-[16/10] flex items-end p-3">
-            <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 발달장애인합창단</span>
-          </div>
-          <div class="p-4">
-            <p class="font-bold mb-3">발달장애인합창단</p>
-            <table class="w-full text-sm mb-3">
-              <tbody>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">대상</th>
-                  <td class="py-2 text-dolhoe">발달장애인 당사자</td>
-                </tr>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">내용</th>
-                  <td class="py-2 text-dolhoe">함께 노래하며 무대에 서는 문화예술 활동</td>
-                </tr>
-              </tbody>
-            </table>
-            <span class="inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
-        <a href="#prog-selfhelp" class="group block border border-black/10 rounded-xl overflow-hidden hover:border-naran transition-colors">
-          <div class="photo-guide aspect-[16/10] flex items-end p-3">
-            <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 당사자 자조모임</span>
-          </div>
-          <div class="p-4">
-            <p class="font-bold mb-3">당사자 자조모임</p>
-            <table class="w-full text-sm mb-3">
-              <tbody>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">대상</th>
-                  <td class="py-2 text-dolhoe">발달장애인 당사자</td>
-                </tr>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">내용</th>
-                  <td class="py-2 text-dolhoe">서로의 경험과 생각을 나누는 정기 모임</td>
-                </tr>
-              </tbody>
-            </table>
-            <span class="inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
-        <a href="#prog-culture" class="group block border border-black/10 rounded-xl overflow-hidden hover:border-naran transition-colors">
-          <div class="photo-guide aspect-[16/10] flex items-end p-3">
-            <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 문화여가활동</span>
-          </div>
-          <div class="p-4">
-            <p class="font-bold mb-3">문화여가활동</p>
-            <table class="w-full text-sm mb-3">
-              <tbody>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">대상</th>
-                  <td class="py-2 text-dolhoe">발달장애인 당사자 및 가족</td>
-                </tr>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">내용</th>
-                  <td class="py-2 text-dolhoe">계절과 시기에 맞춘 문화 · 여가 프로그램</td>
-                </tr>
-              </tbody>
-            </table>
-            <span class="inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <!-- 상세 화면 01-1: 슐런스포츠단 운영 -->
-    <div id="prog-sports" class="programs-detail hidden">
-      <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
-      <div class="mb-6">
-        <p class="text-lg font-extrabold text-naran mb-1.5">슐런스포츠단 운영</p>
-        <p class="text-sm text-dolhoe leading-relaxed">정기 훈련과 대회 출전으로 이어지는 슐런스포츠단의 활동을 소개합니다.</p>
-      </div>
-      <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-key="슐런" aria-roledescription="carousel" aria-label="슐런스포츠단 운영 사진">
-        <div class="ny-slides absolute inset-0">
-          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 슐런스포츠단 운영 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
-          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 슐런스포츠단 운영 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
-          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 슐런스포츠단 운영 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+      <div id="biz-independence" class="programs-detail hidden">
+        <header class="mb-10 pb-8 border-b border-black/10">
+          <p class="text-iwoot font-bold text-sm mb-2">사업 01</p>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-4">발달장애인의 사회참여 및 자립 준비 지원 사업</h2>
+          <p class="text-dolhoe leading-relaxed">발달장애인 당사자가 자신의 흥미와 속도에 맞춰 지역사회에 참여하고, 스스로 할 수 있는 것을 하나씩 넓혀가도록 돕습니다. 문화·체육 동아리와 또래 자조모임, 방학 프로그램을 통해 당사자가 지역사회의 당당한 구성원으로 성장해 갑니다.</p>
+        </header>
+        <p class="text-sm font-bold text-meok mb-4">세부 프로그램 <span class="text-iwoot">4</span></p>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <a href="#prog-sports" data-subnav class="group flex flex-col border border-black/10 rounded-2xl p-6 hover:border-naran hover:shadow-sm transition">
+            <p class="font-extrabold text-lg text-meok mb-2 group-hover:text-naran">슐런 스포츠단 &#x27;슐런픽&#x27;</p>
+            <p class="text-sm text-dolhoe leading-relaxed mb-4">꾸준한 연습과 대회 출전으로 실력과 자신감을 함께 키우는 발달장애인 슐런 스포츠단입니다.</p>
+            <p class="text-xs text-dolhoe mb-5"><span class="font-bold text-naran mr-1.5">대상</span>슐런 활동을 희망하는 느린이웃 발달장애인 당사자</p>
+            <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
+          </a>
+          <a href="#prog-choir" data-subnav class="group flex flex-col border border-black/10 rounded-2xl p-6 hover:border-naran hover:shadow-sm transition">
+            <p class="font-extrabold text-lg text-meok mb-2 group-hover:text-naran">합창 예술단 &#x27;소리마을&#x27;</p>
+            <p class="text-sm text-dolhoe leading-relaxed mb-4">함께 노래하며 무대에 서는 발달장애인 합창 예술단입니다.</p>
+            <p class="text-xs text-dolhoe mb-5"><span class="font-bold text-naran mr-1.5">대상</span>노래를 좋아하는 느린이웃 발달장애인 당사자</p>
+            <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
+          </a>
+          <a href="#prog-selfhelp" data-subnav class="group flex flex-col border border-black/10 rounded-2xl p-6 hover:border-naran hover:shadow-sm transition">
+            <p class="font-extrabold text-lg text-meok mb-2 group-hover:text-naran">당사자 자조모임</p>
+            <p class="text-sm text-dolhoe leading-relaxed mb-4">연령별로 모인 또래들이 하고 싶은 활동을 스스로 정해 함께하는 모임입니다.</p>
+            <p class="text-xs text-dolhoe mb-5"><span class="font-bold text-naran mr-1.5">대상</span>느린이웃 발달장애인 당사자 (초등 저학년 · 초등 고학년 · 중등 등 연령별)</p>
+            <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
+          </a>
+          <a href="#prog-vacation" data-subnav class="group flex flex-col border border-black/10 rounded-2xl p-6 hover:border-naran hover:shadow-sm transition">
+            <p class="font-extrabold text-lg text-meok mb-2 group-hover:text-naran">방학 프로그램</p>
+            <p class="text-sm text-dolhoe leading-relaxed mb-4">학교가 쉬는 방학에도 안전하게 머물며 몸과 마음을 움직이는 당사자 프로그램입니다.</p>
+            <p class="text-xs text-dolhoe mb-5"><span class="font-bold text-naran mr-1.5">대상</span>방학 기간 돌봄 공백이 생기는 느린이웃 발달장애인 당사자</p>
+            <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
+          </a>
         </div>
-        <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
-        <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
-        <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
       </div>
-      <table class="w-full text-sm border-t border-black/10 mb-10">
-        <tbody>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">대상</th>
-            <td class="py-3">느린이웃 발달장애인 당사자 중 스포츠 활동 희망자</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">활동 내용</th>
-            <td class="py-3 italic text-dolhoe">[슐런이 무엇인지 설명하는 문구를 채워주세요]</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">운영 방식</th>
-            <td class="py-3">정기 훈련 및 대회 출전</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">비고</th>
-            <td class="py-3">향후 장애인 일자리와 연계할 계획입니다.</td>
-          </tr>
-        </tbody>
-      </table>
-      <div>
-        <p class="text-dolhoe text-xs font-bold mb-3">연혁 · 성과</p>
-        <ul class="space-y-2 text-sm">
-          <li class="flex gap-3"><span class="text-naran font-bold shrink-0 w-24">2025.08</span><span>슐런스포츠단 결성</span></li>
-          <li class="flex gap-3"><span class="text-naran font-bold shrink-0 w-24">2025.09</span><span>ROTC 어울림슐런대회 — 개인전·단체전 수상</span></li>
-          <li class="flex gap-3"><span class="text-naran font-bold shrink-0 w-24">2026.05</span><span>전국장애인학생체전 — 개인전 은메달</span></li>
-          <li class="flex gap-3"><span class="text-naran font-bold shrink-0 w-24">2026.09</span><span>화성어울림 슐런대회 — 개인전 금메달 · 단체전 금메달</span></li>
-        </ul>
-      </div>
-    </div>
 
-    <!-- 상세 화면 01-2: 발달장애인합창단 -->
-    <div id="prog-choir" class="programs-detail hidden">
-      <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
-      <div class="mb-6">
-        <p class="text-lg font-extrabold text-naran mb-1.5">발달장애인합창단</p>
-        <p class="text-sm text-dolhoe leading-relaxed">함께 노래를 연습하고 무대에 서는 합창단의 활동을 소개합니다.</p>
-      </div>
-      <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-key="합창" aria-roledescription="carousel" aria-label="발달장애인합창단 사진">
-        <div class="ny-slides absolute inset-0">
-          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 발달장애인합창단 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
-          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 발달장애인합창단 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
-          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 발달장애인합창단 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+      <div id="prog-sports" class="programs-detail hidden">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+        <div class="mb-6">
+          <p class="text-iwoot text-xs font-bold mb-1.5">사업 01 · 발달장애인의 사회참여 및 자립 준비 지원 사업</p>
+          <p class="text-xl font-extrabold text-naran mb-1.5">슐런 스포츠단 &#x27;슐런픽&#x27;</p>
+          <p class="text-dolhoe leading-relaxed">꾸준한 연습과 대회 출전으로 실력과 자신감을 함께 키우는 발달장애인 슐런 스포츠단입니다.</p>
         </div>
-        <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
-        <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
-        <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
-      </div>
-      <table class="w-full text-sm border-t border-black/10 mb-10">
-        <tbody>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">대상</th>
-            <td class="py-3">느린이웃 발달장애인 당사자 중 음악 활동 희망자</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">활동 내용</th>
-            <td class="py-3">함께 노래를 연습하고 무대에 서는 문화예술 활동입니다.</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">운영 방식</th>
-            <td class="py-3 italic text-dolhoe">[정기 연습 일정 등 운영 방식을 채워주세요]</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- 상세 화면 01-3: 당사자 자조모임 -->
-    <div id="prog-selfhelp" class="programs-detail hidden">
-      <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
-      <div class="mb-6">
-        <p class="text-lg font-extrabold text-naran mb-1.5">당사자 자조모임</p>
-        <p class="text-sm text-dolhoe leading-relaxed">당사자들이 모여 서로의 경험과 생각을 나누는 자조모임을 소개합니다.</p>
-      </div>
-      <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-key="자조" aria-roledescription="carousel" aria-label="당사자 자조모임 사진">
-        <div class="ny-slides absolute inset-0">
-          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 당사자 자조모임 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
-          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 당사자 자조모임 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
-          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 당사자 자조모임 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+        <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-biz="independence" data-carousel-key="슐런" aria-roledescription="carousel" aria-label="슐런 스포츠단 &#x27;슐런픽&#x27; 사진">
+          <div class="ny-slides absolute inset-0">
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 슐런 스포츠단 &#x27;슐런픽&#x27; 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 슐런 스포츠단 &#x27;슐런픽&#x27; 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 슐런 스포츠단 &#x27;슐런픽&#x27; 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          </div>
+          <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+          <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
         </div>
-        <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
-        <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
-        <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
-      </div>
-      <table class="w-full text-sm border-t border-black/10 mb-10">
-        <tbody>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">대상</th>
-            <td class="py-3">느린이웃 발달장애인 당사자</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">활동 내용</th>
-            <td class="py-3">당사자들이 함께 모여 서로의 경험과 생각을 나누는 자조모임입니다.</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">운영 방식</th>
-            <td class="py-3 italic text-dolhoe">[정기 모임 주기 등 운영 방식을 채워주세요]</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- 상세 화면 01-4: 문화여가활동 -->
-    <div id="prog-culture" class="programs-detail hidden">
-      <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
-      <div class="mb-6">
-        <p class="text-lg font-extrabold text-naran mb-1.5">문화여가활동</p>
-        <p class="text-sm text-dolhoe leading-relaxed">계절과 시기에 맞춰 함께하는 문화 · 여가 활동을 소개합니다.</p>
-      </div>
-      <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-key="문화" aria-roledescription="carousel" aria-label="문화여가활동 사진">
-        <div class="ny-slides absolute inset-0">
-          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 문화여가활동 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
-          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 문화여가활동 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
-          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 문화여가활동 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+        <table class="w-full text-sm border-t-2 border-meok mb-10">
+          <tbody>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">대상</th>
+              <td class="py-4 leading-relaxed text-meok">슐런 활동을 희망하는 느린이웃 발달장애인 당사자</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">활동 내용</th>
+              <td class="py-4 leading-relaxed text-meok">나무 원반을 밀어 보드 끝의 칸에 넣는 보드 스포츠 &#x27;슐런&#x27;을 정기적으로 연습하고 각종 대회에 출전합니다. 꾸준한 연습으로 집중력과 신체 조절 능력을 기르고, 대회 참여를 통해 성취감과 자신감을 쌓습니다.</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">운영 방식</th>
+              <td class="py-4 leading-relaxed text-meok">정기 연습(월 2회) · 전국장애인학생체육대회, 어울림 슐런대회 등 대회 출전 · 마을 축제 슐런 체험 행사 지원 · 동아리 자체 대회</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">비고</th>
+              <td class="py-4 leading-relaxed text-meok">고양시장애인체육회 생활체육지원사업 선정(2026) · 앞으로 장애인 일자리와 연계할 계획입니다.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="bg-byeot/60 rounded-2xl p-6">
+          <p class="text-meok text-sm font-extrabold mb-4">연혁 · 성과</p>
+          <ul class="space-y-2.5 text-sm"><li class="flex gap-3"><span class="text-naran font-bold shrink-0 w-24">2025.08</span><span>슐런스포츠단 결성</span></li><li class="flex gap-3"><span class="text-naran font-bold shrink-0 w-24">2025.09</span><span>ROTC 어울림슐런대회 — 개인전·단체전 수상</span></li><li class="flex gap-3"><span class="text-naran font-bold shrink-0 w-24">2026.05</span><span>전국장애인학생체전 — 개인전 은메달</span></li><li class="flex gap-3"><span class="text-naran font-bold shrink-0 w-24">2026.09</span><span>화성어울림 슐런대회 — 개인전 금메달 · 단체전 금메달</span></li></ul>
         </div>
-        <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
-        <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
-        <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
       </div>
-      <table class="w-full text-sm border-t border-black/10 mb-10">
-        <tbody>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">대상</th>
-            <td class="py-3">느린이웃 발달장애인 당사자 및 가족</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">활동 내용</th>
-            <td class="py-3">계절과 시기에 맞춰 운영하는 다양한 문화 · 여가 프로그램입니다.</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">운영 방식</th>
-            <td class="py-3 italic text-dolhoe">[운영 시기 및 방식을 채워주세요]</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
 
-    <!-- 상세 화면 02: 가족통합 지원 -->
-    <div id="biz-family" class="programs-detail hidden">
-      <a href="#programs" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-6"><span aria-hidden="true">←</span> 사업안내 목록으로</a>
-      <header class="mb-10">
-        <p class="text-iwoot font-bold text-sm mb-2">사업안내 · 정관상 사업</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">발달장애인 가족통합 지원 사업</h2>
-        <p class="text-dolhoe leading-relaxed">당사자와 가족이 함께 어울리며, 일상 속에서 서로 정서적으로 연결되는 시간을 마련합니다.</p>
-      </header>
-      <div id="family-programs" class="grid sm:grid-cols-2 gap-5">
-        <a href="#prog-hiking" class="group block border border-black/10 rounded-xl overflow-hidden hover:border-naran transition-colors">
-          <div class="photo-guide aspect-[16/10] flex items-end p-3">
-            <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 정기산행</span>
+      <div id="prog-choir" class="programs-detail hidden">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+        <div class="mb-6">
+          <p class="text-iwoot text-xs font-bold mb-1.5">사업 01 · 발달장애인의 사회참여 및 자립 준비 지원 사업</p>
+          <p class="text-xl font-extrabold text-naran mb-1.5">합창 예술단 &#x27;소리마을&#x27;</p>
+          <p class="text-dolhoe leading-relaxed">함께 노래하며 무대에 서는 발달장애인 합창 예술단입니다.</p>
+        </div>
+        <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-biz="independence" data-carousel-key="합창|소리마을" aria-roledescription="carousel" aria-label="합창 예술단 &#x27;소리마을&#x27; 사진">
+          <div class="ny-slides absolute inset-0">
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 합창 예술단 &#x27;소리마을&#x27; 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 합창 예술단 &#x27;소리마을&#x27; 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 합창 예술단 &#x27;소리마을&#x27; 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
           </div>
-          <div class="p-4">
-            <p class="font-bold mb-3">정기산행</p>
-            <table class="w-full text-sm mb-3">
-              <tbody>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">대상</th>
-                  <td class="py-2 text-dolhoe">느린이웃 회원 가족</td>
-                </tr>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">내용</th>
-                  <td class="py-2 text-dolhoe">매달 가족 단위로 함께 걷는 정기 산행</td>
-                </tr>
-              </tbody>
-            </table>
-            <span class="inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
-        <a href="#prog-garden" class="group block border border-black/10 rounded-xl overflow-hidden hover:border-naran transition-colors">
-          <div class="photo-guide aspect-[16/10] flex items-end p-3">
-            <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 텃밭활동</span>
-          </div>
-          <div class="p-4">
-            <p class="font-bold mb-3">텃밭활동</p>
-            <table class="w-full text-sm mb-3">
-              <tbody>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">대상</th>
-                  <td class="py-2 text-dolhoe">느린이웃 회원 가족</td>
-                </tr>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">내용</th>
-                  <td class="py-2 text-dolhoe">가족이 함께 씨앗을 심고 가꾸는 감각 · 작업 중심 활동</td>
-                </tr>
-              </tbody>
-            </table>
-            <span class="inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
-        <a href="#prog-fieldday" class="group block border border-black/10 rounded-xl overflow-hidden hover:border-naran transition-colors">
-          <div class="photo-guide aspect-[16/10] flex items-end p-3">
-            <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 운동회</span>
-          </div>
-          <div class="p-4">
-            <p class="font-bold mb-3">운동회</p>
-            <table class="w-full text-sm mb-3">
-              <tbody>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">대상</th>
-                  <td class="py-2 text-dolhoe">느린이웃 회원 가족 전체</td>
-                </tr>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">내용</th>
-                  <td class="py-2 text-dolhoe">당사자와 형제자매, 부모가 함께 몸을 움직이며 어울리는 가족 운동회</td>
-                </tr>
-              </tbody>
-            </table>
-            <span class="inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
-        <a href="#prog-water" class="group block border border-black/10 rounded-xl overflow-hidden hover:border-naran transition-colors">
-          <div class="photo-guide aspect-[16/10] flex items-end p-3">
-            <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 물놀이</span>
-          </div>
-          <div class="p-4">
-            <p class="font-bold mb-3">물놀이</p>
-            <table class="w-full text-sm mb-3">
-              <tbody>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">대상</th>
-                  <td class="py-2 text-dolhoe">느린이웃 회원 가족 전체</td>
-                </tr>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">내용</th>
-                  <td class="py-2 text-dolhoe">여름철 물놀이장에서 온 가족이 함께 더위를 식히는 활동</td>
-                </tr>
-              </tbody>
-            </table>
-            <span class="inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
-        <a href="#prog-kimjang" class="group block border border-black/10 rounded-xl overflow-hidden hover:border-naran transition-colors">
-          <div class="photo-guide aspect-[16/10] flex items-end p-3">
-            <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 김장</span>
-          </div>
-          <div class="p-4">
-            <p class="font-bold mb-3">김장</p>
-            <table class="w-full text-sm mb-3">
-              <tbody>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">대상</th>
-                  <td class="py-2 text-dolhoe">느린이웃 회원 가족 전체</td>
-                </tr>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">내용</th>
-                  <td class="py-2 text-dolhoe">당사자와 가족이 함께 김장을 담그고 나누는 활동</td>
-                </tr>
-              </tbody>
-            </table>
-            <span class="inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
-        <a href="#prog-yearend" class="group block border border-black/10 rounded-xl overflow-hidden hover:border-naran transition-colors">
-          <div class="photo-guide aspect-[16/10] flex items-end p-3">
-            <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 송년회</span>
-          </div>
-          <div class="p-4">
-            <p class="font-bold mb-3">송년회</p>
-            <table class="w-full text-sm mb-3">
-              <tbody>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">대상</th>
-                  <td class="py-2 text-dolhoe">느린이웃 회원 가족 전체</td>
-                </tr>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">내용</th>
-                  <td class="py-2 text-dolhoe">한 해를 마무리하며 함께 돌아보고 서로를 격려하는 자리</td>
-                </tr>
-              </tbody>
-            </table>
-            <span class="inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
-        <a href="#prog-siblings" class="group block border border-black/10 rounded-xl overflow-hidden hover:border-naran transition-colors sm:col-span-2">
-          <div class="photo-guide aspect-[16/10] sm:aspect-[21/9] flex items-end p-3">
-            <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 비장애형제자매모임</span>
-          </div>
-          <div class="p-4">
-            <p class="font-bold mb-3">비장애형제자매모임</p>
-            <table class="w-full text-sm mb-3">
-              <tbody>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">대상</th>
-                  <td class="py-2 text-dolhoe">느린이웃 회원 가족의 비장애 형제자매</td>
-                </tr>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">내용</th>
-                  <td class="py-2 text-dolhoe">발달장애 형제자매를 둔 비장애 형제자매들이 서로의 마음을 나누는 모임</td>
-                </tr>
-              </tbody>
-            </table>
-            <span class="inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
+          <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+          <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+        </div>
+        <table class="w-full text-sm border-t-2 border-meok mb-10">
+          <tbody>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">대상</th>
+              <td class="py-4 leading-relaxed text-meok">노래를 좋아하는 느린이웃 발달장애인 당사자</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">활동 내용</th>
+              <td class="py-4 leading-relaxed text-meok">정기 음악 트레이닝으로 발성과 화음을 익히고, 지역 행사와 공연 무대에 섭니다. 함께 연습하고 무대에 서는 경험을 통해 표현력과 자신감, 협동심을 키웁니다.</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">운영 방식</th>
+              <td class="py-4 leading-relaxed text-meok">정기 연습(월 4회) · 합창 공연 관람 · 지역 행사 및 장애인 음악대회 참여 · 느린이웃 통합예술제 공연</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">비고</th>
+              <td class="py-4 leading-relaxed text-meok">고양시장애인종합복지관 문화예술지원사업 선정(2026)</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="bg-byeot/60 rounded-2xl p-6">
+          <p class="text-meok text-sm font-extrabold mb-4">연혁 · 성과</p>
+          <ul class="space-y-2.5 text-sm"><li class="flex gap-3"><span class="text-naran font-bold shrink-0 w-24">2025.09</span><span>EBS 스페이스 공감홀 초청 연주회 무대</span></li><li class="flex gap-3"><span class="text-naran font-bold shrink-0 w-24">2026</span><span>고양시장애인종합복지관 문화예술지원사업 선정</span></li><li class="flex gap-3"><span class="text-naran font-bold shrink-0 w-24">2026.10</span><span>제1회 느린이웃 통합예술제 공연</span></li></ul>
+        </div>
       </div>
-    </div>
 
-    <!-- 상세 화면 02-1: 정기산행 -->
-    <div id="prog-hiking" class="programs-detail hidden">
-      <a href="#biz-family" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-4"><span aria-hidden="true">←</span> 발달장애인 가족통합 지원 사업으로</a>
-      <nav class="text-xs text-dolhoe mb-6" aria-label="현재 위치">
-        <a href="#programs" class="hover:text-naran">사업안내</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <a href="#biz-family" class="hover:text-naran">발달장애인 가족통합 지원 사업</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <span class="text-meok font-bold">정기산행</span>
-      </nav>
-      <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
-        <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 가족 단위 산행 장면</span>
-      </div>
-      <header class="mb-8">
-        <p class="text-iwoot font-bold text-sm mb-2">사업 02 · 세부 프로그램</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">정기산행</h2>
-      </header>
-      <table class="w-full text-sm border-t border-black/10 mb-10">
-        <tbody>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">대상</th>
-            <td class="py-3">느린이웃 회원 가족 전체</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">활동 내용</th>
-            <td class="py-3">부모와 당사자가 함께 걸으며 자연 속에서 시간을 보내는 가족 단위 산행입니다.</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">운영 방식</th>
-            <td class="py-3">매월 1회 정기 운영</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- 상세 화면 02-2: 텃밭활동 -->
-    <div id="prog-garden" class="programs-detail hidden">
-      <a href="#biz-family" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-4"><span aria-hidden="true">←</span> 발달장애인 가족통합 지원 사업으로</a>
-      <nav class="text-xs text-dolhoe mb-6" aria-label="현재 위치">
-        <a href="#programs" class="hover:text-naran">사업안내</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <a href="#biz-family" class="hover:text-naran">발달장애인 가족통합 지원 사업</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <span class="text-meok font-bold">텃밭활동</span>
-      </nav>
-      <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
-        <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 가족 텃밭활동 장면</span>
-      </div>
-      <header class="mb-8">
-        <p class="text-iwoot font-bold text-sm mb-2">사업 02 · 세부 프로그램</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">텃밭활동</h2>
-      </header>
-      <table class="w-full text-sm border-t border-black/10 mb-10">
-        <tbody>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">대상</th>
-            <td class="py-3">느린이웃 회원 가족 전체</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">활동 내용</th>
-            <td class="py-3">가족이 함께 씨앗을 심고 가꾸는 감각 · 작업 중심 활동입니다.</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">운영 방식</th>
-            <td class="py-3 italic text-dolhoe">[운영 주기 및 장소를 채워주세요]</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- 상세 화면 02-3: 운동회 -->
-    <div id="prog-fieldday" class="programs-detail hidden">
-      <a href="#biz-family" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-4"><span aria-hidden="true">←</span> 발달장애인 가족통합 지원 사업으로</a>
-      <nav class="text-xs text-dolhoe mb-6" aria-label="현재 위치">
-        <a href="#programs" class="hover:text-naran">사업안내</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <a href="#biz-family" class="hover:text-naran">발달장애인 가족통합 지원 사업</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <span class="text-meok font-bold">운동회</span>
-      </nav>
-      <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
-        <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 가족 운동회 장면</span>
-      </div>
-      <header class="mb-8">
-        <p class="text-iwoot font-bold text-sm mb-2">사업 02 · 세부 프로그램</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">운동회</h2>
-      </header>
-      <table class="w-full text-sm border-t border-black/10 mb-10">
-        <tbody>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">대상</th>
-            <td class="py-3">느린이웃 회원 가족 전체</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">활동 내용</th>
-            <td class="py-3">당사자와 형제자매, 부모가 함께 팀을 이뤄 몸을 움직이며 어울리는 가족 운동회입니다.</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">운영 방식</th>
-            <td class="py-3 italic text-dolhoe">[운영 시기 및 장소를 채워주세요]</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- 상세 화면 02-4: 물놀이 -->
-    <div id="prog-water" class="programs-detail hidden">
-      <a href="#biz-family" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-4"><span aria-hidden="true">←</span> 발달장애인 가족통합 지원 사업으로</a>
-      <nav class="text-xs text-dolhoe mb-6" aria-label="현재 위치">
-        <a href="#programs" class="hover:text-naran">사업안내</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <a href="#biz-family" class="hover:text-naran">발달장애인 가족통합 지원 사업</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <span class="text-meok font-bold">물놀이</span>
-      </nav>
-      <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
-        <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 가족 물놀이 장면</span>
-      </div>
-      <header class="mb-8">
-        <p class="text-iwoot font-bold text-sm mb-2">사업 02 · 세부 프로그램</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">물놀이</h2>
-      </header>
-      <table class="w-full text-sm border-t border-black/10 mb-10">
-        <tbody>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">대상</th>
-            <td class="py-3">느린이웃 회원 가족 전체</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">활동 내용</th>
-            <td class="py-3">여름철 물놀이장이나 계곡에서 온 가족이 함께 더위를 식히며 시간을 보내는 활동입니다.</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">운영 방식</th>
-            <td class="py-3 italic text-dolhoe">[운영 시기 및 장소를 채워주세요]</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- 상세 화면 02-5: 김장 -->
-    <div id="prog-kimjang" class="programs-detail hidden">
-      <a href="#biz-family" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-4"><span aria-hidden="true">←</span> 발달장애인 가족통합 지원 사업으로</a>
-      <nav class="text-xs text-dolhoe mb-6" aria-label="현재 위치">
-        <a href="#programs" class="hover:text-naran">사업안내</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <a href="#biz-family" class="hover:text-naran">발달장애인 가족통합 지원 사업</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <span class="text-meok font-bold">김장</span>
-      </nav>
-      <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
-        <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 가족 김장 장면</span>
-      </div>
-      <header class="mb-8">
-        <p class="text-iwoot font-bold text-sm mb-2">사업 02 · 세부 프로그램</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">김장</h2>
-      </header>
-      <table class="w-full text-sm border-t border-black/10 mb-10">
-        <tbody>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">대상</th>
-            <td class="py-3">느린이웃 회원 가족 전체</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">활동 내용</th>
-            <td class="py-3">당사자와 가족이 함께 김장을 담그고 나누며 협동과 나눔을 경험하는 활동입니다.</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">운영 방식</th>
-            <td class="py-3 italic text-dolhoe">[운영 시기 및 장소를 채워주세요]</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- 상세 화면 02-6: 송년회 -->
-    <div id="prog-yearend" class="programs-detail hidden">
-      <a href="#biz-family" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-4"><span aria-hidden="true">←</span> 발달장애인 가족통합 지원 사업으로</a>
-      <nav class="text-xs text-dolhoe mb-6" aria-label="현재 위치">
-        <a href="#programs" class="hover:text-naran">사업안내</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <a href="#biz-family" class="hover:text-naran">발달장애인 가족통합 지원 사업</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <span class="text-meok font-bold">송년회</span>
-      </nav>
-      <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
-        <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 송년회 장면</span>
-      </div>
-      <header class="mb-8">
-        <p class="text-iwoot font-bold text-sm mb-2">사업 02 · 세부 프로그램</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">송년회</h2>
-      </header>
-      <table class="w-full text-sm border-t border-black/10 mb-10">
-        <tbody>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">대상</th>
-            <td class="py-3">느린이웃 회원 가족 전체</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">활동 내용</th>
-            <td class="py-3">한 해를 마무리하며 그동안의 활동을 함께 돌아보고 서로를 격려하는 자리입니다.</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">운영 방식</th>
-            <td class="py-3 italic text-dolhoe">[운영 시기 및 장소를 채워주세요]</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- 상세 화면 02-7: 비장애형제자매모임 -->
-    <div id="prog-siblings" class="programs-detail hidden">
-      <a href="#biz-family" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-4"><span aria-hidden="true">←</span> 발달장애인 가족통합 지원 사업으로</a>
-      <nav class="text-xs text-dolhoe mb-6" aria-label="현재 위치">
-        <a href="#programs" class="hover:text-naran">사업안내</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <a href="#biz-family" class="hover:text-naran">발달장애인 가족통합 지원 사업</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <span class="text-meok font-bold">비장애형제자매모임</span>
-      </nav>
-      <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
-        <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 비장애형제자매모임 장면</span>
-      </div>
-      <header class="mb-8">
-        <p class="text-iwoot font-bold text-sm mb-2">사업 02 · 세부 프로그램</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">비장애형제자매모임</h2>
-      </header>
-      <table class="w-full text-sm border-t border-black/10 mb-10">
-        <tbody>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">대상</th>
-            <td class="py-3">느린이웃 회원 가족의 비장애 형제자매</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">활동 내용</th>
-            <td class="py-3">발달장애 형제자매를 둔 비장애 형제자매들이 서로의 경험을 나누고 마음을 터놓는 모임입니다.</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">운영 방식</th>
-            <td class="py-3 italic text-dolhoe">[운영 주기를 채워주세요]</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- 상세 화면 03: 부모역량 강화 -->
-    <div id="biz-parent" class="programs-detail hidden">
-      <a href="#programs" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-6"><span aria-hidden="true">←</span> 사업안내 목록으로</a>
-      <header class="mb-10">
-        <p class="text-iwoot font-bold text-sm mb-2">사업안내 · 정관상 사업</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">발달장애인의 부모역량 강화 사업</h2>
-        <p class="text-dolhoe leading-relaxed">발달장애 자녀를 키우는 부모가 서로 기대어 정보와 마음을 나누고, 양육자로서의 힘을 키웁니다.</p>
-      </header>
-      <div id="parent-programs" class="grid sm:grid-cols-2 gap-5">
-        <a href="#prog-peercounsel" class="group block border border-black/10 rounded-xl overflow-hidden hover:border-naran transition-colors">
-          <div class="photo-guide aspect-[16/10] flex items-end p-3">
-            <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 동료상담</span>
+      <div id="prog-selfhelp" class="programs-detail hidden">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+        <div class="mb-6">
+          <p class="text-iwoot text-xs font-bold mb-1.5">사업 01 · 발달장애인의 사회참여 및 자립 준비 지원 사업</p>
+          <p class="text-xl font-extrabold text-naran mb-1.5">당사자 자조모임</p>
+          <p class="text-dolhoe leading-relaxed">연령별로 모인 또래들이 하고 싶은 활동을 스스로 정해 함께하는 모임입니다.</p>
+        </div>
+        <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-biz="independence" data-carousel-key="자조" aria-roledescription="carousel" aria-label="당사자 자조모임 사진">
+          <div class="ny-slides absolute inset-0">
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 당사자 자조모임 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 당사자 자조모임 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 당사자 자조모임 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
           </div>
-          <div class="p-4">
-            <p class="font-bold mb-3">동료상담</p>
-            <table class="w-full text-sm mb-3">
-              <tbody>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">대상</th>
-                  <td class="py-2 text-dolhoe">느린이웃 회원 부모</td>
-                </tr>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">내용</th>
-                  <td class="py-2 text-dolhoe">비슷한 경험을 가진 부모가 1:1로 만나 서로의 고민을 나누는 동료상담</td>
-                </tr>
-              </tbody>
-            </table>
-            <span class="inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
-        <a href="#prog-groupcounsel" class="group block border border-black/10 rounded-xl overflow-hidden hover:border-naran transition-colors">
-          <div class="photo-guide aspect-[16/10] flex items-end p-3">
-            <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 집단동료상담</span>
-          </div>
-          <div class="p-4">
-            <p class="font-bold mb-3">집단동료상담</p>
-            <table class="w-full text-sm mb-3">
-              <tbody>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">대상</th>
-                  <td class="py-2 text-dolhoe">느린이웃 회원 부모</td>
-                </tr>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">내용</th>
-                  <td class="py-2 text-dolhoe">여러 부모가 함께 모여 경험과 어려움을 나누는 집단 동료상담</td>
-                </tr>
-              </tbody>
-            </table>
-            <span class="inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
-        <a href="#prog-parented" class="group block border border-black/10 rounded-xl overflow-hidden hover:border-naran transition-colors">
-          <div class="photo-guide aspect-[16/10] flex items-end p-3">
-            <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 부모교육</span>
-          </div>
-          <div class="p-4">
-            <p class="font-bold mb-3">부모교육</p>
-            <table class="w-full text-sm mb-3">
-              <tbody>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">대상</th>
-                  <td class="py-2 text-dolhoe">느린이웃 회원 부모</td>
-                </tr>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">내용</th>
-                  <td class="py-2 text-dolhoe">발달장애 자녀 양육에 필요한 정보와 전문 지식을 배우는 교육</td>
-                </tr>
-              </tbody>
-            </table>
-            <span class="inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
-        <a href="#prog-dadgroup" class="group block border border-black/10 rounded-xl overflow-hidden hover:border-naran transition-colors">
-          <div class="photo-guide aspect-[16/10] flex items-end p-3">
-            <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 아빠소모임</span>
-          </div>
-          <div class="p-4">
-            <p class="font-bold mb-3">아빠소모임</p>
-            <table class="w-full text-sm mb-3">
-              <tbody>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">대상</th>
-                  <td class="py-2 text-dolhoe">느린이웃 회원 아버지</td>
-                </tr>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">내용</th>
-                  <td class="py-2 text-dolhoe">아버지들이 함께 모여 양육의 고민과 일상을 나누는 소모임</td>
-                </tr>
-              </tbody>
-            </table>
-            <span class="inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
+          <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+          <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+        </div>
+        <table class="w-full text-sm border-t-2 border-meok mb-10">
+          <tbody>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">대상</th>
+              <td class="py-4 leading-relaxed text-meok">느린이웃 발달장애인 당사자 (초등 저학년 · 초등 고학년 · 중등 등 연령별)</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">활동 내용</th>
+              <td class="py-4 leading-relaxed text-meok">연령대별로 소모임을 꾸리고, 모임마다 하고 싶은 활동을 직접 정해 함께합니다. 또래와 어울리며 관계를 넓히고, 성인기 이후에도 스스로 여가를 즐길 수 있는 자조 역량을 키웁니다.</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">운영 방식</th>
+              <td class="py-4 leading-relaxed text-meok">연령별 소모임 수시 운영 · 당사자 및 조력자 모임(분기) · 생일 파티(격월)</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">주요 활동</th>
+              <td class="py-4 leading-relaxed text-meok"><ul class="space-y-1"><li class="flex gap-2"><span class="text-ongi" aria-hidden="true">·</span><span>저학년 — 키즈카페 나들이</span></li><li class="flex gap-2"><span class="text-ongi" aria-hidden="true">·</span><span>고학년 — 캠핑(1박 2일), 기차여행</span></li><li class="flex gap-2"><span class="text-ongi" aria-hidden="true">·</span><span>영화 관람, 식사 모임, 성교육 프로그램 등</span></li></ul></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
 
-    <!-- 상세 화면 03-1: 동료상담 -->
-    <div id="prog-peercounsel" class="programs-detail hidden">
-      <a href="#biz-parent" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-4"><span aria-hidden="true">←</span> 발달장애인의 부모역량 강화 사업으로</a>
-      <nav class="text-xs text-dolhoe mb-6" aria-label="현재 위치">
-        <a href="#programs" class="hover:text-naran">사업안내</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <a href="#biz-parent" class="hover:text-naran">발달장애인의 부모역량 강화 사업</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <span class="text-meok font-bold">동료상담</span>
-      </nav>
-      <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
-        <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 동료상담 장면</span>
-      </div>
-      <header class="mb-8">
-        <p class="text-iwoot font-bold text-sm mb-2">사업 03 · 세부 프로그램</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">동료상담</h2>
-      </header>
-      <table class="w-full text-sm border-t border-black/10 mb-10">
-        <tbody>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">대상</th>
-            <td class="py-3">느린이웃 회원 부모</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">활동 내용</th>
-            <td class="py-3">비슷한 경험을 가진 부모가 1:1로 만나 서로의 고민을 나누고 지지하는 동료상담입니다.</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">운영 방식</th>
-            <td class="py-3 italic text-dolhoe">[상담 신청 방법 등 운영 방식을 채워주세요]</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- 상세 화면 03-2: 집단동료상담 -->
-    <div id="prog-groupcounsel" class="programs-detail hidden">
-      <a href="#biz-parent" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-4"><span aria-hidden="true">←</span> 발달장애인의 부모역량 강화 사업으로</a>
-      <nav class="text-xs text-dolhoe mb-6" aria-label="현재 위치">
-        <a href="#programs" class="hover:text-naran">사업안내</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <a href="#biz-parent" class="hover:text-naran">발달장애인의 부모역량 강화 사업</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <span class="text-meok font-bold">집단동료상담</span>
-      </nav>
-      <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
-        <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 집단동료상담 장면</span>
-      </div>
-      <header class="mb-8">
-        <p class="text-iwoot font-bold text-sm mb-2">사업 03 · 세부 프로그램</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">집단동료상담</h2>
-      </header>
-      <table class="w-full text-sm border-t border-black/10 mb-10">
-        <tbody>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">대상</th>
-            <td class="py-3">느린이웃 회원 부모</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">활동 내용</th>
-            <td class="py-3">여러 부모가 함께 모여 서로의 경험과 어려움을 나누며 지지하는 집단 상담입니다.</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">운영 방식</th>
-            <td class="py-3 italic text-dolhoe">[모임 주기 등 운영 방식을 채워주세요]</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- 상세 화면 03-3: 부모교육 -->
-    <div id="prog-parented" class="programs-detail hidden">
-      <a href="#biz-parent" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-4"><span aria-hidden="true">←</span> 발달장애인의 부모역량 강화 사업으로</a>
-      <nav class="text-xs text-dolhoe mb-6" aria-label="현재 위치">
-        <a href="#programs" class="hover:text-naran">사업안내</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <a href="#biz-parent" class="hover:text-naran">발달장애인의 부모역량 강화 사업</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <span class="text-meok font-bold">부모교육</span>
-      </nav>
-      <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
-        <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 부모교육 장면</span>
-      </div>
-      <header class="mb-8">
-        <p class="text-iwoot font-bold text-sm mb-2">사업 03 · 세부 프로그램</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">부모교육</h2>
-      </header>
-      <table class="w-full text-sm border-t border-black/10 mb-10">
-        <tbody>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">대상</th>
-            <td class="py-3">느린이웃 회원 부모</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">활동 내용</th>
-            <td class="py-3">발달장애 자녀 양육에 필요한 정보와 전문 지식을 배우는 교육 프로그램입니다.</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">운영 방식</th>
-            <td class="py-3 italic text-dolhoe">[교육 주기 및 강사진을 채워주세요]</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- 상세 화면 03-4: 아빠소모임 -->
-    <div id="prog-dadgroup" class="programs-detail hidden">
-      <a href="#biz-parent" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-4"><span aria-hidden="true">←</span> 발달장애인의 부모역량 강화 사업으로</a>
-      <nav class="text-xs text-dolhoe mb-6" aria-label="현재 위치">
-        <a href="#programs" class="hover:text-naran">사업안내</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <a href="#biz-parent" class="hover:text-naran">발달장애인의 부모역량 강화 사업</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <span class="text-meok font-bold">아빠소모임</span>
-      </nav>
-      <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
-        <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 아빠소모임 장면</span>
-      </div>
-      <header class="mb-8">
-        <p class="text-iwoot font-bold text-sm mb-2">사업 03 · 세부 프로그램</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">아빠소모임</h2>
-      </header>
-      <table class="w-full text-sm border-t border-black/10 mb-10">
-        <tbody>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">대상</th>
-            <td class="py-3">느린이웃 회원 아버지</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">활동 내용</th>
-            <td class="py-3">아버지들이 함께 모여 양육의 고민과 일상을 편하게 나누는 소모임입니다.</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">운영 방식</th>
-            <td class="py-3 italic text-dolhoe">[모임 주기를 채워주세요]</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- 상세 화면 04: 지역사회 연대 -->
-    <div id="biz-community" class="programs-detail hidden">
-      <a href="#programs" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-6"><span aria-hidden="true">←</span> 사업안내 목록으로</a>
-      <header class="mb-10">
-        <p class="text-iwoot font-bold text-sm mb-2">사업안내 · 정관상 사업</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">지역사회 연대사업</h2>
-        <p class="text-dolhoe leading-relaxed">느린이웃이 속한 지역사회와 손잡고, 발달장애에 대한 이해와 협력의 폭을 넓혀갑니다.</p>
-      </header>
-      <div id="community-programs" class="grid sm:grid-cols-2 gap-5">
-        <a href="#prog-festival" class="group block border border-black/10 rounded-xl overflow-hidden hover:border-naran transition-colors">
-          <div class="photo-guide aspect-[16/10] flex items-end p-3">
-            <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 마을축제참여</span>
+      <div id="prog-vacation" class="programs-detail hidden">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+        <div class="mb-6">
+          <p class="text-iwoot text-xs font-bold mb-1.5">사업 01 · 발달장애인의 사회참여 및 자립 준비 지원 사업</p>
+          <p class="text-xl font-extrabold text-naran mb-1.5">방학 프로그램</p>
+          <p class="text-dolhoe leading-relaxed">학교가 쉬는 방학에도 안전하게 머물며 몸과 마음을 움직이는 당사자 프로그램입니다.</p>
+        </div>
+        <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-biz="independence" data-carousel-key="방학|문화여가" aria-roledescription="carousel" aria-label="방학 프로그램 사진">
+          <div class="ny-slides absolute inset-0">
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 방학 프로그램 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 방학 프로그램 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 방학 프로그램 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
           </div>
-          <div class="p-4">
-            <p class="font-bold mb-3">마을축제참여</p>
-            <table class="w-full text-sm mb-3">
-              <tbody>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">대상</th>
-                  <td class="py-2 text-dolhoe">느린이웃 회원 및 지역 주민</td>
-                </tr>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">내용</th>
-                  <td class="py-2 text-dolhoe">지역 마을 축제에 참여해 발달장애인과 지역 주민이 자연스럽게 어울리는 활동</td>
-                </tr>
-              </tbody>
-            </table>
-            <span class="inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
-        <a href="#prog-artfest" class="group block border border-black/10 rounded-xl overflow-hidden hover:border-naran transition-colors">
-          <div class="photo-guide aspect-[16/10] flex items-end p-3">
-            <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 통합예술제</span>
-          </div>
-          <div class="p-4">
-            <p class="font-bold mb-3">통합예술제</p>
-            <table class="w-full text-sm mb-3">
-              <tbody>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">대상</th>
-                  <td class="py-2 text-dolhoe">느린이웃 회원 및 지역 주민</td>
-                </tr>
-                <tr class="border-t border-black/10">
-                  <th scope="row" class="text-left text-dolhoe font-bold text-xs w-14 py-2 align-top">내용</th>
-                  <td class="py-2 text-dolhoe">장애와 비장애의 경계 없이 함께 참여하는 통합 예술제</td>
-                </tr>
-              </tbody>
-            </table>
-            <span class="inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
+          <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+          <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+        </div>
+        <table class="w-full text-sm border-t-2 border-meok mb-10">
+          <tbody>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">대상</th>
+              <td class="py-4 leading-relaxed text-meok">방학 기간 돌봄 공백이 생기는 느린이웃 발달장애인 당사자</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">활동 내용</th>
+              <td class="py-4 leading-relaxed text-meok">정규 교육이 쉬는 방학 동안 외부 전문 강사와 함께 소그룹 프로그램을 진행합니다. 창의성과 표현력, 협동심과 리듬감, 기초 체력과 사회적 관계를 고르게 키웁니다.</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">운영 방식</th>
+              <td class="py-4 leading-relaxed text-meok">여름방학(7~8월) 중심 · 소그룹 운영</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">프로그램</th>
+              <td class="py-4 leading-relaxed text-meok"><ul class="space-y-1"><li class="flex gap-2"><span class="text-ongi" aria-hidden="true">·</span><span>미술 — 창의성과 자기 표현력</span></li><li class="flex gap-2"><span class="text-ongi" aria-hidden="true">·</span><span>난타 — 협동심과 신체 리듬감</span></li><li class="flex gap-2"><span class="text-ongi" aria-hidden="true">·</span><span>체육 — 기초 체력과 사회적 관계</span></li><li class="flex gap-2"><span class="text-ongi" aria-hidden="true">·</span><span>유리드믹스 — 음악과 움직임</span></li><li class="flex gap-2"><span class="text-ongi" aria-hidden="true">·</span><span>둘레길 걷기 — 자연 속 신체활동과 정서 안정</span></li></ul></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
 
-    <!-- 상세 화면 04-1: 마을축제참여 -->
-    <div id="prog-festival" class="programs-detail hidden">
-      <a href="#biz-community" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-4"><span aria-hidden="true">←</span> 지역사회 연대사업으로</a>
-      <nav class="text-xs text-dolhoe mb-6" aria-label="현재 위치">
-        <a href="#programs" class="hover:text-naran">사업안내</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <a href="#biz-community" class="hover:text-naran">지역사회 연대사업</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <span class="text-meok font-bold">마을축제참여</span>
-      </nav>
-      <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
-        <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 마을축제참여 장면</span>
+      <div id="biz-family" class="programs-detail hidden">
+        <header class="mb-10 pb-8 border-b border-black/10">
+          <p class="text-iwoot font-bold text-sm mb-2">사업 02</p>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-4">발달장애인 가족통합 지원 사업</h2>
+          <p class="text-dolhoe leading-relaxed">당사자와 부모, 비장애 형제자매까지 가족 모두가 함께 어울리는 시간을 만듭니다. 계절마다 함께 걷고, 뛰고, 나누는 정기 행사를 통해 가족이 서로 기대고 지역사회 안에서 자연스럽게 연결됩니다.</p>
+        </header>
+        <p class="text-sm font-bold text-meok mb-4">세부 프로그램 <span class="text-iwoot">7</span></p>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <a href="#prog-hiking" data-subnav class="group flex flex-col border border-black/10 rounded-2xl p-6 hover:border-naran hover:shadow-sm transition">
+            <p class="font-extrabold text-lg text-meok mb-2 group-hover:text-naran">정기산행</p>
+            <p class="text-sm text-dolhoe leading-relaxed mb-4">한 달에 한 번, 가장 느린 사람의 보폭에 모두가 발을 맞춰 걷습니다.</p>
+            <p class="text-xs text-dolhoe mb-5"><span class="font-bold text-naran mr-1.5">대상</span>느린이웃 회원 가족, 지역 발달장애인과 가족</p>
+            <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
+          </a>
+          <a href="#prog-garden" data-subnav class="group flex flex-col border border-black/10 rounded-2xl p-6 hover:border-naran hover:shadow-sm transition">
+            <p class="font-extrabold text-lg text-meok mb-2 group-hover:text-naran">텃밭활동</p>
+            <p class="text-sm text-dolhoe leading-relaxed mb-4">봄에 심고 가을에 거두며 함께 일구는 공동체 텃밭입니다.</p>
+            <p class="text-xs text-dolhoe mb-5"><span class="font-bold text-naran mr-1.5">대상</span>느린이웃 회원 가족</p>
+            <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
+          </a>
+          <a href="#prog-fieldday" data-subnav class="group flex flex-col border border-black/10 rounded-2xl p-6 hover:border-naran hover:shadow-sm transition">
+            <p class="font-extrabold text-lg text-meok mb-2 group-hover:text-naran">가족운동회</p>
+            <p class="text-sm text-dolhoe leading-relaxed mb-4">전체 가족이 함께 뛰고 웃는 하하호호 화합의 장입니다.</p>
+            <p class="text-xs text-dolhoe mb-5"><span class="font-bold text-naran mr-1.5">대상</span>느린이웃 회원 가족, 지역 발달장애인과 가족</p>
+            <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
+          </a>
+          <a href="#prog-water" data-subnav class="group flex flex-col border border-black/10 rounded-2xl p-6 hover:border-naran hover:shadow-sm transition">
+            <p class="font-extrabold text-lg text-meok mb-2 group-hover:text-naran">여름 물놀이 캠프</p>
+            <p class="text-sm text-dolhoe leading-relaxed mb-4">무더위를 날리는 가족 물놀이와 한 해 중간 점검을 함께합니다.</p>
+            <p class="text-xs text-dolhoe mb-5"><span class="font-bold text-naran mr-1.5">대상</span>느린이웃 회원 가족</p>
+            <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
+          </a>
+          <a href="#prog-kimjang" data-subnav class="group flex flex-col border border-black/10 rounded-2xl p-6 hover:border-naran hover:shadow-sm transition">
+            <p class="font-extrabold text-lg text-meok mb-2 group-hover:text-naran">김장 나눔</p>
+            <p class="text-sm text-dolhoe leading-relaxed mb-4">함께 담그고, 이웃과 나누는 느린이웃의 겨울 준비입니다.</p>
+            <p class="text-xs text-dolhoe mb-5"><span class="font-bold text-naran mr-1.5">대상</span>느린이웃 회원 가족</p>
+            <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
+          </a>
+          <a href="#prog-yearend" data-subnav class="group flex flex-col border border-black/10 rounded-2xl p-6 hover:border-naran hover:shadow-sm transition">
+            <p class="font-extrabold text-lg text-meok mb-2 group-hover:text-naran">송년회</p>
+            <p class="text-sm text-dolhoe leading-relaxed mb-4">한 해를 함께 돌아보는 따뜻한 가족 장기자랑의 밤입니다.</p>
+            <p class="text-xs text-dolhoe mb-5"><span class="font-bold text-naran mr-1.5">대상</span>느린이웃 회원 가족</p>
+            <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
+          </a>
+          <a href="#prog-siblings" data-subnav class="group flex flex-col border border-black/10 rounded-2xl p-6 hover:border-naran hover:shadow-sm transition">
+            <p class="font-extrabold text-lg text-meok mb-2 group-hover:text-naran">비장애 형제자매 모임</p>
+            <p class="text-sm text-dolhoe leading-relaxed mb-4">늘 한 발 뒤에 있던 형제자매가 자기 이야기를 하는 자리입니다.</p>
+            <p class="text-xs text-dolhoe mb-5"><span class="font-bold text-naran mr-1.5">대상</span>발달장애인의 학령기 비장애 형제자매 (초등 · 청소년)</p>
+            <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
+          </a>
+        </div>
       </div>
-      <header class="mb-8">
-        <p class="text-iwoot font-bold text-sm mb-2">사업 04 · 세부 프로그램</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">마을축제참여</h2>
-      </header>
-      <table class="w-full text-sm border-t border-black/10 mb-10">
-        <tbody>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">대상</th>
-            <td class="py-3">느린이웃 회원 및 지역 주민</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">활동 내용</th>
-            <td class="py-3">지역에서 열리는 마을 축제에 참여해 발달장애인과 지역 주민이 자연스럽게 어울리는 자리를 만듭니다.</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">운영 방식</th>
-            <td class="py-3 italic text-dolhoe">[참여 축제 및 시기를 채워주세요]</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
 
-    <!-- 상세 화면 04-2: 통합예술제 -->
-    <div id="prog-artfest" class="programs-detail hidden">
-      <a href="#biz-community" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-4"><span aria-hidden="true">←</span> 지역사회 연대사업으로</a>
-      <nav class="text-xs text-dolhoe mb-6" aria-label="현재 위치">
-        <a href="#programs" class="hover:text-naran">사업안내</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <a href="#biz-community" class="hover:text-naran">지역사회 연대사업</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <span class="text-meok font-bold">통합예술제</span>
-      </nav>
-      <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
-        <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 통합예술제 장면</span>
+      <div id="prog-hiking" class="programs-detail hidden">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+        <div class="mb-6">
+          <p class="text-iwoot text-xs font-bold mb-1.5">사업 02 · 발달장애인 가족통합 지원 사업</p>
+          <p class="text-xl font-extrabold text-naran mb-1.5">정기산행</p>
+          <p class="text-dolhoe leading-relaxed">한 달에 한 번, 가장 느린 사람의 보폭에 모두가 발을 맞춰 걷습니다.</p>
+        </div>
+        <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-biz="family" data-carousel-key="산행" aria-roledescription="carousel" aria-label="정기산행 사진">
+          <div class="ny-slides absolute inset-0">
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 정기산행 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 정기산행 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 정기산행 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          </div>
+          <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+          <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+        </div>
+        <table class="w-full text-sm border-t-2 border-meok mb-10">
+          <tbody>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">대상</th>
+              <td class="py-4 leading-relaxed text-meok">느린이웃 회원 가족, 지역 발달장애인과 가족</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">활동 내용</th>
+              <td class="py-4 leading-relaxed text-meok">고봉산, 호수공원, 북한산 등 인근 둘레길과 완만한 등산로를 가족이 함께 걷습니다. 도시락을 나눠 먹고 자연을 관찰하며 건강을 챙기고 정서적으로 교감합니다.</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">운영 방식</th>
+              <td class="py-4 leading-relaxed text-meok">매월 1회 (혹서기 · 혹한기 제외)</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">비고</th>
+              <td class="py-4 leading-relaxed text-meok">고양시 장애인동아리지원사업 선정(2026)</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <header class="mb-8">
-        <p class="text-iwoot font-bold text-sm mb-2">사업 04 · 세부 프로그램</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">통합예술제</h2>
-      </header>
-      <table class="w-full text-sm border-t border-black/10 mb-10">
-        <tbody>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">대상</th>
-            <td class="py-3">느린이웃 회원 및 지역 주민</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">활동 내용</th>
-            <td class="py-3">장애와 비장애의 경계 없이 함께 참여하는 통합 예술제를 통해 서로의 다름을 이해하고 어울립니다.</td>
-          </tr>
-          <tr class="border-b border-black/10">
-            <th scope="row" class="text-left text-dolhoe font-bold w-28 py-3 align-top">운영 방식</th>
-            <td class="py-3 italic text-dolhoe">[운영 시기 및 장소를 채워주세요]</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-      </div>
-    </div>
 
+      <div id="prog-garden" class="programs-detail hidden">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+        <div class="mb-6">
+          <p class="text-iwoot text-xs font-bold mb-1.5">사업 02 · 발달장애인 가족통합 지원 사업</p>
+          <p class="text-xl font-extrabold text-naran mb-1.5">텃밭활동</p>
+          <p class="text-dolhoe leading-relaxed">봄에 심고 가을에 거두며 함께 일구는 공동체 텃밭입니다.</p>
+        </div>
+        <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-biz="family" data-carousel-key="텃밭" aria-roledescription="carousel" aria-label="텃밭활동 사진">
+          <div class="ny-slides absolute inset-0">
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 텃밭활동 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 텃밭활동 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 텃밭활동 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          </div>
+          <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+          <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+        </div>
+        <table class="w-full text-sm border-t-2 border-meok mb-10">
+          <tbody>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">대상</th>
+              <td class="py-4 leading-relaxed text-meok">느린이웃 회원 가족</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">활동 내용</th>
+              <td class="py-4 leading-relaxed text-meok">봄에 모종을 심고 분식을 나누며 텃밭을 열고, 계절 내내 함께 가꿉니다. 가을에는 고구마를 캐고 김장 재료를 거둡니다. 아빠 소모임이 텃밭 관리를 주도합니다.</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">운영 방식</th>
+              <td class="py-4 leading-relaxed text-meok">4월 모종 심기 &amp; 분식 행사 · 4~11월 상시 관리 · 11월 수확</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="prog-fieldday" class="programs-detail hidden">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+        <div class="mb-6">
+          <p class="text-iwoot text-xs font-bold mb-1.5">사업 02 · 발달장애인 가족통합 지원 사업</p>
+          <p class="text-xl font-extrabold text-naran mb-1.5">가족운동회</p>
+          <p class="text-dolhoe leading-relaxed">전체 가족이 함께 뛰고 웃는 하하호호 화합의 장입니다.</p>
+        </div>
+        <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-biz="family" data-carousel-key="운동회" aria-roledescription="carousel" aria-label="가족운동회 사진">
+          <div class="ny-slides absolute inset-0">
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 가족운동회 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 가족운동회 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 가족운동회 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          </div>
+          <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+          <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+        </div>
+        <table class="w-full text-sm border-t-2 border-meok mb-10">
+          <tbody>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">대상</th>
+              <td class="py-4 leading-relaxed text-meok">느린이웃 회원 가족, 지역 발달장애인과 가족</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">활동 내용</th>
+              <td class="py-4 leading-relaxed text-meok">당사자와 부모, 형제자매가 한 팀이 되어 함께 뛰고 응원하는 가족 운동회입니다. 경쟁보다 함께하는 즐거움을 나누며 가족 간, 가족과 가족 사이의 유대를 키웁니다.</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">운영 방식</th>
+              <td class="py-4 leading-relaxed text-meok">매년 6월</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">비고</th>
+              <td class="py-4 leading-relaxed text-meok">2026년 세 번째 가족운동회 개최</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="prog-water" class="programs-detail hidden">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+        <div class="mb-6">
+          <p class="text-iwoot text-xs font-bold mb-1.5">사업 02 · 발달장애인 가족통합 지원 사업</p>
+          <p class="text-xl font-extrabold text-naran mb-1.5">여름 물놀이 캠프</p>
+          <p class="text-dolhoe leading-relaxed">무더위를 날리는 가족 물놀이와 한 해 중간 점검을 함께합니다.</p>
+        </div>
+        <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-biz="family" data-carousel-key="물놀이" aria-roledescription="carousel" aria-label="여름 물놀이 캠프 사진">
+          <div class="ny-slides absolute inset-0">
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 여름 물놀이 캠프 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 여름 물놀이 캠프 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 여름 물놀이 캠프 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          </div>
+          <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+          <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+        </div>
+        <table class="w-full text-sm border-t-2 border-meok mb-10">
+          <tbody>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">대상</th>
+              <td class="py-4 leading-relaxed text-meok">느린이웃 회원 가족</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">활동 내용</th>
+              <td class="py-4 leading-relaxed text-meok">안전한 장소에서 가족이 함께 물놀이를 즐기고, 상반기 활동을 돌아보며 하반기 활동을 함께 계획하는 간담회를 엽니다.</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">운영 방식</th>
+              <td class="py-4 leading-relaxed text-meok">매년 8월</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="prog-kimjang" class="programs-detail hidden">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+        <div class="mb-6">
+          <p class="text-iwoot text-xs font-bold mb-1.5">사업 02 · 발달장애인 가족통합 지원 사업</p>
+          <p class="text-xl font-extrabold text-naran mb-1.5">김장 나눔</p>
+          <p class="text-dolhoe leading-relaxed">함께 담그고, 이웃과 나누는 느린이웃의 겨울 준비입니다.</p>
+        </div>
+        <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-biz="family" data-carousel-key="김장" aria-roledescription="carousel" aria-label="김장 나눔 사진">
+          <div class="ny-slides absolute inset-0">
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 김장 나눔 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 김장 나눔 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 김장 나눔 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          </div>
+          <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+          <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+        </div>
+        <table class="w-full text-sm border-t-2 border-meok mb-10">
+          <tbody>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">대상</th>
+              <td class="py-4 leading-relaxed text-meok">느린이웃 회원 가족</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">활동 내용</th>
+              <td class="py-4 leading-relaxed text-meok">아빠들은 무를 뽑아 다듬고, 엄마와 당사자들은 깍두기와 배추김치를 담급니다. 무가 절여지는 동안 고구마 캐기와 벼룩시장이 열립니다. 담근 김치 일부는 인근 경로당과 이웃에게 전하며 당사자가 나눔의 주인공이 됩니다.</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">운영 방식</th>
+              <td class="py-4 leading-relaxed text-meok">매년 11월 · 가족 마라톤 대회 참가와 함께 진행</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="prog-yearend" class="programs-detail hidden">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+        <div class="mb-6">
+          <p class="text-iwoot text-xs font-bold mb-1.5">사업 02 · 발달장애인 가족통합 지원 사업</p>
+          <p class="text-xl font-extrabold text-naran mb-1.5">송년회</p>
+          <p class="text-dolhoe leading-relaxed">한 해를 함께 돌아보는 따뜻한 가족 장기자랑의 밤입니다.</p>
+        </div>
+        <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-biz="family" data-carousel-key="송년" aria-roledescription="carousel" aria-label="송년회 사진">
+          <div class="ny-slides absolute inset-0">
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 송년회 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 송년회 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 송년회 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          </div>
+          <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+          <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+        </div>
+        <table class="w-full text-sm border-t-2 border-meok mb-10">
+          <tbody>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">대상</th>
+              <td class="py-4 leading-relaxed text-meok">느린이웃 회원 가족</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">활동 내용</th>
+              <td class="py-4 leading-relaxed text-meok">한 해 활동 영상을 함께 보고, 가족별 장기자랑과 만찬을 나눕니다. 한 해 열심히 참여한 가족을 축하하고 경품을 나누며 서로를 응원합니다.</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">운영 방식</th>
+              <td class="py-4 leading-relaxed text-meok">매년 12월</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="prog-siblings" class="programs-detail hidden">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+        <div class="mb-6">
+          <p class="text-iwoot text-xs font-bold mb-1.5">사업 02 · 발달장애인 가족통합 지원 사업</p>
+          <p class="text-xl font-extrabold text-naran mb-1.5">비장애 형제자매 모임</p>
+          <p class="text-dolhoe leading-relaxed">늘 한 발 뒤에 있던 형제자매가 자기 이야기를 하는 자리입니다.</p>
+        </div>
+        <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-biz="family" data-carousel-key="형제" aria-roledescription="carousel" aria-label="비장애 형제자매 모임 사진">
+          <div class="ny-slides absolute inset-0">
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 비장애 형제자매 모임 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 비장애 형제자매 모임 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 비장애 형제자매 모임 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          </div>
+          <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+          <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+        </div>
+        <table class="w-full text-sm border-t-2 border-meok mb-10">
+          <tbody>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">대상</th>
+              <td class="py-4 leading-relaxed text-meok">발달장애인의 학령기 비장애 형제자매 (초등 · 청소년)</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">활동 내용</th>
+              <td class="py-4 leading-relaxed text-meok">나이대별로 모여 또래끼리 고민을 나누고, 보드게임·영화 등 문화체험과 힐링 활동을 함께합니다. 감정을 표현하고 가족을 이해하는 경험을 통해 자존감을 높이고 건강한 가족 관계를 돕습니다.</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">운영 방식</th>
+              <td class="py-4 leading-relaxed text-meok">연령별 소모임 (초등 / 청소년)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="biz-parent" class="programs-detail hidden">
+        <header class="mb-10 pb-8 border-b border-black/10">
+          <p class="text-iwoot font-bold text-sm mb-2">사업 03</p>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-4">발달장애인의 부모역량 강화 사업</h2>
+          <p class="text-dolhoe leading-relaxed">부모가 필요한 정보를 얻고, 같은 경험을 가진 부모끼리 서로 기대며 함께 성장합니다. 전문가 부모교육과 선배 부모의 동료상담, 부모 소모임을 통해 양육의 고립감을 덜고 양육 효능감을 높입니다.</p>
+        </header>
+        <p class="text-sm font-bold text-meok mb-4">세부 프로그램 <span class="text-iwoot">4</span></p>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <a href="#prog-parented" data-subnav class="group flex flex-col border border-black/10 rounded-2xl p-6 hover:border-naran hover:shadow-sm transition">
+            <p class="font-extrabold text-lg text-meok mb-2 group-hover:text-naran">부모교육</p>
+            <p class="text-sm text-dolhoe leading-relaxed mb-4">분야별 전문가를 초청해 현장에서 바로 쓰는 정보를 나눕니다.</p>
+            <p class="text-xs text-dolhoe mb-5"><span class="font-bold text-naran mr-1.5">대상</span>느린이웃 회원 및 지역 발달장애인 부모</p>
+            <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
+          </a>
+          <a href="#prog-peercounsel" data-subnav class="group flex flex-col border border-black/10 rounded-2xl p-6 hover:border-naran hover:shadow-sm transition">
+            <p class="font-extrabold text-lg text-meok mb-2 group-hover:text-naran">개별 동료상담</p>
+            <p class="text-sm text-dolhoe leading-relaxed mb-4">먼저 걸어본 선배 부모가 1:1로 곁에 앉아 이야기를 듣습니다.</p>
+            <p class="text-xs text-dolhoe mb-5"><span class="font-bold text-naran mr-1.5">대상</span>심리적 지지가 필요한 발달장애인 부모</p>
+            <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
+          </a>
+          <a href="#prog-groupcounsel" data-subnav class="group flex flex-col border border-black/10 rounded-2xl p-6 hover:border-naran hover:shadow-sm transition">
+            <p class="font-extrabold text-lg text-meok mb-2 group-hover:text-naran">집단 동료상담</p>
+            <p class="text-sm text-dolhoe leading-relaxed mb-4">여러 부모가 함께 만들고 나누며 마음을 회복하는 시간입니다.</p>
+            <p class="text-xs text-dolhoe mb-5"><span class="font-bold text-naran mr-1.5">대상</span>느린이웃 회원 및 지역 발달장애인 부모</p>
+            <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
+          </a>
+          <a href="#prog-dadgroup" data-subnav class="group flex flex-col border border-black/10 rounded-2xl p-6 hover:border-naran hover:shadow-sm transition">
+            <p class="font-extrabold text-lg text-meok mb-2 group-hover:text-naran">부모 소모임 (엄마 · 아빠)</p>
+            <p class="text-sm text-dolhoe leading-relaxed mb-4">자녀 연령과 관심사에 따라 부모들이 모여 고민을 나누고 함께 즐깁니다.</p>
+            <p class="text-xs text-dolhoe mb-5"><span class="font-bold text-naran mr-1.5">대상</span>느린이웃 회원 부모</p>
+            <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
+          </a>
+        </div>
+      </div>
+
+      <div id="prog-parented" class="programs-detail hidden">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+        <div class="mb-6">
+          <p class="text-iwoot text-xs font-bold mb-1.5">사업 03 · 발달장애인의 부모역량 강화 사업</p>
+          <p class="text-xl font-extrabold text-naran mb-1.5">부모교육</p>
+          <p class="text-dolhoe leading-relaxed">분야별 전문가를 초청해 현장에서 바로 쓰는 정보를 나눕니다.</p>
+        </div>
+        <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-biz="parent" data-carousel-key="부모교육|강의" aria-roledescription="carousel" aria-label="부모교육 사진">
+          <div class="ny-slides absolute inset-0">
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 부모교육 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 부모교육 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 부모교육 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          </div>
+          <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+          <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+        </div>
+        <table class="w-full text-sm border-t-2 border-meok mb-10">
+          <tbody>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">대상</th>
+              <td class="py-4 leading-relaxed text-meok">느린이웃 회원 및 지역 발달장애인 부모</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">활동 내용</th>
+              <td class="py-4 leading-relaxed text-meok">회원 설문으로 주제를 정하고 분야별 전문 강사를 초청합니다. 자녀의 생애주기에 맞춘 실질적인 정보와 선배 부모의 경험을 함께 나눕니다.</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">운영 방식</th>
+              <td class="py-4 leading-relaxed text-meok">연 4회 내외 정기 부모교육</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">주요 강의</th>
+              <td class="py-4 leading-relaxed text-meok"><ul class="space-y-1"><li class="flex gap-2"><span class="text-ongi" aria-hidden="true">·</span><span>발달장애인 자립지원</span></li><li class="flex gap-2"><span class="text-ongi" aria-hidden="true">·</span><span>특수교육 대상자의 진로설계</span></li><li class="flex gap-2"><span class="text-ongi" aria-hidden="true">·</span><span>효과적인 IEP 설정 전략</span></li><li class="flex gap-2"><span class="text-ongi" aria-hidden="true">·</span><span>성교육 및 정서지원</span></li><li class="flex gap-2"><span class="text-ongi" aria-hidden="true">·</span><span>감각통합의 이해</span></li><li class="flex gap-2"><span class="text-ongi" aria-hidden="true">·</span><span>재산관리지원 이해</span></li><li class="flex gap-2"><span class="text-ongi" aria-hidden="true">·</span><span>선배 부모와의 대화</span></li></ul></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="prog-peercounsel" class="programs-detail hidden">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+        <div class="mb-6">
+          <p class="text-iwoot text-xs font-bold mb-1.5">사업 03 · 발달장애인의 부모역량 강화 사업</p>
+          <p class="text-xl font-extrabold text-naran mb-1.5">개별 동료상담</p>
+          <p class="text-dolhoe leading-relaxed">먼저 걸어본 선배 부모가 1:1로 곁에 앉아 이야기를 듣습니다.</p>
+        </div>
+        <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-biz="parent" data-carousel-key="개별|동료상담" data-carousel-exclude="집단" aria-roledescription="carousel" aria-label="개별 동료상담 사진">
+          <div class="ny-slides absolute inset-0">
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 개별 동료상담 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 개별 동료상담 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 개별 동료상담 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          </div>
+          <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+          <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+        </div>
+        <table class="w-full text-sm border-t-2 border-meok mb-10">
+          <tbody>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">대상</th>
+              <td class="py-4 leading-relaxed text-meok">심리적 지지가 필요한 발달장애인 부모</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">활동 내용</th>
+              <td class="py-4 leading-relaxed text-meok">동료상담가 양성과정을 수료한 선배 부모가 양육 경험을 바탕으로 정서적 지지와 정보를 나눕니다. 일상 속 고민, 진로, 관계, 돌봄 부담 등 혼자 겪는 어려움을 안전하게 이야기하고 정리하는 시간입니다.</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">운영 방식</th>
+              <td class="py-4 leading-relaxed text-meok">신청 시 선배 부모와 1:1 매칭 · 수시 진행</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="prog-groupcounsel" class="programs-detail hidden">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+        <div class="mb-6">
+          <p class="text-iwoot text-xs font-bold mb-1.5">사업 03 · 발달장애인의 부모역량 강화 사업</p>
+          <p class="text-xl font-extrabold text-naran mb-1.5">집단 동료상담</p>
+          <p class="text-dolhoe leading-relaxed">여러 부모가 함께 만들고 나누며 마음을 회복하는 시간입니다.</p>
+        </div>
+        <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-biz="parent" data-carousel-key="집단" aria-roledescription="carousel" aria-label="집단 동료상담 사진">
+          <div class="ny-slides absolute inset-0">
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 집단 동료상담 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 집단 동료상담 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 집단 동료상담 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          </div>
+          <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+          <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+        </div>
+        <table class="w-full text-sm border-t-2 border-meok mb-10">
+          <tbody>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">대상</th>
+              <td class="py-4 leading-relaxed text-meok">느린이웃 회원 및 지역 발달장애인 부모</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">활동 내용</th>
+              <td class="py-4 leading-relaxed text-meok">아로마 오일, 핸드크림, 원예, 꽃꽂이 같은 창작 활동을 함께하며 자연스럽게 마음을 나눕니다. 자녀의 연령별(영유아·초등·중고등·성인기) 부모 모임에서는 발달 단계에 맞는 양육 노하우를 주고받습니다.</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">운영 방식</th>
+              <td class="py-4 leading-relaxed text-meok">연중 수시 · 아로마 테라피(6월), 힐링 꽃꽂이 교실(10월), 생애주기별 모임(11월) 등</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="prog-dadgroup" class="programs-detail hidden">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+        <div class="mb-6">
+          <p class="text-iwoot text-xs font-bold mb-1.5">사업 03 · 발달장애인의 부모역량 강화 사업</p>
+          <p class="text-xl font-extrabold text-naran mb-1.5">부모 소모임 (엄마 · 아빠)</p>
+          <p class="text-dolhoe leading-relaxed">자녀 연령과 관심사에 따라 부모들이 모여 고민을 나누고 함께 즐깁니다.</p>
+        </div>
+        <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-biz="parent" data-carousel-key="소모임|아빠|엄마" aria-roledescription="carousel" aria-label="부모 소모임 (엄마 · 아빠) 사진">
+          <div class="ny-slides absolute inset-0">
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 부모 소모임 (엄마 · 아빠) 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 부모 소모임 (엄마 · 아빠) 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 부모 소모임 (엄마 · 아빠) 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          </div>
+          <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+          <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+        </div>
+        <table class="w-full text-sm border-t-2 border-meok mb-10">
+          <tbody>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">대상</th>
+              <td class="py-4 leading-relaxed text-meok">느린이웃 회원 부모</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">활동 내용</th>
+              <td class="py-4 leading-relaxed text-meok">자녀 연령별 엄마 소모임에서 양육 정보를 나누고, 운동·등산 등 여가 활동으로 정서적 안정을 찾습니다. 아빠 소모임은 텃밭 활동을 주도하고, 아빠와 자녀가 함께하는 스포츠 모임을 엽니다.</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">주요 활동</th>
+              <td class="py-4 leading-relaxed text-meok">엄마 소모임(초등 저학년/고학년 등 연령별) · 여가활동 소모임 · 아빠 소모임(텃밭, 아빠랑 자녀랑 볼링 모임, 식사 모임)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="biz-community" class="programs-detail hidden">
+        <header class="mb-10 pb-8 border-b border-black/10">
+          <p class="text-iwoot font-bold text-sm mb-2">사업 04</p>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-4">지역사회 연대사업</h2>
+          <p class="text-dolhoe leading-relaxed">마을 안에서 발달장애인과 이웃이 자연스럽게 만나고 함께 살아가는 관계를 넓혀갑니다. 당사자가 도움을 받는 사람이 아니라 마을에 재능을 나누는 이웃으로 활동합니다.</p>
+        </header>
+        <p class="text-sm font-bold text-meok mb-4">세부 프로그램 <span class="text-iwoot">3</span></p>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <a href="#prog-awareness" data-subnav class="group flex flex-col border border-black/10 rounded-2xl p-6 hover:border-naran hover:shadow-sm transition">
+            <p class="font-extrabold text-lg text-meok mb-2 group-hover:text-naran">장애인 인식개선</p>
+            <p class="text-sm text-dolhoe leading-relaxed mb-4">슐런으로 이웃을 만나고, 발달장애인과 자연스럽게 어울리는 경험을 나눕니다.</p>
+            <p class="text-xs text-dolhoe mb-5"><span class="font-bold text-naran mr-1.5">대상</span>지역 아동, 비장애인 부모, 마을 주민</p>
+            <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
+          </a>
+          <a href="#prog-festival" data-subnav class="group flex flex-col border border-black/10 rounded-2xl p-6 hover:border-naran hover:shadow-sm transition">
+            <p class="font-extrabold text-lg text-meok mb-2 group-hover:text-naran">마을축제 참여</p>
+            <p class="text-sm text-dolhoe leading-relaxed mb-4">마을 축제 무대와 부스에서 느린이웃이 이웃을 만납니다.</p>
+            <p class="text-xs text-dolhoe mb-5"><span class="font-bold text-naran mr-1.5">대상</span>느린이웃 당사자와 가족, 지역 주민</p>
+            <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
+          </a>
+          <a href="#prog-artfest" data-subnav class="group flex flex-col border border-black/10 rounded-2xl p-6 hover:border-naran hover:shadow-sm transition">
+            <p class="font-extrabold text-lg text-meok mb-2 group-hover:text-naran">느린이웃 통합예술제</p>
+            <p class="text-sm text-dolhoe leading-relaxed mb-4">당사자들의 끼와 재능을 마음껏 펼치는 느린이웃의 축제입니다.</p>
+            <p class="text-xs text-dolhoe mb-5"><span class="font-bold text-naran mr-1.5">대상</span>느린이웃 당사자와 가족, 지역 주민 및 유관기관</p>
+            <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-naran">자세히 보기 <span aria-hidden="true">→</span></span>
+          </a>
+        </div>
+      </div>
+
+      <div id="prog-awareness" class="programs-detail hidden">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+        <div class="mb-6">
+          <p class="text-iwoot text-xs font-bold mb-1.5">사업 04 · 지역사회 연대사업</p>
+          <p class="text-xl font-extrabold text-naran mb-1.5">장애인 인식개선</p>
+          <p class="text-dolhoe leading-relaxed">슐런으로 이웃을 만나고, 발달장애인과 자연스럽게 어울리는 경험을 나눕니다.</p>
+        </div>
+        <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-biz="community" data-carousel-key="인식개선" aria-roledescription="carousel" aria-label="장애인 인식개선 사진">
+          <div class="ny-slides absolute inset-0">
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 장애인 인식개선 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 장애인 인식개선 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 장애인 인식개선 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          </div>
+          <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+          <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+        </div>
+        <table class="w-full text-sm border-t-2 border-meok mb-10">
+          <tbody>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">대상</th>
+              <td class="py-4 leading-relaxed text-meok">지역 아동, 비장애인 부모, 마을 주민</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">활동 내용</th>
+              <td class="py-4 leading-relaxed text-meok">당사자들이 직접 익힌 슐런을 매개로 비장애 이웃과 함께 어울리는 자리를 만듭니다. 함께 놀고 경기하는 경험 속에서 장애에 대한 편견 대신 이웃으로서의 관계가 자랍니다.</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">세부 활동</th>
+              <td class="py-4 leading-relaxed text-meok"><ul class="space-y-1"><li class="flex gap-2"><span class="text-ongi" aria-hidden="true">·</span><span>지역아동센터 슐런 교실</span></li><li class="flex gap-2"><span class="text-ongi" aria-hidden="true">·</span><span>비장애인 부모 대상 슐런</span></li><li class="flex gap-2"><span class="text-ongi" aria-hidden="true">·</span><span>마을 축제 슐런 체험 부스 운영</span></li></ul></td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">비고</th>
+              <td class="py-4 leading-relaxed text-meok">세부 활동은 해마다 지역과 함께 정합니다.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="bg-byeot/60 rounded-2xl p-6">
+          <p class="text-meok text-sm font-extrabold mb-4">연혁 · 성과</p>
+          <ul class="space-y-2.5 text-sm"><li class="flex gap-3"><span class="text-naran font-bold shrink-0 w-24">2025.10</span><span>고양시장애인종합복지관 바자회 슐런 체험행사 운영 지원</span></li><li class="flex gap-3"><span class="text-naran font-bold shrink-0 w-24">2026</span><span>강선지역아동센터 슐런 프로그램 · 주엽동 마을축제 슐런 체험 부스</span></li></ul>
+        </div>
+      </div>
+
+      <div id="prog-festival" class="programs-detail hidden">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+        <div class="mb-6">
+          <p class="text-iwoot text-xs font-bold mb-1.5">사업 04 · 지역사회 연대사업</p>
+          <p class="text-xl font-extrabold text-naran mb-1.5">마을축제 참여</p>
+          <p class="text-dolhoe leading-relaxed">마을 축제 무대와 부스에서 느린이웃이 이웃을 만납니다.</p>
+        </div>
+        <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-biz="community" data-carousel-key="축제" aria-roledescription="carousel" aria-label="마을축제 참여 사진">
+          <div class="ny-slides absolute inset-0">
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 마을축제 참여 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 마을축제 참여 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 마을축제 참여 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          </div>
+          <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+          <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+        </div>
+        <table class="w-full text-sm border-t-2 border-meok mb-10">
+          <tbody>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">대상</th>
+              <td class="py-4 leading-relaxed text-meok">느린이웃 당사자와 가족, 지역 주민</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">활동 내용</th>
+              <td class="py-4 leading-relaxed text-meok">지역 마을 축제에 합창 공연과 슐런 체험 부스로 참여합니다. 당사자가 재능을 나누는 마을 옹호 활동가로서 지역 주민과 직접 만납니다.</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">운영 방식</th>
+              <td class="py-4 leading-relaxed text-meok">매년 9~10월 지역 마을 축제 참여</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="prog-artfest" class="programs-detail hidden">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+        <div class="mb-6">
+          <p class="text-iwoot text-xs font-bold mb-1.5">사업 04 · 지역사회 연대사업</p>
+          <p class="text-xl font-extrabold text-naran mb-1.5">느린이웃 통합예술제</p>
+          <p class="text-dolhoe leading-relaxed">당사자들의 끼와 재능을 마음껏 펼치는 느린이웃의 축제입니다.</p>
+        </div>
+        <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-biz="community" data-carousel-key="예술제" aria-roledescription="carousel" aria-label="느린이웃 통합예술제 사진">
+          <div class="ny-slides absolute inset-0">
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 느린이웃 통합예술제 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 느린이웃 통합예술제 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+            <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 느린이웃 통합예술제 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          </div>
+          <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+          <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+        </div>
+        <table class="w-full text-sm border-t-2 border-meok mb-10">
+          <tbody>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">대상</th>
+              <td class="py-4 leading-relaxed text-meok">느린이웃 당사자와 가족, 지역 주민 및 유관기관</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">활동 내용</th>
+              <td class="py-4 leading-relaxed text-meok">당사자들이 합창, 연주, 회화, 공예 등 그동안 갈고닦은 재능을 공연과 전시로 선보입니다. 지역 주민과 유관기관을 초청해 함께 즐기는 문화 네트워킹의 장입니다.</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">운영 방식</th>
+              <td class="py-4 leading-relaxed text-meok">매년 10월</td>
+            </tr>
+            <tr class="border-b border-black/10">
+              <th scope="row" class="text-left text-naran font-bold w-28 py-4 pr-4 align-top">비고</th>
+              <td class="py-4 leading-relaxed text-meok">제1회 느린이웃 통합예술제 — 2026년 10월 31일, 한양문고 데미안홀</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
   </section>
 
 </main>
@@ -1388,7 +1171,7 @@
     <div class="nara-lines mb-8" aria-hidden="true">
       <span class="l1"></span><span class="l2" style="background:#FAF4E6;opacity:.25"></span><span class="l3"></span>
     </div>
-    <div class="grid sm:grid-cols-2 md:grid-cols-5 gap-8 text-sm mb-10">
+    <div class="grid sm:grid-cols-2 md:grid-cols-5 gap-8 text-sm">
       <div>
         <p class="text-white font-bold mb-3">느린이웃</p>
         <p class="leading-relaxed">발달장애인 가족 자조모임<br>NEURIN IUT</p>
@@ -1412,12 +1195,10 @@
           <li><a href="programs.html" class="hover:text-white">사업안내</a></li>
           <li><a href="board.html" class="hover:text-white">알림마당</a></li>
           <li><a href="join.html" class="hover:text-white">참여공간</a></li>
+          <li><a href="privacy.html" class="hover:text-white">개인정보처리방침</a></li>
+          <li><a href="admin.html" class="hover:text-white">관리자</a></li>
         </ul>
       </div>
-    </div>
-    <div class="pt-6 border-t border-white/10 text-xs text-white/40 leading-relaxed">
-      <p class="mb-1.5">본 사이트는 KWCAG 2.2 기준의 명도 대비(목표 7:1)를 준수하며, '장애우·정상인·극복·감동·희망을 주는' 등 시혜적 표현을 사용하지 않는 느린이웃 톤앤매너 규정을 따릅니다.</p>
-      <p class="flex flex-wrap justify-between gap-2"><span>© 느린이웃. 이미지 및 공지·소식 항목은 준비 중이며, [사진 가이드]와 [예시] 표시된 영역은 추후 실제 콘텐츠로 교체됩니다.</span><a href="admin.html" class="text-white/50 hover:text-white font-bold">관리자</a></p>
     </div>
   </div>
 </footer>
@@ -1455,36 +1236,45 @@ const menuBtn = document.getElementById('menuBtn');
     el.addEventListener('click', closeMobileMenu);
   });
 
-// 사업안내: 목록 ↔ 사업별 상세 ↔ 프로그램별 상세 화면 전환 (해시 기반)
-  const bizIds = ['biz-independence', 'biz-family', 'biz-parent', 'biz-community'];
-  const progIds = ['prog-sports', 'prog-choir', 'prog-selfhelp', 'prog-culture', 'prog-hiking', 'prog-garden', 'prog-fieldday', 'prog-water', 'prog-kimjang', 'prog-yearend', 'prog-siblings', 'prog-peercounsel', 'prog-groupcounsel', 'prog-parented', 'prog-dadgroup', 'prog-festival', 'prog-artfest'];
-  const allDetailIds = bizIds.concat(progIds);
+// 왼쪽 사이드메뉴 · 페이지 안 이동: 브라우저 기본 점프 없이 내용만 바꾸고 맨 위에서 시작 (화면 튐 방지)
+  function ny_subnav(render) {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a || a.hasAttribute('data-native')) return;
+      const href = a.getAttribute('href');
+      if (href.length < 2) return;
+      e.preventDefault();
+      if (location.hash !== href) history.pushState(null, '', href);
+      render();
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    });
+    window.addEventListener('popstate', render);
+    window.addEventListener('hashchange', render);
+    window.addEventListener('load', () => { if (location.hash) window.scrollTo({ top: 0, behavior: 'instant' }); });
+    render();
+  }
+
+// 사업안내: 목록 ↔ 사업별 화면 ↔ 프로그램 상세 화면 전환 (해시 기반)
+  const detailIds = ["biz-independence", "biz-family", "biz-parent", "biz-community", "prog-sports", "prog-choir", "prog-selfhelp", "prog-vacation", "prog-hiking", "prog-garden", "prog-fieldday", "prog-water", "prog-kimjang", "prog-yearend", "prog-siblings", "prog-parented", "prog-peercounsel", "prog-groupcounsel", "prog-dadgroup", "prog-awareness", "prog-festival", "prog-artfest"];
+  const LEGACY = { 'prog-culture': 'prog-vacation' };
   const programsList = document.getElementById('programs-list');
 
   function showProgramsView() {
-    const hash = location.hash.replace('#', '');
-    const isDetail = allDetailIds.includes(hash);
+    let hash = location.hash.replace('#', '');
+    if (LEGACY[hash]) hash = LEGACY[hash];
+    const isDetail = detailIds.includes(hash);
     programsList.classList.toggle('hidden', isDetail);
-    allDetailIds.forEach(id => {
-      document.getElementById(id).classList.toggle('hidden', id !== hash);
-    });
-    // 사이드메뉴: 현재 사업은 펼치고, 현재 프로그램은 강조
+    detailIds.forEach(id => document.getElementById(id).classList.toggle('hidden', id !== hash));
+    // 사이드메뉴: 현재 사업은 펼치고, 현재 화면은 강조
     document.querySelectorAll('[data-lnb-biz]').forEach(group => {
       const isCurrentBiz = group.dataset.lnbIds.split(' ').includes(hash);
       group.querySelector('.lnb-sub').classList.toggle('hidden', !isCurrentBiz);
       group.querySelector('.lnb-biz').classList.toggle('is-current', isCurrentBiz);
     });
-    document.querySelectorAll('[data-lnb-link]').forEach(link => {
-      link.classList.toggle('is-current', link.dataset.lnbLink === hash);
-    });
-    if (isDetail) window.scrollTo({ top: 0, behavior: 'instant' });
+    document.querySelectorAll('.lnb-link[data-lnb-link]').forEach(link => link.classList.toggle('is-current', link.dataset.lnbLink === hash));
   }
-
-  window.addEventListener('hashchange', showProgramsView);
-  showProgramsView();
-
-  // 주소에 #이 붙은 채로 열 때 브라우저가 중간으로 스크롤하는 것을 막고 항상 맨 위에서 시작
-  window.addEventListener('load', () => { if (location.hash) setTimeout(() => window.scrollTo({ top: 0, behavior: 'instant' }), 0); });
+  ny_subnav(showProgramsView);
 
 // 프로그램 상세: 사진 슬라이드(캐러셀) — 5초마다 부드럽게 전환, 좌우 버튼·점으로 이동
   function setupCarousel(el) {
@@ -1529,100 +1319,8 @@ const menuBtn = document.getElementById('menuBtn');
     return ny_esc(str).replace(/^\* (.+)$/gm, '• $1');
   }
 
-// 사업안내 4개 사업 전체: 각 사업별 세부 프로그램을 Supabase에서 실시간으로 불러오기
-  // (표에 있는 사진/글이 바로 반영됩니다. 표를 못 불러오면 위 고정 내용이 그대로 보여요.)
-  async function loadBizPrograms(businessId, containerId) {
-    if (typeof supabase === 'undefined') return;
-    const { createClient } = supabase;
-    const db = createClient(
-      'https://mpgmvwivzedqxugfllxc.supabase.co',
-      'sb_publishable_B-pdQJ6sbCDrdi37JU6www_71TE8J5f'
-    );
-
-    const container = document.getElementById(containerId);
-    if (!container) return;
-
-    const { data: programs, error } = await db
-      .from('programs')
-      .select('*')
-      .eq('business_id', businessId)
-      .order('sort_order', { ascending: true });
-
-    if (error || !programs || programs.length === 0) return;
-
-    const ids = programs.map(p => p.id);
-    const { data: timelineRows } = await db
-      .from('program_timeline')
-      .select('*')
-      .in('program_id', ids)
-      .order('sort_order', { ascending: true });
-
-    const timelineByProgram = {};
-    (timelineRows || []).forEach(row => {
-      (timelineByProgram[row.program_id] = timelineByProgram[row.program_id] || []).push(row);
-    });
-
-    // 프로그램별 여러 장 사진(갤러리) — program_photos 테이블이 없거나 비어 있으면 조용히 건너뜀
-    let photosByProgram = {};
-    try {
-      const { data: photoRows } = await db
-        .from('program_photos')
-        .select('*')
-        .in('program_id', ids)
-        .order('sort_order', { ascending: true });
-      (photoRows || []).forEach(row => {
-        (photosByProgram[row.program_id] = photosByProgram[row.program_id] || []).push(row);
-      });
-    } catch (e) { /* program_photos 테이블이 아직 없어도 나머지는 정상 표시 */ }
-
-    container.innerHTML = programs.map(p => {
-      const timeline = timelineByProgram[p.id];
-      const hasTimeline = timeline && timeline.length > 0;
-
-      const photos = photosByProgram[p.id];
-      const hasGallery = photos && photos.length > 0;
-
-      let photoBlock;
-      if (hasGallery) {
-        photoBlock = `<div class="relative aspect-[16/10] sm:aspect-auto sm:h-full">
-          <div class="flex gap-0 overflow-x-auto snap-x snap-mandatory h-full w-full">
-            ${photos.map(ph => `<img src="${ny_esc(ph.photo_url)}" alt="${ny_esc(p.name)}" class="snap-center shrink-0 w-full h-full object-cover">`).join('')}
-          </div>
-          ${photos.length > 1 ? `<span class="absolute bottom-2 right-2 text-[11px] font-bold px-2 py-1 rounded bg-black/50 text-white">1/${photos.length} · 넘겨보기</span>` : ''}
-        </div>`;
-      } else if (p.photo_url) {
-        photoBlock = `<img src="${ny_esc(p.photo_url)}" alt="${ny_esc(p.name)}" class="aspect-[16/10] sm:aspect-auto w-full h-full object-cover">`;
-      } else {
-        photoBlock = `<div class="photo-guide aspect-[16/10] sm:aspect-auto flex items-end p-3"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — ${ny_esc(p.name)}</span></div>`;
-      }
-
-      const timelineBlock = hasTimeline
-        ? `<div class="border-t border-black/10 p-5">
-             <p class="text-dolhoe text-xs font-bold mb-3">연혁 · 성과</p>
-             <ul class="space-y-2 text-sm">
-               ${timeline.map(t => `<li class="flex gap-3"><span class="text-naran font-bold shrink-0 w-20">${ny_esc(t.date_label)}</span><span>${ny_esc(t.event)}</span></li>`).join('')}
-             </ul>
-           </div>`
-        : '';
-
-      return `<div class="border border-black/10 rounded-xl overflow-hidden ${hasTimeline ? 'sm:col-span-2' : ''}">
-        <div class="${hasTimeline ? 'grid sm:grid-cols-2' : ''}">
-          ${photoBlock}
-          <div class="p-5">
-            <p class="font-bold text-lg mb-2">${ny_esc(p.name)}</p>
-            <p class="text-dolhoe text-sm leading-relaxed whitespace-pre-line">${ny_formatDescription(p.description)}</p>
-          </div>
-        </div>
-        ${timelineBlock}
-      </div>`;
-    }).join('');
-  }
-  loadBizPrograms('family', 'family-programs');
-  loadBizPrograms('parent', 'parent-programs');
-  loadBizPrograms('community', 'community-programs');
-
-// 사업 01 프로그램 사진: 관리자 페이지(사업안내 탭 → 프로그램 → 사진 갤러리)에 올린 사진을 슬라이드에 자동 반영
-  // 프로그램 이름에 '슐런' / '합창' / '자조' / '문화'가 들어가면 해당 페이지 슬라이드와 연결됩니다.
+// 프로그램 사진: 관리자 페이지(사업안내 탭 → 프로그램 → 사진 갤러리)에 올린 사진을 슬라이드에 자동 반영
+  // 관리자 페이지의 프로그램 이름에 data-carousel-key의 단어(예: 슐런, 합창, 산행)가 들어가면 연결됩니다.
   (async function loadProgramSlides() {
     if (typeof supabase === 'undefined') return;
     try {
@@ -1630,21 +1328,17 @@ const menuBtn = document.getElementById('menuBtn');
         'https://mpgmvwivzedqxugfllxc.supabase.co',
         'sb_publishable_B-pdQJ6sbCDrdi37JU6www_71TE8J5f'
       );
-      const { data: programs, error } = await db
-        .from('programs')
-        .select('*')
-        .eq('business_id', 'independence')
-        .order('sort_order', { ascending: true });
+      const { data: programs, error } = await db.from('programs').select('*').order('sort_order', { ascending: true });
       if (error || !programs || programs.length === 0) return;
-      const { data: photoRows } = await db
-        .from('program_photos')
-        .select('*')
-        .in('program_id', programs.map(p => p.id))
-        .order('sort_order', { ascending: true });
-
+      const { data: photoRows } = await db.from('program_photos').select('*')
+        .in('program_id', programs.map(p => p.id)).order('sort_order', { ascending: true });
       document.querySelectorAll('.ny-carousel[data-carousel-key]').forEach(el => {
-        const key = el.dataset.carouselKey;
-        const program = programs.find(p => (p.name || '').replace(/\s/g, '').includes(key));
+        const keys = el.dataset.carouselKey.split('|');
+        const excl = (el.dataset.carouselExclude || '').split('|').filter(Boolean);
+        const program = programs.find(p => {
+          const n = (p.name || '').replace(/\s/g, '');
+          return p.business_id === el.dataset.carouselBiz && keys.some(k => n.includes(k)) && !excl.some(k => n.includes(k));
+        });
         if (!program) return;
         let urls = (photoRows || []).filter(r => r.program_id === program.id).map(r => r.photo_url);
         if (urls.length === 0 && program.photo_url) urls = [program.photo_url];

@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>알림마당 | 느린이웃</title>
 <meta name="description" content="느린이웃 — 발달장애인 가족의 자조모임이자 예비 사회적협동조합. 우리는 나란히 걷습니다." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="느린이웃" />
+<meta property="og:title" content="알림마당 | 느린이웃" />
+<meta property="og:description" content="앞에서 끌지 않고, 뒤에서 밀지 않고, 나란히. 발달장애인과 가족들이 서로의 이웃이 되어 함께 걷는 공동체, 느린이웃입니다." />
+<meta property="og:image" content="https://mpgmvwivzedqxugfllxc.supabase.co/storage/v1/object/public/photos/Hero/main.jpg" />
+<meta property="og:url" content="https://neuriniut-homepage.vercel.app/board.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -7 143 104'%3E%3Cpath d='M0 33.4V83.9A12 12 0 0 0 12 95.9H52.4A12 12 0 0 0 52.4 71.9H24V33.4A12 12 0 0 0 0 33.4Z' fill='%232E7D52'/%3E%3Cpath d='M75.7 5.6V83.9A12 12 0 0 0 87.7 95.9H130.6A12 12 0 0 0 130.6 71.9H99.7V5.6A12 12 0 0 0 75.7 5.6Z' fill='%2312456B'/%3E%3C/svg%3E" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
@@ -28,7 +36,7 @@
   };
 </script>
 <style>
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scrollbar-gutter: stable; }
   body { font-family: 'Pretendard','Noto Sans KR',system-ui,sans-serif; }
 
   /* ===== 나란선 모티프 ===== */
@@ -72,6 +80,9 @@
   .board-pager button { min-width: 36px; height: 36px; border-radius: 8px; font-size: 14px; font-weight: 700; color: #6E6A63; }
   .board-pager button.is-current { background: #12456B; color: #fff; }
 
+  .cal-month.is-past { opacity: .45; }
+  .cal-month.is-now { background: rgba(250,244,230,.7); border-radius: 12px; padding-left: 12px; padding-right: 12px; }
+
 </style>
 </head>
 <body class="bg-white text-meok antialiased">
@@ -108,7 +119,7 @@
         <a href="programs.html" class="flex items-center gap-1 px-3 py-2 rounded-lg hover:text-naran hover:bg-byeot/60 transition-colors">사업안내</a>
         <div class="nav-drop absolute left-0 top-full pt-2 w-64">
           <div class="bg-white rounded-xl border border-black/10 shadow-lg py-2">
-            <a href="programs.html#prog-sports" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran leading-snug">발달장애인의 사회참여 및<br>자립 준비 지원 사업</a>
+            <a href="programs.html#biz-independence" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran leading-snug">발달장애인의 사회참여 및<br>자립 준비 지원 사업</a>
             <a href="programs.html#biz-family" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran leading-snug">발달장애인 가족통합 지원 사업</a>
             <a href="programs.html#biz-parent" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran leading-snug">발달장애인의 부모역량 강화 사업</a>
             <a href="programs.html#biz-community" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran leading-snug">지역사회 연대사업</a>
@@ -121,6 +132,7 @@
           <div class="bg-white rounded-xl border border-black/10 shadow-lg py-2">
             <a href="board.html#notices" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">공지사항</a>
             <a href="board.html#news" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">느린이웃 소식</a>
+            <a href="board.html#calendar" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">연간 일정</a>
             <a href="board.html#budget" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">예산 및 결산</a>
             <a href="board.html#archive-items" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">자료실</a>
           </div>
@@ -130,9 +142,10 @@
         <a href="join.html" class="flex items-center gap-1 px-3 py-2 rounded-lg hover:text-naran hover:bg-byeot/60 transition-colors">참여공간</a>
         <div class="nav-drop absolute left-0 top-full pt-2 w-56">
           <div class="bg-white rounded-xl border border-black/10 shadow-lg py-2">
-            <a href="join.html" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">조합원 가입 안내</a>
-            <a href="join.html#contact-form" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">문의 및 건의사항</a>
-            <a href="join.html" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">자원봉사 및 후원</a>
+            <a href="join.html#membership" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">조합원 가입 안내</a>
+            <a href="join.html#donate" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">후원하기</a>
+            <a href="join.html#volunteer" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">자원봉사</a>
+            <a href="join.html#contact" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">문의하기</a>
           </div>
         </div>
       </div>
@@ -182,7 +195,7 @@
       <div class="py-6 border-b border-black/10">
         <p class="text-xl font-extrabold text-meok mb-3">사업안내</p>
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
-          <a href="programs.html#prog-sports" class="text-base text-dolhoe" data-close-menu>발달장애인의 사회참여 및 자립 준비 지원 사업</a>
+          <a href="programs.html#biz-independence" class="text-base text-dolhoe" data-close-menu>발달장애인의 사회참여 및 자립 준비 지원 사업</a>
           <a href="programs.html#biz-family" class="text-base text-dolhoe" data-close-menu>발달장애인 가족통합 지원 사업</a>
           <a href="programs.html#biz-parent" class="text-base text-dolhoe" data-close-menu>발달장애인의 부모역량 강화 사업</a>
           <a href="programs.html#biz-community" class="text-base text-dolhoe" data-close-menu>지역사회 연대사업</a>
@@ -194,6 +207,7 @@
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
           <a href="board.html#notices" class="text-base text-dolhoe" data-close-menu>공지사항</a>
           <a href="board.html#news" class="text-base text-dolhoe" data-close-menu>느린이웃 소식</a>
+          <a href="board.html#calendar" class="text-base text-dolhoe" data-close-menu>연간 일정</a>
           <a href="board.html#budget" class="text-base text-dolhoe" data-close-menu>예산 및 결산</a>
           <a href="board.html#archive-items" class="text-base text-dolhoe" data-close-menu>자료실</a>
         </div>
@@ -202,9 +216,10 @@
       <div class="py-6">
         <p class="text-xl font-extrabold text-meok mb-3">참여공간</p>
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
-          <a href="join.html" class="text-base text-dolhoe" data-close-menu>조합원 가입 안내</a>
-          <a href="join.html#contact-form" class="text-base text-dolhoe" data-close-menu>문의 및 건의사항</a>
-          <a href="join.html" class="text-base font-bold text-ongi" data-close-menu>자원봉사 및 후원 →</a>
+          <a href="join.html#membership" class="text-base text-dolhoe" data-close-menu>조합원 가입 안내</a>
+          <a href="join.html#donate" class="text-base font-bold text-ongi" data-close-menu>후원하기</a>
+          <a href="join.html#volunteer" class="text-base text-dolhoe" data-close-menu>자원봉사</a>
+          <a href="join.html#contact" class="text-base text-dolhoe" data-close-menu>문의하기</a>
         </div>
       </div>
     </div>
@@ -224,6 +239,7 @@
           <ul>
               <li><a href="#notices" data-lnb-link="notices" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">공지사항</a></li>
               <li><a href="#news" data-lnb-link="news" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">느린이웃 소식</a></li>
+              <li><a href="#calendar" data-lnb-link="calendar" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">연간 일정</a></li>
               <li><a href="#budget" data-lnb-link="budget" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">예산 및 결산</a></li>
               <li><a href="#archive-items" data-lnb-link="archive-items" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">자료실</a></li>
           </ul>
@@ -266,6 +282,61 @@
         <div data-board-pager="news" class="flex justify-center gap-1.5 mt-8"></div>
       </div>
 
+      <div id="calendar" class="board-page hidden">
+        <header class="mb-8">
+          <p class="text-iwoot font-bold text-sm mb-2">알림마당</p>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">2026 연간 일정</h2>
+          <p class="text-dolhoe leading-relaxed">느린이웃이 한 해 동안 함께하는 활동이에요. 참여 대상은 느린이웃 회원, 지역 발달장애인과 그 가족, 지역 주민입니다. 자세한 일정은 공지사항으로 안내해 드려요.</p>
+        </header>
+        <div class="flex flex-wrap gap-4 text-xs font-bold text-dolhoe mb-5"><span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full" style="background:#12456B"></span>당사자</span><span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full" style="background:#2E7D52"></span>가족</span><span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full" style="background:#E1682C"></span>부모</span><span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full" style="background:#6E6A63"></span>지역</span></div>
+        <div class="bg-byeot rounded-2xl p-5 mb-8">
+          <p class="text-sm font-extrabold text-meok mb-3">매달 · 정기 활동</p>
+          <div class="grid sm:grid-cols-2 gap-3"><div class="bg-white rounded-xl p-4"><ul><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#12456B;min-width:3.5rem;padding:4px 10px;font-size:11px">당사자</span><div><p class="font-bold text-meok leading-snug">슐런 동아리 & 합창 동아리</p><p class="text-xs text-dolhoe mt-0.5">1월~12월 상시 운영</p></div></li></ul></div><div class="bg-white rounded-xl p-4"><ul><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#2E7D52;min-width:3.5rem;padding:4px 10px;font-size:11px">가족</span><div><p class="font-bold text-meok leading-snug">느린이웃 월간 산행</p><p class="text-xs text-dolhoe mt-0.5">매월 · 고봉산·호수공원·북한산 등</p></div></li></ul></div><div class="bg-white rounded-xl p-4"><ul><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#12456B;min-width:3.5rem;padding:4px 10px;font-size:11px">당사자</span><div><p class="font-bold text-meok leading-snug">당사자 및 조력자 모임</p><p class="text-xs text-dolhoe mt-0.5">분기 · 연령별 소풍 및 영화관람</p></div></li></ul></div><div class="bg-white rounded-xl p-4"><ul><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#12456B;min-width:3.5rem;padding:4px 10px;font-size:11px">당사자</span><div><p class="font-bold text-meok leading-snug">느린이웃 생일 파티</p><p class="text-xs text-dolhoe mt-0.5">격월 · 생일 맞은 친구 초대 축하 모임</p></div></li></ul></div></div>
+        </div>
+        <div class="border-t-2 border-meok">
+          <div class="cal-month flex gap-6 py-6 border-b border-black/10" data-month="3">
+            <p class="shrink-0 w-16 text-2xl font-extrabold text-naran">3<span class="text-base">월</span></p>
+            <ul class="flex-1 space-y-3"><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#E1682C;min-width:3.5rem;padding:4px 10px;font-size:11px">부모</span><div><p class="font-bold text-meok leading-snug">발달장애인 감각통합의 이해</p><p class="text-xs text-dolhoe mt-0.5">전문가 초청 부모 특강 · 집단상담</p></div></li></ul>
+          </div>
+          <div class="cal-month flex gap-6 py-6 border-b border-black/10" data-month="4">
+            <p class="shrink-0 w-16 text-2xl font-extrabold text-naran">4<span class="text-base">월</span></p>
+            <ul class="flex-1 space-y-3"><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#2E7D52;min-width:3.5rem;padding:4px 10px;font-size:11px">가족</span><div><p class="font-bold text-meok leading-snug">텃밭 모종 심기 & 분식 행사</p><p class="text-xs text-dolhoe mt-0.5">함께 일구는 공동체 텃밭</p></div></li><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#6E6A63;min-width:3.5rem;padding:4px 10px;font-size:11px">지역</span><div><p class="font-bold text-meok leading-snug">비장애인 부모 대상 슐런</p><p class="text-xs text-dolhoe mt-0.5">운영진 및 외부 회원 소통 스포츠 모임</p></div></li><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#6E6A63;min-width:3.5rem;padding:4px 10px;font-size:11px">지역</span><div><p class="font-bold text-meok leading-snug">발달장애청년허브 견학</p><p class="text-xs text-dolhoe mt-0.5">유관기관 네트워크 연대</p></div></li></ul>
+          </div>
+          <div class="cal-month flex gap-6 py-6 border-b border-black/10" data-month="5">
+            <p class="shrink-0 w-16 text-2xl font-extrabold text-naran">5<span class="text-base">월</span></p>
+            <ul class="flex-1 space-y-3"><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#E1682C;min-width:3.5rem;padding:4px 10px;font-size:11px">부모</span><div><p class="font-bold text-meok leading-snug">발달장애인 재산관리지원 이해</p><p class="text-xs text-dolhoe mt-0.5">미래 설계 및 자산관리 지원서비스 강의</p></div></li></ul>
+          </div>
+          <div class="cal-month flex gap-6 py-6 border-b border-black/10" data-month="6">
+            <p class="shrink-0 w-16 text-2xl font-extrabold text-naran">6<span class="text-base">월</span></p>
+            <ul class="flex-1 space-y-3"><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#E1682C;min-width:3.5rem;padding:4px 10px;font-size:11px">부모</span><div><p class="font-bold text-meok leading-snug">아로마 오일 만들기 테라피</p><p class="text-xs text-dolhoe mt-0.5">전체 부모 대상 힐링 프로그램</p></div></li><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#12456B;min-width:3.5rem;padding:4px 10px;font-size:11px">당사자</span><div><p class="font-bold text-meok leading-snug">서울시 어울림 슐런대회 참가</p><p class="text-xs text-dolhoe mt-0.5">동아리 및 참여 희망 회원 출전</p></div></li><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#2E7D52;min-width:3.5rem;padding:4px 10px;font-size:11px">가족</span><div><p class="font-bold text-meok leading-snug">하하호호 가족 운동회</p><p class="text-xs text-dolhoe mt-0.5">전체 가족이 함께 뛰고 즐기는 화합의 장</p></div></li></ul>
+          </div>
+          <div class="cal-month flex gap-6 py-6 border-b border-black/10" data-month="7">
+            <p class="shrink-0 w-16 text-2xl font-extrabold text-naran">7<span class="text-base">월</span></p>
+            <ul class="flex-1 space-y-3"><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#E1682C;min-width:3.5rem;padding:4px 10px;font-size:11px">부모</span><div><p class="font-bold text-meok leading-snug">엄마 소모임 활동</p><p class="text-xs text-dolhoe mt-0.5">초등 저학년/고학년 부모 그룹</p></div></li><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#12456B;min-width:3.5rem;padding:4px 10px;font-size:11px">당사자</span><div><p class="font-bold text-meok leading-snug">알찬 여름방학 프로그램</p><p class="text-xs text-dolhoe mt-0.5">7~8월 · 신청자 맞춤형 특별 활동</p></div></li><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#2E7D52;min-width:3.5rem;padding:4px 10px;font-size:11px">가족</span><div><p class="font-bold text-meok leading-snug">아빠랑 자녀랑 볼링 모임</p><p class="text-xs text-dolhoe mt-0.5">7~8월 · 아빠와 장애 자녀가 함께하는 스포츠</p></div></li></ul>
+          </div>
+          <div class="cal-month flex gap-6 py-6 border-b border-black/10" data-month="8">
+            <p class="shrink-0 w-16 text-2xl font-extrabold text-naran">8<span class="text-base">월</span></p>
+            <ul class="flex-1 space-y-3"><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#E1682C;min-width:3.5rem;padding:4px 10px;font-size:11px">부모</span><div><p class="font-bold text-meok leading-snug">정기 부모 교육</p><p class="text-xs text-dolhoe mt-0.5">전체 부모 역량 강화 세미나</p></div></li><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#2E7D52;min-width:3.5rem;padding:4px 10px;font-size:11px">가족</span><div><p class="font-bold text-meok leading-snug">신나는 여름 물놀이 캠프</p><p class="text-xs text-dolhoe mt-0.5">무더위를 날리는 느린이웃 가족 캠프</p></div></li></ul>
+          </div>
+          <div class="cal-month flex gap-6 py-6 border-b border-black/10" data-month="9">
+            <p class="shrink-0 w-16 text-2xl font-extrabold text-naran">9<span class="text-base">월</span></p>
+            <ul class="flex-1 space-y-3"><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#6E6A63;min-width:3.5rem;padding:4px 10px;font-size:11px">지역</span><div><p class="font-bold text-meok leading-snug">지역 마을 축제 참여</p><p class="text-xs text-dolhoe mt-0.5">슐런·합창 동아리 축제 부스/공연</p></div></li><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#6E6A63;min-width:3.5rem;padding:4px 10px;font-size:11px">지역</span><div><p class="font-bold text-meok leading-snug">지역아동센터 슐런 교실</p><p class="text-xs text-dolhoe mt-0.5">비장애 아이들 대상 스포츠 교류</p></div></li></ul>
+          </div>
+          <div class="cal-month flex gap-6 py-6 border-b border-black/10" data-month="10">
+            <p class="shrink-0 w-16 text-2xl font-extrabold text-naran">10<span class="text-base">월</span></p>
+            <ul class="flex-1 space-y-3"><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#E1682C;min-width:3.5rem;padding:4px 10px;font-size:11px">부모</span><div><p class="font-bold text-meok leading-snug">힐링 꽃꽂이 교실</p><p class="text-xs text-dolhoe mt-0.5">정서 안정을 위한 부모 원예 활동</p></div></li><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#12456B;min-width:3.5rem;padding:4px 10px;font-size:11px">당사자</span><div><p class="font-bold text-meok leading-snug">느린이웃 통합예술제</p><p class="text-xs text-dolhoe mt-0.5">10.31 한양문고 데미안홀 · 당사자의 끼와 재능을 펼치는 축제</p></div></li></ul>
+          </div>
+          <div class="cal-month flex gap-6 py-6 border-b border-black/10" data-month="11">
+            <p class="shrink-0 w-16 text-2xl font-extrabold text-naran">11<span class="text-base">월</span></p>
+            <ul class="flex-1 space-y-3"><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#2E7D52;min-width:3.5rem;padding:4px 10px;font-size:11px">가족</span><div><p class="font-bold text-meok leading-snug">슈퍼블루 마라톤 & 김장 나눔</p><p class="text-xs text-dolhoe mt-0.5">가족 마라톤 대회 참가 및 공동 김장</p></div></li></ul>
+          </div>
+          <div class="cal-month flex gap-6 py-6 border-b border-black/10" data-month="12">
+            <p class="shrink-0 w-16 text-2xl font-extrabold text-naran">12<span class="text-base">월</span></p>
+            <ul class="flex-1 space-y-3"><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#2E7D52;min-width:3.5rem;padding:4px 10px;font-size:11px">가족</span><div><p class="font-bold text-meok leading-snug">따뜻한 송년회 (장기자랑)</p><p class="text-xs text-dolhoe mt-0.5">한 해를 마무리하는 가족 장기자랑의 밤</p></div></li></ul>
+          </div>
+        </div>
+        <p class="text-xs text-dolhoe mt-5">※ 일정은 사정에 따라 바뀔 수 있습니다.</p>
+      </div>
       <div id="budget" class="board-page">
         <header class="mb-8">
           <p class="text-iwoot font-bold text-sm mb-2">알림마당</p>
@@ -303,13 +374,22 @@
   </section>
 
 </main>
+<!-- 공지사항/느린이웃 소식 상세 페이지 -->
+<div id="post-page" class="hidden max-w-3xl mx-auto px-5 md:px-8 py-12 min-h-[60vh]">
+  <a href="#notices" id="post-page-back" class="inline-flex items-center gap-1.5 text-sm font-bold text-naran hover:underline mb-6">← 목록으로</a>
+  <p class="text-xs text-dolhoe mb-2" id="post-page-date"></p>
+  <h1 class="text-2xl md:text-3xl font-extrabold text-meok mb-6" id="post-page-title"></h1>
+  <div id="post-page-photo" class="mb-6"></div>
+  <div class="text-dolhoe text-base leading-relaxed rich-content" id="post-page-content"></div>
+</div>
+
 <!-- ========== 푸터 ========== -->
 <footer class="bg-meok text-white/70">
   <div class="max-w-7xl mx-auto px-5 md:px-8 py-12">
     <div class="nara-lines mb-8" aria-hidden="true">
       <span class="l1"></span><span class="l2" style="background:#FAF4E6;opacity:.25"></span><span class="l3"></span>
     </div>
-    <div class="grid sm:grid-cols-2 md:grid-cols-5 gap-8 text-sm mb-10">
+    <div class="grid sm:grid-cols-2 md:grid-cols-5 gap-8 text-sm">
       <div>
         <p class="text-white font-bold mb-3">느린이웃</p>
         <p class="leading-relaxed">발달장애인 가족 자조모임<br>NEURIN IUT</p>
@@ -333,24 +413,15 @@
           <li><a href="programs.html" class="hover:text-white">사업안내</a></li>
           <li><a href="board.html" class="hover:text-white">알림마당</a></li>
           <li><a href="join.html" class="hover:text-white">참여공간</a></li>
+          <li><a href="privacy.html" class="hover:text-white">개인정보처리방침</a></li>
+          <li><a href="admin.html" class="hover:text-white">관리자</a></li>
         </ul>
       </div>
-    </div>
-    <div class="pt-6 border-t border-white/10 text-xs text-white/40 leading-relaxed">
-      <p class="mb-1.5">본 사이트는 KWCAG 2.2 기준의 명도 대비(목표 7:1)를 준수하며, '장애우·정상인·극복·감동·희망을 주는' 등 시혜적 표현을 사용하지 않는 느린이웃 톤앤매너 규정을 따릅니다.</p>
-      <p class="flex flex-wrap justify-between gap-2"><span>© 느린이웃. 이미지 및 공지·소식 항목은 준비 중이며, [사진 가이드]와 [예시] 표시된 영역은 추후 실제 콘텐츠로 교체됩니다.</span><a href="admin.html" class="text-white/50 hover:text-white font-bold">관리자</a></p>
     </div>
   </div>
 </footer>
 
-<!-- 공지사항/느린이웃 소식 상세 페이지 -->
-<div id="post-page" class="hidden max-w-3xl mx-auto px-5 md:px-8 py-12 min-h-[60vh]">
-  <a href="#notices" id="post-page-back" class="inline-flex items-center gap-1.5 text-sm font-bold text-naran hover:underline mb-6">← 목록으로</a>
-  <p class="text-xs text-dolhoe mb-2" id="post-page-date"></p>
-  <h1 class="text-2xl md:text-3xl font-extrabold text-meok mb-6" id="post-page-title"></h1>
-  <div id="post-page-photo" class="mb-6"></div>
-  <div class="text-dolhoe text-base leading-relaxed rich-content" id="post-page-content"></div>
-</div>
+
 
 <script>
   function ny_postEsc(str) {
@@ -467,19 +538,47 @@ const menuBtn = document.getElementById('menuBtn');
     return ny_esc(str).replace(/^\* (.+)$/gm, '• $1');
   }
 
+// 왼쪽 사이드메뉴 · 페이지 안 이동: 브라우저 기본 점프 없이 내용만 바꾸고 맨 위에서 시작 (화면 튐 방지)
+  function ny_subnav(render) {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a || a.hasAttribute('data-native')) return;
+      const href = a.getAttribute('href');
+      if (href.length < 2) return;
+      e.preventDefault();
+      if (location.hash !== href) history.pushState(null, '', href);
+      render();
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    });
+    window.addEventListener('popstate', render);
+    window.addEventListener('hashchange', render);
+    window.addEventListener('load', () => { if (location.hash) window.scrollTo({ top: 0, behavior: 'instant' }); });
+    render();
+  }
+
 // 알림마당: 왼쪽 메뉴에서 고른 게시판만 보이기 (해시 기반)
   const boardIds = ['notices', 'news', 'budget', 'archive-items'];
+  const boardPages = ['notices', 'news', 'calendar', 'budget', 'archive-items'];
   function showBoardView() {
     const hash = location.hash.replace('#', '');
     if (hash.startsWith('post-')) return;
-    const current = boardIds.includes(hash) ? hash : 'notices';
-    boardIds.forEach(id => document.getElementById(id).classList.toggle('hidden', id !== current));
+    const current = boardPages.includes(hash) ? hash : 'notices';
+    boardPages.forEach(id => document.getElementById(id).classList.toggle('hidden', id !== current));
     document.querySelectorAll('[data-lnb-link]').forEach(link => link.classList.toggle('is-current', link.dataset.lnbLink === current));
-    window.scrollTo({ top: 0, behavior: 'instant' });
   }
-  window.addEventListener('hashchange', showBoardView);
-  showBoardView();
-  window.addEventListener('load', () => { if (location.hash) setTimeout(() => window.scrollTo({ top: 0, behavior: 'instant' }), 0); });
+  ny_subnav(() => { checkPostHash(); showBoardView(); });
+  // 연간 일정: 지난 달은 흐리게, 이번 달은 강조
+  (function markCalendar() {
+    const now = new Date();
+    if (now.getFullYear() !== 2026) return;
+    const m = now.getMonth() + 1;
+    document.querySelectorAll('.cal-month').forEach(el => {
+      const mm = +el.dataset.month;
+      el.classList.toggle('is-past', mm < m);
+      el.classList.toggle('is-now', mm === m);
+    });
+  })();
 
 // 알림마당 게시판: Supabase에서 불러와 검색 · 10개씩 페이지 나눔
   const BOARD_PAGE_SIZE = { 'notices': 10, 'budget': 10, 'archive-items': 10, 'news': 9 };

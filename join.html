@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>참여공간 | 느린이웃</title>
 <meta name="description" content="느린이웃 — 발달장애인 가족의 자조모임이자 예비 사회적협동조합. 우리는 나란히 걷습니다." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="느린이웃" />
+<meta property="og:title" content="참여공간 | 느린이웃" />
+<meta property="og:description" content="앞에서 끌지 않고, 뒤에서 밀지 않고, 나란히. 발달장애인과 가족들이 서로의 이웃이 되어 함께 걷는 공동체, 느린이웃입니다." />
+<meta property="og:image" content="https://mpgmvwivzedqxugfllxc.supabase.co/storage/v1/object/public/photos/Hero/main.jpg" />
+<meta property="og:url" content="https://neuriniut-homepage.vercel.app/join.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -7 143 104'%3E%3Cpath d='M0 33.4V83.9A12 12 0 0 0 12 95.9H52.4A12 12 0 0 0 52.4 71.9H24V33.4A12 12 0 0 0 0 33.4Z' fill='%232E7D52'/%3E%3Cpath d='M75.7 5.6V83.9A12 12 0 0 0 87.7 95.9H130.6A12 12 0 0 0 130.6 71.9H99.7V5.6A12 12 0 0 0 75.7 5.6Z' fill='%2312456B'/%3E%3C/svg%3E" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
@@ -28,7 +36,7 @@
   };
 </script>
 <style>
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scrollbar-gutter: stable; }
   body { font-family: 'Pretendard','Noto Sans KR',system-ui,sans-serif; }
 
   /* ===== 나란선 모티프 ===== */
@@ -63,6 +71,10 @@
   .rich-content ul, .rich-content ol { margin: 0.5em 0 0.85em 1.4em; }
   .rich-content ul { list-style: disc; }
   .rich-content ol { list-style: decimal; }
+
+  /* 사이드메뉴(LNB) 현재 위치 */
+  .lnb-link.is-current { color: #12456B; background: rgba(250,244,230,.7); }
+  .lnb-link.is-current::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 9999px; background: #E1682C; margin-right: 8px; vertical-align: middle; }
 
 </style>
 </head>
@@ -100,7 +112,7 @@
         <a href="programs.html" class="flex items-center gap-1 px-3 py-2 rounded-lg hover:text-naran hover:bg-byeot/60 transition-colors">사업안내</a>
         <div class="nav-drop absolute left-0 top-full pt-2 w-64">
           <div class="bg-white rounded-xl border border-black/10 shadow-lg py-2">
-            <a href="programs.html#prog-sports" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran leading-snug">발달장애인의 사회참여 및<br>자립 준비 지원 사업</a>
+            <a href="programs.html#biz-independence" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran leading-snug">발달장애인의 사회참여 및<br>자립 준비 지원 사업</a>
             <a href="programs.html#biz-family" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran leading-snug">발달장애인 가족통합 지원 사업</a>
             <a href="programs.html#biz-parent" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran leading-snug">발달장애인의 부모역량 강화 사업</a>
             <a href="programs.html#biz-community" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran leading-snug">지역사회 연대사업</a>
@@ -113,6 +125,7 @@
           <div class="bg-white rounded-xl border border-black/10 shadow-lg py-2">
             <a href="board.html#notices" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">공지사항</a>
             <a href="board.html#news" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">느린이웃 소식</a>
+            <a href="board.html#calendar" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">연간 일정</a>
             <a href="board.html#budget" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">예산 및 결산</a>
             <a href="board.html#archive-items" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">자료실</a>
           </div>
@@ -122,9 +135,10 @@
         <a href="join.html" class="flex items-center gap-1 px-3 py-2 rounded-lg hover:text-naran hover:bg-byeot/60 transition-colors">참여공간</a>
         <div class="nav-drop absolute left-0 top-full pt-2 w-56">
           <div class="bg-white rounded-xl border border-black/10 shadow-lg py-2">
-            <a href="join.html" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">조합원 가입 안내</a>
-            <a href="join.html#contact-form" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">문의 및 건의사항</a>
-            <a href="join.html" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">자원봉사 및 후원</a>
+            <a href="join.html#membership" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">조합원 가입 안내</a>
+            <a href="join.html#donate" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">후원하기</a>
+            <a href="join.html#volunteer" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">자원봉사</a>
+            <a href="join.html#contact" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">문의하기</a>
           </div>
         </div>
       </div>
@@ -174,7 +188,7 @@
       <div class="py-6 border-b border-black/10">
         <p class="text-xl font-extrabold text-meok mb-3">사업안내</p>
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
-          <a href="programs.html#prog-sports" class="text-base text-dolhoe" data-close-menu>발달장애인의 사회참여 및 자립 준비 지원 사업</a>
+          <a href="programs.html#biz-independence" class="text-base text-dolhoe" data-close-menu>발달장애인의 사회참여 및 자립 준비 지원 사업</a>
           <a href="programs.html#biz-family" class="text-base text-dolhoe" data-close-menu>발달장애인 가족통합 지원 사업</a>
           <a href="programs.html#biz-parent" class="text-base text-dolhoe" data-close-menu>발달장애인의 부모역량 강화 사업</a>
           <a href="programs.html#biz-community" class="text-base text-dolhoe" data-close-menu>지역사회 연대사업</a>
@@ -186,6 +200,7 @@
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
           <a href="board.html#notices" class="text-base text-dolhoe" data-close-menu>공지사항</a>
           <a href="board.html#news" class="text-base text-dolhoe" data-close-menu>느린이웃 소식</a>
+          <a href="board.html#calendar" class="text-base text-dolhoe" data-close-menu>연간 일정</a>
           <a href="board.html#budget" class="text-base text-dolhoe" data-close-menu>예산 및 결산</a>
           <a href="board.html#archive-items" class="text-base text-dolhoe" data-close-menu>자료실</a>
         </div>
@@ -194,9 +209,10 @@
       <div class="py-6">
         <p class="text-xl font-extrabold text-meok mb-3">참여공간</p>
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
-          <a href="join.html" class="text-base text-dolhoe" data-close-menu>조합원 가입 안내</a>
-          <a href="join.html#contact-form" class="text-base text-dolhoe" data-close-menu>문의 및 건의사항</a>
-          <a href="join.html" class="text-base font-bold text-ongi" data-close-menu>자원봉사 및 후원 →</a>
+          <a href="join.html#membership" class="text-base text-dolhoe" data-close-menu>조합원 가입 안내</a>
+          <a href="join.html#donate" class="text-base font-bold text-ongi" data-close-menu>후원하기</a>
+          <a href="join.html#volunteer" class="text-base text-dolhoe" data-close-menu>자원봉사</a>
+          <a href="join.html#contact" class="text-base text-dolhoe" data-close-menu>문의하기</a>
         </div>
       </div>
     </div>
@@ -204,48 +220,214 @@
 
 <main id="top">
 
-<!-- ========== 참여공간 ========== -->
-  <section id="join" class="bg-byeot">
-    <div class="max-w-7xl mx-auto px-5 md:px-8 py-16 md:py-24">
-      <div class="grid md:grid-cols-2 gap-10 items-start mb-14">
-        <div>
-          <div class="nara-lines mb-6" aria-hidden="true">
-            <span class="l1"></span><span class="l3" style="width:70px"></span><span class="l1" style="background:#12456B"></span>
-          </div>
-          <h2 class="text-2xl md:text-3xl font-extrabold text-naran mb-4">나란히 동참하기</h2>
-          <p class="text-dolhoe leading-relaxed mb-8 max-w-md">
-            발달장애인 가족의 가입 문의부터 후원, 지역 기관과의 협력 제안까지 — 앞에서 끌지도, 뒤에서 밀지도 않고 나란히 걷고 싶은 분들을 기다립니다.
-          </p>
-          <div class="space-y-3 mb-8">
-            <p class="flex items-center gap-2 text-sm text-meok/80"><span class="w-1.5 h-1.5 rounded-full bg-ongi"></span> 이메일 : slowfamily@naver.com</p>
-            <p class="flex items-center gap-2 text-sm text-meok/80"><span class="w-1.5 h-1.5 rounded-full bg-ongi"></span> 네이버 카페 : 느린이웃 (가입 문의 상시 접수)</p>
-            <p class="flex items-center gap-2 text-sm text-meok/80"><span class="w-1.5 h-1.5 rounded-full bg-ongi"></span> 활동 지역 : 경기 고양 · 파주 · 김포</p>
-          </div>
-        </div>
+<!-- ========== 참여공간 (왼쪽 사이드메뉴 + 서브페이지) ========== -->
+  <section id="join" class="max-w-7xl mx-auto px-5 md:px-8 py-4 md:py-10 lg:flex gap-12 items-start">
+    <aside class="hidden lg:block w-64 shrink-0" aria-label="참여공간 메뉴">
+      <div class="sticky top-28">
+        <a href="#membership" class="block bg-ongi text-white rounded-t-2xl px-6 py-7">
+          <p class="text-[11px] font-bold tracking-widest text-white/70 mb-1">JOIN US</p>
+          <p class="text-xl font-extrabold">참여공간</p>
+        </a>
+        <nav class="border border-t-0 border-black/10 rounded-b-2xl overflow-hidden">
+          <ul>
+              <li><a href="#membership" data-lnb-link="membership" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">조합원 가입 안내</a></li>
+              <li><a href="#donate" data-lnb-link="donate" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">후원하기</a></li>
+              <li><a href="#volunteer" data-lnb-link="volunteer" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">자원봉사</a></li>
+              <li><a href="#contact" data-lnb-link="contact" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">문의하기</a></li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+    <div class="flex-1 min-w-0">
+      <div id="membership" class="join-page">
+        <header class="mb-10">
+          <p class="text-iwoot font-bold text-sm mb-2">참여공간</p>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">조합원 가입 안내</h2>
+          <p class="text-dolhoe leading-relaxed">발달장애인 가족, 그리고 느린이웃과 나란히 걷고 싶은 이웃 누구나 조합원이 될 수 있습니다. 느린이웃은 사회적협동조합 전환을 준비하고 있어요.</p>
+        </header>
 
-        <div class="bg-white rounded-2xl border border-black/10 p-6">
-          <p class="font-bold text-sm mb-4">조합원 가입 절차</p>
-          <ol class="space-y-4">
-            <li class="flex gap-3">
-              <span class="shrink-0 w-6 h-6 rounded-full bg-naran text-white text-xs font-bold flex items-center justify-center">1</span>
-              <p class="text-sm text-meok/80 pt-0.5">이메일 또는 네이버 카페로 가입 문의</p>
+        <div class="grid md:grid-cols-2 gap-6 mb-10">
+          <div class="bg-byeot rounded-2xl p-7">
+            <p class="font-extrabold text-naran mb-4">가입 절차</p>
+            <ol class="space-y-5">
+            <li class="flex gap-4">
+              <span class="shrink-0 w-8 h-8 rounded-full bg-naran text-white text-sm font-bold flex items-center justify-center">1</span>
+              <div class="pt-1"><p class="font-bold text-meok mb-0.5">가입 문의</p><p class="text-sm text-dolhoe leading-relaxed">이메일, 네이버 카페 또는 아래 문의하기로 연락해 주세요.</p></div>
             </li>
-            <li class="flex gap-3">
-              <span class="shrink-0 w-6 h-6 rounded-full bg-naran text-white text-xs font-bold flex items-center justify-center">2</span>
-              <p class="text-sm text-meok/80 pt-0.5">가입 신청서 및 필요 서류 제출</p>
+            <li class="flex gap-4">
+              <span class="shrink-0 w-8 h-8 rounded-full bg-naran text-white text-sm font-bold flex items-center justify-center">2</span>
+              <div class="pt-1"><p class="font-bold text-meok mb-0.5">신청서 제출</p><p class="text-sm text-dolhoe leading-relaxed">조합원 가입 신청서와 개인정보 수집·이용 동의서를 작성해 보내 주세요.</p></div>
             </li>
-            <li class="flex gap-3">
-              <span class="shrink-0 w-6 h-6 rounded-full bg-naran text-white text-xs font-bold flex items-center justify-center">3</span>
-              <p class="text-sm text-meok/80 pt-0.5">운영진 확인 후 조합원 등록 완료</p>
+            <li class="flex gap-4">
+              <span class="shrink-0 w-8 h-8 rounded-full bg-naran text-white text-sm font-bold flex items-center justify-center">3</span>
+              <div class="pt-1"><p class="font-bold text-meok mb-0.5">출자금 납입</p><p class="text-sm text-dolhoe leading-relaxed">출자금 1좌 50만 원(1좌 이상)을 납입합니다.</p></div>
             </li>
-          </ol>
+            <li class="flex gap-4">
+              <span class="shrink-0 w-8 h-8 rounded-full bg-naran text-white text-sm font-bold flex items-center justify-center">4</span>
+              <div class="pt-1"><p class="font-bold text-meok mb-0.5">조합원 등록</p><p class="text-sm text-dolhoe leading-relaxed">운영진 확인과 이사회 승인 후 조합원으로 등록됩니다.</p></div>
+            </li>
+            </ol>
+          </div>
+          <div class="space-y-4">
+            <div class="border border-black/10 rounded-2xl p-6">
+              <p class="font-extrabold text-meok mb-3">조합원 유형 <span class="text-xs font-bold text-dolhoe">(정관 제10조)</span></p>
+              <div class="flex flex-wrap gap-2 text-sm">
+                <span class="bg-naran/5 text-naran font-semibold rounded-full px-3 py-1.5">생산자</span><span class="bg-naran/5 text-naran font-semibold rounded-full px-3 py-1.5">소비자</span><span class="bg-naran/5 text-naran font-semibold rounded-full px-3 py-1.5">직원</span><span class="bg-naran/5 text-naran font-semibold rounded-full px-3 py-1.5">자원봉사자</span><span class="bg-naran/5 text-naran font-semibold rounded-full px-3 py-1.5">후원자</span>
+              </div>
+            </div>
+            <div class="border border-black/10 rounded-2xl p-6">
+              <p class="font-extrabold text-meok mb-2">필요한 서식</p>
+              <p class="text-sm text-dolhoe leading-relaxed mb-4">조합원 가입 신청서, 출자금 납입 안내, 개인정보 수집·이용 동의서를 자료실에서 내려받을 수 있어요.</p>
+              <a href="board.html#archive-items" class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:underline">자료실에서 서식 받기 <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="border border-black/10 rounded-2xl p-6 text-sm text-meok/80 space-y-2">
+              <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-ongi"></span> 이메일 : slowfamily@naver.com</p>
+              <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-ongi"></span> 네이버 카페 : 느린이웃 (가입 문의 상시 접수)</p>
+              <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-ongi"></span> 활동 지역 : 경기 고양 · 파주 · 김포</p>
+            </div>
+          </div>
         </div>
       </div>
+      <div id="donate" class="join-page hidden">
+        <header class="mb-10">
+          <p class="text-iwoot font-bold text-sm mb-2">참여공간</p>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">후원하기</h2>
+          <p class="text-dolhoe leading-relaxed">후원금은 발달장애인과 가족이 지역사회 안에서 나란히 살아가는 일상을 만드는 데 쓰입니다. 작은 정성이 모여 누군가의 첫걸음이 됩니다.</p>
+        </header>
 
-      <!-- 문의 폼 -->
-      <form id="contact-form" class="bg-white rounded-2xl border border-black/10 p-6 md:p-8 space-y-4 max-w-2xl scroll-mt-24">
-        <p class="font-bold text-sm mb-1">문의 및 건의사항</p>
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid md:grid-cols-3 gap-4 mb-12">
+          <div class="border-t-4 border-naran bg-white rounded-xl p-6 shadow-sm">
+            <p class="font-extrabold text-naran mb-2">당사자 활동</p>
+            <p class="text-sm text-dolhoe leading-relaxed">슐런 스포츠단, 합창 예술단, 연령별 자조모임, 방학 프로그램처럼 당사자가 지역사회에서 자신 있게 활동하는 데 쓰입니다.</p>
+          </div>
+          <div class="border-t-4 border-iwoot bg-white rounded-xl p-6 shadow-sm">
+            <p class="font-extrabold text-iwoot mb-2">가족 활동</p>
+            <p class="text-sm text-dolhoe leading-relaxed">정기산행, 운동회, 김장, 송년회처럼 가족이 함께 기대고 쉬어가는 시간을 만드는 데 쓰입니다.</p>
+          </div>
+          <div class="border-t-4 border-ongi bg-white rounded-xl p-6 shadow-sm">
+            <p class="font-extrabold text-ongi mb-2">부모 지원</p>
+            <p class="text-sm text-dolhoe leading-relaxed">부모교육과 동료상담, 부모 소모임으로 혼자 견디던 양육의 무게를 함께 나누는 데 쓰입니다.</p>
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-6 mb-12">
+          <!-- 계좌 후원 -->
+          <div class="rounded-2xl border-2 border-naran p-7">
+            <p class="text-xs font-bold text-iwoot mb-1">계좌 후원 · 일시 / 정기</p>
+            <p class="text-lg font-extrabold text-meok mb-5">후원 계좌</p>
+            <div class="bg-byeot rounded-xl p-5 mb-4">
+              <p class="text-sm text-dolhoe mb-1">농협 · 예금주 느린이웃</p>
+              <div class="flex items-center justify-between gap-3">
+                <p class="text-xl md:text-2xl font-extrabold text-naran tracking-wide" id="donate-account">351-1368-0573-93</p>
+                <button type="button" id="donate-copy" class="shrink-0 bg-naran hover:bg-naran-light text-white text-sm font-bold px-4 py-2 rounded-lg">계좌 복사</button>
+              </div>
+            </div>
+            <p class="text-sm text-dolhoe leading-relaxed">후원 후 <a href="#contact" class="text-naran font-bold underline">문의하기</a>로 성함과 연락처를 남겨 주시면 감사 인사를 전해 드릴게요.</p>
+          </div>
+
+          <!-- 매월 정기후원 -->
+          <div class="rounded-2xl border border-black/10 p-7">
+            <p class="text-xs font-bold text-iwoot mb-1">매월 정기후원</p>
+            <p class="text-lg font-extrabold text-meok mb-5">매달 함께 걸어 주세요</p>
+            <ol class="space-y-4 mb-5">
+            <li class="flex gap-4">
+              <span class="shrink-0 w-8 h-8 rounded-full bg-naran text-white text-sm font-bold flex items-center justify-center">1</span>
+              <div class="pt-1"><p class="font-bold text-meok mb-0.5">은행 자동이체 등록</p><p class="text-sm text-dolhoe leading-relaxed">이용하시는 은행 앱에서 위 후원 계좌로 매월 자동이체를 등록해 주세요.</p></div>
+            </li>
+            <li class="flex gap-4">
+              <span class="shrink-0 w-8 h-8 rounded-full bg-naran text-white text-sm font-bold flex items-center justify-center">2</span>
+              <div class="pt-1"><p class="font-bold text-meok mb-0.5">정기후원 알려주기</p><p class="text-sm text-dolhoe leading-relaxed">문의하기에서 문의 유형 '후원 문의'로 성함과 후원 시작일을 남겨 주세요.</p></div>
+            </li>
+            </ol>
+            <div class="flex items-start gap-3 bg-ongi/10 rounded-xl p-4">
+              <span class="shrink-0 text-[11px] font-bold text-white bg-ongi rounded-full px-2.5 py-1">준비 중</span>
+              <p class="text-sm text-meok/80 leading-relaxed">CMS 자동이체 신청을 준비하고 있어요. 자료실의 「후원 신청서(정기후원 CMS)」를 미리 보내 주시면 도입될 때 가장 먼저 연락드릴게요.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 온라인 결제(카드·간편결제) 자리: 사회적협동조합·공익법인 전환 후 PG 연동 시 DONATION_CONFIG.onlinePayment 를 true 로 바꾸고 아래 버튼에 결제 모듈을 연결하세요 -->
+        <div id="donate-online" class="hidden rounded-2xl border border-black/10 p-7 mb-12" data-pg-slot>
+          <p class="text-xs font-bold text-iwoot mb-1">온라인 후원</p>
+          <p class="text-lg font-extrabold text-meok mb-4">카드 · 간편결제로 후원하기</p>
+          <div class="flex flex-wrap gap-2 mb-5" id="donate-amounts"></div>
+          <button type="button" id="donate-pay" class="bg-ongi hover:bg-ongi/90 text-white font-bold px-6 py-3 rounded-full">후원하기</button>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-byeot rounded-2xl p-6">
+            <p class="font-extrabold text-meok mb-2">기부금 영수증 안내</p>
+            <p class="text-sm text-dolhoe leading-relaxed">느린이웃은 현재 임의단체로, 아직 기부금 영수증을 발급할 수 없습니다. 사회적협동조합 전환과 기부금 대상 단체 지정이 완료되면 그 이후의 후원금부터 영수증을 발급해 드릴 예정입니다.</p>
+          </div>
+          <div class="bg-byeot rounded-2xl p-6">
+            <p class="font-extrabold text-meok mb-2">후원금은 투명하게</p>
+            <p class="text-sm text-dolhoe leading-relaxed mb-3">후원금은 회비와 구분해 별도로 관리하고, 사용 내역을 예산 및 결산으로 공개합니다.</p>
+            <a href="board.html#budget" class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:underline">예산 및 결산 보기 <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+      <div id="volunteer" class="join-page hidden">
+        <header class="mb-10">
+          <p class="text-iwoot font-bold text-sm mb-2">참여공간</p>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">자원봉사</h2>
+          <p class="text-dolhoe leading-relaxed">돕는 사람과 도움받는 사람이 아니라, 나란히 걷는 이웃으로 함께해 주세요. 느린이웃의 활동에 함께할 자원봉사자를 기다립니다.</p>
+        </header>
+
+        <p class="font-extrabold text-meok mb-4">함께할 수 있는 활동</p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+          <div class="border border-black/10 rounded-xl p-5">
+            <p class="font-bold text-naran mb-1.5">프로그램 보조</p>
+            <p class="text-sm text-dolhoe leading-relaxed">슐런·합창 동아리, 방학 프로그램에서 당사자 곁을 함께해 주세요.</p>
+          </div>
+          <div class="border border-black/10 rounded-xl p-5">
+            <p class="font-bold text-naran mb-1.5">행사 지원</p>
+            <p class="text-sm text-dolhoe leading-relaxed">가족운동회, 김장, 송년회, 통합예술제 같은 행사 운영을 도와주세요.</p>
+          </div>
+          <div class="border border-black/10 rounded-xl p-5">
+            <p class="font-bold text-naran mb-1.5">사진 · 영상 기록</p>
+            <p class="text-sm text-dolhoe leading-relaxed">활동의 순간을 기록해 소식으로 전할 수 있도록 도와주세요.</p>
+          </div>
+          <div class="border border-black/10 rounded-xl p-5">
+            <p class="font-bold text-naran mb-1.5">사무 · 홍보</p>
+            <p class="text-sm text-dolhoe leading-relaxed">홍보물 제작, SNS, 자료 정리 등 운영을 함께해 주세요.</p>
+          </div>
+          <div class="border border-black/10 rounded-xl p-5">
+            <p class="font-bold text-naran mb-1.5">재능기부</p>
+            <p class="text-sm text-dolhoe leading-relaxed">강의, 공연, 상담, 전문 기술 등 나누고 싶은 재능을 알려 주세요.</p>
+          </div>
+        </div>
+        <div class="bg-byeot rounded-2xl p-7">
+          <p class="font-extrabold text-naran mb-4">신청 방법</p>
+          <ol class="space-y-5 mb-6">
+            <li class="flex gap-4">
+              <span class="shrink-0 w-8 h-8 rounded-full bg-naran text-white text-sm font-bold flex items-center justify-center">1</span>
+              <div class="pt-1"><p class="font-bold text-meok mb-0.5">신청서 작성</p><p class="text-sm text-dolhoe leading-relaxed">자료실에서 「자원봉사 신청서」를 내려받아 작성해 주세요.</p></div>
+            </li>
+            <li class="flex gap-4">
+              <span class="shrink-0 w-8 h-8 rounded-full bg-naran text-white text-sm font-bold flex items-center justify-center">2</span>
+              <div class="pt-1"><p class="font-bold text-meok mb-0.5">신청서 보내기</p><p class="text-sm text-dolhoe leading-relaxed">slowfamily@naver.com 으로 보내 주시거나, 문의하기에서 '자원봉사 문의'를 남겨 주세요.</p></div>
+            </li>
+            <li class="flex gap-4">
+              <span class="shrink-0 w-8 h-8 rounded-full bg-naran text-white text-sm font-bold flex items-center justify-center">3</span>
+              <div class="pt-1"><p class="font-bold text-meok mb-0.5">활동 안내</p><p class="text-sm text-dolhoe leading-relaxed">운영진이 연락드려 활동 일정과 내용을 함께 정합니다.</p></div>
+            </li>
+          </ol>
+          <div class="flex flex-wrap gap-3">
+            <a href="board.html#archive-items" class="inline-flex items-center gap-1.5 bg-naran text-white text-sm font-bold px-5 py-2.5 rounded-full">자원봉사 신청서 받기 <span aria-hidden="true">↓</span></a>
+            <a href="#contact" class="inline-flex items-center gap-1.5 border-2 border-naran text-naran text-sm font-bold px-5 py-2.5 rounded-full">문의하기</a>
+          </div>
+        </div>
+      </div>
+      <div id="contact" class="join-page hidden">
+        <header class="mb-10">
+          <p class="text-iwoot font-bold text-sm mb-2">참여공간</p>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">문의하기</h2>
+          <p class="text-dolhoe leading-relaxed">가입, 후원, 자원봉사, 협력 제안, 건의사항 무엇이든 남겨 주세요. 확인 후 이메일로 답변드립니다.</p>
+        </header>
+
+        <div class="max-w-2xl">
+      <form id="contact-form" class="bg-white rounded-2xl border border-black/10 p-6 md:p-8 space-y-4">
+                <div class="grid grid-cols-2 gap-4">
           <label class="block text-sm">
             <span class="text-meok/70 font-medium">이름</span>
             <input id="contact-name" type="text" required class="mt-1 w-full border border-black/15 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-naran/40" />
@@ -274,11 +456,17 @@
           <span class="text-meok/70 font-medium">문의 내용</span>
           <textarea id="contact-message" rows="4" required class="mt-1 w-full border border-black/15 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-naran/40"></textarea>
         </label>
+        <label class="flex items-start gap-2 text-sm text-meok/80">
+          <input type="checkbox" required class="mt-1 accent-naran" />
+          <span>문의 답변을 위한 개인정보(이름·연락처·이메일) 수집·이용에 동의합니다. (필수) <a href="privacy.html" data-native class="text-naran font-bold underline">자세히 보기</a></span>
+        </label>
         <p id="contact-status" class="text-sm hidden"></p>
         <button id="contact-submit" type="submit" class="w-full sm:w-auto bg-ongi hover:bg-ongi/90 text-white font-bold py-3.5 px-8 rounded-full text-sm transition-colors disabled:opacity-60">
           문의 보내기
         </button>
       </form>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -289,7 +477,7 @@
     <div class="nara-lines mb-8" aria-hidden="true">
       <span class="l1"></span><span class="l2" style="background:#FAF4E6;opacity:.25"></span><span class="l3"></span>
     </div>
-    <div class="grid sm:grid-cols-2 md:grid-cols-5 gap-8 text-sm mb-10">
+    <div class="grid sm:grid-cols-2 md:grid-cols-5 gap-8 text-sm">
       <div>
         <p class="text-white font-bold mb-3">느린이웃</p>
         <p class="leading-relaxed">발달장애인 가족 자조모임<br>NEURIN IUT</p>
@@ -313,12 +501,10 @@
           <li><a href="programs.html" class="hover:text-white">사업안내</a></li>
           <li><a href="board.html" class="hover:text-white">알림마당</a></li>
           <li><a href="join.html" class="hover:text-white">참여공간</a></li>
+          <li><a href="privacy.html" class="hover:text-white">개인정보처리방침</a></li>
+          <li><a href="admin.html" class="hover:text-white">관리자</a></li>
         </ul>
       </div>
-    </div>
-    <div class="pt-6 border-t border-white/10 text-xs text-white/40 leading-relaxed">
-      <p class="mb-1.5">본 사이트는 KWCAG 2.2 기준의 명도 대비(목표 7:1)를 준수하며, '장애우·정상인·극복·감동·희망을 주는' 등 시혜적 표현을 사용하지 않는 느린이웃 톤앤매너 규정을 따릅니다.</p>
-      <p class="flex flex-wrap justify-between gap-2"><span>© 느린이웃. 이미지 및 공지·소식 항목은 준비 중이며, [사진 가이드]와 [예시] 표시된 영역은 추후 실제 콘텐츠로 교체됩니다.</span><a href="admin.html" class="text-white/50 hover:text-white font-bold">관리자</a></p>
     </div>
   </div>
 </footer>
@@ -357,6 +543,62 @@ const menuBtn = document.getElementById('menuBtn');
   });
 
 // ---------- 참여공간 문의 폼 ----------
+// 왼쪽 사이드메뉴 · 페이지 안 이동: 브라우저 기본 점프 없이 내용만 바꾸고 맨 위에서 시작 (화면 튐 방지)
+  function ny_subnav(render) {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a || a.hasAttribute('data-native')) return;
+      const href = a.getAttribute('href');
+      if (href.length < 2) return;
+      e.preventDefault();
+      if (location.hash !== href) history.pushState(null, '', href);
+      render();
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    });
+    window.addEventListener('popstate', render);
+    window.addEventListener('hashchange', render);
+    window.addEventListener('load', () => { if (location.hash) window.scrollTo({ top: 0, behavior: 'instant' }); });
+    render();
+  }
+
+// 참여공간: 사이드메뉴에서 고른 서브페이지만 보이기
+  const joinIds = ['membership', 'donate', 'volunteer', 'contact'];
+  const JOIN_ALIAS = { 'contact-form': 'contact', 'join': 'membership' };
+  function showJoinView() {
+    let hash = location.hash.replace('#', '');
+    if (JOIN_ALIAS[hash]) hash = JOIN_ALIAS[hash];
+    const current = joinIds.includes(hash) ? hash : 'membership';
+    joinIds.forEach(id => document.getElementById(id).classList.toggle('hidden', id !== current));
+    document.querySelectorAll('[data-lnb-link]').forEach(l => l.classList.toggle('is-current', l.dataset.lnbLink === current));
+  }
+  ny_subnav(showJoinView);
+
+// 후원하기: 계좌 복사 · 온라인 결제 자리(추후 PG 연동)
+  const DONATION_CONFIG = {
+    onlinePayment: false,               // 카드·간편결제(PG) 연동 후 true 로 변경
+    amounts: [10000, 30000, 50000, 100000],
+    // pay: (amount) => { /* 여기에 PG 결제 모듈 호출을 연결하세요 */ },
+  };
+  (function setupDonate() {
+    const btn = document.getElementById('donate-copy');
+    btn.addEventListener('click', async () => {
+      const acc = '농협 351-1368-0573-93 (느린이웃)';
+      try { await navigator.clipboard.writeText(acc); btn.textContent = '복사됨 ✓'; }
+      catch (e) { btn.textContent = '351-1368-0573-93'; }
+      setTimeout(() => { btn.textContent = '계좌 복사'; }, 2000);
+    });
+    if (DONATION_CONFIG.onlinePayment) {
+      const box = document.getElementById('donate-online');
+      box.classList.remove('hidden');
+      let selected = DONATION_CONFIG.amounts[0];
+      const wrap = document.getElementById('donate-amounts');
+      wrap.innerHTML = DONATION_CONFIG.amounts.map(a => `<button type="button" data-amount="${a}" class="border border-naran text-naran font-bold px-4 py-2 rounded-full">${a.toLocaleString()}원</button>`).join('');
+      wrap.querySelectorAll('button').forEach(b => b.onclick = () => { selected = +b.dataset.amount; });
+      document.getElementById('donate-pay').onclick = () => DONATION_CONFIG.pay && DONATION_CONFIG.pay(selected);
+    }
+  })();
+
   (function setupContactForm() {
     const form = document.getElementById('contact-form');
     if (!form) return;
