@@ -111,6 +111,7 @@
                 <select id="post-category" class="field">
                   <option value="notice">공지사항</option>
                   <option value="news">느린이웃 소식</option>
+                  <option value="budget">예산 및 결산</option>
                 </select>
               </div>
               <div>
@@ -573,7 +574,7 @@
       <div class="py-3 flex items-center justify-between gap-4">
         <div class="min-w-0">
           <div class="flex items-center gap-2 mb-0.5">
-            <span class="text-[11px] font-bold px-1.5 py-0.5 rounded ${p.category === 'notice' ? 'bg-naran/10 text-naran' : 'bg-iwoot/10 text-iwoot'}">${p.category === 'notice' ? '공지사항' : '느린이웃 소식'}</span>
+            <span class="text-[11px] font-bold px-1.5 py-0.5 rounded ${p.category === 'notice' ? 'bg-naran/10 text-naran' : p.category === 'budget' ? 'bg-ongi/10 text-ongi' : 'bg-iwoot/10 text-iwoot'}">${p.category === 'notice' ? '공지사항' : p.category === 'budget' ? '예산 및 결산' : '느린이웃 소식'}</span>
             <span class="text-xs text-dolhoe">${esc(p.published_at || '')}</span>
           </div>
           <p class="text-sm font-semibold truncate">${esc(p.title)}</p>
