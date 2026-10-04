@@ -125,8 +125,8 @@
         <div class="nav-drop absolute left-0 top-full pt-2 w-56">
           <div class="bg-white rounded-xl border border-black/10 shadow-lg py-2">
             <a href="board.html#notices" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">공지사항</a>
-            <a href="board.html#budget" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">예산 및 결산 공고</a>
             <a href="board.html#news" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">느린이웃 소식</a>
+            <a href="board.html#budget" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">예산 및 결산</a>
             <a href="board.html#archive-items" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">자료실</a>
           </div>
         </div>
@@ -198,8 +198,8 @@
         <p class="text-xl font-extrabold text-meok mb-3">알림마당</p>
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
           <a href="board.html#notices" class="text-base text-dolhoe" data-close-menu>공지사항</a>
-          <a href="board.html#budget" class="text-base text-dolhoe" data-close-menu>예산 및 결산 공고</a>
           <a href="board.html#news" class="text-base text-dolhoe" data-close-menu>느린이웃 소식</a>
+          <a href="board.html#budget" class="text-base text-dolhoe" data-close-menu>예산 및 결산</a>
           <a href="board.html#archive-items" class="text-base text-dolhoe" data-close-menu>자료실</a>
         </div>
       </div>
@@ -220,94 +220,15 @@
 <!-- ========== 사업안내 ========== -->
   <section id="programs" class="max-w-7xl mx-auto px-5 md:px-8 py-4 md:py-10">
 
-    <!-- 목록 화면 -->
-    <div id="programs-list">
-      <header class="max-w-2xl mb-10">
-        <p class="text-iwoot font-bold text-sm mb-2">사업안내</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">느린이웃이 하는 일</h2>
-        <p class="text-dolhoe leading-relaxed">정관에 명시된 4대 사업을 기준으로 운영합니다. 각 사업을 누르면 세부 프로그램을 자세히 볼 수 있어요.</p>
-      </header>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        <article class="border border-black/10 rounded-2xl overflow-hidden">
-          <div class="photo-guide aspect-[16/10] flex items-end p-4">
-            <div class="w-full">
-              <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded mb-2">사진 가이드</span>
-              <p class="text-meok text-xs leading-relaxed bg-white/90 rounded p-2.5">
-                스포츠단 연습 또는 발달장애인합창단 무대 컷 — 당사자가 활동에 몰입한 자연스러운 순간, 전신이 보이는 구도.
-              </p>
-            </div>
-          </div>
-          <div class="p-5">
-            <p class="text-iwoot text-xs font-bold mb-1">사업 01</p>
-            <h3 class="font-bold text-lg mb-2">발달장애인의 사회참여 및<br class="hidden sm:block">자립 준비 지원 사업</h3>
-            <p class="text-dolhoe text-sm leading-relaxed mb-4">동아리 활동과 전문 교육을 통해 당사자가 지역사회 안에서 스스로 할 수 있는 것을 넓혀갑니다.</p>
-            <a href="#prog-sports" class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
-          </div>
-        </article>
-
-        <article class="border border-black/10 rounded-2xl overflow-hidden">
-          <div class="photo-guide aspect-[16/10] flex items-end p-4">
-            <div class="w-full">
-              <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded mb-2">사진 가이드</span>
-              <p class="text-meok text-xs leading-relaxed bg-white/90 rounded p-2.5">
-                월간 정기 산행 또는 텃밭활동 가족 단위 컷 — 부모와 당사자가 함께 있는 자연스러운 장면.
-              </p>
-            </div>
-          </div>
-          <div class="p-5">
-            <p class="text-iwoot text-xs font-bold mb-1">사업 02</p>
-            <h3 class="font-bold text-lg mb-2">발달장애인 가족통합<br class="hidden sm:block">지원 사업</h3>
-            <p class="text-dolhoe text-sm leading-relaxed mb-4">가족이 함께 참여하는 활동을 통해 서로 기대고 정서적으로 연결되는 시간을 마련합니다.</p>
-            <a href="#biz-family" class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
-          </div>
-        </article>
-
-        <article class="border border-black/10 rounded-2xl overflow-hidden">
-          <div class="photo-guide aspect-[16/10] flex items-end p-4">
-            <div class="w-full">
-              <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded mb-2">사진 가이드</span>
-              <p class="text-meok text-xs leading-relaxed bg-white/90 rounded p-2.5">
-                부모 동료상담 또는 소모임 장면 — 원형으로 둘러앉은 대화 구도, 얼굴이 특정되지 않는 각도도 가능.
-              </p>
-            </div>
-          </div>
-          <div class="p-5">
-            <p class="text-iwoot text-xs font-bold mb-1">사업 03</p>
-            <h3 class="font-bold text-lg mb-2">발달장애인의 부모역량<br class="hidden sm:block">강화 사업</h3>
-            <p class="text-dolhoe text-sm leading-relaxed mb-4">부모 동료상담과 소모임을 통해 같은 경험을 가진 부모들이 공감과 정보를 나눕니다.</p>
-            <a href="#biz-parent" class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
-          </div>
-        </article>
-
-        <article class="border border-black/10 rounded-2xl overflow-hidden">
-          <div class="photo-guide aspect-[16/10] flex items-end p-4">
-            <div class="w-full">
-              <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded mb-2">사진 가이드</span>
-              <p class="text-meok text-xs leading-relaxed bg-white/90 rounded p-2.5">
-                지역 기관 견학 또는 협력 협약식 컷 — 단체 간 협력을 보여주는 구도, 현수막·명패 등 기관명이 자연스럽게 드러나는 장면.
-              </p>
-            </div>
-          </div>
-          <div class="p-5">
-            <p class="text-iwoot text-xs font-bold mb-1">사업 04</p>
-            <h3 class="font-bold text-lg mb-2">지역사회 연대사업</h3>
-            <p class="text-dolhoe text-sm leading-relaxed mb-4">마을공동체 활동과 지역 기관과의 협력을 통해, 지역 안에서 함께 살아가는 관계를 넓혀갑니다.</p>
-            <a href="#biz-community" class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
-          </div>
-        </article>
-      </div>
-    </div>
-
 
     <!-- 상세 화면 공통 틀: 왼쪽 사이드메뉴(LNB) + 오른쪽 본문 -->
-    <div id="programs-detail-wrap" class="hidden lg:flex gap-12 items-start">
+    <div id="programs-detail-wrap" class="lg:flex gap-12 items-start">
       <aside class="hidden lg:block w-64 shrink-0" aria-label="사업안내 메뉴">
         <div class="sticky top-28">
-          <div class="bg-naran text-white rounded-t-2xl px-6 py-7">
+          <a href="#programs" class="block bg-naran text-white rounded-t-2xl px-6 py-7">
             <p class="text-[11px] font-bold tracking-widest text-white/60 mb-1">BUSINESS</p>
             <p class="text-xl font-extrabold">사업안내</p>
-          </div>
+          </a>
           <nav class="border border-t-0 border-black/10 rounded-b-2xl overflow-hidden">
             <div class="border-b border-black/10 last:border-b-0" data-lnb-biz="independence" data-lnb-ids="prog-sports prog-choir prog-selfhelp prog-culture biz-independence">
               <a href="#prog-sports" class="lnb-biz block px-6 py-4 hover:bg-byeot/60">
@@ -362,11 +283,89 @@
         </div>
       </aside>
       <div class="flex-1 min-w-0">
+    <!-- 목록 화면 -->
+      <div id="programs-list">
+        <header class="mb-10">
+          <p class="text-iwoot font-bold text-sm mb-2">사업안내</p>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">느린이웃이 하는 일</h2>
+          <p class="text-dolhoe leading-relaxed">정관에 명시된 4대 사업을 기준으로 운영합니다. 각 사업을 누르면 세부 프로그램을 자세히 볼 수 있어요.</p>
+        </header>
+
+        <div class="space-y-6">
+          <article class="border border-black/10 rounded-2xl overflow-hidden md:flex">
+            <div class="photo-guide aspect-[16/10] md:aspect-auto md:w-[42%] md:shrink-0 md:min-h-[230px] flex items-end p-4">
+              <div class="w-full">
+                <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded mb-2">사진 가이드</span>
+                <p class="text-meok text-xs leading-relaxed bg-white/90 rounded p-2.5">
+                  스포츠단 연습 또는 발달장애인합창단 무대 컷 — 당사자가 활동에 몰입한 자연스러운 순간, 전신이 보이는 구도.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 md:p-8 flex-1 flex flex-col justify-center">
+              <p class="text-iwoot text-xs font-bold mb-1">사업 01</p>
+              <h3 class="font-extrabold text-xl text-meok mb-3">발달장애인의 사회참여 및 자립 준비 지원 사업</h3>
+              <p class="text-dolhoe text-sm leading-relaxed mb-4">동아리 활동과 전문 교육을 통해 당사자가 지역사회 안에서 스스로 할 수 있는 것을 넓혀갑니다.</p>
+              <a href="#prog-sports" class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="border border-black/10 rounded-2xl overflow-hidden md:flex">
+            <div class="photo-guide aspect-[16/10] md:aspect-auto md:w-[42%] md:shrink-0 md:min-h-[230px] flex items-end p-4">
+              <div class="w-full">
+                <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded mb-2">사진 가이드</span>
+                <p class="text-meok text-xs leading-relaxed bg-white/90 rounded p-2.5">
+                  월간 정기 산행 또는 텃밭활동 가족 단위 컷 — 부모와 당사자가 함께 있는 자연스러운 장면.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 md:p-8 flex-1 flex flex-col justify-center">
+              <p class="text-iwoot text-xs font-bold mb-1">사업 02</p>
+              <h3 class="font-extrabold text-xl text-meok mb-3">발달장애인 가족통합 지원 사업</h3>
+              <p class="text-dolhoe text-sm leading-relaxed mb-4">가족이 함께 참여하는 활동을 통해 서로 기대고 정서적으로 연결되는 시간을 마련합니다.</p>
+              <a href="#biz-family" class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="border border-black/10 rounded-2xl overflow-hidden md:flex">
+            <div class="photo-guide aspect-[16/10] md:aspect-auto md:w-[42%] md:shrink-0 md:min-h-[230px] flex items-end p-4">
+              <div class="w-full">
+                <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded mb-2">사진 가이드</span>
+                <p class="text-meok text-xs leading-relaxed bg-white/90 rounded p-2.5">
+                  부모 동료상담 또는 소모임 장면 — 원형으로 둘러앉은 대화 구도, 얼굴이 특정되지 않는 각도도 가능.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 md:p-8 flex-1 flex flex-col justify-center">
+              <p class="text-iwoot text-xs font-bold mb-1">사업 03</p>
+              <h3 class="font-extrabold text-xl text-meok mb-3">발달장애인의 부모역량 강화 사업</h3>
+              <p class="text-dolhoe text-sm leading-relaxed mb-4">부모 동료상담과 소모임을 통해 같은 경험을 가진 부모들이 공감과 정보를 나눕니다.</p>
+              <a href="#biz-parent" class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="border border-black/10 rounded-2xl overflow-hidden md:flex">
+            <div class="photo-guide aspect-[16/10] md:aspect-auto md:w-[42%] md:shrink-0 md:min-h-[230px] flex items-end p-4">
+              <div class="w-full">
+                <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded mb-2">사진 가이드</span>
+                <p class="text-meok text-xs leading-relaxed bg-white/90 rounded p-2.5">
+                  지역 기관 견학 또는 협력 협약식 컷 — 단체 간 협력을 보여주는 구도, 현수막·명패 등 기관명이 자연스럽게 드러나는 장면.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 md:p-8 flex-1 flex flex-col justify-center">
+              <p class="text-iwoot text-xs font-bold mb-1">사업 04</p>
+              <h3 class="font-extrabold text-xl text-meok mb-3">지역사회 연대사업</h3>
+              <p class="text-dolhoe text-sm leading-relaxed mb-4">마을공동체 활동과 지역 기관과의 협력을 통해, 지역 안에서 함께 살아가는 관계를 넓혀갑니다.</p>
+              <a href="#biz-community" class="inline-flex items-center gap-1 text-sm font-bold text-naran hover:text-naran-light">자세히 보기 <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
 
     <!-- 상세 화면 01: 사회참여 및 자립 준비 지원 -->
     <div id="biz-independence" class="programs-detail hidden">
       <a href="#programs" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-6"><span aria-hidden="true">←</span> 사업안내 목록으로</a>
-      <header class="max-w-2xl mb-10">
+      <header class="mb-10">
         <p class="text-iwoot font-bold text-sm mb-2">사업안내 · 정관상 사업</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">발달장애인의 사회참여 및 자립 준비 지원 사업</h2>
         <p class="text-dolhoe leading-relaxed">당사자가 자신의 방식대로 지역사회에 참여하고, 스스로 할 수 있는 것을 하나씩 넓혀가도록 돕습니다.</p>
@@ -463,8 +462,8 @@
 
     <!-- 상세 화면 01-1: 슐런스포츠단 운영 -->
     <div id="prog-sports" class="programs-detail hidden">
-      <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8">느린이웃과 함께 채워가는 발걸음</h2>
-      <div class="max-w-2xl mb-6">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+      <div class="mb-6">
         <p class="text-lg font-extrabold text-naran mb-1.5">슐런스포츠단 운영</p>
         <p class="text-sm text-dolhoe leading-relaxed">정기 훈련과 대회 출전으로 이어지는 슐런스포츠단의 활동을 소개합니다.</p>
       </div>
@@ -511,8 +510,8 @@
 
     <!-- 상세 화면 01-2: 발달장애인합창단 -->
     <div id="prog-choir" class="programs-detail hidden">
-      <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8">느린이웃과 함께 채워가는 발걸음</h2>
-      <div class="max-w-2xl mb-6">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+      <div class="mb-6">
         <p class="text-lg font-extrabold text-naran mb-1.5">발달장애인합창단</p>
         <p class="text-sm text-dolhoe leading-relaxed">함께 노래를 연습하고 무대에 서는 합창단의 활동을 소개합니다.</p>
       </div>
@@ -546,8 +545,8 @@
 
     <!-- 상세 화면 01-3: 당사자 자조모임 -->
     <div id="prog-selfhelp" class="programs-detail hidden">
-      <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8">느린이웃과 함께 채워가는 발걸음</h2>
-      <div class="max-w-2xl mb-6">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+      <div class="mb-6">
         <p class="text-lg font-extrabold text-naran mb-1.5">당사자 자조모임</p>
         <p class="text-sm text-dolhoe leading-relaxed">당사자들이 모여 서로의 경험과 생각을 나누는 자조모임을 소개합니다.</p>
       </div>
@@ -581,8 +580,8 @@
 
     <!-- 상세 화면 01-4: 문화여가활동 -->
     <div id="prog-culture" class="programs-detail hidden">
-      <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8">느린이웃과 함께 채워가는 발걸음</h2>
-      <div class="max-w-2xl mb-6">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8 pb-6 border-b border-black/10">느린이웃과 함께 채워가는 발걸음</h2>
+      <div class="mb-6">
         <p class="text-lg font-extrabold text-naran mb-1.5">문화여가활동</p>
         <p class="text-sm text-dolhoe leading-relaxed">계절과 시기에 맞춰 함께하는 문화 · 여가 활동을 소개합니다.</p>
       </div>
@@ -617,7 +616,7 @@
     <!-- 상세 화면 02: 가족통합 지원 -->
     <div id="biz-family" class="programs-detail hidden">
       <a href="#programs" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-6"><span aria-hidden="true">←</span> 사업안내 목록으로</a>
-      <header class="max-w-2xl mb-10">
+      <header class="mb-10">
         <p class="text-iwoot font-bold text-sm mb-2">사업안내 · 정관상 사업</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">발달장애인 가족통합 지원 사업</h2>
         <p class="text-dolhoe leading-relaxed">당사자와 가족이 함께 어울리며, 일상 속에서 서로 정서적으로 연결되는 시간을 마련합니다.</p>
@@ -786,7 +785,7 @@
       <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
         <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 가족 단위 산행 장면</span>
       </div>
-      <header class="max-w-2xl mb-8">
+      <header class="mb-8">
         <p class="text-iwoot font-bold text-sm mb-2">사업 02 · 세부 프로그램</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">정기산행</h2>
       </header>
@@ -821,7 +820,7 @@
       <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
         <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 가족 텃밭활동 장면</span>
       </div>
-      <header class="max-w-2xl mb-8">
+      <header class="mb-8">
         <p class="text-iwoot font-bold text-sm mb-2">사업 02 · 세부 프로그램</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">텃밭활동</h2>
       </header>
@@ -856,7 +855,7 @@
       <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
         <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 가족 운동회 장면</span>
       </div>
-      <header class="max-w-2xl mb-8">
+      <header class="mb-8">
         <p class="text-iwoot font-bold text-sm mb-2">사업 02 · 세부 프로그램</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">운동회</h2>
       </header>
@@ -891,7 +890,7 @@
       <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
         <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 가족 물놀이 장면</span>
       </div>
-      <header class="max-w-2xl mb-8">
+      <header class="mb-8">
         <p class="text-iwoot font-bold text-sm mb-2">사업 02 · 세부 프로그램</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">물놀이</h2>
       </header>
@@ -926,7 +925,7 @@
       <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
         <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 가족 김장 장면</span>
       </div>
-      <header class="max-w-2xl mb-8">
+      <header class="mb-8">
         <p class="text-iwoot font-bold text-sm mb-2">사업 02 · 세부 프로그램</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">김장</h2>
       </header>
@@ -961,7 +960,7 @@
       <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
         <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 송년회 장면</span>
       </div>
-      <header class="max-w-2xl mb-8">
+      <header class="mb-8">
         <p class="text-iwoot font-bold text-sm mb-2">사업 02 · 세부 프로그램</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">송년회</h2>
       </header>
@@ -996,7 +995,7 @@
       <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
         <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 비장애형제자매모임 장면</span>
       </div>
-      <header class="max-w-2xl mb-8">
+      <header class="mb-8">
         <p class="text-iwoot font-bold text-sm mb-2">사업 02 · 세부 프로그램</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">비장애형제자매모임</h2>
       </header>
@@ -1021,7 +1020,7 @@
     <!-- 상세 화면 03: 부모역량 강화 -->
     <div id="biz-parent" class="programs-detail hidden">
       <a href="#programs" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-6"><span aria-hidden="true">←</span> 사업안내 목록으로</a>
-      <header class="max-w-2xl mb-10">
+      <header class="mb-10">
         <p class="text-iwoot font-bold text-sm mb-2">사업안내 · 정관상 사업</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">발달장애인의 부모역량 강화 사업</h2>
         <p class="text-dolhoe leading-relaxed">발달장애 자녀를 키우는 부모가 서로 기대어 정보와 마음을 나누고, 양육자로서의 힘을 키웁니다.</p>
@@ -1127,7 +1126,7 @@
       <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
         <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 동료상담 장면</span>
       </div>
-      <header class="max-w-2xl mb-8">
+      <header class="mb-8">
         <p class="text-iwoot font-bold text-sm mb-2">사업 03 · 세부 프로그램</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">동료상담</h2>
       </header>
@@ -1162,7 +1161,7 @@
       <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
         <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 집단동료상담 장면</span>
       </div>
-      <header class="max-w-2xl mb-8">
+      <header class="mb-8">
         <p class="text-iwoot font-bold text-sm mb-2">사업 03 · 세부 프로그램</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">집단동료상담</h2>
       </header>
@@ -1197,7 +1196,7 @@
       <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
         <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 부모교육 장면</span>
       </div>
-      <header class="max-w-2xl mb-8">
+      <header class="mb-8">
         <p class="text-iwoot font-bold text-sm mb-2">사업 03 · 세부 프로그램</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">부모교육</h2>
       </header>
@@ -1232,7 +1231,7 @@
       <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
         <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 아빠소모임 장면</span>
       </div>
-      <header class="max-w-2xl mb-8">
+      <header class="mb-8">
         <p class="text-iwoot font-bold text-sm mb-2">사업 03 · 세부 프로그램</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">아빠소모임</h2>
       </header>
@@ -1257,7 +1256,7 @@
     <!-- 상세 화면 04: 지역사회 연대 -->
     <div id="biz-community" class="programs-detail hidden">
       <a href="#programs" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-6"><span aria-hidden="true">←</span> 사업안내 목록으로</a>
-      <header class="max-w-2xl mb-10">
+      <header class="mb-10">
         <p class="text-iwoot font-bold text-sm mb-2">사업안내 · 정관상 사업</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">지역사회 연대사업</h2>
         <p class="text-dolhoe leading-relaxed">느린이웃이 속한 지역사회와 손잡고, 발달장애에 대한 이해와 협력의 폭을 넓혀갑니다.</p>
@@ -1321,7 +1320,7 @@
       <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
         <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 마을축제참여 장면</span>
       </div>
-      <header class="max-w-2xl mb-8">
+      <header class="mb-8">
         <p class="text-iwoot font-bold text-sm mb-2">사업 04 · 세부 프로그램</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">마을축제참여</h2>
       </header>
@@ -1356,7 +1355,7 @@
       <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
         <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 통합예술제 장면</span>
       </div>
-      <header class="max-w-2xl mb-8">
+      <header class="mb-8">
         <p class="text-iwoot font-bold text-sm mb-2">사업 04 · 세부 프로그램</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">통합예술제</h2>
       </header>
@@ -1400,7 +1399,7 @@
       </div>
       <div>
         <p class="text-white/50 font-bold text-xs mb-3">경영공시 안내</p>
-        <p class="leading-relaxed">사회적협동조합 결산서·총회 자료는<br>알림마당 &gt; 예산 및 결산 공고에서<br>확인하실 수 있습니다.</p>
+        <p class="leading-relaxed">사회적협동조합 결산서·총회 자료는<br>알림마당 &gt; 예산 및 결산에서<br>확인하실 수 있습니다.</p>
       </div>
       <div>
         <p class="text-white/50 font-bold text-xs mb-3">연락처</p>
@@ -1466,7 +1465,6 @@ const menuBtn = document.getElementById('menuBtn');
     const hash = location.hash.replace('#', '');
     const isDetail = allDetailIds.includes(hash);
     programsList.classList.toggle('hidden', isDetail);
-    document.getElementById('programs-detail-wrap').classList.toggle('hidden', !isDetail);
     allDetailIds.forEach(id => {
       document.getElementById(id).classList.toggle('hidden', id !== hash);
     });
