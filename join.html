@@ -558,7 +558,7 @@ const menuBtn = document.getElementById('menuBtn');
     });
     window.addEventListener('popstate', render);
     window.addEventListener('hashchange', render);
-    window.addEventListener('load', () => { if (location.hash) window.scrollTo({ top: 0, behavior: 'instant' }); });
+    window.addEventListener('load', () => { if (location.hash) setTimeout(() => window.scrollTo({ top: 0, behavior: 'instant' }), 0); });
     render();
   }
 
