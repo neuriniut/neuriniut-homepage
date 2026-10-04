@@ -112,8 +112,8 @@
         <div class="nav-drop absolute left-0 top-full pt-2 w-56">
           <div class="bg-white rounded-xl border border-black/10 shadow-lg py-2">
             <a href="board.html#notices" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">공지사항</a>
-            <a href="board.html#budget" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">예산 및 결산 공고</a>
             <a href="board.html#news" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">느린이웃 소식</a>
+            <a href="board.html#budget" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">예산 및 결산</a>
             <a href="board.html#archive-items" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">자료실</a>
           </div>
         </div>
@@ -185,8 +185,8 @@
         <p class="text-xl font-extrabold text-meok mb-3">알림마당</p>
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
           <a href="board.html#notices" class="text-base text-dolhoe" data-close-menu>공지사항</a>
-          <a href="board.html#budget" class="text-base text-dolhoe" data-close-menu>예산 및 결산 공고</a>
           <a href="board.html#news" class="text-base text-dolhoe" data-close-menu>느린이웃 소식</a>
+          <a href="board.html#budget" class="text-base text-dolhoe" data-close-menu>예산 및 결산</a>
           <a href="board.html#archive-items" class="text-base text-dolhoe" data-close-menu>자료실</a>
         </div>
       </div>
@@ -241,6 +241,36 @@
             </p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ========== 공지 · 소식 (최근 5개씩) ========== -->
+  <section class="max-w-7xl mx-auto px-5 md:px-8 pt-16 md:pt-20">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-14">
+      <div>
+        <div class="flex items-end justify-between mb-5">
+          <div>
+            <p class="text-iwoot font-bold text-sm mb-1">NOTICE</p>
+            <h2 class="text-2xl font-extrabold text-meok">공지사항</h2>
+          </div>
+          <a href="board.html#notices" class="text-sm font-bold text-naran hover:underline">더보기 +</a>
+        </div>
+        <ul id="home-notice-list" class="border-t-2 border-meok">
+          <li class="py-10 text-center text-sm text-dolhoe border-b border-black/10">불러오는 중...</li>
+        </ul>
+      </div>
+      <div>
+        <div class="flex items-end justify-between mb-5">
+          <div>
+            <p class="text-iwoot font-bold text-sm mb-1">NEWS</p>
+            <h2 class="text-2xl font-extrabold text-meok">느린이웃 소식</h2>
+          </div>
+          <a href="board.html#news" class="text-sm font-bold text-naran hover:underline">더보기 +</a>
+        </div>
+        <ul id="home-news-list" class="border-t-2 border-meok">
+          <li class="py-10 text-center text-sm text-dolhoe border-b border-black/10">불러오는 중...</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -319,7 +349,7 @@
       </div>
       <div>
         <p class="text-white/50 font-bold text-xs mb-3">경영공시 안내</p>
-        <p class="leading-relaxed">사회적협동조합 결산서·총회 자료는<br>알림마당 &gt; 예산 및 결산 공고에서<br>확인하실 수 있습니다.</p>
+        <p class="leading-relaxed">사회적협동조합 결산서·총회 자료는<br>알림마당 &gt; 예산 및 결산에서<br>확인하실 수 있습니다.</p>
       </div>
       <div>
         <p class="text-white/50 font-bold text-xs mb-3">연락처</p>
@@ -414,6 +444,46 @@ const menuBtn = document.getElementById('menuBtn');
     } catch (e) { /* site_settings 테이블이 아직 없어도 나머지는 정상 표시 */ }
   })();
 
+
+// 메인: 공지사항 · 느린이웃 소식 최근 5개씩 불러오기
+  (async function loadHomeBoards() {
+    const nl = document.getElementById('home-notice-list');
+    const wl = document.getElementById('home-news-list');
+    const empty = '<li class="py-10 text-center text-sm text-dolhoe border-b border-black/10">아직 등록된 글이 없습니다.</li>';
+    function e(str) { const d = document.createElement('div'); d.textContent = str == null ? '' : str; return d.innerHTML; }
+    function dt(d) { return d ? e(String(d).slice(0, 10)).replace(/-/g, '.') : ''; }
+    if (typeof supabase === 'undefined') { nl.innerHTML = empty; wl.innerHTML = empty; return; }
+    const db = supabase.createClient(
+      'https://mpgmvwivzedqxugfllxc.supabase.co',
+      'sb_publishable_B-pdQJ6sbCDrdi37JU6www_71TE8J5f'
+    );
+    async function fetchCat(cat) {
+      try {
+        const { data } = await db.from('posts').select('id, title, published_at, photo_url').eq('category', cat)
+          .order('published_at', { ascending: false }).limit(5);
+        return data || [];
+      } catch (err) { return []; }
+    }
+    const [notices, news] = await Promise.all([fetchCat('notice'), fetchCat('news')]);
+    nl.innerHTML = notices.length ? notices.map(n => `
+      <li class="border-b border-black/10">
+        <a href="board.html#post-${e(n.id)}" class="flex items-center gap-4 py-4 px-1 hover:text-naran transition-colors">
+          <span class="shrink-0 text-[11px] font-bold text-white bg-naran rounded-full px-2.5 py-1">공지</span>
+          <span class="flex-1 min-w-0 truncate font-semibold text-meok">${e(n.title)}</span>
+          <span class="shrink-0 text-sm text-dolhoe">${dt(n.published_at)}</span>
+        </a>
+      </li>`).join('') : empty;
+    wl.innerHTML = news.length ? news.map(n => `
+      <li class="border-b border-black/10">
+        <a href="board.html#post-${e(n.id)}" class="flex items-center gap-4 py-2.5 px-1 hover:text-naran transition-colors">
+          ${n.photo_url
+            ? `<img src="${e(n.photo_url)}" alt="" class="shrink-0 w-16 h-12 rounded-md object-cover" loading="lazy">`
+            : `<span class="shrink-0 w-16 h-12 rounded-md photo-guide"></span>`}
+          <span class="flex-1 min-w-0 truncate font-semibold text-meok">${e(n.title)}</span>
+          <span class="shrink-0 text-sm text-dolhoe">${dt(n.published_at)}</span>
+        </a>
+      </li>`).join('') : empty;
+  })();
 </script>
 </body>
 </html>
