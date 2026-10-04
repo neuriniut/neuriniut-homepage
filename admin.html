@@ -88,10 +88,9 @@
         </div>
       </div>
       <div class="max-w-5xl mx-auto px-5 flex items-center gap-5 overflow-x-auto">
-        <button type="button" class="tab-btn active" data-tab="notices">알림마당</button>
+        <button type="button" class="tab-btn active" data-tab="about">소개</button>
         <button type="button" class="tab-btn" data-tab="programs">사업안내</button>
-        <button type="button" class="tab-btn" data-tab="about">소개</button>
-        <button type="button" class="tab-btn" data-tab="info">정보나눔</button>
+        <button type="button" class="tab-btn" data-tab="notices">알림마당</button>
       </div>
     </header>
 
@@ -100,7 +99,7 @@
       <!-- ============================================================ -->
       <!-- 탭 1. 알림마당 -->
       <!-- ============================================================ -->
-      <div id="tab-notices" class="tab-panel space-y-8">
+      <div id="tab-notices" class="tab-panel hidden space-y-8">
         <section class="bg-white rounded-2xl border border-black/10 p-6">
           <h2 class="font-bold text-lg mb-5" id="post-form-title">새 글쓰기</h2>
           <form id="post-form" class="space-y-4">
@@ -177,12 +176,86 @@
             <p class="text-sm text-dolhoe py-4">불러오는 중...</p>
           </div>
         </section>
+        <section class="bg-white rounded-2xl border border-black/10 p-6">
+          <h2 class="font-bold text-lg mb-1">느린이웃 일정</h2>
+          <p class="text-xs text-dolhoe mb-5">알림마당 &gt; 느린이웃 일정 달력에 보이는 일정이에요. 공휴일은 자동으로 표시되니 따로 넣지 않아도 돼요.</p>
+          <form id="sched-form" class="grid sm:grid-cols-[150px_1fr_150px_auto] gap-3 items-end mb-5">
+            <input type="hidden" id="sched-index">
+            <div>
+              <label class="block text-[11px] font-bold text-dolhoe mb-1">날짜</label>
+              <input type="date" id="sched-date" class="field" required>
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-dolhoe mb-1">내용</label>
+              <input type="text" id="sched-title" class="field" placeholder="예: 슐런픽 정기연습" required>
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-dolhoe mb-1">분류(색)</label>
+              <select id="sched-cat" class="field">
+                <option value="sports">슐런</option>
+                <option value="choir">합창</option>
+                <option value="kids">당사자 · 방학</option>
+                <option value="parent">부모</option>
+                <option value="family">가족</option>
+                <option value="community">지역 · 연대</option>
+                <option value="ops">운영</option>
+                <option value="holiday">휴일(빨간 글씨)</option>
+              </select>
+            </div>
+            <div class="flex gap-2">
+              <button type="submit" id="sched-submit" class="btn-main">추가</button>
+              <button type="button" id="sched-cancel" class="btn-ghost hidden">취소</button>
+            </div>
+          </form>
+          <p id="sched-error" class="text-sm text-ongi hidden mb-3"></p>
+          <div class="flex items-center gap-2 mb-3">
+            <label class="text-xs font-bold text-dolhoe">보기</label>
+            <select id="sched-month" class="field" style="width:160px"></select>
+          </div>
+          <div id="sched-list" class="divide-y divide-black/5"></div>
+        </section>
+
+        <section class="bg-white rounded-2xl border border-black/10 p-6">
+          <h2 class="font-bold text-lg mb-1">자료실</h2>
+          <p class="text-xs text-dolhoe mb-5">가입 신청서, 서식, 안내 자료 파일을 올려두면 홈페이지에서 내려받을 수 있어요.</p>
+          <form id="archive-form" class="space-y-3 mb-5">
+            <input type="hidden" id="archive-id">
+            <input type="text" id="archive-title" class="field" placeholder="제목 (예: 가입 신청서)" required>
+            <input type="text" id="archive-content" class="field" placeholder="짧은 설명 (선택)">
+            <div>
+              <label class="block text-[11px] font-bold text-dolhoe mb-1">파일 (선택 — 올리지 않으면 다운로드 버튼 없이 목록에만 표시돼요)</label>
+              <input type="file" id="archive-file" class="field">
+            </div>
+            <div class="flex items-center gap-2">
+              <input type="number" id="archive-sort" class="field" style="width:100px" value="0" placeholder="순서">
+              <button type="submit" id="archive-form-submit" class="btn-ghost">저장</button>
+              <button type="button" id="archive-form-cancel" class="btn-ghost hidden">취소</button>
+            </div>
+          </form>
+          <p id="archive-form-error" class="text-sm text-ongi hidden mb-3"></p>
+          <div id="archive-item-list" class="divide-y divide-black/5"></div>
+        </section>
       </div>
 
       <!-- ============================================================ -->
       <!-- 탭 2. 사업안내 -->
       <!-- ============================================================ -->
       <div id="tab-programs" class="tab-panel hidden space-y-8">
+        <section class="bg-white rounded-2xl border border-black/10 p-6">
+          <h2 class="font-bold text-lg mb-1">4대 사업 소개 문구</h2>
+          <p class="text-xs text-dolhoe mb-5">사업안내 첫 화면과 각 사업 화면 위쪽에 나오는 설명이에요. 비워두면 기본 문구가 보여요.</p>
+          <form id="bizdesc-form" class="space-y-4">
+            <div><label class="block text-xs font-bold text-dolhoe mb-1.5">사업 01 · 발달장애인의 사회참여 및 자립 준비 지원 사업</label><textarea id="bizdesc-independence" class="field" rows="3"></textarea></div>
+            <div><label class="block text-xs font-bold text-dolhoe mb-1.5">사업 02 · 발달장애인 가족통합 지원 사업</label><textarea id="bizdesc-family" class="field" rows="3"></textarea></div>
+            <div><label class="block text-xs font-bold text-dolhoe mb-1.5">사업 03 · 발달장애인의 부모역량 강화 사업</label><textarea id="bizdesc-parent" class="field" rows="3"></textarea></div>
+            <div><label class="block text-xs font-bold text-dolhoe mb-1.5">사업 04 · 지역사회 연대사업</label><textarea id="bizdesc-community" class="field" rows="3"></textarea></div>
+            <div class="flex items-center gap-3">
+              <button type="submit" id="bizdesc-submit" class="btn-main">저장</button>
+              <span id="bizdesc-status" class="text-xs text-dolhoe"></span>
+            </div>
+          </form>
+        </section>
+
         <section class="bg-white rounded-2xl border border-black/10 p-6">
           <label class="block text-xs font-bold text-dolhoe mb-1.5">사업 선택</label>
           <select id="biz-select" class="field max-w-md">
@@ -191,7 +264,7 @@
             <option value="parent">사업 03 · 부모역량 강화</option>
             <option value="community">사업 04 · 지역사회 연대</option>
           </select>
-          <p class="text-xs text-dolhoe mt-2">선택한 사업의 세부 프로그램(카드)을 관리합니다. 홈페이지 사업안내에서 해당 사업을 눌렀을 때 보이는 내용이에요.</p>
+          <p class="text-xs text-dolhoe mt-2">선택한 사업의 세부 프로그램을 추가·수정·숨기기·삭제합니다. 홈페이지 사업안내의 해당 사업 화면과 왼쪽 메뉴에 바로 반영돼요.</p>
         </section>
 
         <section class="bg-white rounded-2xl border border-black/10 p-6">
@@ -200,22 +273,46 @@
             <input type="hidden" id="program-id">
             <div>
               <label class="block text-xs font-bold text-dolhoe mb-1.5">프로그램 이름</label>
-              <input type="text" id="program-name" class="field" required placeholder="예: 슐런스포츠단">
+              <input type="text" id="program-name" class="field" required placeholder="예: 슐런 스포츠단 '슐런픽'">
             </div>
             <div>
-              <label class="block text-xs font-bold text-dolhoe mb-1.5">소개 글</label>
-              <textarea id="program-description" class="field" rows="5" placeholder="줄바꿈은 그대로 표시돼요. '* '로 시작하면 목록(•)으로 보여요."></textarea>
+              <label class="block text-xs font-bold text-dolhoe mb-1.5">한 줄 소개</label>
+              <input type="text" id="program-summary" class="field" placeholder="예: 꾸준한 연습과 대회 출전으로 실력과 자신감을 함께 키우는 슐런 스포츠단입니다.">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-dolhoe mb-1.5">대상</label>
+              <input type="text" id="program-target" class="field">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-dolhoe mb-1.5">활동 내용</label>
+              <textarea id="program-content" class="field" rows="4"></textarea>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-dolhoe mb-1.5">운영 방식</label>
+              <textarea id="program-method" class="field" rows="2"></textarea>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-dolhoe mb-1.5">비고 (선택)</label>
+              <textarea id="program-note" class="field" rows="2"></textarea>
+            </div>
+            <div class="grid sm:grid-cols-[180px_1fr] gap-4">
+              <div>
+                <label class="block text-xs font-bold text-dolhoe mb-1.5">추가 항목 제목 (선택)</label>
+                <input type="text" id="program-extra-label" class="field" placeholder="예: 주요 활동">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-dolhoe mb-1.5">추가 항목 내용 (줄마다 목록으로 보여요)</label>
+                <textarea id="program-extra-text" class="field" rows="3"></textarea>
+              </div>
             </div>
             <div class="grid sm:grid-cols-2 gap-4">
               <div>
-                <label class="block text-xs font-bold text-dolhoe mb-1.5">대표 사진 (선택)</label>
-                <input type="file" id="program-photo" accept="image/*" class="field">
-                <div id="program-photo-preview" class="mt-2"></div>
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-dolhoe mb-1.5">표시 순서</label>
+                <label class="block text-xs font-bold text-dolhoe mb-1.5">표시 순서 (작은 숫자가 먼저)</label>
                 <input type="number" id="program-sort" class="field" value="0">
               </div>
+              <label class="flex items-center gap-2 text-sm font-bold text-meok sm:mt-6">
+                <input type="checkbox" id="program-hidden" class="accent-naran w-4 h-4"> 홈페이지에서 숨기기
+              </label>
             </div>
             <p id="program-form-error" class="text-sm text-ongi hidden"></p>
             <div class="flex items-center gap-3 pt-2">
@@ -247,7 +344,7 @@
           </div>
 
           <div class="border-t border-black/10 pt-6">
-            <h3 class="font-bold text-sm mb-4">사진 갤러리 (여러 장 가능, 선택)</h3>
+            <h3 class="font-bold text-sm mb-4">사진 (프로그램 페이지 슬라이드에 나와요, 여러 장 가능)</h3>
             <div id="gallery-list" class="grid grid-cols-3 sm:grid-cols-4 gap-3 mb-4"></div>
             <label class="block text-[11px] font-bold text-dolhoe mb-1">사진 추가</label>
             <input type="file" id="gallery-photo" accept="image/*" class="field max-w-xs">
@@ -266,7 +363,7 @@
       <!-- ============================================================ -->
       <!-- 탭 3. 소개 -->
       <!-- ============================================================ -->
-      <div id="tab-about" class="tab-panel hidden space-y-8">
+      <div id="tab-about" class="tab-panel space-y-8">
         <section class="bg-white rounded-2xl border border-black/10 p-6">
           <h2 class="font-bold text-lg mb-1">첫 화면(히어로) 문구·사진</h2>
           <p class="text-xs text-dolhoe mb-5">홈페이지에 맨 처음 접속했을 때 보이는 큰 문구와 사진이에요. 비워두면 기존 기본 문구가 그대로 보여요.</p>
@@ -327,49 +424,6 @@
         </section>
       </div>
 
-      <!-- ============================================================ -->
-      <!-- 탭 4. 정보나눔 -->
-      <!-- ============================================================ -->
-      <div id="tab-info" class="tab-panel hidden space-y-8">
-        <section class="bg-white rounded-2xl border border-black/10 p-6">
-          <h2 class="font-bold text-lg mb-1">복지제도</h2>
-          <p class="text-xs text-dolhoe mb-5">생애주기별 신청 가능한 복지·교육 제도를 하나씩 등록해요.</p>
-          <form id="welfare-form" class="space-y-3 mb-5">
-            <input type="hidden" id="welfare-id">
-            <input type="text" id="welfare-title" class="field" placeholder="제목 (예: 장애인연금)" required>
-            <textarea id="welfare-content" class="field" rows="3" placeholder="설명"></textarea>
-            <div class="flex items-center gap-2">
-              <input type="number" id="welfare-sort" class="field" style="width:100px" value="0" placeholder="순서">
-              <button type="submit" id="welfare-form-submit" class="btn-ghost">저장</button>
-              <button type="button" id="welfare-form-cancel" class="btn-ghost hidden">취소</button>
-            </div>
-          </form>
-          <p id="welfare-form-error" class="text-sm text-ongi hidden mb-3"></p>
-          <div id="welfare-item-list" class="divide-y divide-black/5"></div>
-        </section>
-
-        <section class="bg-white rounded-2xl border border-black/10 p-6">
-          <h2 class="font-bold text-lg mb-1">자료실</h2>
-          <p class="text-xs text-dolhoe mb-5">가입 신청서, 서식, 안내 자료 파일을 올려두면 홈페이지에서 내려받을 수 있어요.</p>
-          <form id="archive-form" class="space-y-3 mb-5">
-            <input type="hidden" id="archive-id">
-            <input type="text" id="archive-title" class="field" placeholder="제목 (예: 가입 신청서)" required>
-            <input type="text" id="archive-content" class="field" placeholder="짧은 설명 (선택)">
-            <div>
-              <label class="block text-[11px] font-bold text-dolhoe mb-1">파일 (선택 — 올리지 않으면 다운로드 버튼 없이 목록에만 표시돼요)</label>
-              <input type="file" id="archive-file" class="field">
-            </div>
-            <div class="flex items-center gap-2">
-              <input type="number" id="archive-sort" class="field" style="width:100px" value="0" placeholder="순서">
-              <button type="submit" id="archive-form-submit" class="btn-ghost">저장</button>
-              <button type="button" id="archive-form-cancel" class="btn-ghost hidden">취소</button>
-            </div>
-          </form>
-          <p id="archive-form-error" class="text-sm text-ongi hidden mb-3"></p>
-          <div id="archive-item-list" class="divide-y divide-black/5"></div>
-        </section>
-      </div>
-
     </main>
   </div>
 
@@ -418,8 +472,9 @@
       loadPrograms();
       loadAboutSettings();
       loadStats();
-      loadInfoItems('welfare');
       loadInfoItems('archive');
+      loadBizDesc();
+      loadSchedule();
     } else {
       adminView.classList.add('hidden');
       loginView.classList.remove('hidden');
@@ -695,9 +750,18 @@
   const programForm = document.getElementById('program-form');
   const programIdField = document.getElementById('program-id');
   const programNameField = document.getElementById('program-name');
-  const programDescField = document.getElementById('program-description');
-  const programPhotoField = document.getElementById('program-photo');
-  const programPhotoPreview = document.getElementById('program-photo-preview');
+  const PF = {
+    summary: document.getElementById('program-summary'), target: document.getElementById('program-target'),
+    content: document.getElementById('program-content'), method: document.getElementById('program-method'),
+    note: document.getElementById('program-note'), extraLabel: document.getElementById('program-extra-label'),
+    extraText: document.getElementById('program-extra-text'),
+  };
+  const programHiddenField = document.getElementById('program-hidden');
+  // 프로그램 상세 내용은 programs.description 칸에 JSON 으로 저장합니다 (홈페이지 programs.html 이 읽음)
+  function parseProgramDesc(str) {
+    try { const j = JSON.parse(str); if (j && typeof j === 'object' && j.v) return j; } catch (e) {}
+    return { v: 1, summary: str || '' };
+  }
   const programSortField = document.getElementById('program-sort');
   const programFormTitle = document.getElementById('program-form-title');
   const programFormError = document.getElementById('program-form-error');
@@ -727,21 +791,21 @@
       programList.innerHTML = `<p class="text-sm text-dolhoe py-4">아직 등록된 프로그램이 없습니다. 위에서 새로 추가해보세요.</p>`;
       return;
     }
-    programList.innerHTML = programs.map(p => `
-      <div class="py-3 flex items-center justify-between gap-4">
-        <div class="min-w-0 flex items-center gap-3">
-          ${p.photo_url ? `<img src="${esc(p.photo_url)}" class="w-12 h-12 rounded-lg object-cover shrink-0">` : ''}
-          <div class="min-w-0">
-            <p class="text-sm font-semibold truncate">${esc(p.name)}</p>
-            <p class="text-xs text-dolhoe truncate">${esc((p.description || '').slice(0, 40))}</p>
-          </div>
+    programList.innerHTML = programs.map(p => {
+      const j = parseProgramDesc(p.description);
+      return `
+      <div class="py-3 flex items-center justify-between gap-4 ${j.hidden ? 'opacity-50' : ''}">
+        <div class="min-w-0">
+          <p class="text-sm font-semibold truncate"><span class="text-dolhoe font-bold mr-1.5">${p.sort_order || 0}</span>${esc(p.name)} ${j.hidden ? '<span class="text-[11px] font-bold text-white bg-dolhoe rounded px-1.5 py-0.5 ml-1">숨김</span>' : ''}</p>
+          <p class="text-xs text-dolhoe truncate">${esc((j.summary || '').slice(0, 50))}</p>
         </div>
         <div class="flex items-center gap-2 shrink-0">
           <button type="button" class="btn-ghost btn-sm" onclick="editProgram('${p.id}')">수정</button>
+          <button type="button" class="btn-ghost btn-sm" onclick="toggleProgramHidden('${p.id}')">${j.hidden ? '보이기' : '숨기기'}</button>
           <button type="button" class="btn-ghost btn-sm" onclick="deleteProgram('${p.id}')">삭제</button>
         </div>
-      </div>
-    `).join('');
+      </div>`;
+    }).join('');
     window.__programs = {};
     programs.forEach(p => window.__programs[p.id] = p);
   }
@@ -749,9 +813,8 @@
   function resetProgramForm() {
     programIdField.value = '';
     programNameField.value = '';
-    programDescField.value = '';
-    programPhotoField.value = '';
-    programPhotoPreview.innerHTML = '';
+    Object.values(PF).forEach(el => el.value = '');
+    programHiddenField.checked = false;
     programSortField.value = '0';
     programFormTitle.textContent = '새 프로그램 추가';
     programFormCancel.classList.add('hidden');
@@ -765,9 +828,9 @@
     if (!p) return;
     programIdField.value = p.id;
     programNameField.value = p.name || '';
-    programDescField.value = p.description || '';
-    programPhotoField.value = '';
-    programPhotoPreview.innerHTML = p.photo_url ? `<img src="${esc(p.photo_url)}" class="mt-1 h-20 rounded-lg object-cover">` : '';
+    const j = parseProgramDesc(p.description);
+    Object.entries(PF).forEach(([k, el]) => el.value = j[k] || '');
+    programHiddenField.checked = !!j.hidden;
     programSortField.value = p.sort_order || 0;
     programFormTitle.textContent = '프로그램 수정';
     programFormCancel.classList.remove('hidden');
@@ -780,10 +843,22 @@
 
   programFormCancel.addEventListener('click', resetProgramForm);
 
+  window.toggleProgramHidden = async function(id) {
+    const p = window.__programs[id];
+    if (!p) return;
+    const j = parseProgramDesc(p.description);
+    j.hidden = !j.hidden;
+    const { error } = await db.from('programs').update({ description: JSON.stringify(j) }).eq('id', id);
+    if (error) { alert('바꾸지 못했습니다: ' + error.message); return; }
+    loadPrograms();
+  };
+
   window.deleteProgram = async function(id) {
     const p = window.__programs[id];
     if (!p) return;
-    if (!window.confirm(`"${p.name}" 프로그램을 삭제할까요? 연혁·갤러리 사진도 함께 삭제되며 되돌릴 수 없습니다.`)) return;
+    if (!window.confirm(`"${p.name}" 프로그램을 완전히 삭제할까요?\n사진과 연혁도 함께 삭제되며 되돌릴 수 없습니다.\n(잠시 안 보이게 하려면 '숨기기'를 사용하세요.)`)) return;
+    await db.from('program_timeline').delete().eq('program_id', id);
+    await db.from('program_photos').delete().eq('program_id', id);
     const { error } = await db.from('programs').delete().eq('id', id);
     if (error) { alert('삭제하지 못했습니다: ' + error.message); return; }
     if (programIdField.value === id) resetProgramForm();
@@ -800,21 +875,15 @@
     programFormSubmit.textContent = '저장 중...';
     programFormStatus.textContent = '';
     try {
-      let photoUrl = null;
       const existingId = programIdField.value;
-      if (existingId && window.__programs[existingId]) {
-        photoUrl = window.__programs[existingId].photo_url || null;
-      }
-      const file = programPhotoField.files[0];
-      if (file) {
-        programFormStatus.textContent = '사진 업로드 중...';
-        photoUrl = await uploadPhoto(file, 'Programs');
-      }
+      const prev = existingId && window.__programs[existingId] ? parseProgramDesc(window.__programs[existingId].description) : { v: 1 };
+      const j = { ...prev, v: 1 };
+      Object.entries(PF).forEach(([k, el]) => j[k] = el.value.trim());
+      j.hidden = programHiddenField.checked;
       const row = {
         business_id: bizSelect.value,
         name: name,
-        description: programDescField.value,
-        photo_url: photoUrl,
+        description: JSON.stringify(j),
         sort_order: parseInt(programSortField.value, 10) || 0,
       };
       programFormStatus.textContent = '저장 중...';
@@ -840,11 +909,6 @@
     }
   });
 
-  programPhotoField.addEventListener('change', () => {
-    const file = programPhotoField.files[0];
-    if (!file) { programPhotoPreview.innerHTML = ''; return; }
-    programPhotoPreview.innerHTML = `<img src="${URL.createObjectURL(file)}" class="mt-1 h-20 rounded-lg object-cover">`;
-  });
 
   // ---- 연혁 · 성과 ----
   const timelineList = document.getElementById('timeline-list');
@@ -1199,20 +1263,126 @@
     return { load };
   }
 
-  const welfareSection = setupInfoSection('welfare', {
-    form: 'welfare-form', id: 'welfare-id', title: 'welfare-title', content: 'welfare-content',
-    sort: 'welfare-sort', error: 'welfare-form-error', submit: 'welfare-form-submit',
-    cancel: 'welfare-form-cancel', list: 'welfare-item-list',
-  });
   const archiveSection = setupInfoSection('archive', {
     form: 'archive-form', id: 'archive-id', title: 'archive-title', content: 'archive-content',
     sort: 'archive-sort', file: 'archive-file', error: 'archive-form-error', submit: 'archive-form-submit',
     cancel: 'archive-form-cancel', list: 'archive-item-list',
   });
   function loadInfoItems(category) {
-    if (category === 'welfare') welfareSection.load();
-    else archiveSection.load();
+    archiveSection.load();
   }
+
+
+  /* ================================================================ */
+  /* 사업안내: 4대 사업 소개 문구 (site_settings: biz_desc_사업id)          */
+  /* ================================================================ */
+  const BIZ_IDS = ['independence', 'family', 'parent', 'community'];
+  async function loadBizDesc() {
+    const { data } = await db.from('site_settings').select('*').like('key', 'biz_desc_%');
+    const map = {};
+    (data || []).forEach(r => map[r.key] = r.value);
+    BIZ_IDS.forEach(id => document.getElementById('bizdesc-' + id).value = map['biz_desc_' + id] || '');
+  }
+  document.getElementById('bizdesc-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const st = document.getElementById('bizdesc-status');
+    st.textContent = '저장 중...';
+    const rows = BIZ_IDS.map(id => ({ key: 'biz_desc_' + id, value: document.getElementById('bizdesc-' + id).value.trim() }));
+    const { error } = await db.from('site_settings').upsert(rows, { onConflict: 'key' });
+    st.textContent = error ? '저장하지 못했습니다: ' + error.message : '저장되었습니다.';
+  });
+
+  /* ================================================================ */
+  /* 알림마당: 느린이웃 일정 (site_settings: schedule_events, JSON 목록)      */
+  /* ================================================================ */
+  const SCHED_CAT = { sports: '슐런', choir: '합창', kids: '당사자·방학', parent: '부모', family: '가족', community: '지역·연대', ops: '운영', holiday: '휴일' };
+  let schedEvents = [];
+  const schedForm = document.getElementById('sched-form');
+  const schedIndex = document.getElementById('sched-index');
+  const schedDate = document.getElementById('sched-date');
+  const schedTitle = document.getElementById('sched-title');
+  const schedCat = document.getElementById('sched-cat');
+  const schedSubmit = document.getElementById('sched-submit');
+  const schedCancel = document.getElementById('sched-cancel');
+  const schedError = document.getElementById('sched-error');
+  const schedMonth = document.getElementById('sched-month');
+  const schedList = document.getElementById('sched-list');
+
+  async function fetchSchedule() {
+    const { data, error } = await db.from('site_settings').select('value').eq('key', 'schedule_events').maybeSingle();
+    if (error) throw error;
+    try { const list = JSON.parse((data && data.value) || '[]'); return Array.isArray(list) ? list : []; } catch (e) { return []; }
+  }
+  async function saveSchedule(list) {
+    list.sort((a, b) => a.d.localeCompare(b.d));
+    const { error } = await db.from('site_settings').upsert([{ key: 'schedule_events', value: JSON.stringify(list) }], { onConflict: 'key' });
+    if (error) throw error;
+    schedEvents = list;
+  }
+  async function loadSchedule() {
+    try { schedEvents = await fetchSchedule(); } catch (e) { schedList.innerHTML = `<p class="text-sm text-ongi py-3">${esc(e.message)}</p>`; return; }
+    renderSchedule();
+  }
+  function renderSchedule() {
+    const months = [...new Set(schedEvents.map(e => e.d.slice(0, 7)))].sort().reverse();
+    const cur = schedMonth.value;
+    const thisKey = todayStr().slice(0, 7);
+    schedMonth.innerHTML = months.map(m => `<option value="${m}">${m.replace('-', '년 ')}월</option>`).join('');
+    schedMonth.value = months.includes(cur) ? cur : (months.includes(thisKey) ? thisKey : (months[0] || ''));
+    const list = schedEvents.map((e, i) => ({ ...e, i })).filter(e => e.d.slice(0, 7) === schedMonth.value);
+    schedList.innerHTML = list.length ? list.map(e => `
+      <div class="py-2.5 flex items-center justify-between gap-3 text-sm">
+        <div class="flex items-center gap-3 min-w-0">
+          <span class="text-naran font-bold shrink-0 w-20">${esc(e.d.slice(5).replace('-', '.'))}</span>
+          <span class="text-[11px] font-bold text-dolhoe bg-black/5 rounded px-1.5 py-0.5 shrink-0">${SCHED_CAT[e.c] || e.c}</span>
+          <span class="truncate">${esc(e.t)}</span>
+        </div>
+        <div class="flex gap-2 shrink-0">
+          <button type="button" class="btn-ghost btn-sm" onclick="editSchedule(${e.i})">수정</button>
+          <button type="button" class="btn-ghost btn-sm" onclick="deleteSchedule(${e.i})">삭제</button>
+        </div>
+      </div>`).join('') : '<p class="text-sm text-dolhoe py-3">이 달에 등록된 일정이 없습니다.</p>';
+  }
+  schedMonth.addEventListener('change', renderSchedule);
+  function resetSchedForm() {
+    schedIndex.value = ''; schedTitle.value = ''; schedSubmit.textContent = '추가'; schedCancel.classList.add('hidden'); hideError(schedError);
+  }
+  schedCancel.addEventListener('click', resetSchedForm);
+  window.editSchedule = function(i) {
+    const e = schedEvents[i]; if (!e) return;
+    schedIndex.value = i; schedDate.value = e.d; schedTitle.value = e.t; schedCat.value = e.c;
+    schedSubmit.textContent = '수정 저장'; schedCancel.classList.remove('hidden');
+  };
+  window.deleteSchedule = async function(i) {
+    const e = schedEvents[i]; if (!e) return;
+    if (!window.confirm(`${e.d} "${e.t}" 일정을 삭제할까요?`)) return;
+    try {
+      const list = await fetchSchedule();
+      const k = list.findIndex(x => x.d === e.d && x.t === e.t && x.c === e.c);
+      if (k >= 0) list.splice(k, 1);
+      await saveSchedule(list); renderSchedule();
+    } catch (err) { alert('삭제하지 못했습니다: ' + (err.message || err)); }
+  };
+  schedForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideError(schedError);
+    const item = { d: schedDate.value, t: schedTitle.value.trim(), c: schedCat.value };
+    if (!item.d || !item.t) { showError(schedError, '날짜와 내용을 입력해주세요.'); return; }
+    schedSubmit.disabled = true;
+    try {
+      const list = await fetchSchedule();   // 다른 운영진이 그사이 넣은 일정도 지키기 위해 최신 목록을 다시 읽어요
+      if (schedIndex.value !== '') {
+        const old = schedEvents[+schedIndex.value];
+        const k = old ? list.findIndex(x => x.d === old.d && x.t === old.t && x.c === old.c) : -1;
+        if (k >= 0) list[k] = item; else list.push(item);
+      } else list.push(item);
+      await saveSchedule(list);
+      schedMonth.value = item.d.slice(0, 7);
+      resetSchedForm();
+      renderSchedule();
+    } catch (err) { showError(schedError, '저장하지 못했습니다: ' + (err.message || err)); }
+    finally { schedSubmit.disabled = false; }
+  });
 
   refreshView();
   db.auth.onAuthStateChange(() => refreshView());

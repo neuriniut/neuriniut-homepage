@@ -64,6 +64,8 @@
   .nav-item:hover .nav-drop, .nav-item:focus-within .nav-drop { opacity: 1; visibility: visible; transform: translateY(0); }
 
   /* 알림마당 본문 서식(굵기/색/표/이미지) */
+  .rich-content { overflow-wrap: anywhere; word-break: keep-all; }
+  .rich-content table { display: block; overflow-x: auto; }
   .rich-content p { margin-bottom: 0.85em; }
   .rich-content img { max-width: 100%; height: auto; border-radius: 10px; margin: 0.75em 0; }
   .rich-content table { border-collapse: collapse; width: 100%; margin: 0.85em 0; font-size: 0.9em; }
@@ -369,7 +371,7 @@
       </div>
       <div>
         <p class="text-white/50 font-bold text-xs mb-3">연락처</p>
-        <p class="leading-relaxed">slowfamily@naver.com<br>네이버 카페 운영 중</p>
+        <p class="leading-relaxed">slowfamily@naver.com<br><a href="https://cafe.naver.com/togetherwegrow" target="_blank" rel="noopener" data-native class="underline hover:text-white">네이버 카페 바로가기 ↗</a></p>
       </div>
       <div>
         <p class="text-white/50 font-bold text-xs mb-3">바로가기</p>
@@ -428,16 +430,16 @@
     } catch (e) { /* post_photos 테이블이 아직 없어도 나머지는 정상 표시 */ }
 
     if (galleryPhotos.length > 1) {
-      photoEl.innerHTML = `<div class="relative aspect-[16/9] rounded-xl overflow-hidden">
+      photoEl.innerHTML = `<div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-[#F2F1EF]">
         <div class="flex gap-0 overflow-x-auto snap-x snap-mandatory h-full w-full">
-          ${galleryPhotos.map(ph => `<img src="${ph.photo_url}" class="snap-center shrink-0 w-full h-full object-cover">`).join('')}
+          ${galleryPhotos.map(ph => `<img src="${ph.photo_url}" class="snap-center shrink-0 w-full h-full object-contain">`).join('')}
         </div>
         <span class="absolute bottom-2 right-2 text-[11px] font-bold px-2 py-1 rounded bg-black/50 text-white">1/${galleryPhotos.length} · 넘겨보기</span>
       </div>`;
     } else if (galleryPhotos.length === 1) {
-      photoEl.innerHTML = `<img src="${galleryPhotos[0].photo_url}" class="w-full rounded-xl aspect-[16/9] object-cover">`;
+      photoEl.innerHTML = `<img src="${galleryPhotos[0].photo_url}" class="w-full h-auto rounded-xl">`;
     } else if (post.photo_url) {
-      photoEl.innerHTML = `<img src="${post.photo_url}" class="w-full rounded-xl aspect-[16/9] object-cover">`;
+      photoEl.innerHTML = `<img src="${post.photo_url}" class="w-full h-auto rounded-xl">`;
     }
 
     document.getElementById('top').classList.add('hidden');
@@ -533,7 +535,7 @@ const menuBtn = document.getElementById('menuBtn');
     document.querySelectorAll('[data-lnb-link]').forEach(link => link.classList.toggle('is-current', link.dataset.lnbLink === current));
   }
   ny_subnav(() => { checkPostHash(); showBoardView(); });
-  // 느린이웃 일정: 달력 (새 달을 추가하려면 CAL_EVENTS 에 'YYYY-MM': [[날짜, '내용', '분류'], ...] 를 넣으세요)
+  // 느린이웃 일정: 관리자 페이지(알림마당 탭 → 느린이웃 일정)에서 입력한 일정을 달력으로 보여줍니다.
   const CAL_TYPES = {
     sports:    ['슐런', '#2E7D52', '#EEF7F1'],
     choir:     ['합창', '#12456B', '#EDF3F8'],
@@ -544,12 +546,23 @@ const menuBtn = document.getElementById('menuBtn');
     ops:       ['운영', '#6E6A63', '#F2F1EF'],
     holiday:   ['공휴일', '#DC2626', '#FFFFFF'],
   };
-  const CAL_EVENTS = {"2026-07": [[1, "합창 동아리", "choir"], [2, "초등 고학년(나나) 엄마 소모임", "parent"], [4, "슐런 동아리", "sports"], [7, "7월 운영진 회의", "ops"], [8, "합창 동아리", "choir"], [9, "중등(유니콘) 엄마 소모임", "parent"], [11, "슐런 동아리", "sports"], [12, "어울림 수영대회 출전", "kids"], [15, "합창 동아리", "choir"], [16, "고등(나혼잘산) 엄마 소모임", "parent"], [17, "제헌절", "holiday"], [19, "아빠와 함께하는 볼링 day", "family"], [19, "비장애 형제자매 모임", "family"], [22, "합창 동아리", "choir"], [23, "초등 저학년(도토리) 엄마 소모임", "parent"], [24, "초등 저학년(도토리) 엄마 소모임", "parent"], [25, "슐런 동아리", "sports"], [28, "[방학] 유리드믹스", "kids"], [29, "[방학] 미술", "kids"]], "2026-08": [[3, "점핑파크", "kids"], [4, "8월 운영진 회의", "ops"], [5, "합창 동아리", "choir"], [5, "고양시장애인복지관 슐런 지원", "community"], [6, "성교육 '온마을배움터'", "kids"], [6, "미술 수업", "kids"], [7, "유리드믹스 수업", "kids"], [8, "슐런 동아리", "sports"], [11, "유리드믹스 수업", "kids"], [12, "합창 동아리", "choir"], [13, "성교육 '온마을배움터'", "kids"], [13, "미술 수업", "kids"], [13, "장애인 인식개선 슐런활동 (강선지역아동센터)", "community"], [15, "광복절", "holiday"], [15, "하계 워크숍 · 물놀이", "family"], [17, "대체공휴일", "holiday"], [18, "성교육 '온마을배움터'", "kids"], [19, "합창 동아리", "choir"], [20, "팝업북지도사 수업", "kids"], [21, "코리아오픈 슐런 선수권대회", "sports"], [22, "슐런 동아리", "sports"], [25, "팝업북지도사 수업", "kids"], [26, "합창 동아리", "choir"], [27, "팝업북지도사 수업", "kids"], [29, "슐런 동아리", "sports"]], "2026-09": [[1, "(소리마을) 발달장애인 음악축제 참여", "choir"], [2, "소리마을 정기연습", "choir"], [3, "(슐런픽) 화성 어울림 슐런대회", "sports"], [4, "브랜딩 기획회의", "ops"], [5, "슐런픽 정기연습", "sports"], [5, "중앙대 디자인캠프", "kids"], [6, "소리마을 정기연습", "choir"], [7, "마을공동체 활동가교육", "community"], [9, "소리마을 정기연습", "choir"], [9, "9월 운영진 회의", "ops"], [10, "(소리마을) 일산병원 힐링콘서트", "choir"], [10, "마을공동체 활동가교육", "community"], [12, "ROTC 어울림 슐런대회", "sports"], [12, "중앙대 디자인캠프", "kids"], [13, "문화체험 프로그램 참여", "kids"], [14, "마을공동체 활동가교육", "community"], [17, "마을공동체 활동가교육", "community"], [19, "주엽1동 마을축제 장애인 인식개선 활동", "community"], [19, "(슐런픽) 서울시장애인 슐런대회", "sports"], [19, "중앙대 디자인캠프", "kids"], [22, "집단동료상담 (핸드크림 만들기)", "parent"], [24, "추석 연휴", "holiday"], [25, "추석", "holiday"], [26, "추석 연휴", "holiday"]], "2026-10": [[1, "제13회 피플퍼스트 축하공연", "choir"], [3, "개천절", "holiday"], [5, "대체공휴일", "holiday"], [7, "마을공동체 우수사례지 탐방", "community"], [7, "소리마을 정기연습", "choir"], [8, "나눔나무 정기공연 참여", "choir"], [9, "한글날", "holiday"], [9, "슈퍼블루 마라톤", "family"], [10, "슐런픽 정기연습", "sports"], [14, "10월 운영진 회의", "ops"], [14, "소리마을 정기연습", "choir"], [15, "회원 대상 가죽공예 재능기부", "parent"], [17, "슐런픽 정기연습", "sports"], [21, "마을공동체 성과공유회 (꽃꽂이)", "community"], [21, "소리마을 정기연습", "choir"], [24, "슐런픽 정기연습", "sports"], [28, "소리마을 정기연습", "choir"], [31, "제1회 느린이웃 통합예술제 (한양문고 데미안홀)", "community"]]};
-  (function setupCalendar() {
-    const months = Object.keys(CAL_EVENTS).sort();
+  const CAL_HOLIDAYS = [{"d": "2026-07-17", "t": "제헌절", "c": "holiday"}, {"d": "2026-08-15", "t": "광복절", "c": "holiday"}, {"d": "2026-08-17", "t": "대체공휴일", "c": "holiday"}, {"d": "2026-09-24", "t": "추석 연휴", "c": "holiday"}, {"d": "2026-09-25", "t": "추석", "c": "holiday"}, {"d": "2026-09-26", "t": "추석 연휴", "c": "holiday"}, {"d": "2026-10-03", "t": "개천절", "c": "holiday"}, {"d": "2026-10-05", "t": "대체공휴일", "c": "holiday"}, {"d": "2026-10-09", "t": "한글날", "c": "holiday"}, {"d": "2026-12-25", "t": "성탄절", "c": "holiday"}];
+  const CAL_DEFAULT = [{"d": "2026-07-01", "t": "합창 동아리", "c": "choir"}, {"d": "2026-07-02", "t": "초등 고학년(나나) 엄마 소모임", "c": "parent"}, {"d": "2026-07-04", "t": "슐런 동아리", "c": "sports"}, {"d": "2026-07-07", "t": "7월 운영진 회의", "c": "ops"}, {"d": "2026-07-08", "t": "합창 동아리", "c": "choir"}, {"d": "2026-07-09", "t": "중등(유니콘) 엄마 소모임", "c": "parent"}, {"d": "2026-07-11", "t": "슐런 동아리", "c": "sports"}, {"d": "2026-07-12", "t": "어울림 수영대회 출전", "c": "kids"}, {"d": "2026-07-15", "t": "합창 동아리", "c": "choir"}, {"d": "2026-07-16", "t": "고등(나혼잘산) 엄마 소모임", "c": "parent"}, {"d": "2026-07-19", "t": "아빠와 함께하는 볼링 day", "c": "family"}, {"d": "2026-07-19", "t": "비장애 형제자매 모임", "c": "family"}, {"d": "2026-07-22", "t": "합창 동아리", "c": "choir"}, {"d": "2026-07-23", "t": "초등 저학년(도토리) 엄마 소모임", "c": "parent"}, {"d": "2026-07-24", "t": "초등 저학년(도토리) 엄마 소모임", "c": "parent"}, {"d": "2026-07-25", "t": "슐런 동아리", "c": "sports"}, {"d": "2026-07-28", "t": "[방학] 유리드믹스", "c": "kids"}, {"d": "2026-07-29", "t": "[방학] 미술", "c": "kids"}, {"d": "2026-08-03", "t": "점핑파크", "c": "kids"}, {"d": "2026-08-04", "t": "8월 운영진 회의", "c": "ops"}, {"d": "2026-08-05", "t": "합창 동아리", "c": "choir"}, {"d": "2026-08-05", "t": "고양시장애인복지관 슐런 지원", "c": "community"}, {"d": "2026-08-06", "t": "성교육 '온마을배움터'", "c": "kids"}, {"d": "2026-08-06", "t": "미술 수업", "c": "kids"}, {"d": "2026-08-07", "t": "유리드믹스 수업", "c": "kids"}, {"d": "2026-08-08", "t": "슐런 동아리", "c": "sports"}, {"d": "2026-08-11", "t": "유리드믹스 수업", "c": "kids"}, {"d": "2026-08-12", "t": "합창 동아리", "c": "choir"}, {"d": "2026-08-13", "t": "성교육 '온마을배움터'", "c": "kids"}, {"d": "2026-08-13", "t": "미술 수업", "c": "kids"}, {"d": "2026-08-13", "t": "장애인 인식개선 슐런활동 (강선지역아동센터)", "c": "community"}, {"d": "2026-08-15", "t": "하계 워크숍 · 물놀이", "c": "family"}, {"d": "2026-08-18", "t": "성교육 '온마을배움터'", "c": "kids"}, {"d": "2026-08-19", "t": "합창 동아리", "c": "choir"}, {"d": "2026-08-20", "t": "팝업북지도사 수업", "c": "kids"}, {"d": "2026-08-21", "t": "코리아오픈 슐런 선수권대회", "c": "sports"}, {"d": "2026-08-22", "t": "슐런 동아리", "c": "sports"}, {"d": "2026-08-25", "t": "팝업북지도사 수업", "c": "kids"}, {"d": "2026-08-26", "t": "합창 동아리", "c": "choir"}, {"d": "2026-08-27", "t": "팝업북지도사 수업", "c": "kids"}, {"d": "2026-08-29", "t": "슐런 동아리", "c": "sports"}, {"d": "2026-09-01", "t": "(소리마을) 발달장애인 음악축제 참여", "c": "choir"}, {"d": "2026-09-02", "t": "소리마을 정기연습", "c": "choir"}, {"d": "2026-09-03", "t": "(슐런픽) 화성 어울림 슐런대회", "c": "sports"}, {"d": "2026-09-04", "t": "브랜딩 기획회의", "c": "ops"}, {"d": "2026-09-05", "t": "슐런픽 정기연습", "c": "sports"}, {"d": "2026-09-05", "t": "중앙대 디자인캠프", "c": "kids"}, {"d": "2026-09-06", "t": "소리마을 정기연습", "c": "choir"}, {"d": "2026-09-07", "t": "마을공동체 활동가교육", "c": "community"}, {"d": "2026-09-09", "t": "소리마을 정기연습", "c": "choir"}, {"d": "2026-09-09", "t": "9월 운영진 회의", "c": "ops"}, {"d": "2026-09-10", "t": "(소리마을) 일산병원 힐링콘서트", "c": "choir"}, {"d": "2026-09-10", "t": "마을공동체 활동가교육", "c": "community"}, {"d": "2026-09-12", "t": "ROTC 어울림 슐런대회", "c": "sports"}, {"d": "2026-09-12", "t": "중앙대 디자인캠프", "c": "kids"}, {"d": "2026-09-13", "t": "문화체험 프로그램 참여", "c": "kids"}, {"d": "2026-09-14", "t": "마을공동체 활동가교육", "c": "community"}, {"d": "2026-09-17", "t": "마을공동체 활동가교육", "c": "community"}, {"d": "2026-09-19", "t": "주엽1동 마을축제 장애인 인식개선 활동", "c": "community"}, {"d": "2026-09-19", "t": "(슐런픽) 서울시장애인 슐런대회", "c": "sports"}, {"d": "2026-09-19", "t": "중앙대 디자인캠프", "c": "kids"}, {"d": "2026-09-22", "t": "집단동료상담 (핸드크림 만들기)", "c": "parent"}, {"d": "2026-10-01", "t": "제13회 피플퍼스트 축하공연", "c": "choir"}, {"d": "2026-10-07", "t": "마을공동체 우수사례지 탐방", "c": "community"}, {"d": "2026-10-07", "t": "소리마을 정기연습", "c": "choir"}, {"d": "2026-10-08", "t": "나눔나무 정기공연 참여", "c": "choir"}, {"d": "2026-10-09", "t": "슈퍼블루 마라톤", "c": "family"}, {"d": "2026-10-10", "t": "슐런픽 정기연습", "c": "sports"}, {"d": "2026-10-14", "t": "10월 운영진 회의", "c": "ops"}, {"d": "2026-10-14", "t": "소리마을 정기연습", "c": "choir"}, {"d": "2026-10-15", "t": "회원 대상 가죽공예 재능기부", "c": "parent"}, {"d": "2026-10-17", "t": "슐런픽 정기연습", "c": "sports"}, {"d": "2026-10-21", "t": "마을공동체 성과공유회 (꽃꽂이)", "c": "community"}, {"d": "2026-10-21", "t": "소리마을 정기연습", "c": "choir"}, {"d": "2026-10-24", "t": "슐런픽 정기연습", "c": "sports"}, {"d": "2026-10-28", "t": "소리마을 정기연습", "c": "choir"}, {"d": "2026-10-31", "t": "제1회 느린이웃 통합예술제 (한양문고 데미안홀)", "c": "community"}];
+  const calendar = (function setupCalendar() {
     const now = new Date();
-    const thisKey = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
-    let idx = months.includes(thisKey) ? months.indexOf(thisKey) : months.length - 1;
+    let byMonth = {}, months = [], idx = 0;
+    function setEvents(list) {
+      byMonth = {};
+      list.concat(CAL_HOLIDAYS).forEach(e => {
+        const key = e.d.slice(0, 7), day = +e.d.slice(8, 10);
+        (byMonth[key] = byMonth[key] || []).push([day, e.t, e.c]);
+      });
+      // 일정이 있는 달만 보여주기 (공휴일만 있는 달은 제외)
+      months = Object.keys(byMonth).filter(k => byMonth[k].some(e => e[2] !== 'holiday')).sort();
+      const thisKey = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+      idx = months.includes(thisKey) ? months.indexOf(thisKey) : Math.max(0, months.filter(k => k < thisKey).length - 1);
+      render();
+    }
     document.getElementById('cal-legend').innerHTML = Object.entries(CAL_TYPES).filter(([k]) => k !== 'holiday')
       .map(([, [n, c]]) => `<span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm" style="background:${c}"></span>${n}</span>`).join('');
     function evHtml([d, t, c]) {
@@ -559,12 +572,11 @@ const menuBtn = document.getElementById('menuBtn');
         : `<span class="cal-ev" style="color:${col};background:${bg};border-color:${col}">${ny_esc(t)}</span>`;
     }
     function render() {
+      if (!months.length) { document.getElementById('cal-title').textContent = '등록된 일정 없음'; document.getElementById('cal-grid').innerHTML = ''; document.getElementById('cal-list').innerHTML = ''; return; }
       const key = months[idx];
       const [y, m] = key.split('-').map(Number);
-      const evs = CAL_EVENTS[key];
+      const evs = byMonth[key];
       document.getElementById('cal-title').textContent = `${y}년 ${m}월`;
-      document.getElementById('cal-prev').disabled = idx === 0;
-      document.getElementById('cal-next').disabled = idx === months.length - 1;
       document.getElementById('cal-prev').style.opacity = idx === 0 ? .3 : 1;
       document.getElementById('cal-next').style.opacity = idx === months.length - 1 ? .3 : 1;
       const first = new Date(y, m - 1, 1).getDay();
@@ -574,7 +586,7 @@ const menuBtn = document.getElementById('menuBtn');
       for (let i = 0; i < first; i++) cells += '<div class="min-h-[110px] border-r border-b border-black/10 bg-[#FAFAF8]"></div>';
       for (let d = 1; d <= days; d++) {
         const dow = (first + d - 1) % 7;
-        const dayEvs = evs.filter(e => e[0] === d);
+        const dayEvs = evs.filter(e => e[0] === d).sort((a, b) => (a[2] === 'holiday' ? -1 : 0) - (b[2] === 'holiday' ? -1 : 0));
         const red = dow === 0 || dayEvs.some(e => e[2] === 'holiday');
         const numCls = red ? 'text-ongi' : dow === 6 ? 'text-naran' : 'text-meok';
         cells += `<div class="min-h-[110px] border-r border-b border-black/10 p-1.5 ${d === today ? 'bg-byeot' : ''}">
@@ -594,7 +606,19 @@ const menuBtn = document.getElementById('menuBtn');
     }
     document.getElementById('cal-prev').onclick = () => { if (idx > 0) { idx--; render(); } };
     document.getElementById('cal-next').onclick = () => { if (idx < months.length - 1) { idx++; render(); } };
-    render();
+    setEvents(CAL_DEFAULT);
+    return { setEvents };
+  })();
+  (async function loadSchedule() {
+    if (typeof supabase === 'undefined') return;
+    try {
+      const db = supabase.createClient('https://mpgmvwivzedqxugfllxc.supabase.co', 'sb_publishable_B-pdQJ6sbCDrdi37JU6www_71TE8J5f');
+      const { data } = await db.from('site_settings').select('value').eq('key', 'schedule_events').maybeSingle();
+      if (data && data.value) {
+        const list = JSON.parse(data.value);
+        if (Array.isArray(list)) calendar.setEvents(list.filter(e => e && e.d && e.t));
+      }
+    } catch (e) { /* 불러오지 못하면 기본 일정이 보입니다 */ }
   })();
 
 // 알림마당 게시판: Supabase에서 불러와 검색 · 10개씩 페이지 나눔
