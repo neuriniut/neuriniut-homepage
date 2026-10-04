@@ -64,6 +64,19 @@
   .rich-content ul { list-style: disc; }
   .rich-content ol { list-style: decimal; }
 
+  /* 사이드메뉴(LNB) 현재 위치 */
+  .lnb-biz.is-current .lnb-biz-title { color: #12456B; }
+  .lnb-link.is-current { color: #12456B; font-weight: 700; }
+  .lnb-link.is-current::before { content: ''; display: inline-block; width: 4px; height: 4px; border-radius: 9999px; background: #E1682C; margin-right: 8px; vertical-align: middle; }
+
+  /* 사진 슬라이드(캐러셀) */
+  .ny-slide { position: absolute; inset: 0; opacity: 0; transition: opacity .9s ease; }
+  .ny-slide.is-active { opacity: 1; z-index: 1; }
+  .ny-slide img { width: 100%; height: 100%; object-fit: cover; }
+  .ny-carousel .ny-prev, .ny-carousel .ny-next, .ny-carousel .ny-dots { z-index: 2; }
+  .ny-dots button { width: 8px; height: 8px; border-radius: 9999px; background: rgba(255,255,255,.6); box-shadow: 0 0 0 1px rgba(0,0,0,.15); transition: all .2s; }
+  .ny-dots button.is-active { width: 22px; background: #fff; }
+
 </style>
 </head>
 <body class="bg-white text-meok antialiased">
@@ -88,10 +101,10 @@
         <div class="nav-drop absolute left-0 top-full pt-2 w-56">
           <div class="bg-white rounded-xl border border-black/10 shadow-lg py-2">
             <a href="about.html#greeting" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">인사말</a>
+            <a href="about.html#story" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">브랜드 스토리</a>
             <a href="about.html#vision" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">설립목적 · 비전</a>
             <a href="about.html#history" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">연혁</a>
             <a href="about.html#bylaws" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">정관 및 규약</a>
-            <a href="about.html#story" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">브랜드 스토리</a>
             <a href="about.html#directions" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">오시는 길</a>
           </div>
         </div>
@@ -163,10 +176,10 @@
         <p class="text-xl font-extrabold text-meok mb-3">소개</p>
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
           <a href="about.html#greeting" class="text-base text-dolhoe" data-close-menu>인사말</a>
+          <a href="about.html#story" class="text-base text-dolhoe" data-close-menu>브랜드 스토리</a>
           <a href="about.html#vision" class="text-base text-dolhoe" data-close-menu>설립목적 · 비전</a>
           <a href="about.html#history" class="text-base text-dolhoe" data-close-menu>연혁</a>
           <a href="about.html#bylaws" class="text-base text-dolhoe" data-close-menu>정관 및 규약</a>
-          <a href="about.html#story" class="text-base text-dolhoe" data-close-menu>브랜드 스토리</a>
           <a href="about.html#directions" class="text-base text-dolhoe" data-close-menu>오시는 길</a>
         </div>
       </div>
@@ -286,6 +299,70 @@
       </div>
     </div>
 
+
+    <!-- 상세 화면 공통 틀: 왼쪽 사이드메뉴(LNB) + 오른쪽 본문 -->
+    <div id="programs-detail-wrap" class="hidden lg:flex gap-12 items-start">
+      <aside class="hidden lg:block w-64 shrink-0" aria-label="사업안내 메뉴">
+        <div class="sticky top-28">
+          <div class="bg-naran text-white rounded-t-2xl px-6 py-7">
+            <p class="text-[11px] font-bold tracking-widest text-white/60 mb-1">BUSINESS</p>
+            <p class="text-xl font-extrabold">사업안내</p>
+          </div>
+          <nav class="border border-t-0 border-black/10 rounded-b-2xl overflow-hidden">
+            <div class="border-b border-black/10 last:border-b-0" data-lnb-biz="independence" data-lnb-ids="prog-sports prog-choir prog-selfhelp prog-culture biz-independence">
+              <a href="#prog-sports" class="lnb-biz block px-6 py-4 hover:bg-byeot/60">
+                <span class="block text-[11px] font-bold text-iwoot mb-0.5">사업 01</span>
+                <span class="lnb-biz-title block text-sm font-bold text-meok leading-snug">발달장애인의 사회참여 및 자립 준비 지원 사업</span>
+              </a>
+              <ul class="lnb-sub hidden bg-byeot/60 py-2 border-t border-black/5">
+                <li><a href="#prog-sports" data-lnb-link="prog-sports" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">슐런스포츠단 운영</a></li>
+                <li><a href="#prog-choir" data-lnb-link="prog-choir" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">발달장애인합창단</a></li>
+                <li><a href="#prog-selfhelp" data-lnb-link="prog-selfhelp" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">당사자 자조모임</a></li>
+                <li><a href="#prog-culture" data-lnb-link="prog-culture" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">문화여가활동</a></li>
+              </ul>
+            </div>
+            <div class="border-b border-black/10 last:border-b-0" data-lnb-biz="family" data-lnb-ids="prog-hiking prog-garden prog-fieldday prog-water prog-kimjang prog-yearend prog-siblings biz-family">
+              <a href="#biz-family" class="lnb-biz block px-6 py-4 hover:bg-byeot/60">
+                <span class="block text-[11px] font-bold text-iwoot mb-0.5">사업 02</span>
+                <span class="lnb-biz-title block text-sm font-bold text-meok leading-snug">발달장애인 가족통합 지원 사업</span>
+              </a>
+              <ul class="lnb-sub hidden bg-byeot/60 py-2 border-t border-black/5">
+                <li><a href="#prog-hiking" data-lnb-link="prog-hiking" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">정기산행</a></li>
+                <li><a href="#prog-garden" data-lnb-link="prog-garden" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">텃밭활동</a></li>
+                <li><a href="#prog-fieldday" data-lnb-link="prog-fieldday" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">운동회</a></li>
+                <li><a href="#prog-water" data-lnb-link="prog-water" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">물놀이</a></li>
+                <li><a href="#prog-kimjang" data-lnb-link="prog-kimjang" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">김장</a></li>
+                <li><a href="#prog-yearend" data-lnb-link="prog-yearend" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">송년회</a></li>
+                <li><a href="#prog-siblings" data-lnb-link="prog-siblings" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">비장애형제자매모임</a></li>
+              </ul>
+            </div>
+            <div class="border-b border-black/10 last:border-b-0" data-lnb-biz="parent" data-lnb-ids="prog-peercounsel prog-groupcounsel prog-parented prog-dadgroup biz-parent">
+              <a href="#biz-parent" class="lnb-biz block px-6 py-4 hover:bg-byeot/60">
+                <span class="block text-[11px] font-bold text-iwoot mb-0.5">사업 03</span>
+                <span class="lnb-biz-title block text-sm font-bold text-meok leading-snug">발달장애인의 부모역량 강화 사업</span>
+              </a>
+              <ul class="lnb-sub hidden bg-byeot/60 py-2 border-t border-black/5">
+                <li><a href="#prog-peercounsel" data-lnb-link="prog-peercounsel" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">동료상담</a></li>
+                <li><a href="#prog-groupcounsel" data-lnb-link="prog-groupcounsel" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">집단동료상담</a></li>
+                <li><a href="#prog-parented" data-lnb-link="prog-parented" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">부모교육</a></li>
+                <li><a href="#prog-dadgroup" data-lnb-link="prog-dadgroup" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">아빠소모임</a></li>
+              </ul>
+            </div>
+            <div class="border-b border-black/10 last:border-b-0" data-lnb-biz="community" data-lnb-ids="prog-festival prog-artfest biz-community">
+              <a href="#biz-community" class="lnb-biz block px-6 py-4 hover:bg-byeot/60">
+                <span class="block text-[11px] font-bold text-iwoot mb-0.5">사업 04</span>
+                <span class="lnb-biz-title block text-sm font-bold text-meok leading-snug">지역사회 연대사업</span>
+              </a>
+              <ul class="lnb-sub hidden bg-byeot/60 py-2 border-t border-black/5">
+                <li><a href="#prog-festival" data-lnb-link="prog-festival" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">마을축제참여</a></li>
+                <li><a href="#prog-artfest" data-lnb-link="prog-artfest" class="lnb-link block pl-7 pr-5 py-2 text-[13px] text-dolhoe hover:text-naran">통합예술제</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </aside>
+      <div class="flex-1 min-w-0">
+
     <!-- 상세 화면 01: 사회참여 및 자립 준비 지원 -->
     <div id="biz-independence" class="programs-detail hidden">
       <a href="#programs" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-6"><span aria-hidden="true">←</span> 사업안내 목록으로</a>
@@ -386,57 +463,20 @@
 
     <!-- 상세 화면 01-1: 슐런스포츠단 운영 -->
     <div id="prog-sports" class="programs-detail hidden">
-      <a href="#biz-independence" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-4"><span aria-hidden="true">←</span> 발달장애인의 사회참여 및 자립 준비 지원 사업으로</a>
-      <nav class="text-xs text-dolhoe mb-8" aria-label="현재 위치">
-        <a href="#programs" class="hover:text-naran">사업안내</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <a href="#biz-independence" class="hover:text-naran">발달장애인의 사회참여 및 자립 준비 지원 사업</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <span class="relative inline-block">
-          <button type="button" class="inline-flex items-center gap-1 text-meok font-bold hover:text-naran" aria-haspopup="true" aria-expanded="false" data-prog-switch-btn>
-            슐런스포츠단 운영
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="hidden absolute left-0 top-full mt-2 w-56 bg-white rounded-xl border border-black/10 shadow-lg py-2 z-20" data-prog-switch-menu>
-            <a href="#prog-sports" class="block px-4 py-2 text-sm font-bold text-naran">슐런스포츠단 운영</a>
-            <a href="#prog-choir" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">발달장애인합창단</a>
-            <a href="#prog-selfhelp" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">당사자 자조모임</a>
-            <a href="#prog-culture" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">문화여가활동</a>
-          </div>
-        </span>
-      </nav>
-
-      <p class="text-iwoot font-bold text-sm mb-2">사업 01 · 발달장애인의 사회참여 및 자립 준비 지원 사업</p>
-      <p class="text-dolhoe leading-relaxed max-w-xl mb-8">당사자가 자신의 방식대로 지역사회에 참여하고, 스스로 할 수 있는 것을 하나씩 넓혀가도록 돕습니다.</p>
-
-      <div class="bg-byeot rounded-t-2xl px-6 sm:px-10 py-8 flex items-center">
-        <div class="flex-1 flex flex-col items-center gap-2.5 text-center">
-          <div class="w-11 h-11 rounded-full bg-white flex items-center justify-center">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-          </div>
-          <p class="text-lg sm:text-xl font-extrabold text-meok">2025년 8월</p>
-          <p class="text-xs text-dolhoe">슐런스포츠단 결성</p>
-        </div>
-        <div class="w-px h-16 bg-black/10 shrink-0"></div>
-        <div class="flex-1 flex flex-col items-center gap-2.5 text-center">
-          <div class="w-11 h-11 rounded-full bg-white flex items-center justify-center">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="15" r="6"></circle><path d="M9 10 6 2M15 10l3-8"></path></svg>
-          </div>
-          <p class="text-lg sm:text-xl font-extrabold text-meok">대회 입상 3회</p>
-          <p class="text-xs text-dolhoe">2025~2026 누적</p>
-        </div>
-      </div>
-      <div class="bg-iwoot text-white text-center text-sm font-bold py-2.5 rounded-b-2xl mb-14">슐런스포츠단</div>
-
-      <h3 class="text-2xl md:text-3xl font-extrabold text-meok mb-8">느린이웃이 하고 있습니다</h3>
-
+      <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8">느린이웃과 함께 채워가는 발걸음</h2>
       <div class="max-w-2xl mb-6">
         <p class="text-lg font-extrabold text-naran mb-1.5">슐런스포츠단 운영</p>
         <p class="text-sm text-dolhoe leading-relaxed">정기 훈련과 대회 출전으로 이어지는 슐런스포츠단의 활동을 소개합니다.</p>
       </div>
-
-      <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
-        <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 슐런스포츠단 훈련 또는 대회 출전 장면</span>
+      <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-key="슐런" aria-roledescription="carousel" aria-label="슐런스포츠단 운영 사진">
+        <div class="ny-slides absolute inset-0">
+          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 슐런스포츠단 운영 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 슐런스포츠단 운영 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 슐런스포츠단 운영 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+        </div>
+        <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+        <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+        <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
       </div>
       <table class="w-full text-sm border-t border-black/10 mb-10">
         <tbody>
@@ -471,32 +511,21 @@
 
     <!-- 상세 화면 01-2: 발달장애인합창단 -->
     <div id="prog-choir" class="programs-detail hidden">
-      <a href="#biz-independence" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-4"><span aria-hidden="true">←</span> 발달장애인의 사회참여 및 자립 준비 지원 사업으로</a>
-      <nav class="text-xs text-dolhoe mb-6" aria-label="현재 위치">
-        <a href="#programs" class="hover:text-naran">사업안내</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <a href="#biz-independence" class="hover:text-naran">발달장애인의 사회참여 및 자립 준비 지원 사업</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <span class="relative inline-block">
-          <button type="button" class="inline-flex items-center gap-1 text-meok font-bold hover:text-naran" aria-haspopup="true" aria-expanded="false" data-prog-switch-btn>
-            발달장애인합창단
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="hidden absolute left-0 top-full mt-2 w-56 bg-white rounded-xl border border-black/10 shadow-lg py-2 z-20" data-prog-switch-menu>
-            <a href="#prog-sports" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">슐런스포츠단 운영</a>
-            <a href="#prog-choir" class="block px-4 py-2 text-sm font-bold text-naran">발달장애인합창단</a>
-            <a href="#prog-selfhelp" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">당사자 자조모임</a>
-            <a href="#prog-culture" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">문화여가활동</a>
-          </div>
-        </span>
-      </nav>
-      <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
-        <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 발달장애인합창단 무대 또는 연습 장면</span>
+      <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8">느린이웃과 함께 채워가는 발걸음</h2>
+      <div class="max-w-2xl mb-6">
+        <p class="text-lg font-extrabold text-naran mb-1.5">발달장애인합창단</p>
+        <p class="text-sm text-dolhoe leading-relaxed">함께 노래를 연습하고 무대에 서는 합창단의 활동을 소개합니다.</p>
       </div>
-      <header class="max-w-2xl mb-8">
-        <p class="text-iwoot font-bold text-sm mb-2">사업 01 · 세부 프로그램</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">발달장애인합창단</h2>
-      </header>
+      <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-key="합창" aria-roledescription="carousel" aria-label="발달장애인합창단 사진">
+        <div class="ny-slides absolute inset-0">
+          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 발달장애인합창단 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 발달장애인합창단 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 발달장애인합창단 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+        </div>
+        <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+        <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+        <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+      </div>
       <table class="w-full text-sm border-t border-black/10 mb-10">
         <tbody>
           <tr class="border-b border-black/10">
@@ -517,32 +546,21 @@
 
     <!-- 상세 화면 01-3: 당사자 자조모임 -->
     <div id="prog-selfhelp" class="programs-detail hidden">
-      <a href="#biz-independence" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-4"><span aria-hidden="true">←</span> 발달장애인의 사회참여 및 자립 준비 지원 사업으로</a>
-      <nav class="text-xs text-dolhoe mb-6" aria-label="현재 위치">
-        <a href="#programs" class="hover:text-naran">사업안내</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <a href="#biz-independence" class="hover:text-naran">발달장애인의 사회참여 및 자립 준비 지원 사업</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <span class="relative inline-block">
-          <button type="button" class="inline-flex items-center gap-1 text-meok font-bold hover:text-naran" aria-haspopup="true" aria-expanded="false" data-prog-switch-btn>
-            당사자 자조모임
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="hidden absolute left-0 top-full mt-2 w-56 bg-white rounded-xl border border-black/10 shadow-lg py-2 z-20" data-prog-switch-menu>
-            <a href="#prog-sports" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">슐런스포츠단 운영</a>
-            <a href="#prog-choir" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">발달장애인합창단</a>
-            <a href="#prog-selfhelp" class="block px-4 py-2 text-sm font-bold text-naran">당사자 자조모임</a>
-            <a href="#prog-culture" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">문화여가활동</a>
-          </div>
-        </span>
-      </nav>
-      <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
-        <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 당사자 자조모임 장면</span>
+      <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8">느린이웃과 함께 채워가는 발걸음</h2>
+      <div class="max-w-2xl mb-6">
+        <p class="text-lg font-extrabold text-naran mb-1.5">당사자 자조모임</p>
+        <p class="text-sm text-dolhoe leading-relaxed">당사자들이 모여 서로의 경험과 생각을 나누는 자조모임을 소개합니다.</p>
       </div>
-      <header class="max-w-2xl mb-8">
-        <p class="text-iwoot font-bold text-sm mb-2">사업 01 · 세부 프로그램</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">당사자 자조모임</h2>
-      </header>
+      <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-key="자조" aria-roledescription="carousel" aria-label="당사자 자조모임 사진">
+        <div class="ny-slides absolute inset-0">
+          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 당사자 자조모임 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 당사자 자조모임 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 당사자 자조모임 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+        </div>
+        <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+        <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+        <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+      </div>
       <table class="w-full text-sm border-t border-black/10 mb-10">
         <tbody>
           <tr class="border-b border-black/10">
@@ -563,32 +581,21 @@
 
     <!-- 상세 화면 01-4: 문화여가활동 -->
     <div id="prog-culture" class="programs-detail hidden">
-      <a href="#biz-independence" class="inline-flex items-center gap-1 text-sm font-bold text-dolhoe hover:text-naran mb-4"><span aria-hidden="true">←</span> 발달장애인의 사회참여 및 자립 준비 지원 사업으로</a>
-      <nav class="text-xs text-dolhoe mb-6" aria-label="현재 위치">
-        <a href="#programs" class="hover:text-naran">사업안내</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <a href="#biz-independence" class="hover:text-naran">발달장애인의 사회참여 및 자립 준비 지원 사업</a>
-        <span class="mx-1.5" aria-hidden="true">›</span>
-        <span class="relative inline-block">
-          <button type="button" class="inline-flex items-center gap-1 text-meok font-bold hover:text-naran" aria-haspopup="true" aria-expanded="false" data-prog-switch-btn>
-            문화여가활동
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="hidden absolute left-0 top-full mt-2 w-56 bg-white rounded-xl border border-black/10 shadow-lg py-2 z-20" data-prog-switch-menu>
-            <a href="#prog-sports" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">슐런스포츠단 운영</a>
-            <a href="#prog-choir" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">발달장애인합창단</a>
-            <a href="#prog-selfhelp" class="block px-4 py-2 text-sm text-meok hover:bg-byeot hover:text-naran">당사자 자조모임</a>
-            <a href="#prog-culture" class="block px-4 py-2 text-sm font-bold text-naran">문화여가활동</a>
-          </div>
-        </span>
-      </nav>
-      <div class="photo-guide aspect-[16/9] md:aspect-[21/9] rounded-2xl flex items-end p-4 mb-8">
-        <span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 가이드 — 문화여가활동 장면</span>
+      <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-8">느린이웃과 함께 채워가는 발걸음</h2>
+      <div class="max-w-2xl mb-6">
+        <p class="text-lg font-extrabold text-naran mb-1.5">문화여가활동</p>
+        <p class="text-sm text-dolhoe leading-relaxed">계절과 시기에 맞춰 함께하는 문화 · 여가 활동을 소개합니다.</p>
       </div>
-      <header class="max-w-2xl mb-8">
-        <p class="text-iwoot font-bold text-sm mb-2">사업 01 · 세부 프로그램</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">문화여가활동</h2>
-      </header>
+      <div class="ny-carousel relative rounded-2xl overflow-hidden aspect-[16/9] bg-[#E9E7E2] mb-8" data-carousel-key="문화" aria-roledescription="carousel" aria-label="문화여가활동 사진">
+        <div class="ny-slides absolute inset-0">
+          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 1 — 문화여가활동 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 2 — 문화여가활동 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+          <div class="ny-slide photo-guide flex items-end p-4"><span class="tag inline-block text-[11px] font-bold px-2 py-1 rounded">사진 3 — 문화여가활동 활동 사진 (관리자 페이지에서 올리면 자동으로 바뀝니다)</span></div>
+        </div>
+        <button type="button" class="ny-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="이전 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+        <button type="button" class="ny-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-meok flex items-center justify-center shadow" aria-label="다음 사진"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+        <div class="ny-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+      </div>
       <table class="w-full text-sm border-t border-black/10 mb-10">
         <tbody>
           <tr class="border-b border-black/10">
@@ -1370,6 +1377,8 @@
         </tbody>
       </table>
     </div>
+      </div>
+    </div>
 
   </section>
 
@@ -1409,7 +1418,7 @@
     </div>
     <div class="pt-6 border-t border-white/10 text-xs text-white/40 leading-relaxed">
       <p class="mb-1.5">본 사이트는 KWCAG 2.2 기준의 명도 대비(목표 7:1)를 준수하며, '장애우·정상인·극복·감동·희망을 주는' 등 시혜적 표현을 사용하지 않는 느린이웃 톤앤매너 규정을 따릅니다.</p>
-      <p>© 느린이웃. 이미지 및 공지·소식 항목은 준비 중이며, [사진 가이드]와 [예시] 표시된 영역은 추후 실제 콘텐츠로 교체됩니다.</p>
+      <p class="flex flex-wrap justify-between gap-2"><span>© 느린이웃. 이미지 및 공지·소식 항목은 준비 중이며, [사진 가이드]와 [예시] 표시된 영역은 추후 실제 콘텐츠로 교체됩니다.</span><a href="admin.html" class="text-white/50 hover:text-white font-bold">관리자</a></p>
     </div>
   </div>
 </footer>
@@ -1447,29 +1456,6 @@ const menuBtn = document.getElementById('menuBtn');
     el.addEventListener('click', closeMobileMenu);
   });
 
-// 프로그램 전환 드롭다운 (브레드크럼의 현재 프로그램명을 눌러 같은 사업의 다른 프로그램으로 이동)
-  document.querySelectorAll('[data-prog-switch-btn]').forEach(btn => {
-    const menu = btn.nextElementSibling;
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = btn.getAttribute('aria-expanded') === 'true';
-      document.querySelectorAll('[data-prog-switch-btn]').forEach(b => {
-        b.setAttribute('aria-expanded', 'false');
-        b.nextElementSibling.classList.add('hidden');
-      });
-      if (!isOpen) {
-        btn.setAttribute('aria-expanded', 'true');
-        menu.classList.remove('hidden');
-      }
-    });
-  });
-  document.addEventListener('click', () => {
-    document.querySelectorAll('[data-prog-switch-btn]').forEach(b => {
-      b.setAttribute('aria-expanded', 'false');
-      b.nextElementSibling.classList.add('hidden');
-    });
-  });
-
 // 사업안내: 목록 ↔ 사업별 상세 ↔ 프로그램별 상세 화면 전환 (해시 기반)
   const bizIds = ['biz-independence', 'biz-family', 'biz-parent', 'biz-community'];
   const progIds = ['prog-sports', 'prog-choir', 'prog-selfhelp', 'prog-culture', 'prog-hiking', 'prog-garden', 'prog-fieldday', 'prog-water', 'prog-kimjang', 'prog-yearend', 'prog-siblings', 'prog-peercounsel', 'prog-groupcounsel', 'prog-parented', 'prog-dadgroup', 'prog-festival', 'prog-artfest'];
@@ -1480,14 +1466,55 @@ const menuBtn = document.getElementById('menuBtn');
     const hash = location.hash.replace('#', '');
     const isDetail = allDetailIds.includes(hash);
     programsList.classList.toggle('hidden', isDetail);
+    document.getElementById('programs-detail-wrap').classList.toggle('hidden', !isDetail);
     allDetailIds.forEach(id => {
       document.getElementById(id).classList.toggle('hidden', id !== hash);
+    });
+    // 사이드메뉴: 현재 사업은 펼치고, 현재 프로그램은 강조
+    document.querySelectorAll('[data-lnb-biz]').forEach(group => {
+      const isCurrentBiz = group.dataset.lnbIds.split(' ').includes(hash);
+      group.querySelector('.lnb-sub').classList.toggle('hidden', !isCurrentBiz);
+      group.querySelector('.lnb-biz').classList.toggle('is-current', isCurrentBiz);
+    });
+    document.querySelectorAll('[data-lnb-link]').forEach(link => {
+      link.classList.toggle('is-current', link.dataset.lnbLink === hash);
     });
     if (isDetail) window.scrollTo({ top: 0 });
   }
 
   window.addEventListener('hashchange', showProgramsView);
   showProgramsView();
+
+// 프로그램 상세: 사진 슬라이드(캐러셀) — 5초마다 부드럽게 전환, 좌우 버튼·점으로 이동
+  function setupCarousel(el) {
+    if (el._timer) clearInterval(el._timer);
+    const slides = Array.from(el.querySelectorAll('.ny-slide'));
+    const dots = el.querySelector('.ny-dots');
+    const prev = el.querySelector('.ny-prev');
+    const next = el.querySelector('.ny-next');
+    let index = 0;
+    dots.innerHTML = slides.map((_, i) => `<button type="button" aria-label="${i + 1}번째 사진"></button>`).join('');
+    const dotBtns = Array.from(dots.children);
+    function show(i) {
+      index = (i + slides.length) % slides.length;
+      slides.forEach((sl, k) => sl.classList.toggle('is-active', k === index));
+      dotBtns.forEach((d, k) => d.classList.toggle('is-active', k === index));
+    }
+    function start() {
+      if (el._timer) clearInterval(el._timer);
+      if (slides.length > 1) el._timer = setInterval(() => show(index + 1), 5000);
+    }
+    const single = slides.length <= 1;
+    [prev, next, dots].forEach(c => c.classList.toggle('hidden', single));
+    prev.onclick = () => { show(index - 1); start(); };
+    next.onclick = () => { show(index + 1); start(); };
+    dotBtns.forEach((d, k) => d.onclick = () => { show(k); start(); });
+    el.onmouseenter = () => { if (el._timer) clearInterval(el._timer); };
+    el.onmouseleave = start;
+    show(0);
+    start();
+  }
+  document.querySelectorAll('.ny-carousel').forEach(setupCarousel);
 
 // 공통 유틸
   function ny_esc(str) {
@@ -1589,10 +1616,45 @@ const menuBtn = document.getElementById('menuBtn');
       </div>`;
     }).join('');
   }
-  loadBizPrograms('independence', 'independence-programs');
   loadBizPrograms('family', 'family-programs');
   loadBizPrograms('parent', 'parent-programs');
   loadBizPrograms('community', 'community-programs');
+
+// 사업 01 프로그램 사진: 관리자 페이지(사업안내 탭 → 프로그램 → 사진 갤러리)에 올린 사진을 슬라이드에 자동 반영
+  // 프로그램 이름에 '슐런' / '합창' / '자조' / '문화'가 들어가면 해당 페이지 슬라이드와 연결됩니다.
+  (async function loadProgramSlides() {
+    if (typeof supabase === 'undefined') return;
+    try {
+      const db = supabase.createClient(
+        'https://mpgmvwivzedqxugfllxc.supabase.co',
+        'sb_publishable_B-pdQJ6sbCDrdi37JU6www_71TE8J5f'
+      );
+      const { data: programs, error } = await db
+        .from('programs')
+        .select('*')
+        .eq('business_id', 'independence')
+        .order('sort_order', { ascending: true });
+      if (error || !programs || programs.length === 0) return;
+      const { data: photoRows } = await db
+        .from('program_photos')
+        .select('*')
+        .in('program_id', programs.map(p => p.id))
+        .order('sort_order', { ascending: true });
+
+      document.querySelectorAll('.ny-carousel[data-carousel-key]').forEach(el => {
+        const key = el.dataset.carouselKey;
+        const program = programs.find(p => (p.name || '').replace(/\s/g, '').includes(key));
+        if (!program) return;
+        let urls = (photoRows || []).filter(r => r.program_id === program.id).map(r => r.photo_url);
+        if (urls.length === 0 && program.photo_url) urls = [program.photo_url];
+        if (urls.length === 0) return;
+        el.querySelector('.ny-slides').innerHTML = urls.map((u, i) =>
+          `<div class="ny-slide"><img src="${ny_esc(u)}" alt="${ny_esc(program.name)} 활동 사진 ${i + 1}" loading="${i === 0 ? 'eager' : 'lazy'}"></div>`
+        ).join('');
+        setupCarousel(el);
+      });
+    } catch (e) { /* 사진을 못 불러와도 사진 자리 슬라이드가 그대로 보여요 */ }
+  })();
 
 </script>
 </body>
