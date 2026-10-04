@@ -1479,11 +1479,14 @@ const menuBtn = document.getElementById('menuBtn');
     document.querySelectorAll('[data-lnb-link]').forEach(link => {
       link.classList.toggle('is-current', link.dataset.lnbLink === hash);
     });
-    if (isDetail) window.scrollTo({ top: 0 });
+    if (isDetail) window.scrollTo({ top: 0, behavior: 'instant' });
   }
 
   window.addEventListener('hashchange', showProgramsView);
   showProgramsView();
+
+  // 주소에 #이 붙은 채로 열 때 브라우저가 중간으로 스크롤하는 것을 막고 항상 맨 위에서 시작
+  window.addEventListener('load', () => { if (location.hash) setTimeout(() => window.scrollTo({ top: 0, behavior: 'instant' }), 0); });
 
 // 프로그램 상세: 사진 슬라이드(캐러셀) — 5초마다 부드럽게 전환, 좌우 버튼·점으로 이동
   function setupCarousel(el) {
