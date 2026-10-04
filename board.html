@@ -80,8 +80,7 @@
   .board-pager button { min-width: 36px; height: 36px; border-radius: 8px; font-size: 14px; font-weight: 700; color: #6E6A63; }
   .board-pager button.is-current { background: #12456B; color: #fff; }
 
-  .cal-month.is-past { opacity: .45; }
-  .cal-month.is-now { background: rgba(250,244,230,.7); border-radius: 12px; padding-left: 12px; padding-right: 12px; }
+  .cal-ev { display: block; font-size: 12px; line-height: 1.35; font-weight: 600; padding: 3px 6px; border-radius: 6px; border-left: 3px solid; margin-top: 4px; }
 
 </style>
 </head>
@@ -132,7 +131,7 @@
           <div class="bg-white rounded-xl border border-black/10 shadow-lg py-2">
             <a href="board.html#notices" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">공지사항</a>
             <a href="board.html#news" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">느린이웃 소식</a>
-            <a href="board.html#calendar" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">연간 일정</a>
+            <a href="board.html#calendar" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">느린이웃 일정</a>
             <a href="board.html#budget" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">예산 및 결산</a>
             <a href="board.html#archive-items" class="block px-4 py-2 text-sm hover:bg-byeot hover:text-naran">자료실</a>
           </div>
@@ -207,7 +206,7 @@
         <div class="flex flex-wrap gap-x-6 gap-y-2.5">
           <a href="board.html#notices" class="text-base text-dolhoe" data-close-menu>공지사항</a>
           <a href="board.html#news" class="text-base text-dolhoe" data-close-menu>느린이웃 소식</a>
-          <a href="board.html#calendar" class="text-base text-dolhoe" data-close-menu>연간 일정</a>
+          <a href="board.html#calendar" class="text-base text-dolhoe" data-close-menu>느린이웃 일정</a>
           <a href="board.html#budget" class="text-base text-dolhoe" data-close-menu>예산 및 결산</a>
           <a href="board.html#archive-items" class="text-base text-dolhoe" data-close-menu>자료실</a>
         </div>
@@ -239,7 +238,7 @@
           <ul>
               <li><a href="#notices" data-lnb-link="notices" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">공지사항</a></li>
               <li><a href="#news" data-lnb-link="news" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">느린이웃 소식</a></li>
-              <li><a href="#calendar" data-lnb-link="calendar" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">연간 일정</a></li>
+              <li><a href="#calendar" data-lnb-link="calendar" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">느린이웃 일정</a></li>
               <li><a href="#budget" data-lnb-link="budget" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">예산 및 결산</a></li>
               <li><a href="#archive-items" data-lnb-link="archive-items" class="lnb-link block px-6 py-3.5 text-sm font-bold text-meok border-b border-black/10 last:border-b-0 hover:bg-byeot/60 hover:text-naran">자료실</a></li>
           </ul>
@@ -285,56 +284,22 @@
       <div id="calendar" class="board-page hidden">
         <header class="mb-8">
           <p class="text-iwoot font-bold text-sm mb-2">알림마당</p>
-          <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">2026 연간 일정</h2>
-          <p class="text-dolhoe leading-relaxed">느린이웃이 한 해 동안 함께하는 활동이에요. 참여 대상은 느린이웃 회원, 지역 발달장애인과 그 가족, 지역 주민입니다. 자세한 일정은 공지사항으로 안내해 드려요.</p>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-meok mb-3">느린이웃 일정</h2>
+          <p class="text-dolhoe leading-relaxed">느린이웃의 달마다 활동 일정이에요. 자세한 내용과 신청 방법은 공지사항이나 네이버 카페로 안내해 드려요.</p>
         </header>
-        <div class="flex flex-wrap gap-4 text-xs font-bold text-dolhoe mb-5"><span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full" style="background:#12456B"></span>당사자</span><span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full" style="background:#2E7D52"></span>가족</span><span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full" style="background:#E1682C"></span>부모</span><span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full" style="background:#6E6A63"></span>지역</span></div>
-        <div class="bg-byeot rounded-2xl p-5 mb-8">
-          <p class="text-sm font-extrabold text-meok mb-3">매달 · 정기 활동</p>
-          <div class="grid sm:grid-cols-2 gap-3"><div class="bg-white rounded-xl p-4"><ul><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#12456B;min-width:3.5rem;padding:4px 10px;font-size:11px">당사자</span><div><p class="font-bold text-meok leading-snug">슐런 동아리 & 합창 동아리</p><p class="text-xs text-dolhoe mt-0.5">1월~12월 상시 운영</p></div></li></ul></div><div class="bg-white rounded-xl p-4"><ul><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#2E7D52;min-width:3.5rem;padding:4px 10px;font-size:11px">가족</span><div><p class="font-bold text-meok leading-snug">느린이웃 월간 산행</p><p class="text-xs text-dolhoe mt-0.5">매월 · 고봉산·호수공원·북한산 등</p></div></li></ul></div><div class="bg-white rounded-xl p-4"><ul><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#12456B;min-width:3.5rem;padding:4px 10px;font-size:11px">당사자</span><div><p class="font-bold text-meok leading-snug">당사자 및 조력자 모임</p><p class="text-xs text-dolhoe mt-0.5">분기 · 연령별 소풍 및 영화관람</p></div></li></ul></div><div class="bg-white rounded-xl p-4"><ul><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#12456B;min-width:3.5rem;padding:4px 10px;font-size:11px">당사자</span><div><p class="font-bold text-meok leading-snug">느린이웃 생일 파티</p><p class="text-xs text-dolhoe mt-0.5">격월 · 생일 맞은 친구 초대 축하 모임</p></div></li></ul></div></div>
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-5">
+          <div class="flex items-center gap-2">
+            <button type="button" id="cal-prev" class="w-9 h-9 rounded-full border border-black/15 hover:border-naran hover:text-naran flex items-center justify-center" aria-label="이전 달">‹</button>
+            <p id="cal-title" class="text-xl font-extrabold text-naran w-36 text-center"></p>
+            <button type="button" id="cal-next" class="w-9 h-9 rounded-full border border-black/15 hover:border-naran hover:text-naran flex items-center justify-center" aria-label="다음 달">›</button>
+          </div>
+          <div id="cal-legend" class="flex flex-wrap gap-3 text-xs font-bold text-dolhoe"></div>
         </div>
-        <div class="border-t-2 border-meok">
-          <div class="cal-month flex gap-6 py-6 border-b border-black/10" data-month="3">
-            <p class="shrink-0 w-16 text-2xl font-extrabold text-naran">3<span class="text-base">월</span></p>
-            <ul class="flex-1 space-y-3"><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#E1682C;min-width:3.5rem;padding:4px 10px;font-size:11px">부모</span><div><p class="font-bold text-meok leading-snug">발달장애인 감각통합의 이해</p><p class="text-xs text-dolhoe mt-0.5">전문가 초청 부모 특강 · 집단상담</p></div></li></ul>
-          </div>
-          <div class="cal-month flex gap-6 py-6 border-b border-black/10" data-month="4">
-            <p class="shrink-0 w-16 text-2xl font-extrabold text-naran">4<span class="text-base">월</span></p>
-            <ul class="flex-1 space-y-3"><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#2E7D52;min-width:3.5rem;padding:4px 10px;font-size:11px">가족</span><div><p class="font-bold text-meok leading-snug">텃밭 모종 심기 & 분식 행사</p><p class="text-xs text-dolhoe mt-0.5">함께 일구는 공동체 텃밭</p></div></li><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#6E6A63;min-width:3.5rem;padding:4px 10px;font-size:11px">지역</span><div><p class="font-bold text-meok leading-snug">비장애인 부모 대상 슐런</p><p class="text-xs text-dolhoe mt-0.5">운영진 및 외부 회원 소통 스포츠 모임</p></div></li><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#6E6A63;min-width:3.5rem;padding:4px 10px;font-size:11px">지역</span><div><p class="font-bold text-meok leading-snug">발달장애청년허브 견학</p><p class="text-xs text-dolhoe mt-0.5">유관기관 네트워크 연대</p></div></li></ul>
-          </div>
-          <div class="cal-month flex gap-6 py-6 border-b border-black/10" data-month="5">
-            <p class="shrink-0 w-16 text-2xl font-extrabold text-naran">5<span class="text-base">월</span></p>
-            <ul class="flex-1 space-y-3"><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#E1682C;min-width:3.5rem;padding:4px 10px;font-size:11px">부모</span><div><p class="font-bold text-meok leading-snug">발달장애인 재산관리지원 이해</p><p class="text-xs text-dolhoe mt-0.5">미래 설계 및 자산관리 지원서비스 강의</p></div></li></ul>
-          </div>
-          <div class="cal-month flex gap-6 py-6 border-b border-black/10" data-month="6">
-            <p class="shrink-0 w-16 text-2xl font-extrabold text-naran">6<span class="text-base">월</span></p>
-            <ul class="flex-1 space-y-3"><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#E1682C;min-width:3.5rem;padding:4px 10px;font-size:11px">부모</span><div><p class="font-bold text-meok leading-snug">아로마 오일 만들기 테라피</p><p class="text-xs text-dolhoe mt-0.5">전체 부모 대상 힐링 프로그램</p></div></li><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#12456B;min-width:3.5rem;padding:4px 10px;font-size:11px">당사자</span><div><p class="font-bold text-meok leading-snug">서울시 어울림 슐런대회 참가</p><p class="text-xs text-dolhoe mt-0.5">동아리 및 참여 희망 회원 출전</p></div></li><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#2E7D52;min-width:3.5rem;padding:4px 10px;font-size:11px">가족</span><div><p class="font-bold text-meok leading-snug">하하호호 가족 운동회</p><p class="text-xs text-dolhoe mt-0.5">전체 가족이 함께 뛰고 즐기는 화합의 장</p></div></li></ul>
-          </div>
-          <div class="cal-month flex gap-6 py-6 border-b border-black/10" data-month="7">
-            <p class="shrink-0 w-16 text-2xl font-extrabold text-naran">7<span class="text-base">월</span></p>
-            <ul class="flex-1 space-y-3"><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#E1682C;min-width:3.5rem;padding:4px 10px;font-size:11px">부모</span><div><p class="font-bold text-meok leading-snug">엄마 소모임 활동</p><p class="text-xs text-dolhoe mt-0.5">초등 저학년/고학년 부모 그룹</p></div></li><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#12456B;min-width:3.5rem;padding:4px 10px;font-size:11px">당사자</span><div><p class="font-bold text-meok leading-snug">알찬 여름방학 프로그램</p><p class="text-xs text-dolhoe mt-0.5">7~8월 · 신청자 맞춤형 특별 활동</p></div></li><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#2E7D52;min-width:3.5rem;padding:4px 10px;font-size:11px">가족</span><div><p class="font-bold text-meok leading-snug">아빠랑 자녀랑 볼링 모임</p><p class="text-xs text-dolhoe mt-0.5">7~8월 · 아빠와 장애 자녀가 함께하는 스포츠</p></div></li></ul>
-          </div>
-          <div class="cal-month flex gap-6 py-6 border-b border-black/10" data-month="8">
-            <p class="shrink-0 w-16 text-2xl font-extrabold text-naran">8<span class="text-base">월</span></p>
-            <ul class="flex-1 space-y-3"><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#E1682C;min-width:3.5rem;padding:4px 10px;font-size:11px">부모</span><div><p class="font-bold text-meok leading-snug">정기 부모 교육</p><p class="text-xs text-dolhoe mt-0.5">전체 부모 역량 강화 세미나</p></div></li><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#2E7D52;min-width:3.5rem;padding:4px 10px;font-size:11px">가족</span><div><p class="font-bold text-meok leading-snug">신나는 여름 물놀이 캠프</p><p class="text-xs text-dolhoe mt-0.5">무더위를 날리는 느린이웃 가족 캠프</p></div></li></ul>
-          </div>
-          <div class="cal-month flex gap-6 py-6 border-b border-black/10" data-month="9">
-            <p class="shrink-0 w-16 text-2xl font-extrabold text-naran">9<span class="text-base">월</span></p>
-            <ul class="flex-1 space-y-3"><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#6E6A63;min-width:3.5rem;padding:4px 10px;font-size:11px">지역</span><div><p class="font-bold text-meok leading-snug">지역 마을 축제 참여</p><p class="text-xs text-dolhoe mt-0.5">슐런·합창 동아리 축제 부스/공연</p></div></li><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#6E6A63;min-width:3.5rem;padding:4px 10px;font-size:11px">지역</span><div><p class="font-bold text-meok leading-snug">지역아동센터 슐런 교실</p><p class="text-xs text-dolhoe mt-0.5">비장애 아이들 대상 스포츠 교류</p></div></li></ul>
-          </div>
-          <div class="cal-month flex gap-6 py-6 border-b border-black/10" data-month="10">
-            <p class="shrink-0 w-16 text-2xl font-extrabold text-naran">10<span class="text-base">월</span></p>
-            <ul class="flex-1 space-y-3"><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#E1682C;min-width:3.5rem;padding:4px 10px;font-size:11px">부모</span><div><p class="font-bold text-meok leading-snug">힐링 꽃꽂이 교실</p><p class="text-xs text-dolhoe mt-0.5">정서 안정을 위한 부모 원예 활동</p></div></li><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#12456B;min-width:3.5rem;padding:4px 10px;font-size:11px">당사자</span><div><p class="font-bold text-meok leading-snug">느린이웃 통합예술제</p><p class="text-xs text-dolhoe mt-0.5">10.31 한양문고 데미안홀 · 당사자의 끼와 재능을 펼치는 축제</p></div></li></ul>
-          </div>
-          <div class="cal-month flex gap-6 py-6 border-b border-black/10" data-month="11">
-            <p class="shrink-0 w-16 text-2xl font-extrabold text-naran">11<span class="text-base">월</span></p>
-            <ul class="flex-1 space-y-3"><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#2E7D52;min-width:3.5rem;padding:4px 10px;font-size:11px">가족</span><div><p class="font-bold text-meok leading-snug">슈퍼블루 마라톤 & 김장 나눔</p><p class="text-xs text-dolhoe mt-0.5">가족 마라톤 대회 참가 및 공동 김장</p></div></li></ul>
-          </div>
-          <div class="cal-month flex gap-6 py-6 border-b border-black/10" data-month="12">
-            <p class="shrink-0 w-16 text-2xl font-extrabold text-naran">12<span class="text-base">월</span></p>
-            <ul class="flex-1 space-y-3"><li class="flex gap-3"><span class="board-badge shrink-0" style="background:#2E7D52;min-width:3.5rem;padding:4px 10px;font-size:11px">가족</span><div><p class="font-bold text-meok leading-snug">따뜻한 송년회 (장기자랑)</p><p class="text-xs text-dolhoe mt-0.5">한 해를 마무리하는 가족 장기자랑의 밤</p></div></li></ul>
-          </div>
+        <div class="hidden md:grid grid-cols-7 border-t-2 border-meok text-center text-xs font-bold py-2.5 bg-byeot/60">
+          <span class="text-ongi">일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span class="text-naran">토</span>
         </div>
+        <div id="cal-grid" class="hidden md:grid grid-cols-7 border-l border-black/10"></div>
+        <ul id="cal-list" class="md:hidden border-t-2 border-meok"></ul>
         <p class="text-xs text-dolhoe mt-5">※ 일정은 사정에 따라 바뀔 수 있습니다.</p>
       </div>
       <div id="budget" class="board-page">
@@ -568,16 +533,68 @@ const menuBtn = document.getElementById('menuBtn');
     document.querySelectorAll('[data-lnb-link]').forEach(link => link.classList.toggle('is-current', link.dataset.lnbLink === current));
   }
   ny_subnav(() => { checkPostHash(); showBoardView(); });
-  // 연간 일정: 지난 달은 흐리게, 이번 달은 강조
-  (function markCalendar() {
+  // 느린이웃 일정: 달력 (새 달을 추가하려면 CAL_EVENTS 에 'YYYY-MM': [[날짜, '내용', '분류'], ...] 를 넣으세요)
+  const CAL_TYPES = {
+    sports:    ['슐런', '#2E7D52', '#EEF7F1'],
+    choir:     ['합창', '#12456B', '#EDF3F8'],
+    kids:      ['당사자 · 방학', '#7C4DBA', '#F4EEFB'],
+    parent:    ['부모', '#E1682C', '#FDF1EA'],
+    family:    ['가족', '#C2410C', '#FFF4E5'],
+    community: ['지역 · 연대', '#0E7490', '#E9F6F8'],
+    ops:       ['운영', '#6E6A63', '#F2F1EF'],
+    holiday:   ['공휴일', '#DC2626', '#FFFFFF'],
+  };
+  const CAL_EVENTS = {"2026-07": [[1, "합창 동아리", "choir"], [2, "초등 고학년(나나) 엄마 소모임", "parent"], [4, "슐런 동아리", "sports"], [7, "7월 운영진 회의", "ops"], [8, "합창 동아리", "choir"], [9, "중등(유니콘) 엄마 소모임", "parent"], [11, "슐런 동아리", "sports"], [12, "어울림 수영대회 출전", "kids"], [15, "합창 동아리", "choir"], [16, "고등(나혼잘산) 엄마 소모임", "parent"], [17, "제헌절", "holiday"], [19, "아빠와 함께하는 볼링 day", "family"], [19, "비장애 형제자매 모임", "family"], [22, "합창 동아리", "choir"], [23, "초등 저학년(도토리) 엄마 소모임", "parent"], [24, "초등 저학년(도토리) 엄마 소모임", "parent"], [25, "슐런 동아리", "sports"], [28, "[방학] 유리드믹스", "kids"], [29, "[방학] 미술", "kids"]], "2026-08": [[3, "점핑파크", "kids"], [4, "8월 운영진 회의", "ops"], [5, "합창 동아리", "choir"], [5, "고양시장애인복지관 슐런 지원", "community"], [6, "성교육 '온마을배움터'", "kids"], [6, "미술 수업", "kids"], [7, "유리드믹스 수업", "kids"], [8, "슐런 동아리", "sports"], [11, "유리드믹스 수업", "kids"], [12, "합창 동아리", "choir"], [13, "성교육 '온마을배움터'", "kids"], [13, "미술 수업", "kids"], [13, "장애인 인식개선 슐런활동 (강선지역아동센터)", "community"], [15, "광복절", "holiday"], [15, "하계 워크숍 · 물놀이", "family"], [17, "대체공휴일", "holiday"], [18, "성교육 '온마을배움터'", "kids"], [19, "합창 동아리", "choir"], [20, "팝업북지도사 수업", "kids"], [21, "코리아오픈 슐런 선수권대회", "sports"], [22, "슐런 동아리", "sports"], [25, "팝업북지도사 수업", "kids"], [26, "합창 동아리", "choir"], [27, "팝업북지도사 수업", "kids"], [29, "슐런 동아리", "sports"]], "2026-09": [[1, "(소리마을) 발달장애인 음악축제 참여", "choir"], [2, "소리마을 정기연습", "choir"], [3, "(슐런픽) 화성 어울림 슐런대회", "sports"], [4, "브랜딩 기획회의", "ops"], [5, "슐런픽 정기연습", "sports"], [5, "중앙대 디자인캠프", "kids"], [6, "소리마을 정기연습", "choir"], [7, "마을공동체 활동가교육", "community"], [9, "소리마을 정기연습", "choir"], [9, "9월 운영진 회의", "ops"], [10, "(소리마을) 일산병원 힐링콘서트", "choir"], [10, "마을공동체 활동가교육", "community"], [12, "ROTC 어울림 슐런대회", "sports"], [12, "중앙대 디자인캠프", "kids"], [13, "문화체험 프로그램 참여", "kids"], [14, "마을공동체 활동가교육", "community"], [17, "마을공동체 활동가교육", "community"], [19, "주엽1동 마을축제 장애인 인식개선 활동", "community"], [19, "(슐런픽) 서울시장애인 슐런대회", "sports"], [19, "중앙대 디자인캠프", "kids"], [22, "집단동료상담 (핸드크림 만들기)", "parent"], [24, "추석 연휴", "holiday"], [25, "추석", "holiday"], [26, "추석 연휴", "holiday"]], "2026-10": [[1, "제13회 피플퍼스트 축하공연", "choir"], [3, "개천절", "holiday"], [5, "대체공휴일", "holiday"], [7, "마을공동체 우수사례지 탐방", "community"], [7, "소리마을 정기연습", "choir"], [8, "나눔나무 정기공연 참여", "choir"], [9, "한글날", "holiday"], [9, "슈퍼블루 마라톤", "family"], [10, "슐런픽 정기연습", "sports"], [14, "10월 운영진 회의", "ops"], [14, "소리마을 정기연습", "choir"], [15, "회원 대상 가죽공예 재능기부", "parent"], [17, "슐런픽 정기연습", "sports"], [21, "마을공동체 성과공유회 (꽃꽂이)", "community"], [21, "소리마을 정기연습", "choir"], [24, "슐런픽 정기연습", "sports"], [28, "소리마을 정기연습", "choir"], [31, "제1회 느린이웃 통합예술제 (한양문고 데미안홀)", "community"]]};
+  (function setupCalendar() {
+    const months = Object.keys(CAL_EVENTS).sort();
     const now = new Date();
-    if (now.getFullYear() !== 2026) return;
-    const m = now.getMonth() + 1;
-    document.querySelectorAll('.cal-month').forEach(el => {
-      const mm = +el.dataset.month;
-      el.classList.toggle('is-past', mm < m);
-      el.classList.toggle('is-now', mm === m);
-    });
+    const thisKey = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+    let idx = months.includes(thisKey) ? months.indexOf(thisKey) : months.length - 1;
+    document.getElementById('cal-legend').innerHTML = Object.entries(CAL_TYPES).filter(([k]) => k !== 'holiday')
+      .map(([, [n, c]]) => `<span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm" style="background:${c}"></span>${n}</span>`).join('');
+    function evHtml([d, t, c]) {
+      const [, col, bg] = CAL_TYPES[c] || CAL_TYPES.ops;
+      return c === 'holiday'
+        ? `<span class="block text-xs font-bold mt-1" style="color:${col}">${ny_esc(t)}</span>`
+        : `<span class="cal-ev" style="color:${col};background:${bg};border-color:${col}">${ny_esc(t)}</span>`;
+    }
+    function render() {
+      const key = months[idx];
+      const [y, m] = key.split('-').map(Number);
+      const evs = CAL_EVENTS[key];
+      document.getElementById('cal-title').textContent = `${y}년 ${m}월`;
+      document.getElementById('cal-prev').disabled = idx === 0;
+      document.getElementById('cal-next').disabled = idx === months.length - 1;
+      document.getElementById('cal-prev').style.opacity = idx === 0 ? .3 : 1;
+      document.getElementById('cal-next').style.opacity = idx === months.length - 1 ? .3 : 1;
+      const first = new Date(y, m - 1, 1).getDay();
+      const days = new Date(y, m, 0).getDate();
+      const today = (now.getFullYear() === y && now.getMonth() + 1 === m) ? now.getDate() : 0;
+      let cells = '';
+      for (let i = 0; i < first; i++) cells += '<div class="min-h-[110px] border-r border-b border-black/10 bg-[#FAFAF8]"></div>';
+      for (let d = 1; d <= days; d++) {
+        const dow = (first + d - 1) % 7;
+        const dayEvs = evs.filter(e => e[0] === d);
+        const red = dow === 0 || dayEvs.some(e => e[2] === 'holiday');
+        const numCls = red ? 'text-ongi' : dow === 6 ? 'text-naran' : 'text-meok';
+        cells += `<div class="min-h-[110px] border-r border-b border-black/10 p-1.5 ${d === today ? 'bg-byeot' : ''}">
+          <p class="text-sm font-bold ${numCls}">${d}${d === today ? ' <span class="text-[10px] text-white bg-ongi rounded-full px-1.5 py-0.5 align-middle">오늘</span>' : ''}</p>
+          ${dayEvs.map(evHtml).join('')}
+        </div>`;
+      }
+      const tail = (7 - (first + days) % 7) % 7;
+      for (let i = 0; i < tail; i++) cells += '<div class="min-h-[110px] border-r border-b border-black/10 bg-[#FAFAF8]"></div>';
+      document.getElementById('cal-grid').innerHTML = cells;
+      const W = ['일', '월', '화', '수', '목', '금', '토'];
+      const byDay = {};
+      evs.forEach(e => (byDay[e[0]] = byDay[e[0]] || []).push(e));
+      document.getElementById('cal-list').innerHTML = Object.keys(byDay).map(Number).sort((a, b) => a - b).map(d =>
+        `<li class="flex gap-4 py-3 border-b border-black/10"><p class="shrink-0 w-14 font-bold text-naran">${m}.${d} <span class="text-xs text-dolhoe">${W[new Date(y, m - 1, d).getDay()]}</span></p><div class="flex-1">${byDay[d].map(evHtml).join('')}</div></li>`
+      ).join('');
+    }
+    document.getElementById('cal-prev').onclick = () => { if (idx > 0) { idx--; render(); } };
+    document.getElementById('cal-next').onclick = () => { if (idx < months.length - 1) { idx++; render(); } };
+    render();
   })();
 
 // 알림마당 게시판: Supabase에서 불러와 검색 · 10개씩 페이지 나눔
